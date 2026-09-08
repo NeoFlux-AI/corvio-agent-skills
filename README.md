@@ -15,6 +15,10 @@ For Claude Cowork, download the official plugin ZIP in a browser and upload it f
 
 <https://corvio.ai/developers/plugins/claude/corvio-workspace.zip>
 
+If the Cowork environment blocks `corvio.ai`, use the identical official GitHub release asset in a normal browser:
+
+<https://github.com/NeoFlux-AI/corvio-agent-skills/releases/latest/download/corvio-workspace.zip>
+
 The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection.
 
 ## Skill-only install
