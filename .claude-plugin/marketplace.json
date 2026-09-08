@@ -1,0 +1,19 @@
+{
+  "name": "corvio-agent-skills",
+  "owner": {
+    "name": "Corvio",
+    "email": "support@corvio.ai"
+  },
+  "metadata": {
+    "description": "Official Corvio Agent Skills for continuous, durable Workspace collaboration.",
+    "version": "1.4.0"
+  },
+  "plugins": [
+    {
+      "name": "corvio-workspace",
+      "description": "Ground Coding-Agent work in Corvio, operate Workspace documents, and return verified results to collaborators.",
+      "source": "./plugins/corvio-workspace",
+      "strict": false
+    }
+  ]
+}

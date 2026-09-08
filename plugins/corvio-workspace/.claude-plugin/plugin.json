@@ -1,0 +1,11 @@
+{
+  "name": "corvio-workspace",
+  "version": "1.4.0",
+  "description": "Connect Claude to Corvio with OAuth and use shared Workspace context throughout durable work.",
+  "author": {
+    "name": "Corvio",
+    "email": "support@corvio.ai"
+  },
+  "homepage": "https://corvio.ai/developers/skills/corvio-operate-workspace",
+  "repository": "https://github.com/NeoFlux-AI/corvio-agent-skills"
+}

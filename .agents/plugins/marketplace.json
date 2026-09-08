@@ -1,0 +1,20 @@
+{
+  "name": "corvio-agent-skills",
+  "interface": {
+    "displayName": "Corvio Official"
+  },
+  "plugins": [
+    {
+      "name": "corvio-workspace",
+      "source": {
+        "source": "local",
+        "path": "./plugins/corvio-workspace"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

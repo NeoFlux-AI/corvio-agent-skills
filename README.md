@@ -1,0 +1,92 @@
+# Corvio Agent Skills
+
+Official, reviewed Agent Skills and remote MCP configuration for operating Corvio and importing selected local agent work.
+
+## Install the complete collaboration surface
+
+The preferred package is **Skill + Remote MCP**. The Skill supplies the proactive decision loop; the OAuth MCP supplies live Corvio
+capabilities and receipts. The CLI is an additional local adapter for direct paths, downloads, sync, and project-Agent operation—not a
+replacement for MCP in hosts that support it.
+
+Codex and Claude Code plugin installs bundle the Skill and MCP configuration together. In hosts with separate Skill and MCP stores, install
+the Skill and also add `https://api.corvio.ai/mcp`; installing only one side is an incomplete collaboration setup.
+
+For Claude Cowork, download the official plugin ZIP in a browser and upload it from **Customize → Plugins**:
+
+<https://corvio.ai/developers/plugins/claude/corvio-workspace.zip>
+
+The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection.
+
+## Skill-only install
+
+Use this route only when the host cannot install the complete plugin, then connect Remote MCP separately:
+
+```bash
+npx skills add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip
+```
+
+The Skill can also be installed from the official public GitHub repository:
+
+```bash
+npx skills add NeoFlux-AI/corvio-agent-skills
+```
+
+Claude Code marketplace:
+
+```text
+/plugin marketplace add NeoFlux-AI/corvio-agent-skills
+/plugin install corvio-workspace@corvio-agent-skills
+```
+
+Codex repo marketplace:
+
+```bash
+codex plugin marketplace add .
+```
+
+In Codex, open `/plugins`, install `corvio-workspace`, and start a new session. The package connects to `https://api.corvio.ai/mcp` with Corvio OAuth; it does not embed an API key. ChatGPT private testing uses Developer mode and the same MCP URL. Public Plugin Directory availability starts only after external marketplace review completes.
+
+For WorkBuddy, install/upload the official `corvio-operate-workspace` Skill through its Skills surface and configure Corvio in Connector/MCP
+settings. WorkBuddy currently owns these as separate installation surfaces, so both receipts must be checked in a fresh conversation.
+
+## Update an existing installation
+
+The Skill, Workspace CLI, and Remote MCP have separate release lifecycles:
+
+- A Skill installed from the canonical website zip is a static local copy. The current Agent Skills CLI does not track direct-archive
+  installs for `skills update`; rerun the same `npx skills add` command in the same project/global scope, then start a fresh host session.
+- `corvio update check --json --no-input` checks only the `@corvio/cli` executable. It never updates the CLI or Skill automatically.
+- Remote MCP is server-delivered. Compatible changes normally need only a fresh host session/tool refresh; new OAuth scopes require
+  reauthorization.
+
+The hosted `manifest.json` content hash is the exact Skill package version. `corvio collaboration status --json --no-input` detects a
+missing Skill or collaboration-contract mismatch, but a `ready` result does not prove byte-for-byte freshness after a content-only Skill
+revision. Reinstall from the canonical archive for exact freshness. Once the public GitHub mirror exists, installs from that tracked Git
+source may use the installer-supported `npx skills update`; do not document that path as available before publication.
+
+Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. For an explicitly selected local file, a filesystem-capable host may use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same bridge as one command.
+
+## Official sources
+
+- Skill homepage: <https://corvio.ai/developers/skills/corvio-operate-workspace>
+- Developer guide: <https://corvio.ai/developers/api>
+- Interactive API reference: <https://corvio.ai/developers/api/reference>
+- Package manifest: <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json>
+- OpenAPI: <https://api.corvio.ai/v1/openapi.json>
+- Corvio MCP overview: <https://corvio.ai/help/corvio-mcp>
+- Claude and Cowork connection guide: <https://corvio.ai/help/connect-corvio-to-claude>
+- ChatGPT connection guide: <https://corvio.ai/help/connect-corvio-to-chatgpt>
+- Codex connection guide: <https://corvio.ai/help/connect-corvio-to-codex>
+- WorkBuddy connection guide: <https://corvio.ai/help/connect-corvio-to-workbuddy>
+- Other MCP clients: <https://corvio.ai/help/connect-corvio-to-other-mcp-clients>
+- Local import guide: <https://corvio.ai/help/import-local-agent-work-into-corvio>
+
+The private Corvio product repository remains the only authoring source. This public repository is an exported, hashable distribution mirror; do not edit generated Skill files here and copy them back.
+
+## License
+
+The files in this distribution mirror are licensed under the Apache License 2.0. See [LICENSE](LICENSE).
+
+## Security
+
+Prefer Corvio OAuth for the remote MCP and device-link login for the CLI. Never paste a key into a prompt, issue, document, or marketplace form. See [SECURITY.md](SECURITY.md).

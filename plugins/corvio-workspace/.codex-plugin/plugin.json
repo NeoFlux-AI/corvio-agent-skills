@@ -1,0 +1,44 @@
+{
+  "name": "corvio-workspace",
+  "version": "1.4.0",
+  "description": "Collaborate with Corvio throughout Coding-Agent work through one shared Skill, CLI, and remote MCP lifecycle.",
+  "author": {
+    "name": "Corvio",
+    "email": "support@corvio.ai",
+    "url": "https://corvio.ai"
+  },
+  "homepage": "https://corvio.ai/developers/skills/corvio-operate-workspace",
+  "repository": "https://github.com/NeoFlux-AI/corvio-agent-skills",
+  "keywords": [
+    "corvio",
+    "workspace",
+    "documents",
+    "agent-skills"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Corvio Workspace",
+    "shortDescription": "Ground work in Corvio and return durable results.",
+    "longDescription": "Use Corvio's OAuth remote MCP and official Skills as a shared Coding-Agent work loop: retrieve authorized context, collaborate through documents and comments, materialize valuable results in the right carrier, close the originating handoff, and import selected local work without widening local access.",
+    "developerName": "Corvio",
+    "category": "Productivity",
+    "capabilities": [
+      "Search",
+      "Read",
+      "Write",
+      "Test",
+      "Remote MCP",
+      "Local import guidance"
+    ],
+    "websiteURL": "https://corvio.ai/developers/skills/corvio-operate-workspace",
+    "privacyPolicyURL": "https://corvio.ai/privacy",
+    "termsOfServiceURL": "https://corvio.ai/terms",
+    "defaultPrompt": [
+      "Use Corvio context that can improve this coding task, then return the verified result to the originating document or thread.",
+      "Turn this valuable result into the right durable Corvio artifact and preserve its source lineage.",
+      "Preview selected local agent work before importing it; do not capture unrelated private work."
+    ],
+    "brandColor": "#12351D"
+  }
+}

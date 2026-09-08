@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "corvio": {
+      "type": "http",
+      "url": "https://api.corvio.ai/mcp",
+      "oauth_resource": "https://api.corvio.ai/mcp"
+    }
+  }
+}
