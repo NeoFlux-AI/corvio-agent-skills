@@ -1,35 +1,35 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.1",
-  "contract_revision": "2026-09-09.5",
+  "release_version": "1.7.2",
+  "contract_revision": "2026-09-09.6",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Recover the immutable Agent Skills publication path after its first tag exposed a same-tag comparison bug, while scoping hosted package file tracing to the package roots.",
+  "change_summary": "Ship the reusable-context lifecycle with synchronized server, Skill, CLI, Help and package identities; use a repository-scoped deploy key for public source publication and keep website ZIPs as the only binary authority.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The same reviewed contract moves forward to the recoverable 1.7.1 package identity."
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/agents/openai.yaml", ".agents/skills/corvio-operate-workspace/references/api.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
+      "note": "The reviewed reusable-context contract and publisher authority ship together as Skill release 1.7.2."
     },
     "server_contract": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Contract 2026-09-09.5 remains the live compatible server authority."
+      "disposition": "changed",
+      "paths": ["backend/app/api/public_v1/mcp_routes.py", "backend/app/api/public_v1/schemas.py", "backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/developer_platform/files.py", "backend/app/application/developer_platform/questions.py", "backend/app/application/usecases/chat_streaming_usecase.py", "backend/app/core/config.py", "backend/app/domains/workspace_assets/mission_knowledge.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "backend/tests/integration/test_developer_files_and_sync_public_contract.py", "backend/tests/integration/test_developer_question_public_contract.py", "backend/tests/integration/test_workspace_assets_acl_missions.py", "backend/tests/unit/test_developer_file_organize.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py"],
+      "note": "Contract 2026-09-09.6 adds the reusable-context lifecycle and reports package 1.7.2 plus its immutable public source tag."
     },
     "package_manifests": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/developerSkillPackage.ts", "frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Version 1.7.1 preserves schema 3 and narrows runtime file tracing to the actual Skill and Plugin package roots."
+      "paths": ["frontend/src/lib/developerSkillPackage.ts", "frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json", "packaging/corvio-agent-skills/README.md"],
+      "note": "Version 1.7.2 makes the website ZIP canonical, publishes an immutable Git source tag, and keeps package identities aligned."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Published CLI beta.21 remains compatible and requires no replacement package."
+      "disposition": "changed",
+      "paths": ["developer-cli/packages/workspace/package.json", "developer-cli/packages/admin/package.json", "developer-cli/package-lock.json", "developer-cli/packages/workspace/src/cli.js", "developer-cli/packages/workspace/README.md", "developer-cli/tests/commands.test.mjs", "backend/app/core/config.py", "backend/tests/integration/test_developer_api_key_public_contract.py"],
+      "note": "CLI beta.22 publishes the reusable-context lifecycle, terminal receipt guidance, and contract 2026-09-09.6 expectations."
     },
     "help_center": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "The already deployed tri-locale source and update guidance remains accurate for 1.7.1."
+      "disposition": "changed",
+      "paths": ["frontend/src/lib/help/publicMcpHelpContent.ts", "frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicHelpContent.test.ts", "frontend/src/app/llms.txt/route.ts", "frontend/src/app/llms.txt/route.test.ts"],
+      "note": "All localized Help and llms.txt now distinguish the canonical website ZIP from the managed public Git source."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
@@ -38,8 +38,8 @@
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["scripts/release-agent-skills.sh", "scripts/tests/test_release_agent_skills.sh", "docs/rfc/deploy-release-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/logbook/entries/2026-09-09/125103-codex-agent-skills-same-tag-recovery.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "Same-tag workflow validation now audits against the previous immutable release instead of comparing the tag to itself."
+      "paths": [".github/workflows/agent-skills-release.yml", "scripts/release-agent-skills.sh", "docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/reference/cursor-harness/PRODUCT_CAPABILITY_MAP.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/deploy-release-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md", "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md", "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md", "docs/logbook/entries/2026-09-09/130643-codex-agent-integration-reusable-context-value.md", "docs/logbook/entries/2026-09-09/131908-codex-agent-skills-publisher-authority.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The source publisher proves deploy-key authority before tag creation and publishes public main plus an immutable source tag."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["scripts/tests/test_release_agent_skills.sh", "frontend/src/lib/developerSkillPackage.test.ts", "docs/test-reports/agent-skill-distribution-lifecycle-acceptance-2026-09-09.md"],
-      "note": "Regression evidence covers exact-current-tag recovery, deterministic package output, and scoped source reads."
+      "paths": ["scripts/tests/test_github_actions_cost_guards.py", "scripts/tests/test_release_agent_skills.sh", "frontend/src/lib/developerSkillPackage.test.ts", "docs/test-reports/agent-integration-reusable-context-value-acceptance-2026-09-09.md", "docs/test-reports/agent-skill-distribution-lifecycle-acceptance-2026-09-09.md"],
+      "note": "Regression evidence covers scoped repository authority, bounded publication, deterministic website artifacts, and immutable source-tag comparison."
     }
   }
 }

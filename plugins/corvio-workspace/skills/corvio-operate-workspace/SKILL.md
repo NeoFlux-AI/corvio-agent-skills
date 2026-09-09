@@ -8,8 +8,8 @@ description: "Use when the task involves research, reports, comparisons, recomme
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.1`.
-It implements `coding_agent_collaboration` contract version `2026-09-09.5`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.2`.
+It implements `coding_agent_collaboration` contract version `2026-09-09.6`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -33,12 +33,30 @@ connection. A one-off or transient result normally does not merit a Corvio write
 above when prior work could improve the current task. If the check is unavailable, continue safe local work and mention the missing
 synchronization only when it affects the expected handoff.
 
+## Turn files into reusable context
+
+Use one value chain and stop at the narrowest stage that satisfies the user's future job:
+
+1. **Retain the original.** Finalize the selected bytes as an Asset and verify its ID, SHA-256, policy, and link. This preserves provenance;
+   it does not prove that Corvio interpreted, organized, or used the file.
+2. **Create the right online representation.** A finalized UTF-8 Markdown Asset within the documented limit can become an editable Page
+   directly through `source_asset_id`. For other formats or semantic transformation, use `ask_corvio` or `organize_files` to produce the
+   appropriate Page, Spreadsheet, Presentation, Code, HTML Artifact, or reader layer. Do not promise lossless direct Page conversion for
+   every file type.
+3. **Organize related evidence.** Run one `organize_files` mission over a coherent Asset set when structure, synthesis, or future retrieval
+   matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document.
+4. **Admit durable knowledge by type.** Stable facts and preferences may belong in the appropriate Memory. Reusable methods,
+   configurations, constraints, or quality bars may become Project Skills only after evidence-based admission. An `always` policy requires
+   this decision, not a fabricated Skill; `evaluated_no_qualifying_skill` is a valid result.
+5. **Return what can be reused.** Give the stable Asset, Page/artifact, Question/Conversation, operation, and qualifying Skill candidate
+   identities or resource receipts that the caller can inspect and use later.
+
 ## Choose the smallest useful action
 
 - Unknown prior material: call MCP `search`; use `workspace_scope=all_authorized` only when the selected Workspace may be stale or the
   user asks across Workspaces. Fetch a full document only when it can change the work.
-- Cross-source synthesis, semantic organization, or a typed Spreadsheet/Presentation/Code/HTML result: call `ask_corvio`; poll
-  `get_question` and consume its sources, artifacts, operations, and links.
+- Cross-source synthesis or a typed Spreadsheet/Presentation/Code/HTML result: call `ask_corvio`; poll `get_question` and consume its
+  sources, artifacts, operations, links, and requested processing/knowledge policy receipt.
 - A new narrative result: call `create_document`. An existing result: fetch its current revision, then call `update_document` or
   `append_document` with a useful `change_summary`.
 - Simple new tables: use ordinary GitHub-Flavored Markdown pipe tables. For a bounded change to an existing table, use
@@ -50,6 +68,9 @@ synchronization only when it affects the expected handoff.
   Remote MCP and never resend the whole file merely because the Page tool needs content.
 - Exact original bytes only: keep the finalized Asset. When a Corvio question must read it, pass its Asset ID in that same
   `ask_corvio.asset_ids` request. Retention alone does not make an unrelated question consume the file.
+- A coherent Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
+  Read its `output_document` link and `skills_evaluation`; when a Skill qualifies, preserve its candidate identity and typed resource
+  receipts. When none qualifies, report `evaluated_no_qualifying_skill` without manufacturing one.
 
 ## Resolve authority before writing
 
@@ -118,6 +139,7 @@ live `corvio <area> --help`, `corvio capabilities --json`, and public OpenAPI as
 
 ## Finish
 
-Lead with the useful result. Include the selected Workspace/routing receipt, sources that changed the work, durable IDs/revisions/links,
-terminal operation or readback evidence, and anything intentionally kept local or still unresolved. Do not claim a whole Agent session was
-captured because one Page or Asset exists.
+Lead with the useful result. Distinguish what was retained, what reader-facing representation was created, what was semantically organized,
+and what entered Memory or a Project Skill. Include the selected Workspace/routing receipt, sources that changed the work, durable
+IDs/revisions/links, terminal operation or readback evidence, and anything intentionally kept local or still unresolved. Do not claim a
+whole Agent session was captured because one Page or Asset exists.

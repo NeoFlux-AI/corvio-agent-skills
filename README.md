@@ -16,9 +16,9 @@ For Claude Cowork, download the official plugin ZIP in a browser and upload it f
 
 <https://corvio.ai/developers/plugins/claude/corvio-workspace.zip>
 
-If the Cowork environment blocks `corvio.ai`, use the identical official GitHub release asset in a normal browser:
+If the Cowork sandbox blocks `corvio.ai`, download the same canonical archive in a normal browser and upload the local file:
 
-<https://github.com/NeoFlux-AI/corvio-agent-skills/releases/latest/download/corvio-workspace.zip>
+<https://corvio.ai/developers/plugins/claude/corvio-workspace.zip>
 
 The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection. Its Claude `SessionStart` hook adds
 one short reminder after startup, resume, clear, and compaction. Corvio marks the two user-level semantic entries—read-only `search`
@@ -83,6 +83,8 @@ is unverified: local bytes cannot prove which copy an already-running cloud sess
 the installer-supported `npx skills update` only when their install record is update-tracked.
 
 Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. For an explicitly selected local file, a filesystem-capable host may use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same bridge as one command. A finalized Markdown Asset can then become a Page through `source_asset_id`, without placing the whole file in a second tool call.
+
+That upload is the provenance layer, not the end of the product story. For other formats or coherent source sets, use `organize_files` or `ask_corvio` to create the reader-facing Page, Spreadsheet, Presentation, Code, HTML Artifact, or reading layer that fits the job. Poll the operation to terminal and inspect `output_document`, `source_reconciliation`, and `skills_evaluation`. Stable facts/preferences may enter Memory; only an evidence-backed reusable method, configuration, constraint, or quality bar becomes a Project Skill. `skills_extraction_mode=always` requires this decision and may correctly return `evaluated_no_qualifying_skill`.
 
 ## Official sources
 

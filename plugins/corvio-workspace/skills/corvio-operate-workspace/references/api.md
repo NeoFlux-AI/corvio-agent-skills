@@ -287,9 +287,12 @@ corvio files cancel <operation_id> --yes --json --no-input
 
 Upload and organization are separate effects even when one command composes them. Preserve the upload receipt, then poll the operation by
 its exact ID until a terminal state or the current wait budget is exhausted. Completion requires all source Asset IDs, source
-reconciliation, derived artifacts, processing policy, Skill admission outcome, and final links. If a terminal receipt is blocked, resolve
-the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. Never use an unbounded
-shell retry loop.
+reconciliation, `output_document` or other derived artifacts, processing policy, Skill admission outcome, and final links. A qualifying
+`skills_evaluation` returns stable candidate identities and typed `page:` / `node:` resource receipts when exposed by the durable write;
+`evaluated_no_qualifying_skill` is an equally valid evidence-based result. Stable facts/preferences belong to the appropriate Memory,
+while independently reusable methods, configurations, constraints, and quality bars may become Project Skills. If a terminal receipt is
+blocked, resolve the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. Never
+use an unbounded shell retry loop.
 
 ### Foreground Markdown sync
 
