@@ -4,9 +4,10 @@ Official, reviewed Agent Skills and remote MCP configuration for operating Corvi
 
 ## Install the complete collaboration surface
 
-The preferred package is **Skill + Remote MCP**. The Skill supplies the proactive decision loop; the OAuth MCP supplies live Corvio
-capabilities and receipts. The CLI is an additional local adapter for direct paths, downloads, sync, and project-Agent operation—not a
-replacement for MCP in hosts that support it.
+The preferred package is **Skill + Remote MCP**. The Skill makes Corvio discoverable for concrete work such as research, reports,
+comparisons, proposals, plans, decisions, meeting notes, project work, debugging, reviews, and follow-ups; the OAuth MCP supplies live
+Corvio capabilities and receipts. It complements the host's normal file and tool workflow. The CLI is an additional local adapter for
+direct paths, downloads, sync, and project-Agent operation—not a replacement for MCP in hosts that support it.
 
 Codex and Claude Code plugin installs bundle the Skill and MCP configuration together. In hosts with separate Skill and MCP stores, install
 the Skill and also add `https://api.corvio.ai/mcp`; installing only one side is an incomplete collaboration setup.
@@ -19,7 +20,9 @@ If the Cowork environment blocks `corvio.ai`, use the identical official GitHub 
 
 <https://github.com/NeoFlux-AI/corvio-agent-skills/releases/latest/download/corvio-workspace.zip>
 
-The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection.
+The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection. Its Claude `SessionStart` hook adds
+one short reminder after startup, resume, clear, and compaction so deferred MCP tools remain discoverable without copying the full Skill
+into context.
 
 ## Skill-only install
 
@@ -55,8 +58,12 @@ settings. WorkBuddy currently owns these as separate installation surfaces, so b
 
 ## Update an existing installation
 
-The Skill, Workspace CLI, and Remote MCP have separate release lifecycles:
+The Plugin, Skill, Workspace CLI, and Remote MCP have separate release lifecycles. Identify the installed source before choosing an
+update action; Claude's `@synced` label means newest in that Claude account, not necessarily newest from Corvio upstream. See the bundled
+[`SETUP.md`](plugins/corvio-workspace/SETUP.md) for the complete decision tree.
 
+- A Claude/Cowork Plugin installed from a directory or marketplace follows that channel's update control. A Plugin uploaded in Claude
+  Customize is a static account copy and must be replaced/re-uploaded there. Shared or organization-managed copies require their owner.
 - A Skill installed from the canonical website zip is a static local copy. The current Agent Skills CLI does not track direct-archive
   installs for `skills update`; rerun the same `npx skills add` command in the same project/global scope, then start a fresh host session.
 - `corvio update check --json --no-input` checks only the `@corvio/cli` executable. It never updates the CLI or Skill automatically.
@@ -65,10 +72,10 @@ The Skill, Workspace CLI, and Remote MCP have separate release lifecycles:
 
 The hosted `manifest.json` content hash is the exact Skill package version. `corvio collaboration status --json --no-input` detects a
 missing Skill or collaboration-contract mismatch, but a `ready` result does not prove byte-for-byte freshness after a content-only Skill
-revision. Reinstall from the canonical archive for exact freshness. Once the public GitHub mirror exists, installs from that tracked Git
-source may use the installer-supported `npx skills update`; do not document that path as available before publication.
+revision. Reinstall from the canonical archive for exact freshness. Installs from the public GitHub source may use the installer-supported
+`npx skills update` only when their install record is update-tracked.
 
-Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. For an explicitly selected local file, a filesystem-capable host may use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same bridge as one command.
+Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. For an explicitly selected local file, a filesystem-capable host may use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same bridge as one command. A finalized Markdown Asset can then become a Page through `source_asset_id`, without placing the whole file in a second tool call.
 
 ## Official sources
 

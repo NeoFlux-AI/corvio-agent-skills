@@ -1,0 +1,55 @@
+# Set up or update Corvio
+
+Use this guide when the user installs, activates, updates, repairs, or asks for the current state of Corvio. Do not treat “synced to
+Claude” as proof that the account copy matches Corvio's current upstream release.
+
+## 1. Identify the installed source before changing anything
+
+When shell access is available, run `claude plugin list` and inspect the Corvio entry. Report the exact source and visible version.
+
+- `<name>@synced` is copied from the user's claude.ai account into Cowork or a cloud session. `claude plugin install`, `update`, and
+  `uninstall` do not manage it. The user or organization owner manages the source copy in Claude Customize; a new synced session receives
+  that account copy.
+- A marketplace-installed Claude Code plugin is managed by the marketplace/plugin update flow.
+- A plugin uploaded directly in Claude Customize is a static reviewed copy. The user replaces or re-uploads it from the same Customize
+  surface. Do not remove it first unless Claude offers no replace/update action and the user chooses that fallback.
+- A shared or organization-managed Plugin or Skill is updated by its publisher or organization owner. Members receive that managed copy
+  on a later use; they cannot publish over it from the Cowork task.
+- A standalone Skill and a custom Connector are separate installations. Diagnose and refresh each one independently.
+
+If the source or version is not observable, say `unknown`; do not infer it from the presence of Corvio tools, an account sync, a file
+name, or a successful OAuth connection.
+
+## 2. Compare independent authorities
+
+Call Corvio's `get_collaboration_contract` when the Connector is available. Its `distribution` section reports Corvio's current upstream
+Plugin version, canonical package URLs, and the update policy for each surface. The local Plugin manifest proves only the installed
+Plugin version. The hosted Skill manifest proves the current standalone Skill bytes. `corvio update check` proves only whether the optional
+local `@corvio/cli` needs an update.
+
+Do not claim that all of Corvio is current from any one of those receipts.
+
+## 3. Apply only the update owned by this host
+
+- Remote MCP is server-delivered. Start a fresh task or refresh/reconnect tools after a compatible server update. Reauthorize only when
+  Corvio requests new OAuth scopes or the existing authorization is stale.
+- For a claude.ai-synced, manually uploaded, shared, or organization-managed Plugin/Skill, give the exact Customize or administrator action
+  described above. A Cowork task must not claim it changed the account-owned package.
+- For a marketplace-installed Claude Code Plugin, use Claude's marketplace/plugin update flow, then run `/reload-plugins` or start a new
+  session so hooks and MCP definitions move to the new version.
+- For a standalone Skill installed from Corvio's direct ZIP, rerun the same `npx skills add` command in the same project/global scope, then
+  start a fresh host session. Do not use `skills update` unless the installed source is actually update-tracked.
+- Update `@corvio/cli` only when it is installed and needed for local paths, sync, downloads, or a project Agent. Run
+  `corvio update check --json --no-input`, then use the exact install command returned by that receipt.
+
+## 4. Verify the usable result
+
+Report these facts separately:
+
+1. installed Plugin/Skill source and visible version or hash;
+2. Corvio's current upstream Plugin version and collaboration-contract version;
+3. Connector authorization and a successful `list_workspaces` call;
+4. one natural research, report, plan, decision, project, debugging, or follow-up request that causes Claude to use relevant Corvio context;
+5. for write access, one reversible durable effect plus authoritative readback.
+
+An uploaded package, “synced” label, successful consent page, tool list, or CLI version alone is not completion.

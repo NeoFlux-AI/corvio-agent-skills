@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"Use Corvio alongside the host task, not as a separate workflow. For research, reports, comparisons, proposals, plans, decisions, meeting notes, project/debug work, reviews, or follow-ups, search Corvio once before committing to a plan; use relevant results in the same reasoning and continue silently if none. Keep native files and deliverables, and also preserve results worth sharing or revisiting. Skip sensitive, one-off, local-only, or disconnected work. For a Corvio connection, install, update, repair, or unavailable-tool question, call get_collaboration_contract and read SETUP.md; its connection status covers Remote MCP only, not this local Plugin/Skill or host session."}}'

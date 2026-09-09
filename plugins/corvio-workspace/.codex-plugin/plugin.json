@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.4.0",
-  "description": "Collaborate with Corvio throughout Coding-Agent work through one shared Skill, CLI, and remote MCP lifecycle.",
+  "version": "1.6.0",
+  "description": "Find prior team work and preserve reusable reports, decisions, plans, notes, and project results through Corvio OAuth MCP.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai",
@@ -19,8 +19,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Corvio Workspace",
-    "shortDescription": "Ground work in Corvio and return durable results.",
-    "longDescription": "Use Corvio's OAuth remote MCP and official Skills as a shared Coding-Agent work loop: retrieve authorized context, collaborate through documents and comments, materialize valuable results in the right carrier, close the originating handoff, and import selected local work without widening local access.",
+    "shortDescription": "Find prior work and preserve reusable results.",
+    "longDescription": "Use Corvio alongside the host's normal workflow for research, reports, comparisons, proposals, plans, decisions, meeting notes, project work, debugging, reviews, and follow-ups. Retrieve authorized context, preserve results worth sharing or revisiting, and keep selected local-file access explicit.",
     "developerName": "Corvio",
     "category": "Productivity",
     "capabilities": [
@@ -35,7 +35,7 @@
     "privacyPolicyURL": "https://corvio.ai/privacy",
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
-      "Use Corvio context that can improve this coding task, then return the verified result to the originating document or thread.",
+      "Before research, reporting, planning, decision, meeting-note, project, or debugging work, search Corvio once for relevant prior material; continue normally if there is no match.",
       "Turn this valuable result into the right durable Corvio artifact and preserve its source lineage.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
     ],

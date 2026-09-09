@@ -27,6 +27,15 @@ structured receipts are the MCP authority. A host plugin should bundle this Skil
 separate installers, install both: the Skill supplies discovery/decision policy and MCP supplies live OAuth-scoped actions. Add the CLI
 when the Agent needs direct local-path, sync, download, or project-Agent authority.
 
+For ordinary connected work, Remote MCP callers may omit `workspace_id` from Workspace-scoped discovery, question, file-intake,
+organization, Page-create, and Project-create calls. The server resolves the explicit/originating context first, then confirmed account
+selection, personal default, or a single authorized candidate, and returns `workspace_routing`. Real multi-Workspace ambiguity fails
+closed with candidates. MCP also owns routine `request_id` / `idempotency_key` generation; callers supply an explicit key only when they
+need to coordinate a deliberate retry across invocations. Exact-resource follow-ups keep the stable Workspace embedded in their handles,
+and upload finalization keeps the Workspace from the preparation receipt. `list_workspaces` returns caller-relative default/selection
+flags, disambiguated labels, and a writable recommendation without silently redirecting a write. `search(workspace_scope=all_authorized)`
+is an explicit bounded read fallback when the saved selection may be stale; it is not a write-routing shortcut.
+
 ## Choose a surface
 
 | Need | Preferred surface | Why |
@@ -50,6 +59,8 @@ The public Developer API already owns:
 - durable questions, history, conversations, sources, artifacts, operations, and usage;
 - Workspace search;
 - active/archived Page list, read/create/update/recoverable archive/restore, and private-link share;
+- bounded stable-ID table reads plus revision- and operation-guarded cell updates/clears or row appends; complex table structure,
+  formulas, styles, sorting, and semantic rewrites remain delegated to Corvio's internal document Agent;
 - immutable Workspace Asset upload/finalize, ACL-filtered list/read/download, and Agentic organization receipts;
 - one semantic organization mission over 1-50 existing Assets, with request-local `auto|economy|standard|deep` processing,
   optional maximum profile, `scan_mode`, and evidence-based `skills_extraction_mode`; `always` requires an admission decision but
@@ -65,8 +76,9 @@ The public Developer API already owns:
 - a durable at-least-once Agent event mailbox with claim/lease/renew/retry/dead-letter receipts, plus Agent comment read/reply/status
   operations, a document-scoped human/Agent mention directory, and Query-owned document mutation;
 - Agent-authenticated `docs update` with a required change summary and a returned document-comment receipt.
-- `corvio collaboration status`, which separately verifies the project Agent binding, the live shared collaboration contract, installed
-  host guidance, and inbound-listener state. `Listening` alone is not foreground collaboration readiness.
+- `corvio collaboration status`, which separately inspects the local project Agent binding, live shared collaboration contract, installed
+  host guidance, and inbound-listener state. It cannot prove that the current host task loaded the Skill or Remote MCP; `Listening` alone
+  is not host-session readiness.
 - `corvio agent closeout`, which returns a verified result to the Corvio document or thread that supplied the task and reads the current
   document/comment state back before reporting completion.
 - a bounded iterative Agent Runner that returns each Query/Writer result to the same provider task, continues through the same Corvio
@@ -82,7 +94,11 @@ The public Developer API already owns:
   Presentation, Code, and HTML Artifact work remains available through `ask_corvio(mode=allow_actions)`.
 - remote MCP staged upload (`prepare_file_upload` → host-native signed PUT → `finalize_file_upload`) plus exact Question binding through
   `ask_corvio(asset_ids=[...])`, and Asset list/get/organization/operation readback. The host or CLI reads selected local bytes; the remote
-  server never reads a host path.
+  server never reads a host path. A finalized UTF-8 Markdown Asset may be passed as `source_asset_id` to `create_document` or
+  `update_document`, avoiding a second full-text tool argument while preserving ACL, sensitivity, hash, and source receipts.
+- direct Page conversion accepts ordinary GitHub-Flavored Markdown pipe tables; the detailed `corvio-table` contract is reserved for
+  rich behavior such as stable cell identity, select options, widths, sticky layout, and merged-cell intent.
+- file-organization operation readback exposes typed blockers plus explicit resume/cancel actions over the same durable Mission.
 - Run-level origin snapshots that distinguish Workspace CLI, project-Agent CLI, Remote MCP and direct Developer API while keeping an
   optional caller-reported host model separate from Corvio's actual execution model and cost.
 
@@ -98,9 +114,10 @@ authority for `allow_actions`; losing any authority after submission fails close
 The remaining capability gaps are:
 
 - explicit create/update operations for every typed document family.
-- a host-neutral hook that can activate this foreground collaboration lifecycle inside every third-party Coding Agent. Corvio deliberately
-  does not capture arbitrary private turns or bulk-upload repositories in the background. A compatible host must load the Skill or preserve
-  MCP initialization guidance; `corvio collaboration status` makes that boundary explicit instead of calling a listener-only connection ready.
+- a host-neutral hook that can add Corvio at the right decision points inside every third-party Agent's existing loop. The official Claude
+  plugin now supplies a bounded `SessionStart` reminder, while other hosts still depend on Skill discovery or preserved MCP initialization
+  guidance. Corvio deliberately does not capture arbitrary private turns or bulk-upload repositories in the background;
+  `corvio collaboration status` makes that boundary explicit instead of calling a listener-only connection ready.
 
 Never emulate a missing owner with browser-internal `/api/v1`, cookies, Local Agent tokens, title matching, or client-only state.
 
@@ -148,11 +165,19 @@ corvio update check --json --no-input
 
 Skill, CLI, and MCP freshness are independent:
 
-| Surface | Version authority | User-side refresh |
+| Surface / installed source | Version authority | User-side refresh |
 | --- | --- | --- |
-| Official Skill | `manifest.json.version`, a SHA-256 derived from every packaged file | Reinstall the same package in the same project/global scope, then start a fresh host session |
+| Claude/Cowork Plugin from the public Directory | Installed Plugin manifest plus `manifest.json.claude_plugin.version` | Publisher updates the GitHub source; Claude ingests the reviewed update. Start a fresh synced session after it arrives |
+| Claude/Cowork Plugin uploaded in Customize | Installed Plugin manifest plus `manifest.json.claude_plugin.version` | Replace or re-upload the official archive in Customize, then start a fresh Cowork task |
+| Claude `<name>@synced`, shared, or organization-managed Plugin/Skill | The source copy in claude.ai plus its publisher/admin | Manage the source copy in Customize or ask its publisher/admin. `claude plugin update` does not mutate an `@synced` copy |
+| Claude Code marketplace Plugin | Installed Plugin manifest plus marketplace source/version | Use Claude's marketplace/plugin update flow, then `/reload-plugins` or start a fresh session |
+| Standalone official Skill | `manifest.json.version`, a SHA-256 derived from every packaged file | Reinstall the same package in the same project/global scope; use `skills update` only for an update-tracked source |
 | Workspace CLI | npm `beta` dist-tag joined with the reviewed `/v1` compatibility policy | Run `corvio update check --json --no-input`, then execute its exact install command when an update is available |
 | Remote MCP | Live server contract and the host's current tool/session projection | Usually no local install; refresh/reconnect the host session, and reauthorize only when new OAuth scopes are required |
+
+For Claude/Cowork, run `claude plugin list` when the host exposes shell access. An entry under `Synced from claude.ai` proves the session
+received the account copy; it does not prove that the account copy matches Corvio upstream. If source or installed version is not
+observable, report it as unknown and give the source-specific inspection step instead of guessing.
 
 The current canonical website install is a direct archive. Agent Skills CLI `1.5.23` installs that archive as a local copy but does not
 record it as an update-tracked package, so `npx skills update` cannot be relied on for this distribution path. Refresh by rerunning the
@@ -161,12 +186,15 @@ project install and add `--global` for a user-level install. In non-interactive 
 example `--agent codex`) and use `--yes`; do not update every host or scope by assumption.
 
 `corvio collaboration status` detects a missing Skill and a collaboration-contract mismatch. It deliberately does not claim exact
-content-hash freshness, because a content-only clarification may keep the same cross-adapter contract version. For an exact audit,
+content-hash freshness or current host-session loading, because a content-only clarification may keep the same cross-adapter contract
+version and the CLI cannot inspect a running cloud task. For an exact audit,
 compare the installed packaged files with the hashes at
 `https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json`, or reinstall the canonical archive and verify the resulting
 files. A successful download is not the last step: start a new host session and rerun `corvio collaboration status --json --no-input`.
 
-Do not couple unrelated updates. A Skill-only wording release does not require a CLI reinstall or OAuth reauthorization. A compatible
+Do not couple unrelated updates. Audit the shared contract, Skill, Plugin, MCP, CLI, Help, and acceptance projections together, but publish
+only the artifacts whose bytes, behavior contract, compatibility, or public instructions changed. A Skill-only wording release does not
+require a CLI reinstall or OAuth reauthorization. A compatible
 server-only MCP fix does not require reinstalling the Skill or CLI. A CLI release does not refresh a local Skill copy. When a host plugin
 bundles Skill + MCP, use that host's plugin update flow and still start a fresh session; plugin-cache discovery proves only the version
 present in that cache.
@@ -194,25 +222,29 @@ ID across Workspaces or inspect every Workspace merely to choose one.
 
 ```bash
 corvio projects list --json --no-input
-corvio projects create --title "Launch Research" --idempotency-key <stable_key> --json --no-input
+corvio projects create --title "Launch Research" --json --no-input
 corvio docs create --title "Decision brief" --parent-node-id <project_node_id> \
-  --file decision-brief.md --idempotency-key <stable_key> --json --no-input
+  --file decision-brief.md --json --no-input
 corvio docs get <document_id> --output launch-plan.md --json --no-input
+corvio docs table-read <document_id> --limit 50 --json --no-input
+corvio docs table-mutate <document_id> --input table-change.json \
+  --operation-id <stable_operation_id> --change-summary "Updated the requested rows." --yes --json --no-input
 corvio docs update <document_id> --file launch-plan.md \
   --expected-revision <revision> --change-summary "Updated launch risks." --json --no-input
 corvio docs move <document_id> --parent-node-id <project_node_id> \
-  --idempotency-key <stable_key> --json --no-input
+  --json --no-input
 corvio docs list --lifecycle archived --json --no-input
 corvio docs restore <document_id> --yes --json --no-input
 ```
 
 Reuse a proven Project before creating another owner. Preserve both Page and Tree node identity. Read before mutation and after settlement;
 on revision conflict, reconcile current content instead of overwriting. Agent-authored updates require `change_summary` and a visible
-comment receipt. Direct Page writes use canonical Markdown; inspect `document_authoring` before a rich-table write, and never flatten
+comment receipt. Direct Page writes use canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
+a rich-table write, and never flatten
 Spreadsheet, Presentation, Code, or HTML Artifact state into Markdown as if lossless.
 
 For an originating task/feedback surface, use `corvio agent closeout --document-id <id> [--thread-id <id>] --body <verified_result>
-[--status open|resolved] --idempotency-key <stable_key> --json --no-input`. Mentioned people/Agents must first be resolved through
+[--status open|resolved] --json --no-input`. Mentioned people/Agents must first be resolved through
 `corvio agent mentions --document-id <id>`; display text, email addresses, and package names are not stable principals.
 
 ### Retain, organize, and read back files
@@ -227,6 +259,10 @@ When Remote MCP and host-local file/HTTP tools are available, keep byte authorit
    can compute one, and call `get_file` when another readback is needed.
 6. if the current question depends on the file, call `ask_corvio` with the finalized ID in `asset_ids`; verify the returned Question and
    Conversation rather than assuming the retained Asset entered model context.
+
+If the finalized file is UTF-8 Markdown and should become a Page, pass its Asset ID as `source_asset_id` to MCP `create_document` or
+`update_document`. Do not also provide `markdown`. Corvio resolves the Asset in the same Workspace, rejects blocked/sensitive or non-Markdown
+content, and returns the source hash/revision with the Page receipt.
 
 If the host cannot perform the PUT, use the foreground CLI journey below. Never paste the signed URL into chat or a document, and never
 report the prepare response or raw PUT as a completed Corvio upload.
@@ -243,11 +279,15 @@ corvio files organize <asset_id> --additional-asset-ids <asset_id_2>,<asset_id_3
   --scan-mode always --skills-extraction-mode auto --processing-profile standard \
   --yes --json --no-input
 corvio files operation <operation_id> --json --no-input
+corvio files resume <operation_id> --yes --json --no-input
+corvio files cancel <operation_id> --yes --json --no-input
 ```
 
 Upload and organization are separate effects even when one command composes them. Preserve the upload receipt, then poll the operation by
 its exact ID until a terminal state or the current wait budget is exhausted. Completion requires all source Asset IDs, source
-reconciliation, derived artifacts, processing policy, Skill admission outcome, and final links. Never use an unbounded shell retry loop.
+reconciliation, derived artifacts, processing policy, Skill admission outcome, and final links. If a terminal receipt is blocked, resolve
+the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. Never use an unbounded
+shell retry loop.
 
 ### Foreground Markdown sync
 
@@ -275,8 +315,9 @@ runtime intentionally has no fallback to `CORVIO_API_KEY`. A mention remains dur
 offline. Nothing remotely powers on a personal computer: when its listener returns, it claims pending work and resumes through the
 lease contract. Provider-native session messaging is an execution adapter, not the cross-vendor mailbox authority.
 
-After connect, run `corvio collaboration status --json --no-input`. A complete foreground receipt requires a current project binding,
-the live server contract version, and a discoverable official Skill carrying that same version. Listener state is reported separately.
+After connect, run `corvio collaboration status --json --no-input`. A complete local-prerequisite receipt requires a current project
+binding, the live server contract version, and a discoverable official Skill carrying that same version. Listener state is reported
+separately; a fresh host task must still prove that it loaded the Skill and Remote MCP.
 For a task originating in a document/thread, finish with `corvio agent closeout --document-id <id> [--thread-id <id>] --body <evidence>
 --status open|resolved`; use `resolved` only after the requested outcome is verified.
 
@@ -321,7 +362,8 @@ principal authority.
 - Package/version lookup failure: stop rather than substituting another `corvio` binary.
 - Update available: report `latest_published_version` and `install_command`; never mutate a running installation implicitly.
 - `401`: key is invalid, revoked, or expired; do not request it in chat. An interactive user may run `corvio auth login`; an Agent should repair its injected secret authority.
-- `400 workspace_selection_required`: login succeeded but no Workspace context was supplied; list and select an exact Workspace before retrying.
+- `400 workspace_selection_required`: login succeeded but no authorized Workspace can be resolved; list/select one exact Workspace before retrying.
+- `409 workspace_selection_ambiguous`: multiple authorized Workspaces remain after selection/default routing; choose one candidate explicitly before retrying.
 - `403`: scope, Workspace role, ACL, or current authority is insufficient; report the exact required capability.
 - A `read_only` Workspace blocks write/run even for a member or owner; use the projected status/restriction reason instead of attributing it to role.
 - `404`: resource is absent or deliberately hidden; do not infer it from a title.
