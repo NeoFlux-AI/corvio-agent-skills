@@ -1,55 +1,55 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.2",
-  "contract_revision": "2026-09-09.6",
+  "release_version": "1.7.3",
+  "contract_revision": "2026-09-09.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Ship the reusable-context lifecycle with synchronized server, Skill, CLI, Help and package identities; use a repository-scoped deploy key for public source publication and keep website ZIPs as the only binary authority.",
+  "change_summary": "Delegate natural user outcomes and complete context without inventing Corvio's taxonomy or artifact plan, and return canonical role-aware Question artifact URLs that hosts can use without guessing from node IDs.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/agents/openai.yaml", ".agents/skills/corvio-operate-workspace/references/api.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The reviewed reusable-context contract and publisher authority ship together as Skill release 1.7.2."
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/references/api.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
+      "note": "The internal shared Skill teaches outcome delegation, explicit user-constraint preservation, terminal artifact roles, and canonical URL consumption as release 1.7.3."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/api/public_v1/mcp_routes.py", "backend/app/api/public_v1/schemas.py", "backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/developer_platform/files.py", "backend/app/application/developer_platform/questions.py", "backend/app/application/usecases/chat_streaming_usecase.py", "backend/app/core/config.py", "backend/app/domains/workspace_assets/mission_knowledge.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "backend/tests/integration/test_developer_files_and_sync_public_contract.py", "backend/tests/integration/test_developer_question_public_contract.py", "backend/tests/integration/test_workspace_assets_acl_missions.py", "backend/tests/unit/test_developer_file_organize.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py"],
-      "note": "Contract 2026-09-09.6 adds the reusable-context lifecycle and reports package 1.7.2 plus its immutable public source tag."
+      "paths": ["backend/app/api/public_v1/mcp_routes.py", "backend/app/api/public_v1/schemas.py", "backend/app/application/chat/prompts/prompt_texts.py", "backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/developer_platform/questions.py", "backend/app/application/usecases/chat_streaming/function_tools.py", "backend/app/core/config.py"],
+      "note": "Contract 2026-09-09.7 aligns natural semantic delegation with role-aware artifact receipts and canonical Page URLs."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.ts", "frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json", "packaging/corvio-agent-skills/README.md"],
-      "note": "Version 1.7.2 makes the website ZIP canonical, publishes an immutable Git source tag, and keeps package identities aligned."
+      "note": "Plugin and Skill manifests advance together to 1.7.3 and advertise the 2026-09-09.7 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "changed",
       "paths": ["developer-cli/packages/workspace/package.json", "developer-cli/packages/admin/package.json", "developer-cli/package-lock.json", "developer-cli/packages/workspace/src/cli.js", "developer-cli/packages/workspace/README.md", "developer-cli/tests/commands.test.mjs", "backend/app/core/config.py", "backend/tests/integration/test_developer_api_key_public_contract.py"],
-      "note": "CLI beta.22 publishes the reusable-context lifecycle, terminal receipt guidance, and contract 2026-09-09.6 expectations."
+      "note": "CLI beta.23 exposes the same outcome-delegation and canonical-artifact guidance; Admin remains version-locked to the shared release train."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicMcpHelpContent.ts", "frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicHelpContent.test.ts", "frontend/src/app/llms.txt/route.ts", "frontend/src/app/llms.txt/route.test.ts"],
-      "note": "All localized Help and llms.txt now distinguish the canonical website ZIP from the managed public Git source."
+      "paths": ["frontend/src/lib/help/publicMcpHelpContent.ts"],
+      "note": "English, Simplified Chinese, and Traditional Chinese MCP Help now explain natural delegation, terminal roles, and verbatim artifact URLs."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Bundled setup and host ownership guidance remain compatible without wording changes."
+      "note": "OAuth endpoints, scopes, installation commands, and session-refresh ownership do not change."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": [".github/workflows/agent-skills-release.yml", "scripts/release-agent-skills.sh", "docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/reference/cursor-harness/PRODUCT_CAPABILITY_MAP.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/deploy-release-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md", "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md", "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md", "docs/logbook/entries/2026-09-09/130643-codex-agent-integration-reusable-context-value.md", "docs/logbook/entries/2026-09-09/131908-codex-agent-skills-publisher-authority.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The source publisher proves deploy-key authority before tag creation and publishes public main plus an immutable source tag."
+      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/agentic-knowledge-organization-and-long-running-missions-v1.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md", "backend/scripts/prompt_regression_harness.py", "backend/scripts/scenarios/blank_registered_coding_agent_two_chat_context_work_model.json", "backend/scripts/scenarios/blank_registered_reply_mixed_source_bundle_becomes_structure.json", "backend/scripts/scenarios/blank_registered_reply_single_source_keeps_lean_topology.json", "docs/logbook/entries/2026-09-09/163300-codex-natural-handoff-and-artifact-identity.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The mainline records the production first-bad boundary and adds a real natural two-context Work Model regression."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Anthropic, WorkBuddy, and other account-owned reviews remain pending until an external receipt exists."
+      "note": "Anthropic, WorkBuddy, and other account-owned listing or fresh-host acceptance remains pending until external receipts exist."
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["scripts/tests/test_github_actions_cost_guards.py", "scripts/tests/test_release_agent_skills.sh", "frontend/src/lib/developerSkillPackage.test.ts", "docs/test-reports/agent-integration-reusable-context-value-acceptance-2026-09-09.md", "docs/test-reports/agent-skill-distribution-lifecycle-acceptance-2026-09-09.md"],
-      "note": "Regression evidence covers scoped repository authority, bounded publication, deterministic website artifacts, and immutable source-tag comparison."
+      "paths": ["backend/tests/integration/test_developer_question_public_contract.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_prompt_regression_harness.py", "backend/tests/unit/test_prompt_texts_memory_skills_principles.py", "frontend/src/lib/developerSkillPackage.test.ts", "developer-cli/tests/commands.test.mjs", "docs/test-reports/coding-agent-natural-handoff-and-artifact-receipt-acceptance-2026-09-09.md"],
+      "note": "Regression evidence covers canonical URL identity, Project/Page role separation, host guidance parity, and trigger-transfer-countercase behavior."
     }
   }
 }

@@ -43,6 +43,11 @@ is an explicit bounded read fallback when the saved selection may be stale; it i
 | Search/read/write authorized Workspace state in a connected host | Remote MCP | OAuth-delegated live tools and structured receipts |
 | Ask Corvio about an explicitly selected local file | MCP prepare → host PUT → finalize → `ask_corvio(asset_ids=[...])`, or CLI `ask --file` | The host reads bytes; Corvio binds the finalized Asset to that exact question |
 | Retain an explicitly selected local file without asking about it | MCP `prepare_file_upload` → host PUT → `finalize_file_upload`, or CLI `files upload` | Retention creates an Asset in intake; it does not silently create a root document or a question input |
+
+For `ask_corvio`, send the user's natural outcome plus complete decision-relevant context or stable handles. Do not turn an open semantic
+delegation into an invented taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
+After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
+`reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
 | Upload/download by local path, sync Markdown, or run a project Agent | CLI | Foreground local/project authority |
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
 

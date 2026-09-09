@@ -25,6 +25,10 @@ one short reminder after startup, resume, clear, and compaction. Corvio marks th
 and delegated-work `ask_corvio`—as tool-level eager in Claude. The bundled server deliberately does not set server-wide `alwaysLoad`,
 so deterministic continuation and specialized mutation/lifecycle schemas remain deferred instead of crowding the host's initial context.
 
+For delegated work, pass `ask_corvio` the user's natural goal, complete decision-relevant context, and explicit constraints. Do not
+invent taxonomy, titles, artifact counts, or an internal Corvio plan when the user left those choices open. Poll to terminal, then return
+`artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
+
 ## Skill-only install
 
 Use this route only when the host cannot install the complete plugin, then connect Remote MCP separately:

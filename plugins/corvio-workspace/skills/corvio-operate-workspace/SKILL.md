@@ -8,8 +8,8 @@ description: "Use when the task involves research, reports, comparisons, recomme
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.2`.
-It implements `coding_agent_collaboration` contract version `2026-09-09.6`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.3`.
+It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -50,6 +50,17 @@ Use one value chain and stop at the narrowest stage that satisfies the user's fu
    this decision, not a fabricated Skill; `evaluated_no_qualifying_skill` is a valid result.
 5. **Return what can be reused.** Give the stable Asset, Page/artifact, Question/Conversation, operation, and qualifying Skill candidate
    identities or resource receipts that the caller can inspect and use later.
+
+## Delegate the outcome, not Corvio's internal plan
+
+When calling `ask_corvio`, pass the user's natural goal, complete decision-relevant context or stable source handles, explicit constraints,
+and the authorized action boundary. Unless the user chose them, do not pre-decide a taxonomy, document titles, artifact count, carrier
+inventory, or Corvio's internal steps. Corvio owns the cognitive-tree and carrier decisions: related inputs may share one Project while
+independent reader/update jobs become distinct outputs; tightly coupled material may stay together. There is no one-source-one-page rule.
+
+Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. Poll the returned Question to a terminal state, then use
+`artifact.url` or `links.primary_artifact` exactly as returned. Treat `role=reader_output` as a user-facing result and
+`role=structure_container` as hierarchy; never build a URL from `node_id`, and never report source links as generated artifacts.
 
 ## Choose the smallest useful action
 
