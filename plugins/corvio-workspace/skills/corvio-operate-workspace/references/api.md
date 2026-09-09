@@ -171,6 +171,9 @@ Skill, CLI, and MCP freshness are independent:
 | Claude/Cowork Plugin uploaded in Customize | Installed Plugin manifest plus `manifest.json.claude_plugin.version` | Replace or re-upload the official archive in Customize, then start a fresh Cowork task |
 | Claude `<name>@synced`, shared, or organization-managed Plugin/Skill | The source copy in claude.ai plus its publisher/admin | Manage the source copy in Customize or ask its publisher/admin. `claude plugin update` does not mutate an `@synced` copy |
 | Claude Code marketplace Plugin | Installed Plugin manifest plus marketplace source/version | Use Claude's marketplace/plugin update flow, then `/reload-plugins` or start a fresh session |
+| Codex marketplace Plugin | Installed Plugin manifest plus the Git-backed marketplace source/version | Refresh the marketplace/plugin, then start a fresh Codex task |
+| WorkBuddy manually uploaded Skill | `manifest.json.release_version`, file SHA-256, compatibility family and minimum revision | Until a reviewed marketplace listing is live, replace the official ZIP through WorkBuddy's Skills UI and start a fresh conversation |
+| WorkBuddy marketplace Skill | Marketplace receipt plus package release/hash | Use only after Corvio reports external acceptance; then follow the host-managed update flow |
 | Standalone official Skill | `manifest.json.version`, a SHA-256 derived from every packaged file | Reinstall the same package in the same project/global scope; use `skills update` only for an update-tracked source |
 | Workspace CLI | npm `beta` dist-tag joined with the reviewed `/v1` compatibility policy | Run `corvio update check --json --no-input`, then execute its exact install command when an update is available |
 | Remote MCP | Live server contract and the host's current tool/session projection | Usually no local install; refresh/reconnect the host session, and reauthorize only when new OAuth scopes are required |
@@ -185,12 +188,11 @@ same official `npx skills add` command; it overwrites the selected installed cop
 project install and add `--global` for a user-level install. In non-interactive automation, also select the actual host explicitly (for
 example `--agent codex`) and use `--yes`; do not update every host or scope by assumption.
 
-`corvio collaboration status` detects a missing Skill and a collaboration-contract mismatch. It deliberately does not claim exact
-content-hash freshness or current host-session loading, because a content-only clarification may keep the same cross-adapter contract
-version and the CLI cannot inspect a running cloud task. For an exact audit,
-compare the installed packaged files with the hashes at
-`https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json`, or reinstall the canonical archive and verify the resulting
-files. A successful download is not the last step: start a new host session and rerun `corvio collaboration status --json --no-input`.
+`corvio collaboration status` reports package freshness, compatibility, discoverable copies and update ownership separately. It hashes
+each local `SKILL.md`, reads release/revision/family markers, and detects conflicting copies. Use `--provider workbuddy` for the manual
+`~/.workbuddy/skills/corvio-operate-workspace/SKILL.md` surface. It deliberately reports `host_loading_unverified`, because local bytes
+cannot prove which copy a running cloud task loaded. A successful download is not the last step: start a new host session and rerun the
+status command.
 
 Do not couple unrelated updates. Audit the shared contract, Skill, Plugin, MCP, CLI, Help, and acceptance projections together, but publish
 only the artifacts whose bytes, behavior contract, compatibility, or public instructions changed. A Skill-only wording release does not

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "release_version": "1.7.1",
+  "contract_revision": "2026-09-09.5",
+  "compatibility_family": "coding-agent-collaboration-v1",
+  "minimum_supported_revision": "2026-09-09.4",
+  "change_summary": "Recover the immutable Agent Skills publication path after its first tag exposed a same-tag comparison bug, while scoping hosted package file tracing to the package roots.",
+  "projections": {
+    "canonical_skill": {
+      "disposition": "changed",
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
+      "note": "The same reviewed contract moves forward to the recoverable 1.7.1 package identity."
+    },
+    "server_contract": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Contract 2026-09-09.5 remains the live compatible server authority."
+    },
+    "package_manifests": {
+      "disposition": "changed",
+      "paths": ["frontend/src/lib/developerSkillPackage.ts", "frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
+      "note": "Version 1.7.1 preserves schema 3 and narrows runtime file tracing to the actual Skill and Plugin package roots."
+    },
+    "workspace_cli": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Published CLI beta.21 remains compatible and requires no replacement package."
+    },
+    "help_center": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "The already deployed tri-locale source and update guidance remains accurate for 1.7.1."
+    },
+    "package_setup": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Bundled setup and host ownership guidance remain compatible without wording changes."
+    },
+    "harness_and_mainline": {
+      "disposition": "changed",
+      "paths": ["scripts/release-agent-skills.sh", "scripts/tests/test_release_agent_skills.sh", "docs/rfc/deploy-release-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/logbook/entries/2026-09-09/125103-codex-agent-skills-same-tag-recovery.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "Same-tag workflow validation now audits against the previous immutable release instead of comparing the tag to itself."
+    },
+    "external_marketplaces": {
+      "disposition": "external_pending",
+      "paths": [],
+      "note": "Anthropic, WorkBuddy, and other account-owned reviews remain pending until an external receipt exists."
+    },
+    "release_evidence": {
+      "disposition": "changed",
+      "paths": ["scripts/tests/test_release_agent_skills.sh", "frontend/src/lib/developerSkillPackage.test.ts", "docs/test-reports/agent-skill-distribution-lifecycle-acceptance-2026-09-09.md"],
+      "note": "Regression evidence covers exact-current-tag recovery, deterministic package output, and scoped source reads."
+    }
+  }
+}

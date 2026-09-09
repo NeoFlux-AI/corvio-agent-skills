@@ -21,8 +21,9 @@ If the Cowork environment blocks `corvio.ai`, use the identical official GitHub 
 <https://github.com/NeoFlux-AI/corvio-agent-skills/releases/latest/download/corvio-workspace.zip>
 
 The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection. Its Claude `SessionStart` hook adds
-one short reminder after startup, resume, clear, and compaction so deferred MCP tools remain discoverable without copying the full Skill
-into context.
+one short reminder after startup, resume, clear, and compaction. Corvio marks the two user-level semantic entries—read-only `search`
+and delegated-work `ask_corvio`—as tool-level eager in Claude. The bundled server deliberately does not set server-wide `alwaysLoad`,
+so deterministic continuation and specialized mutation/lifecycle schemas remain deferred instead of crowding the host's initial context.
 
 ## Skill-only install
 
@@ -55,6 +56,8 @@ In Codex, open `/plugins`, install `corvio-workspace`, and start a new session. 
 
 For WorkBuddy, install/upload the official `corvio-operate-workspace` Skill through its Skills surface and configure Corvio in Connector/MCP
 settings. WorkBuddy currently owns these as separate installation surfaces, so both receipts must be checked in a fresh conversation.
+Until Corvio publishes an accepted WorkBuddy Marketplace receipt, that uploaded Skill is an unmanaged manual copy; WorkBuddy account sync
+does not create an upstream update channel.
 
 ## Update an existing installation
 
@@ -66,14 +69,18 @@ update action; Claude's `@synced` label means newest in that Claude account, not
   Customize is a static account copy and must be replaced/re-uploaded there. Shared or organization-managed copies require their owner.
 - A Skill installed from the canonical website zip is a static local copy. The current Agent Skills CLI does not track direct-archive
   installs for `skills update`; rerun the same `npx skills add` command in the same project/global scope, then start a fresh host session.
+- A WorkBuddy Skill under `~/.workbuddy/skills/corvio-operate-workspace/` remains a manual host copy until a reviewed marketplace listing
+  exists. Inspect it read-only with `corvio collaboration status --provider workbuddy --json --no-input`; replace it through WorkBuddy's
+  Skills UI and start a fresh conversation when an update is required.
 - `corvio update check --json --no-input` checks only the `@corvio/cli` executable. It never updates the CLI or Skill automatically.
 - Remote MCP is server-delivered. Compatible changes normally need only a fresh host session/tool refresh; new OAuth scopes require
   reauthorization.
 
-The hosted `manifest.json` content hash is the exact Skill package version. `corvio collaboration status --json --no-input` detects a
-missing Skill or collaboration-contract mismatch, but a `ready` result does not prove byte-for-byte freshness after a content-only Skill
-revision. Reinstall from the canonical archive for exact freshness. Installs from the public GitHub source may use the installer-supported
-`npx skills update` only when their install record is update-tracked.
+The hosted `manifest.json` reports SemVer release identity, exact content hashes, compatibility family, current contract revision, and
+minimum supported revision separately. `corvio collaboration status --json --no-input` reports current, compatible-update-available,
+freshness-unverified, update-required, missing, and multiple-copy states while preserving the older top-level readiness fields. It also says that host loading
+is unverified: local bytes cannot prove which copy an already-running cloud session loaded. Installs from the public GitHub source may use
+the installer-supported `npx skills update` only when their install record is update-tracked.
 
 Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. For an explicitly selected local file, a filesystem-capable host may use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same bridge as one command. A finalized Markdown Asset can then become a Page through `source_asset_id`, without placing the whole file in a second tool call.
 

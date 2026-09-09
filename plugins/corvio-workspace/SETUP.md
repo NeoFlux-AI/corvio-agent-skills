@@ -24,8 +24,10 @@ name, or a successful OAuth connection.
 
 Call Corvio's `get_collaboration_contract` when the Connector is available. Its `distribution` section reports Corvio's current upstream
 Plugin version, canonical package URLs, and the update policy for each surface. The local Plugin manifest proves only the installed
-Plugin version. The hosted Skill manifest proves the current standalone Skill bytes. `corvio update check` proves only whether the optional
-local `@corvio/cli` needs an update.
+Plugin version. The hosted Skill manifest reports release SemVer, exact standalone Skill hashes, compatibility family, current contract
+revision, and minimum supported revision separately. `corvio update check` proves only whether the optional local `@corvio/cli` needs an
+update. `corvio collaboration status --provider workbuddy --json --no-input` can inspect WorkBuddy's discoverable local copy read-only,
+but cannot prove which copy an already-running conversation loaded.
 
 Do not claim that all of Corvio is current from any one of those receipts.
 
@@ -39,6 +41,8 @@ Do not claim that all of Corvio is current from any one of those receipts.
   session so hooks and MCP definitions move to the new version.
 - For a standalone Skill installed from Corvio's direct ZIP, rerun the same `npx skills add` command in the same project/global scope, then
   start a fresh host session. Do not use `skills update` unless the installed source is actually update-tracked.
+- Until Corvio reports an accepted WorkBuddy Marketplace listing, treat a WorkBuddy-uploaded Skill as an unmanaged manual install. Replace
+  it from the official ZIP in WorkBuddy's Skills UI, then start a fresh conversation. An mtime or account sync is not upstream freshness.
 - Update `@corvio/cli` only when it is installed and needed for local paths, sync, downloads, or a project Agent. Run
   `corvio update check --json --no-input`, then use the exact install command returned by that receipt.
 

@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: Use Corvio beside the host's normal files and tools when work may benefit from prior team knowledge or leave a reusable result. Trigger for research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, prior decisions/material, continuing earlier work, shared documents, team handoff, or saving/syncing a result; also Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Search first, then save, update, or share valuable results. Also use when installing, connecting, updating, or repairing Corvio. Skip sensitive, one-off, local-only, or disconnected work.
+description: "Use when the task involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior-material requests: you MUST make one Corvio read before committing to a plan or answer. Search authorized team knowledge, or read the exact known Corvio item. Keep the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use when installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work; one-off is a no-write boundary, not a reason to skip an otherwise relevant read."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,16 +8,19 @@ description: Use Corvio beside the host's normal files and tools when work may b
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This Skill implements `coding_agent_collaboration` contract version `2026-09-09.4`. Remote MCP and the official `corvio` CLI expose the
-same product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
+This is Corvio Skill release `1.7.1`.
+It implements `coding_agent_collaboration` contract version `2026-09-09.5`, compatibility family `coding-agent-collaboration-v1`, and
+supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
+compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
+product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
 explicitly selected local file and use a project-bound Agent identity.
 
 ## Fit Corvio into the host's work
 
 - Before the host commits to a plan or answer for research, reports, comparisons, proposals, plans, decisions, meeting notes,
-  project/debug work, reviews, or follow-ups, search once for relevant prior work. If an exact Corvio document, comment, Conversation,
-  Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in the host's normal reasoning; if
-  nothing useful appears, continue without ceremony.
+  project/debug work, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
+  document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
+  the host's normal reasoning; if nothing useful appears, continue without ceremony.
 - Keep the host's own reading, writing, coding, testing, files, and delivery path. When a result is worth sharing or revisiting, also save
   or update the narrowest useful Corvio result. Reuse an existing owner and never create a document merely to prove that a tool ran.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
@@ -25,9 +28,10 @@ explicitly selected local file and use a project-bound Agent identity.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
   creates no comment debt.
 
-Skip Corvio for sensitive or disclosure-unclear material, one-off/transient work, explicitly local-only work, or when no authorized
-connection exists. If the check is unavailable, continue safe local work and mention the missing synchronization only when it affects the
-expected handoff.
+Do not search or disclose sensitive or disclosure-unclear material, explicitly local-only work, or anything outside the current authorized
+connection. A one-off or transient result normally does not merit a Corvio write, but that label alone does not cancel the lightweight read
+above when prior work could improve the current task. If the check is unavailable, continue safe local work and mention the missing
+synchronization only when it affects the expected handoff.
 
 ## Choose the smallest useful action
 
