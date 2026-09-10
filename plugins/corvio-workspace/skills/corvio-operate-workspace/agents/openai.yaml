@@ -1,7 +1,7 @@
 interface:
   display_name: "Corvio Team Knowledge"
   short_description: "Find prior work and preserve reusable results"
-  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow: for research, reports, plans, decisions, reviews, or project work, you MUST make one relevant Corvio read before committing to an answer; continue locally, then turn selected files or results worth revisiting into the right reader-facing Corvio representation, organize and admit reusable knowledge by type, and verify stable receipts."
+  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow: retain and organize user-provided files that should stay useful; for research, reports, plans, decisions, reviews, or project work, make one relevant Corvio read before committing to an answer; continue locally, then preserve reusable results in the right reader-facing Corvio representation and verify stable receipts."
 dependencies:
   tools:
     - type: "mcp"

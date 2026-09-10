@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the task involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior-material requests: you MUST make one Corvio read before committing to a plan or answer. Search authorized team knowledge, or read the exact known Corvio item. Keep the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use when installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work; one-off is a no-write boundary, not a reason to skip an otherwise relevant read."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, or update through Corvio; or when work involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior material. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work; one-off is a no-write boundary, not a reason to skip an otherwise relevant read."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,7 +8,7 @@ description: "Use when the task involves research, reports, comparisons, recomme
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.3`.
+This is Corvio Skill release `1.7.4`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -21,6 +21,10 @@ explicitly selected local file and use a project-bound Agent identity.
   project/debug work, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
   the host's normal reasoning; if nothing useful appears, continue without ceremony.
+- When the current turn includes user-provided files that are meant to remain useful, load this Skill even if the user's wording is only
+  “keep these,” “put these away,” or “continue.” Retain the exact bytes as Assets before deriving a summary, and use one
+  `organize_files` mission for a coherent set whose structure or ongoing retrieval matters. A new summary Page alone does not preserve
+  the originals or establish a maintained Work Model.
 - Keep the host's own reading, writing, coding, testing, files, and delivery path. When a result is worth sharing or revisiting, also save
   or update the narrowest useful Corvio result. Reuse an existing owner and never create a document merely to prove that a tool ran.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the

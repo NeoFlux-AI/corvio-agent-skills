@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.3",
-  "description": "Search prior team work before research, reports, plans, decisions, and projects; preserve only reusable results through Corvio OAuth MCP.",
+  "version": "1.7.4",
+  "description": "Retain and organize useful attachments, search prior team work, and preserve reusable results through Corvio OAuth MCP.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai",
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Corvio Workspace",
     "shortDescription": "Search prior work first; preserve reusable results.",
-    "longDescription": "Use Corvio alongside the host's normal workflow for research, reports, comparisons, proposals, plans, decisions, meeting notes, project work, debugging, reviews, and follow-ups. Retrieve authorized context, preserve results worth sharing or revisiting, and keep selected local-file access explicit.",
+    "longDescription": "Use Corvio alongside the host's normal workflow for attached-file organization, research, reports, comparisons, proposals, plans, decisions, meeting notes, project work, debugging, reviews, and follow-ups. Retrieve authorized context, preserve original files and reusable results, and keep selected local-file access explicit.",
     "developerName": "Corvio",
     "category": "Productivity",
     "capabilities": [
@@ -36,6 +36,7 @@
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
       "For research, reporting, planning, decision, meeting-note, project, or debugging work, you MUST search Corvio once for relevant prior material before committing to a plan or answer; continue normally if there is no match.",
+      "Retain user-provided files that should stay useful and organize coherent sets into a maintainable Work Model before treating a derived summary as complete.",
       "Turn this valuable result into the right durable Corvio artifact and preserve its source lineage.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
     ],

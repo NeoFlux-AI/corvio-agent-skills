@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.3",
-  "description": "Search prior team work before research, reports, plans, decisions, and projects; preserve only reusable results through Corvio OAuth MCP.",
+  "version": "1.7.4",
+  "description": "Retain and organize useful attachments, search prior team work, and preserve reusable results through Corvio OAuth MCP.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai"
