@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.5`.
+This is Corvio Skill release `1.7.6`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -28,14 +28,18 @@ explicitly selected local file and use a project-bound Agent identity.
   “keep these,” “put these away,” or “continue.” Retain the exact bytes as Assets before deriving a summary, and use one
   `organize_files` mission for a coherent set whose structure or ongoing retrieval matters. A new summary Page alone does not preserve
   the originals or establish a maintained Work Model.
-- Keep the host's own reading, writing, coding, testing, files, and delivery path. When a result is worth sharing or revisiting, also save
-  or update the narrowest useful Corvio result. Reuse an existing owner and never create a document merely to prove that a tool ran.
+- Keep the host's own reading, writing, coding, testing, files, and delivery path. Host-local `Write`/`Edit` and authorized Corvio writes
+  are separate capabilities: an unavailable or read-only local output surface does not disable creating or updating the narrowest useful
+  Corvio result when it is worth sharing or revisiting. Reuse an existing owner and never create a document merely to prove that a tool ran.
 - Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
   explicitly names a local or repository file as the target, preserve the supplied bytes. When current artifacts are supplied with a
   request to update, reconcile, or normalize them, treat that as maintenance intent unless it is local-only, transient, sensitive, or
   disclosure-unclear. Resolve each existing Corvio owner when one exists; otherwise create the narrowest useful representation. Retain
   the authorized sources, apply and read back the smallest durable update, and do not stop at patch instructions or a temporary output
-  merely because an attachment copy is read-only. Files supplied only as reference still follow the ordinary no-write boundary.
+  merely because an attachment copy is read-only. A substantial document transformed from supplied sources normally has continuing
+  value and merits that narrow Corvio result without a second save confirmation; a scratch or temporary host copy is not a durable
+  substitute. A file used only as a reference does not itself become a write target, and transient or local-only results retain the
+  ordinary no-write boundary.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
   durable object, revision, hash, hierarchy, and link.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
@@ -46,6 +50,10 @@ connection. A transient answer normally does not merit a Corvio write, but that 
 when prior work could improve the current task. A one-off event can still merit a useful reader artifact for sharing or later reference;
 it is the method that should not become a reusable Skill without independent reuse evidence. If the check is unavailable, continue safe
 local work and mention the missing synchronization only when it affects the expected handoff.
+
+Do not infer `local-only` from attachment delivery, a working-directory path, a read-only host surface, or the absence of a prior Corvio
+match. Local-only requires an explicit user choice or an established disclosure/project policy; otherwise apply the durable-value and
+authority rules above.
 
 ## Turn files into reusable context
 
