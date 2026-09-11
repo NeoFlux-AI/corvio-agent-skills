@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.7`.
+This is Corvio Skill release `1.7.8`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -64,9 +64,11 @@ Use one value chain and stop at the narrowest stage that satisfies the user's fu
    reuse; a search excerpt or matching Page text is not source-provenance evidence. This preserves provenance; it does not prove that Corvio
    interpreted, organized, or used the file.
 2. **Create the right online representation.** A finalized UTF-8 Markdown Asset within the documented limit can become an editable Page
-   directly through `source_asset_id`. For other formats or semantic transformation, use `ask_corvio` or `organize_files` to produce the
-   appropriate Page, Spreadsheet, Presentation, Code, HTML Artifact, or reader layer. Do not promise lossless direct Page conversion for
-   every file type.
+   directly through `source_asset_id`. When one coherent standalone Markdown document is meant to remain useful for future reading,
+   preserve its existing hierarchy in one reader Page rather than forcing a multi-page tree. Asset-only retention is sufficient when the
+   user explicitly wants only the raw/exact original or an additional reader has no continuing value. For other formats or semantic
+   transformation, use `ask_corvio` or `organize_files` to produce the appropriate Page, Spreadsheet, Presentation, Code, HTML Artifact,
+   or reader layer. Do not promise lossless direct Page conversion for every file type.
 3. **Organize related evidence.** Run one `organize_files` mission over a coherent Asset set when structure, synthesis, or future retrieval
    matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document. If the exact source set was
    already organized, read back its current Project and reader output instead of creating a duplicate; search alone is not that readback.
@@ -102,8 +104,10 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 - A Markdown file already exists locally: upload the selected bytes with `prepare_file_upload`, the host's signed `PUT`, and
   `finalize_file_upload`; then pass the returned `source_asset_id` to `create_document` or `update_document`. Never pass a local path to
   Remote MCP and never resend the whole file merely because the Page tool needs content.
-- Exact original bytes only: keep the finalized Asset. When a Corvio question must read it, pass its Asset ID in that same
-  `ask_corvio.asset_ids` request. Retention alone does not make an unrelated question consume the file.
+- Exact original bytes only: keep the finalized Asset. This boundary requires an explicit raw/exact-only intent or the absence of a
+  continuing reader job; a vague request to keep a coherent standalone Markdown source normally still merits the one Page described
+  above. When a Corvio question must read the Asset, pass its ID in that same `ask_corvio.asset_ids` request. Retention alone does not make
+  an unrelated question consume the file.
 - A coherent Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
   Read its `output_document` link and `skills_evaluation`; when a Skill qualifies, preserve its candidate identity and typed resource
   receipts. When none qualifies, report `evaluated_no_qualifying_skill` without manufacturing one.
