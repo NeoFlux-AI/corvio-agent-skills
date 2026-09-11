@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, or update through Corvio; or when work involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior material. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work; one-off is a no-write boundary, not a reason to skip an otherwise relevant read."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, or update through Corvio; when work involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior material; or when a request continues, resumes, or asks for the result of earlier work and an operation, question, conversation, document, or project handle is available. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.4`.
+This is Corvio Skill release `1.7.5`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -21,21 +21,31 @@ explicitly selected local file and use a project-bound Agent identity.
   project/debug work, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
   the host's normal reasoning; if nothing useful appears, continue without ceremony.
+- If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
+  make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
+  instead of fanning out across unrelated documents or inventing which project the user meant.
 - When the current turn includes user-provided files that are meant to remain useful, load this Skill even if the user's wording is only
   “keep these,” “put these away,” or “continue.” Retain the exact bytes as Assets before deriving a summary, and use one
   `organize_files` mission for a coherent set whose structure or ongoing retrieval matters. A new summary Page alone does not preserve
   the originals or establish a maintained Work Model.
 - Keep the host's own reading, writing, coding, testing, files, and delivery path. When a result is worth sharing or revisiting, also save
   or update the narrowest useful Corvio result. Reuse an existing owner and never create a document merely to prove that a tool ran.
+- Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
+  explicitly names a local or repository file as the target, preserve the supplied bytes. When current artifacts are supplied with a
+  request to update, reconcile, or normalize them, treat that as maintenance intent unless it is local-only, transient, sensitive, or
+  disclosure-unclear. Resolve each existing Corvio owner when one exists; otherwise create the narrowest useful representation. Retain
+  the authorized sources, apply and read back the smallest durable update, and do not stop at patch instructions or a temporary output
+  merely because an attachment copy is read-only. Files supplied only as reference still follow the ordinary no-write boundary.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
   durable object, revision, hash, hierarchy, and link.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
   creates no comment debt.
 
 Do not search or disclose sensitive or disclosure-unclear material, explicitly local-only work, or anything outside the current authorized
-connection. A one-off or transient result normally does not merit a Corvio write, but that label alone does not cancel the lightweight read
-above when prior work could improve the current task. If the check is unavailable, continue safe local work and mention the missing
-synchronization only when it affects the expected handoff.
+connection. A transient answer normally does not merit a Corvio write, but that label alone does not cancel the lightweight read above
+when prior work could improve the current task. A one-off event can still merit a useful reader artifact for sharing or later reference;
+it is the method that should not become a reusable Skill without independent reuse evidence. If the check is unavailable, continue safe
+local work and mention the missing synchronization only when it affects the expected handoff.
 
 ## Turn files into reusable context
 

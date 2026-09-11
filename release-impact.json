@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.4",
+  "release_version": "1.7.5",
   "contract_revision": "2026-09-09.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Recognize vague attachment-retention work, preserve source files before synthesis, and make direct developer organization missions own bounded Work Model inference without Reply-only bindings.",
+  "change_summary": "Preserve attachment evidence, complete durable edits at their Corvio owner, discover typed continuations, bound ambiguous-owner retrieval, and separate one-off deliverables from reusable-Skill admission.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/agents/openai.yaml", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The internal shared Skill release 1.7.4 adds a natural attachment-bundle trigger and keeps source retention plus Work Model organization distinct from summary creation."
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
+      "note": "The internal shared Skill release 1.7.5 clarifies attachment edit authority and makes typed prior-work handles an observable continuation trigger, while durable current-artifact changes return to their Corvio owner."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/api/public_v1/mcp_routes.py", "backend/app/application/chat/prompts/prompt_texts.py", "backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/retrieval/search_chunks_v1.py", "backend/app/application/usecases/agent_run_executor.py", "backend/app/application/usecases/chat_streaming/function_tools.py", "backend/app/domains/workspace_assets/mission_launcher.py"],
-      "note": "Contract 2026-09-09.7 remains wire-compatible; the server now gives developer-direct organization missions their own semantic authority instead of requiring Reply-only execution bindings."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
+      "note": "The unchanged 2026-09-09.7 wire contract now presents the same transient-answer, one-off-artifact, and reusable-Skill distinction in server-delivered host guidance."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.4 while retaining the compatible 2026-09-09.7 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.5 while retaining the compatible 2026-09-09.7 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -29,7 +29,7 @@
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.4."
+      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.5."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
@@ -38,8 +38,8 @@
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/agentic-knowledge-organization-and-long-running-missions-v1.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "backend/scripts/agent_host_case_portfolio.py", "backend/scripts/run_agent_host_case.py", "backend/scripts/run_agent_host_suite.py", "backend/scripts/scenario_suites/external_agent_work_model_host_v1.json", "backend/scripts/prompt_regression_harness.py", "backend/tests/fixtures/agent_host_acceptance", "docs/logbook/entries/2026-09-10/051500-host-attachment-context-and-direct-mission-authority.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The mainline keeps vague user prompts separate from explicit host attachment context, preserves concrete adapter receipts, and requires source retention plus terminal organization readback before source-to-Work-Model acceptance."
+      "paths": ["docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "backend/scripts/run_agent_host_case.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "docs/logbook/entries/2026-09-11", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The Host harness now judges preservation of pre-existing fixture bytes separately from legitimate derived outputs, while the mainline records the attachment-versus-native-target boundary."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/scripts/scenarios/blank_registered_reply_skill_source_gate_unmet.json", "backend/tests/fixtures/prompt_regression/skills/source-defined-admission-gate-unmet.md", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_prompt_regression_harness.py", "backend/tests/unit/test_prompt_texts_memory_skills_principles.py", "backend/tests/unit/test_workspace_asset_agentic_contracts.py", "frontend/src/lib/developerSkillPackage.test.ts", "docs/test-reports/codex-claude-code-corvio-host-acceptance-2026-09-10.md"],
-      "note": "Regression evidence covers canonical artifact identity, real attachment context, source retention, terminal organization receipts, direct-versus-Reply mission authority, no-call controls, semantic review, cross-host reuse, typed Spreadsheet routing, and the provider-live Skill admission countercase."
+      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "frontend/src/lib/developerSkillPackage.test.ts"],
+      "note": "Evidence covers immutable source fixtures with allowed derived outputs plus fresh Codex and Claude attachment-update reruns against the live MCP."
     }
   }
 }
