@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.16",
+  "release_version": "1.7.17",
   "contract_revision": "2026-09-09.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Make asynchronous Corvio follow-through efficient: a returned retry interval is a lower bound for foreground waiting, and fresh-host grading rejects repeated early status probes even when the operation eventually succeeds.",
+  "change_summary": "Restore the durable-value boundary for bounded native transformations, keep coherent descriptive handoffs autonomous, and route coding-host local-byte transfer through the deterministic official CLI when available.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The internal shared Skill release 1.7.16 keeps the evidence-based disclosure boundary and makes the existing retry contract executable through the host's ordinary foreground sleep or wait capability."
+      "note": "The internal shared Skill release 1.7.17 preserves source authority while separating bounded host-native no-write results from coherent durable handoffs and preferring deterministic CLI byte transfer in coding hosts."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
-      "note": "The 2026-09-09.7 wire contract remains compatible; its shared server-contract owner now states the same retry lower bound without widening authority or changing MCP schemas."
+      "note": "The 2026-09-09.7 wire contract remains compatible; its shared server-contract owner now states the same durable-value ordering and local-byte bridge preference without widening authority."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.16 while retaining the compatible 2026-09-09.7 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.17 while retaining the compatible 2026-09-09.7 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -29,7 +29,7 @@
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.16."
+      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.17."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
@@ -38,8 +38,8 @@
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/165200-host-operation-poll-cadence.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The host-neutral 30 by 2 denominator and vague prompts remain unchanged; the Harness now fails tight asynchronous polling instead of rewarding terminal success obtained through wasteful repeated probes."
+      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/201000-durable-value-and-local-byte-routing.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The host-neutral 30 by 2 denominator and vague prompts remain unchanged; the Harness records the repaired durable-value and deterministic local-byte routing boundaries."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Evidence covers Skill and package identity, weak initialization wording, attachment source preservation, the unchanged host-neutral matrix denominator, and a duration-aware generous ceiling for repeated non-terminal polls."
+      "paths": ["backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
+      "note": "Evidence covers Skill/package identity, coherent handoff autonomy, bounded native no-write behavior, deterministic CLI byte transfer, and unchanged source/disclosure boundaries."
     }
   }
 }

@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.16`.
+This is Corvio Skill release `1.7.17`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -27,7 +27,8 @@ explicitly selected local file and use a project-bound Agent identity.
 - When the current turn includes a coherent set of user-provided files, interpret the whole task before choosing a transient or local-only
   path. Requests to retain, organize, synthesize, or update them—and descriptive handoffs that present a messy or ongoing body of work
   without prescribing an output—normally call for the narrowest useful organization when no FYI, reference-only, transient, or local-only
-  signal exists. Infer reader jobs from the evidence rather than require the user to name a product, taxonomy, or artifact. Attachment
+  signal exists. Do not turn the absence of a prescribed artifact into a menu asking whether to summarize, archive, or store a coherent
+  handoff; infer the narrow reader jobs from its evidence and continue. Attachment
   presence alone does not determine intent. Retain the exact bytes as Assets before deriving a summary, and use one `organize_files`
   mission when the coherent set's structure or ongoing retrieval matters. A new summary Page alone does not preserve the originals or
   establish a maintained Work Model.
@@ -39,9 +40,12 @@ explicitly selected local file and use a project-bound Agent identity.
   when one of those actual boundaries remains unresolved.
 - Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
   explicitly names a local or repository file as the target, preserve every supplied path and byte. If the host produces an edited
-  native deliverable from those sources, write it to a distinct derived path; do not overwrite or rename an attachment copy. When current
-  artifacts are supplied with a request to update, reconcile, or normalize them, treat that as maintenance intent unless it is local-only,
-  transient, sensitive, or disclosure-unclear. Resolve each existing Corvio owner when one exists; otherwise create the narrowest useful
+  native deliverable from those sources, write it to a distinct derived path; do not overwrite or rename an attachment copy. A bounded
+  one-off transformation whose whole result belongs in the host and has no ongoing, shared, or existing-Corvio-owner signal remains a
+  transient host-native result; do not upload or create a Corvio copy merely because an attachment was involved. When supplied current
+  artifacts map to an existing Corvio owner or the task carries continued-use, shared, or ongoing-work intent, treat a request to update,
+  reconcile, or normalize them as maintenance unless it is local-only, sensitive, or disclosure-unclear. Resolve the existing owner when
+  one exists; otherwise create the narrowest useful
   representation. Retain the authorized sources, apply and read back the smallest durable update, and do not stop at patch instructions
   or a temporary output merely because an attachment copy is read-only. When the requested outcome is to retain, organize, synthesize, or
   update material for continued use, that task includes the narrow durable result; a scratch or temporary host copy is not a durable
@@ -121,9 +125,12 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
   `read_document_table` followed by `mutate_document_table` (or `corvio docs table-read/table-mutate`) so only the required rows and
   stable row/column IDs cross the host boundary. Delegate formulas, styles, structure, sorting, cross-table reasoning, or semantic
   transformations to `ask_corvio`; do not round-trip a large document through a Coding Agent for those jobs.
-- A Markdown file already exists locally: upload the selected bytes with `prepare_file_upload`, the host's signed `PUT`, and
-  `finalize_file_upload`; then pass the returned `source_asset_id` to `create_document` or `update_document`. Never pass a local path to
-  Remote MCP and never resend the whole file merely because the Page tool needs content.
+- A Markdown file already exists locally: in a filesystem-capable coding host with the authenticated official CLI, prefer
+  `corvio files upload --file <path>` for the mechanical byte bridge so file size, hash, PUT, and finalize do not depend on model
+  transcription. Otherwise use `prepare_file_upload`, the host's signed `PUT`, and `finalize_file_upload`. For the MCP path, measure the
+  exact byte length from native file metadata before prepare and pass exact 64-character SHA-256 values without shortening them. Then pass
+  the returned `source_asset_id` to `create_document` or `update_document`. Never pass a local path to Remote MCP and never resend the
+  whole file merely because the Page tool needs content.
 - Exact original bytes only: keep the finalized Asset. This boundary requires an explicit raw/exact-only intent or the absence of a
   continuing reader job; a vague request to keep a coherent standalone Markdown source normally still merits the one Page described
   above. When a Corvio question must read the Asset, pass its ID in that same `ask_corvio.asset_ids` request. Retention alone does not make
@@ -159,7 +166,8 @@ and otherwise unclear material local. If only a bounded subset is sensitive or u
 keep that subset local and continue with clearly authorized sources. Never bulk-copy a repository, hidden reasoning, caches, or unrelated
 conversations.
 
-For a local file, Remote MCP uses `prepare_file_upload -> host PUT -> finalize_file_upload`. Compare the returned SHA-256 when possible.
+For a local file, prefer the authenticated official CLI's foreground upload in a filesystem-capable coding host; otherwise Remote MCP uses
+`prepare_file_upload -> host PUT -> finalize_file_upload`. Compare the returned SHA-256 when possible.
 If the host lacks filesystem/HTTP capability, ask the user to attach or upload the file. The CLI performs the same foreground bridge with
 `corvio ask --file <path>` or `corvio files upload`; it does not expand MCP's remote authority.
 
