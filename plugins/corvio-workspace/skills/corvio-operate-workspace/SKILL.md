@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, or update through Corvio; when work involves research, reports, comparisons, recommendations, proposals, plans, decisions, meeting notes, project work, debugging, reviews, follow-ups, or prior material; or when a request continues, resumes, or asks for the result of earlier work and an operation, question, conversation, document, or project handle is available. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, and for workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、纪要、复盘、之前的资料、继续上次、那份文档、共享、同步给团队、沉淀. Do not invoke Corvio for sensitive, disclosure-unclear, explicitly local-only, or unavailable work. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Do not invoke for sensitive, disclosure-unclear, explicitly local-only, or unavailable work. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.6`.
+This is Corvio Skill release `1.7.7`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -18,7 +18,7 @@ explicitly selected local file and use a project-bound Agent identity.
 ## Fit Corvio into the host's work
 
 - Before the host commits to a plan or answer for research, reports, comparisons, proposals, plans, decisions, meeting notes,
-  project/debug work, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
+  project work, bugs/regressions/incidents, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
   the host's normal reasoning; if nothing useful appears, continue without ceremony.
 - If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
@@ -59,14 +59,17 @@ authority rules above.
 
 Use one value chain and stop at the narrowest stage that satisfies the user's future job:
 
-1. **Retain the original.** Finalize the selected bytes as an Asset and verify its ID, SHA-256, policy, and link. This preserves provenance;
-   it does not prove that Corvio interpreted, organized, or used the file.
+1. **Retain the original.** Finalize the selected bytes as an Asset and verify its ID, SHA-256, policy, and link. If search suggests the same
+   source already exists, verify every distinct selected source through `get_file` or a narrow `list_files(content_sha256=...)` receipt before claiming exact
+   reuse; a search excerpt or matching Page text is not source-provenance evidence. This preserves provenance; it does not prove that Corvio
+   interpreted, organized, or used the file.
 2. **Create the right online representation.** A finalized UTF-8 Markdown Asset within the documented limit can become an editable Page
    directly through `source_asset_id`. For other formats or semantic transformation, use `ask_corvio` or `organize_files` to produce the
    appropriate Page, Spreadsheet, Presentation, Code, HTML Artifact, or reader layer. Do not promise lossless direct Page conversion for
    every file type.
 3. **Organize related evidence.** Run one `organize_files` mission over a coherent Asset set when structure, synthesis, or future retrieval
-   matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document.
+   matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document. If the exact source set was
+   already organized, read back its current Project and reader output instead of creating a duplicate; search alone is not that readback.
 4. **Admit durable knowledge by type.** Stable facts and preferences may belong in the appropriate Memory. Reusable methods,
    configurations, constraints, or quality bars may become Project Skills only after evidence-based admission. An `always` policy requires
    this decision, not a fabricated Skill; `evaluated_no_qualifying_skill` is a valid result.
