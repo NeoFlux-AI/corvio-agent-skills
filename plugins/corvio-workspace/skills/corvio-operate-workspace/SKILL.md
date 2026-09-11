@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Keep genuinely sensitive, disclosure-unclear, explicitly local-only, or unavailable work out of Corvio; routine business metadata is not sensitive by category. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Keep genuinely sensitive, disclosure-unclear, explicitly local-only, or unavailable work out of Corvio; routine business metadata is not sensitive by category. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.18`.
+This is Corvio Skill release `1.7.19`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -26,6 +26,9 @@ explicitly selected local file and use a project-bound Agent identity.
   bugs/regressions/incidents, reviews, or follow-ups, after the exclusion gate is clear. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
   the host's normal reasoning; if nothing useful appears, continue without ceremony.
+- Decide retrieval before retention. For the observable tasks above, a later conclusion that the result is bounded, transient, or
+  no-write does not cancel the one relevant read; it only means not creating or updating a durable result. The read and write decisions
+  are independent, except that the exclusion gate above suppresses both.
 - If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
   make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
   instead of fanning out across unrelated documents or inventing which project the user meant.
@@ -73,8 +76,8 @@ explicitly selected local file and use a project-bound Agent identity.
   creates no comment debt.
 
 Keep material excluded by the content-and-policy boundary above, explicitly local-only work, and anything outside the current authorized
-connection out of Corvio. A transient answer normally does not merit a Corvio write, but that label alone does not cancel the lightweight read above
-when prior work could improve the current task. A one-off event can still merit a useful reader artifact for sharing or later reference;
+connection out of Corvio. A transient answer normally does not merit a Corvio write, but that label alone does not cancel the lightweight read
+required for the observable tasks above. A one-off event can still merit a useful reader artifact for sharing or later reference;
 it is the method that should not become a reusable Skill without independent reuse evidence. If the check is unavailable, continue safe
 local work and mention the missing synchronization only when it affects the expected handoff.
 
