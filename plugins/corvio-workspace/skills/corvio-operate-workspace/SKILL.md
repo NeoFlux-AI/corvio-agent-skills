@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.15`.
+This is Corvio Skill release `1.7.16`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -52,8 +52,9 @@ explicitly selected local file and use a project-bound Agent identity.
   Corvio result when it is worth sharing or revisiting. Reuse an existing owner and never create a document merely to prove that a tool ran.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
   durable object, revision, hash, hierarchy, and link. A headless host turn will not resume itself later: when an operation returns
-  `queued` or `running`, honor `retry_after_seconds` and poll the same operation until it is terminal or the host's actual execution
-  deadline is reached. In a headless, print, or other non-interactive invocation, keep that wait in the foreground: do not use a
+  `queued` or `running`, treat `retry_after_seconds` as a lower bound: use the host's foreground sleep/wait capability for at least that
+  interval before the next read of the same operation. Do not spend model turns on early status probes. Poll until terminal or until the
+  host's actual execution deadline is reached. In a headless, print, or other non-interactive invocation, keep that wait in the foreground: do not use a
   background shell command, detached process, `ScheduleWakeup`, or similar future-turn mechanism, because it ends the current host
   receipt instead of resuming it. An actual deadline is one explicitly imposed by the host/runtime or the user, not a chosen poll count,
   patience limit, unchanged intermediate status, or token/cost intuition; while the current process can still act, continue the foreground
