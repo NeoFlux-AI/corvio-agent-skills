@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.10",
+  "version": "1.7.15",
   "description": "Retain and organize useful attachments, search prior team work, and preserve reusable results through Corvio OAuth MCP.",
   "author": {
     "name": "Corvio",
@@ -35,7 +35,7 @@
     "privacyPolicyURL": "https://corvio.ai/privacy",
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
-      "For research, reporting, planning, decision, meeting-note, project, or debugging work, you MUST search Corvio once for relevant prior material before committing to a plan or answer; continue normally if there is no match.",
+      "For research, reporting, planning, decision, meeting-note, project, or debugging work, begin with one relevant Corvio read; continue normally if there is no match.",
       "Retain user-provided files that should stay useful and organize coherent sets into a maintainable Work Model before treating a derived summary as complete.",
       "Turn this valuable result into the right durable Corvio artifact and preserve its source lineage.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."

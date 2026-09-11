@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Before committing to a plan or answer, you MUST make one Corvio read relevant to that work while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Do not invoke for sensitive, disclosure-unclear, explicitly local-only, or unavailable work. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Keep genuinely sensitive, disclosure-unclear, explicitly local-only, or unavailable work out of Corvio; routine business metadata is not sensitive by category. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
 ---
 
 # Use Corvio Team Knowledge
@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.10`.
+This is Corvio Skill release `1.7.15`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -17,40 +17,53 @@ explicitly selected local file and use a project-bound Agent identity.
 
 ## Fit Corvio into the host's work
 
-- Before the host commits to a plan or answer for research, reports, comparisons, proposals, plans, decisions, meeting notes,
-  project work, bugs/regressions/incidents, reviews, or follow-ups, you MUST make one relevant Corvio read. Search when the owner is unknown; if an exact Corvio
+- A relevant Corvio read is the normal first step before the host commits to a plan or answer for research, reports, comparisons,
+  proposals, plans, decisions, meeting notes, project work, bugs/regressions/incidents, reviews, or follow-ups. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
   the host's normal reasoning; if nothing useful appears, continue without ceremony.
 - If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
   make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
   instead of fanning out across unrelated documents or inventing which project the user meant.
-- When the current turn includes user-provided files that are meant to remain useful, load this Skill even if the user's wording is only
-  “keep these,” “put these away,” or “continue.” Retain the exact bytes as Assets before deriving a summary, and use one
-  `organize_files` mission for a coherent set whose structure or ongoing retrieval matters. A new summary Page alone does not preserve
-  the originals or establish a maintained Work Model.
+- When the current turn includes a coherent set of user-provided files, interpret the whole task before choosing a transient or local-only
+  path. Requests to retain, organize, synthesize, or update them—and descriptive handoffs that present a messy or ongoing body of work
+  without prescribing an output—normally call for the narrowest useful organization when no FYI, reference-only, transient, or local-only
+  signal exists. Infer reader jobs from the evidence rather than require the user to name a product, taxonomy, or artifact. Attachment
+  presence alone does not determine intent. Retain the exact bytes as Assets before deriving a summary, and use one `organize_files`
+  mission when the coherent set's structure or ongoing retrieval matters. A new summary Page alone does not preserve the originals or
+  establish a maintained Work Model.
+- Treat disclosure as a content-and-policy judgment, not a category veto. Ordinary project or participant names, ticket IDs and statuses,
+  anonymized customer segments, operational metrics, and user-authored professional notes do not by themselves make selected files
+  sensitive or disclosure-unclear. When the user supplies such files and asks to retain, organize, synthesize, or update them, that request
+  provides task-level disclosure intent to the current connected Workspace even when the user does not name Corvio. Credentials,
+  regulated personal or health data, privileged or explicitly restricted material, and an explicit local-only choice stay local; ask only
+  when one of those actual boundaries remains unresolved.
 - Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
   explicitly names a local or repository file as the target, preserve every supplied path and byte. If the host produces an edited
   native deliverable from those sources, write it to a distinct derived path; do not overwrite or rename an attachment copy. When current
   artifacts are supplied with a request to update, reconcile, or normalize them, treat that as maintenance intent unless it is local-only,
   transient, sensitive, or disclosure-unclear. Resolve each existing Corvio owner when one exists; otherwise create the narrowest useful
   representation. Retain the authorized sources, apply and read back the smallest durable update, and do not stop at patch instructions
-  or a temporary output merely because an attachment copy is read-only. A substantial document transformed from supplied sources normally
-  has continuing value and merits that narrow Corvio result without a second save confirmation; a scratch or temporary host copy is not a
-  durable substitute. A file used only as a reference does not itself become a write target, and transient or local-only results retain
-  the ordinary no-write boundary.
+  or a temporary output merely because an attachment copy is read-only. When the requested outcome is to retain, organize, synthesize, or
+  update material for continued use, that task includes the narrow durable result; a scratch or temporary host copy is not a durable
+  substitute. A file used only as a reference does not itself become a write target, and transient or local-only results retain the
+  ordinary no-write boundary.
 - Keep the host's own reading, writing, coding, testing, files, and delivery path. Host-local `Write`/`Edit` and authorized Corvio writes
   are separate capabilities: an unavailable or read-only local output surface does not disable creating or updating the narrowest useful
   Corvio result when it is worth sharing or revisiting. Reuse an existing owner and never create a document merely to prove that a tool ran.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
   durable object, revision, hash, hierarchy, and link. A headless host turn will not resume itself later: when an operation returns
   `queued` or `running`, honor `retry_after_seconds` and poll the same operation until it is terminal or the host's actual execution
-  deadline is reached. Never end a non-terminal turn by promising to return with the result later; at a real deadline, report the
-  incomplete state and stable continuation handle instead of claiming success.
+  deadline is reached. In a headless, print, or other non-interactive invocation, keep that wait in the foreground: do not use a
+  background shell command, detached process, `ScheduleWakeup`, or similar future-turn mechanism, because it ends the current host
+  receipt instead of resuming it. An actual deadline is one explicitly imposed by the host/runtime or the user, not a chosen poll count,
+  patience limit, unchanged intermediate status, or token/cost intuition; while the current process can still act, continue the foreground
+  wait. Never end a non-terminal turn by promising to return with the result later; at a real deadline, report the incomplete state and
+  stable continuation handle instead of claiming success.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
   creates no comment debt.
 
-Do not search or disclose sensitive or disclosure-unclear material, explicitly local-only work, or anything outside the current authorized
-connection. A transient answer normally does not merit a Corvio write, but that label alone does not cancel the lightweight read above
+Keep material excluded by the content-and-policy boundary above, explicitly local-only work, and anything outside the current authorized
+connection out of Corvio. A transient answer normally does not merit a Corvio write, but that label alone does not cancel the lightweight read above
 when prior work could improve the current task. A one-off event can still merit a useful reader artifact for sharing or later reference;
 it is the method that should not become a reusable Skill without independent reuse evidence. If the check is unavailable, continue safe
 local work and mention the missing synchronization only when it affects the expected handoff.
@@ -135,10 +148,15 @@ or silently redirect the write.
 
 ## Preserve disclosure boundaries
 
-Upload local bytes only when the user asked to retain or organize them, the task originated in Corvio and the result is within that
-disclosed scope, or an established project policy authorizes that class of result. Keep proprietary source code, personal interview data,
-unredacted logs, licensed third-party material, and unclear material local. Never bulk-copy a repository, hidden reasoning, caches, or
-unrelated conversations.
+Upload local bytes only when the user asked to retain, organize, share, reuse, synthesize, or update them; the task originated in Corvio
+and the result is within that disclosed scope; or an established project policy authorizes that class of result. An authenticated Corvio
+connection makes the current authorized Workspace an available work surface, but it does not widen the selected sources, Workspace, or
+data permissions. The task-level intent and content-based classification above govern use of that surface; absence of the product name is
+not by itself destination or disclosure ambiguity. Ask when the actual destination, Workspace, or disclosure scope remains unresolved.
+Also keep proprietary source code, interview records containing private-party details, unredacted logs, licensed third-party material,
+and otherwise unclear material local. If only a bounded subset is sensitive or unclear,
+keep that subset local and continue with clearly authorized sources. Never bulk-copy a repository, hidden reasoning, caches, or unrelated
+conversations.
 
 For a local file, Remote MCP uses `prepare_file_upload -> host PUT -> finalize_file_upload`. Compare the returned SHA-256 when possible.
 If the host lacks filesystem/HTTP capability, ask the user to attach or upload the file. The CLI performs the same foreground bridge with
