@@ -8,7 +8,7 @@ description: "Use when the user provides files or attachments to keep, organize,
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
 
-This is Corvio Skill release `1.7.8`.
+This is Corvio Skill release `1.7.9`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -41,7 +41,10 @@ explicitly selected local file and use a project-bound Agent identity.
   substitute. A file used only as a reference does not itself become a write target, and transient or local-only results retain the
   ordinary no-write boundary.
 - Prepared, queued, or accepted is not complete. Before claiming a Corvio effect complete, poll asynchronous work and read back the
-  durable object, revision, hash, hierarchy, and link.
+  durable object, revision, hash, hierarchy, and link. A headless host turn will not resume itself later: when an operation returns
+  `queued` or `running`, honor `retry_after_seconds` and poll the same operation until it is terminal or the host's actual execution
+  deadline is reached. Never end a non-terminal turn by promising to return with the result later; at a real deadline, report the
+  incomplete state and stable continuation handle instead of claiming success.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
   creates no comment debt.
 
@@ -71,7 +74,9 @@ Use one value chain and stop at the narrowest stage that satisfies the user's fu
    or reader layer. Do not promise lossless direct Page conversion for every file type.
 3. **Organize related evidence.** Run one `organize_files` mission over a coherent Asset set when structure, synthesis, or future retrieval
    matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document. If the exact source set was
-   already organized, read back its current Project and reader output instead of creating a duplicate; search alone is not that readback.
+   already organized, read back its current Project and at least one current reader output instead of creating a duplicate. Exact-source
+   verification plus `search`, a remembered link, or `list_projects` alone is discovery, not canonical completion evidence; fetch the
+   current Project and reader revision before reporting reuse complete.
 4. **Admit durable knowledge by type.** Stable facts and preferences may belong in the appropriate Memory. Reusable methods,
    configurations, constraints, or quality bars may become Project Skills only after evidence-based admission. An `always` policy requires
    this decision, not a fabricated Skill; `evaluated_no_qualifying_skill` is a valid result.
