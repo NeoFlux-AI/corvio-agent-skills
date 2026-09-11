@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.9",
+  "release_version": "1.7.10",
   "contract_revision": "2026-09-09.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Make headless asynchronous completion and canonical reuse readback executable boundaries instead of implicit follow-up assumptions.",
+  "change_summary": "Preserve attachment sources while allowing distinct derived host outputs, and align host oracles with bounded existing-owner maintenance and risk-first no-write decisions.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The internal shared Skill release 1.7.9 makes terminal polling and current Project plus reader readback explicit without prescribing a case, title, tree, or tool recipe."
+      "note": "The internal shared Skill release 1.7.10 resolves the attachment-versus-native-target conflict by preserving supplied paths and putting edited host deliverables at distinct derived paths unless the user explicitly chose a native target."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
-      "note": "The 2026-09-09.7 wire contract remains compatible; the server advertises Skill and Plugin 1.7.9 without widening authority or changing MCP schemas."
+      "note": "The 2026-09-09.7 wire contract remains compatible; the server advertises Skill and Plugin 1.7.10 without widening authority or changing MCP schemas."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.9 while retaining the compatible 2026-09-09.7 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.10 while retaining the compatible 2026-09-09.7 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -29,7 +29,7 @@
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.9."
+      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.10."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
@@ -38,8 +38,8 @@
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/105118-codex-headless-completion-and-readback-boundary.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The host-neutral 30 by 2 matrix remains unchanged; repeated cross-case Claude evidence promotes only the generic terminal-polling and canonical-readback boundary."
+      "paths": ["backend/scripts/run_agent_host_case.py", "backend/scripts/scenario_suites/external_agent_work_model_host_v1.json", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/115642-codex-attachment-source-authority-and-host-oracles.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The host-neutral 30 by 2 denominator and vague prompts remain unchanged; shared oracles now accept bounded maintenance or a fully read-backed canonical no-op, keep source fixtures immutable, and avoid forcing durable writes for risk-first or one-off native-edit phases."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -49,7 +49,7 @@
     "release_evidence": {
       "disposition": "changed",
       "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Evidence covers Skill and package identity, headless terminal completion wording, canonical reuse readback, and the unchanged host-neutral matrix contract."
+      "note": "Evidence covers Skill and package identity, attachment source preservation, bounded canonical maintenance, risk-first no-write behavior, and the unchanged host-neutral matrix denominator."
     }
   }
 }
