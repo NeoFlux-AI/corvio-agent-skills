@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.19",
+  "release_version": "1.7.20",
   "contract_revision": "2026-09-09.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep retrieval and retention as independent decisions: after exclusions, a bounded or transient no-write result still performs the one relevant read required by an observable task.",
+  "change_summary": "Clarify the user-configured Workspace authority for selected ordinary files without weakening sensitive, local-only, disclosure, routing, or OAuth boundaries.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The internal shared Skill release 1.7.19 makes retrieval precede the independent retention decision, preserving both lightweight grounding and the no-write boundary."
+      "note": "The internal shared Skill release 1.7.20 presents the connected Workspace as a preconfigured user work surface and keeps task scope bounded to selected ordinary files."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
-      "note": "The 2026-09-09.7 wire contract remains compatible; its shared server-contract owner now states that transient/no-write retention does not cancel the required relevant read."
+      "note": "The 2026-09-09.7 wire contract remains compatible; its shared owner now exposes configured-Workspace authority separately from source, disclosure, routing, and OAuth boundaries."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.19 while retaining the compatible 2026-09-09.7 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.20 while retaining the compatible 2026-09-09.7 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -29,17 +29,19 @@
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.19."
+      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.20."
     },
     "package_setup": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "The existing bounded session hook remains compatible; OAuth endpoints, scopes, installation commands, and session-refresh ownership do not change."
+      "disposition": "changed",
+      "paths": [
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
+      ],
+      "note": "The Claude Plugin hook now presents installed OAuth Workspace authority and the coherent-corpus boundary as compact factual context without a MUST instruction or a second workflow."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/212000-retrieval-before-retention-boundary.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The host-neutral 30 by 2 denominator and vague prompts remain unchanged; the Harness records the repaired read/write decision independence."
+      "paths": ["backend/scripts/agent_host_case_portfolio.py", "backend/scripts/collect_agent_host_matrix.py", "backend/scripts/run_agent_host_case.py", "backend/scripts/scenario_suites/external_agent_work_model_host_v1.json", "docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/224000-configured-workspace-task-scope.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The host-neutral 30 by 2 denominator remains unchanged; the Harness records configured-surface authority, separately freezes host-owned user guidance, and verifies host-native derived files independently from remote persistence."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +50,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Evidence covers Skill/package identity, Writing-task discovery, exclusion-first no-call behavior, and the unchanged host-neutral portfolio."
+      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
+      "note": "Evidence covers Skill/package identity, separate host user-guidance identity, configured-Workspace task scope, ordinary-business transfer, exclusion-first no-call behavior, and the host-neutral portfolio."
     }
   }
 }

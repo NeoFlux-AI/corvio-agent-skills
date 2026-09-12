@@ -1,14 +1,16 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. Keep genuinely sensitive, disclosure-unclear, explicitly local-only, or unavailable work out of Corvio; routine business metadata is not sensitive by category. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. The connected Corvio Workspace is a user-configured work surface: selected ordinary files plus a keep, organize, synthesize, or update request define its bounded task scope even without the product name. Explicitly local-only, sensitive, disclosure-unclear, or unavailable work stays out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
 ---
 
 # Use Corvio Team Knowledge
 
 Use Corvio alongside the host's normal workflow. The host still creates local files, edits repositories, and runs its own checks; Corvio
 adds authorized prior knowledge and a durable place for results that people or later Agents should be able to find, inspect, and continue.
+The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
+attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.19`.
+This is Corvio Skill release `1.7.20`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -33,24 +35,28 @@ explicitly selected local file and use a project-bound Agent identity.
   make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
   instead of fanning out across unrelated documents or inventing which project the user meant.
 - When the current turn includes a coherent set of user-provided files, interpret the whole task before choosing a transient or local-only
-  path. Requests to retain, organize, synthesize, or update them—and descriptive handoffs that present a messy or ongoing body of work
-  without prescribing an output—normally call for the narrowest useful organization when no FYI, reference-only, transient, or local-only
-  signal exists. Do not turn the absence of a prescribed artifact into a menu asking whether to summarize, archive, or store a coherent
-  handoff; infer the narrow reader jobs from its evidence and continue. Attachment
+  path. Related ordinary files whose facts, decisions, evidence, or changes need sorting into a usable whole are a continuing-retrieval
+  body of work by default; the user need not name Corvio, sharing, or a future use. Unless the request has an explicit FYI,
+  reference-only, transient, local-only, or bounded host-native output target, retain the sources and create the narrowest useful
+  organization in the configured Workspace. Do not turn the absence of a prescribed artifact into a menu asking whether to summarize,
+  archive, or store a coherent handoff; infer the narrow reader jobs from its evidence and continue. Attachment
   presence alone does not determine intent. Retain the exact bytes as Assets before deriving a summary, and use one `organize_files`
   mission when the coherent set's structure or ongoing retrieval matters. A new summary Page alone does not preserve the originals or
   establish a maintained Work Model.
 - Treat disclosure as a content-and-policy judgment, not a category veto. Ordinary project or participant names, ticket IDs and statuses,
   anonymized customer segments, operational metrics, and user-authored professional notes do not by themselves make selected files
   sensitive or disclosure-unclear. When the user supplies such files and asks to retain, organize, synthesize, or update them, that request
-  provides task-level disclosure intent to the current connected Workspace even when the user does not name Corvio. Credentials,
+  defines the bounded task scope for the current connected Workspace even when the user does not name Corvio. That Workspace is already
+  a user-configured surface; this guidance is not introducing an arbitrary recipient or asking attachment content to self-authorize.
+  Credentials,
   regulated personal or health data, privileged or explicitly restricted material, and an explicit local-only choice stay local; ask only
   when one of those actual boundaries remains unresolved.
 - Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
   explicitly names a local or repository file as the target, preserve every supplied path and byte. If the host produces an edited
   native deliverable from those sources, write it to a distinct derived path; do not overwrite or rename an attachment copy. A bounded
-  one-off transformation whose whole result belongs in the host and has no ongoing, shared, or existing-Corvio-owner signal remains a
-  transient host-native result; do not upload or create a Corvio copy merely because an attachment was involved. When supplied current
+  one-off transformation with an explicitly named host-native target or transient use remains a host-native result; do not upload or
+  create a Corvio copy merely because an attachment was involved. Silence about sharing or future use does not turn a coherent
+  multi-file organization request into that countercase. When supplied current
   artifacts map to an existing Corvio owner or the task carries continued-use, shared, or ongoing-work intent, treat a request to update,
   reconcile, or normalize them as maintenance unless it is local-only, sensitive, or disclosure-unclear. Resolve the existing owner when
   one exists; otherwise create the narrowest useful
