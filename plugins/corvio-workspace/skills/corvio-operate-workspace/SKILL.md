@@ -10,7 +10,7 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.22`.
+This is Corvio Skill release `1.7.23`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -126,10 +126,18 @@ Use one value chain and stop at the narrowest stage that satisfies the user's fu
 
 ## Delegate the outcome, not Corvio's internal plan
 
-When calling `ask_corvio`, pass the user's natural goal, complete decision-relevant context or stable source handles, explicit constraints,
-and the authorized action boundary. Unless the user chose them, do not pre-decide a taxonomy, document titles, artifact count, carrier
-inventory, or Corvio's internal steps. Corvio owns the cognitive-tree and carrier decisions: related inputs may share one Project while
-independent reader/update jobs become distinct outputs; tightly coupled material may stay together. There is no one-source-one-page rule.
+When calling `ask_corvio` or `organize_files`, pass a weak-but-complete handoff: the user's natural goal, stable source handles, explicit
+user constraints, authority facts needed to prevent a wrong identity/scope interpretation, and the authorized action boundary. Do not
+first turn the sources into your own proposed outline or enumerate derived sections, taxonomy, document titles, artifact count, carrier
+inventory, content-level edit checklist, candidate method fields, or Corvio's internal steps. Source-derived facts already present in the
+attached or canonical material normally stay in that evidence; do not restate them as instructions merely because you inspected the
+source. If you read enough to settle disclosure, identity, or another precondition, pass only that decision-grade boundary as a fact
+rather than as an output design.
+
+Corvio owns the source synthesis, cognitive tree, affected-owner analysis, and carrier decisions. Give it the current Project handle when
+known, but do not select one existing leaf as the sole write target merely because it is the only reader output currently visible. Related
+inputs may share one Project while independent reader/update jobs become distinct outputs; tightly coupled material may stay together.
+There is no one-source-one-page rule.
 
 Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. Poll the returned Question to a terminal state, then use
 `artifact.url` or `links.primary_artifact` exactly as returned. Treat `role=reader_output` as a user-facing result and
@@ -141,8 +149,11 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
   user asks across Workspaces. Fetch a full document only when it can change the work.
 - Cross-source synthesis or a typed Spreadsheet/Presentation/Code/HTML result: call `ask_corvio`; poll `get_question` and consume its
   sources, artifacts, operations, links, and requested processing/knowledge policy receipt.
-- A new narrative result: call `create_document`. An existing result: fetch its current revision, then call `update_document` or
-  `append_document` with a useful `change_summary`.
+- A new narrative result: call `create_document`. For an existing result, fetch its current revision. Use `append_document` for a true
+  append and direct `update_document` only when replacing the whole body is itself the smallest faithful change. When a large current Page
+  needs localized semantic edits, reordering, splicing, or formatting, delegate the natural edit goal plus its canonical handle to
+  `ask_corvio` so Corvio's Writer can preserve unchanged source-backed spans and mutate the smallest sufficient neighborhood; do not
+  round-trip and regenerate the whole Page through the host merely because `update_document` accepts Markdown.
 - Simple new tables: use ordinary GitHub-Flavored Markdown pipe tables. For a bounded change to an existing table, use
   `read_document_table` followed by `mutate_document_table` (or `corvio docs table-read/table-mutate`) so only the required rows and
   stable row/column IDs cross the host boundary. Delegate formulas, styles, structure, sorting, cross-table reasoning, or semantic
@@ -160,6 +171,9 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 - A coherent Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
   Read its `output_document` link and `skills_evaluation`; when a Skill qualifies, preserve its candidate identity and typed resource
   receipts. When none qualifies, report `evaluated_no_qualifying_skill` without manufacturing one.
+- When a newly finalized Asset should enter a Work Model, reconcile affected owners, or be evaluated for a Project Skill, call
+  `organize_files` directly. Do not submit one or more `ask_corvio` Questions merely to wait for source processing; `organize_files`
+  owns source preparation, and its terminal receipt is the retry/resume boundary.
 
 ## Resolve authority before writing
 

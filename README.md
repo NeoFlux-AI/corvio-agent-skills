@@ -25,8 +25,10 @@ one short reminder after startup, resume, clear, and compaction. Corvio marks th
 and delegated-work `ask_corvio`—as tool-level eager in Claude. The bundled server deliberately does not set server-wide `alwaysLoad`,
 so deterministic continuation and specialized mutation/lifecycle schemas remain deferred instead of crowding the host's initial context.
 
-For delegated work, pass `ask_corvio` the user's natural goal, complete decision-relevant context, and explicit constraints. Do not
-invent taxonomy, titles, artifact counts, or an internal Corvio plan when the user left those choices open. Poll to terminal, then return
+For delegated work, pass `ask_corvio` or `organize_files` a weak-but-complete handoff: the user's natural goal, stable source handles,
+explicit user constraints, and only authority facts needed to prevent a wrong identity or scope. Keep source-derived facts in the source;
+do not turn them into an outline, content-level edit checklist, taxonomy, titles, artifact count, sole leaf target from current visibility,
+or internal Corvio plan when the user left those choices open. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
 
 ## Skill-only install

@@ -1,35 +1,35 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.22",
+  "release_version": "1.7.23",
   "contract_revision": "2026-09-09.8",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Preserve terminal artifact revision, semantic role, and Skill-evaluation disposition in the host's user-facing continuation receipt.",
+  "change_summary": "Keep external-Agent handoffs weak but complete, let Corvio infer reader and update jobs, and avoid whole-document replacement for localized edits.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The shared Skill preserves decision-grade terminal result fields in the user-facing return without prescribing an internal tool sequence."
+      "note": "The shared Skill separates factual handoff context from host-invented output design and routes large localized edits to Corvio's Writer."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
-      "note": "The compatible 2026-09-09.8 wire contract is unchanged; only its advertised current package version advances."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/indexing/workspace_asset_index.py", "backend/app/application/usecases/chat_streaming/function_tools.py", "backend/app/application/usecases/chat_streaming_usecase.py", "backend/app/domains/workspace_assets/mission_launcher.py"],
+      "note": "The compatible 2026-09-09.8 wire schema remains unchanged; MCP descriptions and collaboration guidance preserve Corvio's semantic ownership, while the internal Mission read loop reuses hash-bound Worker source projections for PDF/Office evidence."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.22 with the compatible 2026-09-09.8 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.23 with the compatible 2026-09-09.8 collaboration contract."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "CLI beta.23 remains compatible with the 2026-09-09.8 wire contract; this release does not change CLI bytes."
+      "disposition": "changed",
+      "paths": ["developer-cli/packages/workspace/src/cli.js"],
+      "note": "CLI beta.24 help describes weak organization handoffs and the whole-body replacement boundary; command and wire behavior stay compatible."
     },
     "help_center": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.22."
+      "disposition": "changed",
+      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts"],
+      "note": "Help explains weak factual handoff, Corvio-owned Work Model inference, and localized Writer editing in English and localized MCP guidance."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
@@ -38,8 +38,8 @@
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-12/030500-terminal-continuation-receipt-completeness.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The unchanged host-neutral E4 prompt reproduced the omission twice; the shared completion owner now retains typed terminal fields in the user-facing return."
+      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/workspace-asset-organization-and-permission-mainline-v1.md", "docs/logbook/entries/2026-09-12/170823-codex-longitudinal-agent-host-portfolio.md", "docs/logbook/entries/2026-09-12/181900-codex-longitudinal-source-projection-and-recovery.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "Natural longitudinal Codex runs exposed an over-specified Host handoff, shallow structure, whole-page rewriting, and a PDF source-projection break between Asset indexing and Organization Mission reads."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Evidence covers package identity and the generic terminal return fields; fresh E4 plus transfer and countercase receipts remain the behavior gate."
+      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_workspace_asset_index.py", "backend/tests/unit/test_provider_file_binding_worker.py", "backend/tests/integration/test_workspace_assets_acl_missions.py", "frontend/src/lib/developerSkillPackage.test.ts"],
+      "note": "Source/package gates and real database reads cover the shared boundary; a fresh post-release J2T1 PDF transfer is the next behavior gate before the remaining Codex journeys."
     }
   }
 }
