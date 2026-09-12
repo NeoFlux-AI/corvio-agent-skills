@@ -10,7 +10,7 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.21`.
+This is Corvio Skill release `1.7.22`.
 It implements `coding_agent_collaboration` contract version `2026-09-09.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -78,6 +78,10 @@ explicitly selected local file and use a project-bound Agent identity.
   patience limit, unchanged intermediate status, or token/cost intuition; while the current process can still act, continue the foreground
   wait. Never end a non-terminal turn by promising to return with the result later; at a real deadline, report the incomplete state and
   stable continuation handle instead of claiming success.
+  At terminal state, preserve the result fields that let the user or a later Agent continue without rediscovery: return each relevant
+  artifact's canonical URL, current revision, and semantic role when present, and separately state the returned Skill-evaluation outcome
+  plus any admitted candidate identity. A title and link alone are not a complete continuation receipt when the operation already exposed
+  those fields; report an explicit disabled or no-qualifying-candidate outcome rather than silently dropping it.
   If a Corvio document or comment supplied the task, return the verified result there with `complete_document_work`; a citation alone
   creates no comment debt.
 

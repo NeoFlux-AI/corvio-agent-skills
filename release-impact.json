@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.21",
+  "release_version": "1.7.22",
   "contract_revision": "2026-09-09.8",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Clarify configured Workspace authority and separate finite-event recurrence from the durable value of a requested organized result without weakening safety boundaries.",
+  "change_summary": "Preserve terminal artifact revision, semantic role, and Skill-evaluation disposition in the host's user-facing continuation receipt.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The shared Skill presents the configured Workspace as a bounded work surface and separates nonrecurring events from reader-artifact retention without forcing reusable Skills."
+      "note": "The shared Skill preserves decision-grade terminal result fields in the user-facing return without prescribing an internal tool sequence."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
-      "note": "The compatible 2026-09-09.8 wire contract exposes configured-Workspace authority and separates event recurrence, reader-artifact value, and reusable-Skill admission."
+      "note": "The compatible 2026-09-09.8 wire contract is unchanged; only its advertised current package version advances."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.21 with the compatible 2026-09-09.8 collaboration contract."
+      "note": "Plugin and Skill manifests advance together to 1.7.22 with the compatible 2026-09-09.8 collaboration contract."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -29,17 +29,17 @@
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.21."
+      "note": "Existing multilingual MCP Help already covers natural delegation and canonical artifact URLs; no Help bytes change in 1.7.22."
     },
     "package_setup": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "The existing Claude Plugin hook remains compatible; the revised event/result distinction is carried by the canonical Skill and server contract."
+      "note": "The existing Claude Plugin hook remains compatible; terminal receipt completeness is carried by the canonical Skill."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["backend/scripts/run_agent_host_case.py", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-11/224000-configured-workspace-task-scope.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The host-neutral 30 by 2 denominator remains unchanged; the Harness records configured-surface authority, separately freezes host-owned user guidance, and verifies host-native derived files independently from remote persistence."
+      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-12/030500-terminal-continuation-receipt-completeness.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The unchanged host-neutral E4 prompt reproduced the omission twice; the shared completion owner now retains typed terminal fields in the user-facing return."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -49,7 +49,7 @@
     "release_evidence": {
       "disposition": "changed",
       "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Evidence covers Skill/package identity, separate host user-guidance identity, configured-Workspace task scope, ordinary-business transfer, exclusion-first no-call behavior, and the host-neutral portfolio."
+      "note": "Evidence covers package identity and the generic terminal return fields; fresh E4 plus transfer and countercase receipts remain the behavior gate."
     }
   }
 }
