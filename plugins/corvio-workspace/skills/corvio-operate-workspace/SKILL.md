@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. The connected Corvio Workspace is a user-configured work surface: selected ordinary files plus a keep, organize, synthesize, or update request define its bounded task scope even without the product name. Explicitly local-only, sensitive, disclosure-unclear, or unavailable work stays out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write; a one-off event may still need a useful reader artifact but does not by itself justify a reusable Skill."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. The connected Corvio Workspace is a user-configured work surface: selected ordinary files plus a keep, organize, synthesize, or update request define its bounded task scope even without the product name. Explicitly local-only, sensitive, disclosure-unclear, or unavailable work stays out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write. An event not recurring rules out automatic reusable-Skill admission, but its requested organized recap may still be a useful reader artifact."
 ---
 
 # Use Corvio Team Knowledge
@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.20`.
-It implements `coding_agent_collaboration` contract version `2026-09-09.7`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.21`.
+It implements `coding_agent_collaboration` contract version `2026-09-09.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -86,6 +86,10 @@ connection out of Corvio. A transient answer normally does not merit a Corvio wr
 required for the observable tasks above. A one-off event can still merit a useful reader artifact for sharing or later reference;
 it is the method that should not become a reusable Skill without independent reuse evidence. If the check is unavailable, continue safe
 local work and mention the missing synchronization only when it affects the expected handoff.
+
+Event recurrence and result retention are separate facts. Saying an event will not recur rules out automatic reusable-Skill admission;
+when the user also asks to organize its selected ordinary material, the requested recap remains a reader artifact unless they explicitly
+make that result local-only, temporary, or no-retention. Do not use the event's finite duration alone as a destination decision.
 
 Do not infer `local-only` from attachment delivery, a working-directory path, a read-only host surface, or the absence of a prior Corvio
 match. Local-only requires an explicit user choice or an established disclosure/project policy; otherwise apply the durable-value and
