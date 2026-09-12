@@ -41,6 +41,7 @@ is an explicit bounded read fallback when the saved selection may be stale; it i
 | Need | Preferred surface | Why |
 | --- | --- | --- |
 | Search/read/write authorized Workspace state in a connected host | Remote MCP | OAuth-delegated live tools and structured receipts |
+| Read bounded facts from one retained Asset without creating a Question | MCP `get_file(read_mode=content)`, or CLI `files get <id> --content` | Returns a hash-bound AI-safe projection with explicit completeness/truncation |
 | Ask Corvio about an explicitly selected local file | MCP prepare → host PUT → finalize → `ask_corvio(asset_ids=[...])`, or CLI `ask --file` | The host reads bytes; Corvio binds the finalized Asset to that exact question |
 | Retain an explicitly selected local file without asking about it | MCP `prepare_file_upload` → host PUT → `finalize_file_upload`, or CLI `files upload` | Retention creates an Asset in intake; it does not silently create a root document or a question input |
 
@@ -66,7 +67,7 @@ The public Developer API already owns:
 - active/archived Page list, read/create/update/recoverable archive/restore, and private-link share;
 - bounded stable-ID table reads plus revision- and operation-guarded cell updates/clears or row appends; complex table structure,
   formulas, styles, sorting, and semantic rewrites remain delegated to Corvio's internal document Agent;
-- immutable Workspace Asset upload/finalize, ACL-filtered list/read/download, and Agentic organization receipts;
+- immutable Workspace Asset upload/finalize, ACL-filtered list/read/download, bounded hash-bound content projection, and Agentic organization receipts;
 - one semantic organization mission over 1-50 existing Assets, with request-local `auto|economy|standard|deep` processing,
   optional maximum profile, `scan_mode`, and evidence-based `skills_extraction_mode`; `always` requires an admission decision but
   does not force a low-value Skill;
@@ -98,7 +99,8 @@ The public Developer API already owns:
   reads back a visible document-level comment. Page Markdown is only the deterministic direct-write carrier—typed Spreadsheet,
   Presentation, Code, and HTML Artifact work remains available through `ask_corvio(mode=allow_actions)`.
 - remote MCP staged upload (`prepare_file_upload` → host-native signed PUT → `finalize_file_upload`) plus exact Question binding through
-  `ask_corvio(asset_ids=[...])`, and Asset list/get/organization/operation readback. The host or CLI reads selected local bytes; the remote
+  `ask_corvio(asset_ids=[...])`, and Asset list/get/organization/operation readback. `get_file(read_mode=content)` projects one retained
+  source through a bounded, hash-checked, non-mutating read and reports incomplete/truncated coverage explicitly. The host or CLI reads selected local bytes; the remote
   server never reads a host path. A finalized UTF-8 Markdown Asset may be passed as `source_asset_id` to `create_document` or
   `update_document`, avoiding a second full-text tool argument while preserving ACL, sensitivity, hash, and source receipts.
 - direct Page conversion accepts ordinary GitHub-Flavored Markdown pipe tables; the detailed `corvio-table` contract is reserved for

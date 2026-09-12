@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.23`.
-It implements `coding_agent_collaboration` contract version `2026-09-09.8`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.24`.
+It implements `coding_agent_collaboration` contract version `2026-09-12.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -166,8 +166,10 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
   whole file merely because the Page tool needs content.
 - Exact original bytes only: keep the finalized Asset. This boundary requires an explicit raw/exact-only intent or the absence of a
   continuing reader job; a vague request to keep a coherent standalone Markdown source normally still merits the one Page described
-  above. When a Corvio question must read the Asset, pass its ID in that same `ask_corvio.asset_ids` request. Retention alone does not make
-  an unrelated question consume the file.
+  above. When the current task only needs bounded facts from one retained source, use `get_file(read_mode=content)` and inspect its hash,
+  completeness, and truncation receipt; do not create a durable Question merely to read a file, and do not infer unseen rows, sheets,
+  slides, or sections. Use `ask_corvio.asset_ids` only when Corvio should perform broader synthesis or document work. Retention alone does
+  not make an unrelated question consume the file.
 - A coherent Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
   Read its `output_document` link and `skills_evaluation`; when a Skill qualifies, preserve its candidate identity and typed resource
   receipts. When none qualifies, report `evaluated_no_qualifying_skill` without manufacturing one.
