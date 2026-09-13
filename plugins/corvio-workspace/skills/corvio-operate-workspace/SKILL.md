@@ -10,7 +10,7 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.24`.
+This is Corvio Skill release `1.7.25`.
 It implements `coding_agent_collaboration` contract version `2026-09-12.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
@@ -102,6 +102,15 @@ authority rules above.
 ## Turn files into reusable context
 
 Use one value chain and stop at the narrowest stage that satisfies the user's future job:
+
+Choose how much the host reads by the next decision, not by how many bytes are available. For a large text, table, log, or archive,
+use file metadata, hashes, schema and bounded samples or deterministic local scans to settle disclosure and source roles; do not stream
+the whole payload through `cat` or copy it into model context merely to prepare an upload. Once the source is authorized, move its bytes
+through the foreground CLI or upload bridge and let the scoped Corvio operation read them. If only a bounded part is excluded, preserve
+the original locally and create a distinct reviewed derivative plus redaction receipt rather than abandoning the authorized remainder.
+An unreviewed native Agent-history store or raw Host export belongs to the first-party Local Agent Import workflow, not the ordinary
+file bridge or an ad hoc parser. A user-selected privacy-reduced projection that has passed the exclusion gate above is an ordinary
+source under the same disclosure rules; its carrier extension alone does not make it raw Host history.
 
 1. **Retain the original.** Finalize the selected bytes as an Asset and verify its ID, SHA-256, policy, and link. If search suggests the same
    source already exists, verify every distinct selected source through `get_file` or a narrow `list_files(content_sha256=...)` receipt before claiming exact

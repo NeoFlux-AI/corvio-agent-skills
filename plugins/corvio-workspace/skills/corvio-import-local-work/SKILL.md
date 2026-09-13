@@ -7,6 +7,11 @@ description: Safely discover and import selected local Codex, Claude Code, or Cu
 
 Use Corvio's reviewed local-import path to turn selected local Agent history into a revocable Corvio source library and report. The signed/native CLI owns local discovery, bounded sampling, parsing, local redaction, and upload. This Skill owns user guidance and consent sequencing; it does not implement a second scanner.
 
+This workflow owns native Agent stores and raw Host exports, not every structured-text attachment. A separately reviewed,
+privacy-reduced projection that contains only allowed user/assistant work, excludes Host control text and tool traces, carries no blocked
+credentials, and was explicitly selected by the user is ordinary source evidence for `corvio-operate-workspace`. Decide from provenance
+and schema rather than the file extension alone. If those facts are absent or conflict with the bytes, keep using this import boundary.
+
 ## Establish the boundary first
 
 1. State that remote MCP and hosted Connectors cannot scan the user's computer.

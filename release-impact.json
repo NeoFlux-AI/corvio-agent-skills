@@ -1,45 +1,45 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.24",
+  "release_version": "1.7.25",
   "contract_revision": "2026-09-12.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Let external Agents read one bounded, hash-bound retained source without creating a writeful Question, and carry typed continuation handles without copying receipt prefixes into tool arguments.",
+  "change_summary": "Keep large selected sources out of Host model context, distinguish reviewed privacy projections from raw Agent-history exports, and preserve the existing bounded upload and organization loop.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The shared Skill keeps the handoff weak while preferring a bounded read-only Asset projection when the task needs facts from one retained source."
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json", ".agents/skills/corvio-import-local-work/SKILL.md", ".agents/skills/corvio-import-local-work/CORVIO_SKILL_REVIEW.json"],
+      "note": "The shared Skill keeps large-source inspection bounded, routes raw Agent history to its reviewed importer, and lets safe user-selected projections continue through the ordinary Workspace value chain."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/developer_platform/files.py", "backend/app/api/public_v1/file_routes.py", "backend/app/api/public_v1/mcp_routes.py"],
-      "note": "Contract 2026-09-12.1 adds an optional read-only Asset content projection with explicit hash, completeness, truncation, policy and current-revision authority; metadata-only behavior remains the default."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/usecases/agent_run_executor.py", "backend/app/domains/workspace_assets/mission_launcher.py"],
+      "note": "The behavior contract remains backward-compatible at 2026-09-12.1, while the published Skill identity and the direct organization mission's corpus-coverage guidance advance together."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.24 with collaboration contract 2026-09-12.1."
+      "note": "Plugin and Skill manifests advance together to 1.7.25 with collaboration contract 2026-09-12.1."
     },
     "workspace_cli": {
-      "disposition": "changed",
-      "paths": ["developer-cli/packages/workspace/src/cli.js"],
-      "note": "CLI beta.25 adds files get --content as the same bounded read-only source projection exposed by Remote MCP."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "The existing CLI upload bridge and Local Agent Import authority remain unchanged."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts", "frontend/src/lib/i18n/developerPublicContent.ts"],
-      "note": "Help explains when to use a bounded source projection, what its completeness receipts mean, and why it does not replace organization or exact-byte download."
+      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts"],
+      "note": "Help distinguishes raw Agent-history import from reviewed projections and explains bounded inspection before a mechanical large-file upload."
     },
     "package_setup": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "The existing Claude Plugin hook remains compatible; terminal receipt completeness is carried by the canonical Skill."
+      "disposition": "changed",
+      "paths": ["packaging/corvio-agent-skills/README.md"],
+      "note": "Package guidance mirrors the same large-file and history-projection boundary; the compact Claude hook remains unchanged."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-api-and-test-control-mainline-v1.md", "docs/rfc/workspace-asset-organization-and-permission-mainline-v1.md", "docs/logbook/entries/2026-09-12/204500-external-asset-source-read-loop.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "Natural J3T2 exposed typed-handle misuse and a missing external read path even though the internal Work Model loop already had the correct hash-bound source authority."
+      "paths": ["backend/scripts/build_codex_conversation_corpus.py", "backend/scripts/run_agent_host_journey_suite.py", "backend/scripts/scenario_suites/external_agent_work_model_longitudinal_v1.json", "backend/scripts/scenario_suites/external_agent_longitudinal_fixture_manifest_v1.json", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/reference/cursor-harness/PRODUCT_VALUES.md", "docs/reports/agent-collaboration-work-model-longitudinal-30-case-plan-2026-09-12.md", "docs/logbook/entries/2026-09-12/225503-reviewed-history-corpus-coverage-and-work-model.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The longitudinal archive gate now uses a hash-bound reviewed projection and tests the same retrieval, Work Model and Skill loop without weakening raw Host-history privacy."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/integration/test_developer_files_and_sync_public_contract.py", "backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "developer-cli/tests/commands.test.mjs", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Focused tests cover content projection policy and source receipts, typed host handles, MCP schema, CLI transport and published package metadata; fresh post-release J3T2 is the next semantic behavior gate."
+      "paths": ["backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_build_codex_conversation_corpus.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
+      "note": "Focused tests cover Host-envelope exclusion, access-code redaction, reviewed fixture provenance, package metadata and the next fresh J4 trigger."
     }
   }
 }
