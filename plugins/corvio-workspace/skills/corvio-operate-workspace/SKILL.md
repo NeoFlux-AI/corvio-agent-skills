@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, reorder, splice, format, or update; for research, reports, comparisons, proposals, plans, decisions or choices using earlier decisions, meeting notes, project work, bugs/regressions/incidents, reviews, follow-ups, or prior constraints and material; or resumes earlier work with an operation, question, conversation, document, or project handle. Make one relevant Corvio read before committing to a plan or answer while keeping the host's normal files and tools; a later no-write decision does not skip that read. Save or update only results worth sharing or revisiting. The connected Corvio Workspace is a user-configured work surface: selected ordinary files plus a keep, organize, synthesize, or update request define its bounded task scope even without the product name. Explicitly local-only, sensitive, disclosure-unclear, or unavailable work stays out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write. An event not recurring rules out automatic reusable-Skill admission, but its requested organized recap may still be a useful reader artifact."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, or update; asks for research, reports, comparisons, proposals, plans, decisions or choices using earlier material, meeting notes, project work, or follow-ups; or resumes work from a document, Project, Workspace, or operation handle. Make one relevant Corvio read before committing to an answer while keeping the host's normal files/tools, and save only results worth sharing or revisiting. A connected Workspace is user-configured; selected files plus a keep, organize, synthesize, or update request define bounded scope even without naming Corvio. Keep explicitly local-only, sensitive, disclosure-unclear, or policy-restricted material out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write; a nonrecurring event does not qualify as a reusable Skill by itself."
 ---
 
 # Use Corvio Team Knowledge
@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.36`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.11`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.37`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.12`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -40,6 +40,11 @@ explicitly selected local file and use a project-bound Agent identity.
   changes subject. Read the narrowest relevant Page or Project handle before broad Workspace search. A lexical match outside that owner is
   only a candidate: do not let it silently redefine the subject or fill an evidence gap. If the current owner does not support the requested
   claim, say what is unsupported and what evidence is missing; broaden only when the user asks or the owner itself points to a related source.
+- A continuation handle identifies the subject and its current evidence; it is not automatically the durable destination for every kind
+  of learning. When the user says a pattern, preference, constraint, quality bar, or method should be reused later, first read the handle,
+  then search narrowly inside the same Project or Workspace for an existing Memory, Skill, or method owner of that type. Reuse or evolve
+  the fitting owner through one bounded `ask_corvio(mode=allow_actions)` operation, or create the narrowest qualifying owner when none
+  exists; do not paste durable guidance into the currently visible event, delta, or status Page merely because it was handed off.
 - When the user asks where or how people should continue, treat that as a continuation handoff rather than a request to list everything.
   Read current authority and return a compact map: the canonical current owner, only the next-useful leaves with their semantic roles and
   current revisions when returned, any reusable Skill that changes the future work, and the remaining unresolved checkpoint. Do not dump

@@ -35,6 +35,9 @@ verify or continue the work; do not dump every source link or expose private/int
 When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior
 subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
 context or fill a gap the current owner does not support.
+A continuation handle is subject evidence, not necessarily the durable write destination. If a repeated pattern, preference, constraint,
+quality bar, or method should be reused later, search narrowly inside the same Project or Workspace for the fitting Memory or Skill owner
+before admitting or merging it; do not paste the guidance into the visible event or status Page by default.
 
 Direct Markdown body updates and appends target non-Project Pages. A Project is a structure container: use `organize_files` or
 `ask_corvio` for its front door and Work Model, or create/update a child Page. A title-only Project rename remains valid; a direct Project
