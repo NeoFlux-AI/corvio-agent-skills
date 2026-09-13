@@ -1,55 +1,55 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.25",
-  "contract_revision": "2026-09-12.1",
+  "release_version": "1.7.26",
+  "contract_revision": "2026-09-13.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep large selected sources out of Host model context, distinguish reviewed privacy projections from raw Agent-history exports, and preserve the existing bounded upload and organization loop.",
+  "change_summary": "Return the smallest safe canonical reader links when Corvio evidence materially grounds an answer, while keeping read-only, no-link, privacy, and source-volume boundaries intact.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json", ".agents/skills/corvio-import-local-work/SKILL.md", ".agents/skills/corvio-import-local-work/CORVIO_SKILL_REVIEW.json"],
-      "note": "The shared Skill keeps large-source inspection bounded, routes raw Agent history to its reviewed importer, and lets safe user-selected projections continue through the ordinary Workspace value chain."
+      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
+      "note": "The shared Skill returns only the current reader links needed to verify or continue an answer materially grounded by Corvio, without forcing writes or link dumps."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/application/usecases/agent_run_executor.py", "backend/app/domains/workspace_assets/mission_launcher.py"],
-      "note": "The behavior contract remains backward-compatible at 2026-09-12.1, while the published Skill identity and the direct organization mission's corpus-coverage guidance advance together."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
+      "note": "The shared collaboration contract exposes the same bounded read-grounded handoff decision point to MCP and CLI consumers."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.25 with collaboration contract 2026-09-12.1."
+      "note": "Plugin and Skill manifests advance together to 1.7.26 with collaboration contract 2026-09-13.1."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "The existing CLI upload bridge and Local Agent Import authority remain unchanged."
+      "note": "The CLI command surface remains compatible and receives the updated shared collaboration contract from the server."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts"],
-      "note": "Help distinguishes raw Agent-history import from reviewed projections and explains bounded inspection before a mechanical large-file upload."
+      "paths": ["frontend/src/lib/help/publicMcpHelpContent.ts"],
+      "note": "MCP Help explains that materially grounding a result should return the smallest safe canonical reader links for verification or continuation."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": ["packaging/corvio-agent-skills/README.md"],
-      "note": "Package guidance mirrors the same large-file and history-projection boundary; the compact Claude hook remains unchanged."
+      "note": "Package guidance mirrors the bounded canonical-link return rule; the compact Claude hook remains unchanged."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["backend/scripts/build_codex_conversation_corpus.py", "backend/scripts/run_agent_host_journey_suite.py", "backend/scripts/scenario_suites/external_agent_work_model_longitudinal_v1.json", "backend/scripts/scenario_suites/external_agent_longitudinal_fixture_manifest_v1.json", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/reference/cursor-harness/PRODUCT_VALUES.md", "docs/reports/agent-collaboration-work-model-longitudinal-30-case-plan-2026-09-12.md", "docs/logbook/entries/2026-09-12/225503-reviewed-history-corpus-coverage-and-work-model.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The longitudinal archive gate now uses a hash-bound reviewed projection and tests the same retrieval, Work Model and Skill loop without weakening raw Host-history privacy."
+      "paths": ["backend/scripts/run_agent_host_journey_suite.py", "backend/scripts/collect_agent_host_journeys.py", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/reports/agent-collaboration-work-model-longitudinal-30-case-plan-2026-09-12.md", "docs/logbook/entries/2026-09-13/021000-host-continuity-evidence-lanes.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The longitudinal Harness separates same-Host baselines from explicit cross-Host portability and records the two Claude link-return misses as behavioral evidence."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "The official package publication is first-party; the two-host fresh acceptance matrix remains runtime evidence and WorkBuddy is outside this cycle."
+      "note": "The official package publication is first-party; external directory review and full independent Claude longitudinal acceptance remain separate evidence."
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_build_codex_conversation_corpus.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "frontend/src/lib/developerSkillPackage.test.ts"],
-      "note": "Focused tests cover Host-envelope exclusion, access-code redaction, reviewed fixture provenance, package metadata and the next fresh J4 trigger."
+      "paths": ["backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts"],
+      "note": "Focused tests cover evidence-lane attribution, the bounded reader-link instruction, shared contract metadata and package version parity."
     }
   }
 }

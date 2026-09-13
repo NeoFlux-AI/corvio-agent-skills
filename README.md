@@ -30,6 +30,8 @@ explicit user constraints, and only authority facts needed to prevent a wrong id
 do not turn them into an outline, content-level edit checklist, taxonomy, titles, artifact count, sole leaf target from current visibility,
 or internal Corvio plan when the user left those choices open. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
+For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
+verify or continue the work; do not dump every source link or expose private/internal URLs.
 
 ## Skill-only install
 
