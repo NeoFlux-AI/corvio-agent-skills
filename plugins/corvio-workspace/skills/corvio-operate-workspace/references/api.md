@@ -239,21 +239,24 @@ corvio projects list --json --no-input
 corvio projects create --title "Launch Research" --json --no-input
 corvio docs create --title "Decision brief" --parent-node-id <project_node_id> \
   --file decision-brief.md --json --no-input
-corvio docs get <document_id> --output launch-plan.md --json --no-input
-corvio docs table-read <document_id> --limit 50 --json --no-input
-corvio docs table-mutate <document_id> --input table-change.json \
+corvio docs get <workspace_id/document_id> --output launch-plan.md --json --no-input
+corvio docs table-read <workspace_id/document_id> --limit 50 --json --no-input
+corvio docs table-mutate <workspace_id/document_id> --input table-change.json \
   --operation-id <stable_operation_id> --change-summary "Updated the requested rows." --yes --json --no-input
-corvio docs update <document_id> --file launch-plan.md \
+corvio docs update <workspace_id/document_id> --file launch-plan.md \
   --expected-revision <revision> --change-summary "Updated launch risks." --json --no-input
-corvio docs move <document_id> --parent-node-id <project_node_id> \
+corvio docs move <workspace_id/document_id> --parent-node-id <project_node_id> \
   --json --no-input
 corvio docs list --lifecycle archived --json --no-input
-corvio docs restore <document_id> --yes --json --no-input
+corvio docs restore <workspace_id/document_id> --yes --json --no-input
 ```
 
 Reuse a proven Project before creating another owner. Preserve both Page and Tree node identity. Read before mutation and after settlement;
 on revision conflict, reconcile current content instead of overwriting. Agent-authored updates require `change_summary` and a visible
-comment receipt. Direct Page writes use canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
+comment receipt. First-party CLI document commands accept the canonical `workspace_id/document_id` handle returned by Corvio as
+well as a bare document ID. Prefer the canonical handle for continuation; the CLI validates its Workspace prefix locally and must not
+recover from a mismatch by listing unrelated documents or probing another Workspace.
+Direct Page writes use canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
 a rich-table write, and never flatten
 Spreadsheet, Presentation, Code, or HTML Artifact state into Markdown as if lossless.
 
