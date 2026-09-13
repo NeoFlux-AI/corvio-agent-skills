@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.34`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.9`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.36`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.11`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -173,13 +173,17 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 - When a newly finalized Asset should enter a Work Model, reconcile affected owners, or be evaluated for a Project Skill, call
   `organize_files` directly and poll its one operation. This branch takes precedence over asking Corvio to edit one currently visible
   Page: the organization mission owns source preparation, affected-owner analysis, and retry/resume. Do not submit one or more `ask_corvio`
-  Questions merely to wait for that source or then reconstruct its whole result in the host.
+  Questions before or after it for the same source set, merely to edit one visible leaf, wait for readiness, or reconstruct its result in
+  the host. `target_root_node_id` is optional and accepts only a Project `node_id` returned by `list_projects` (or fetch metadata whose
+  `doc_type=project`); never substitute a canonical Page/document UUID or a non-Project leaf node. Omit it when the Project is not known.
 - For a bounded cross-source answer or typed Spreadsheet/Presentation/Code/HTML result that does not need source-to-Work-Model
   reconciliation, call `ask_corvio`; poll `get_question` and consume its sources, artifacts, operations, links, and requested
   processing/knowledge policy receipt.
-- A new narrative result: call `create_document`. For an existing result with no new owner-bearing source to reconcile, fetch its current
-  revision. Use `append_document` for a true
-  append and direct `update_document` only when replacing the whole body is itself the smallest faithful change. When a large current Page
+- A new narrative result: call `create_document`. Direct body writes target non-Project Pages, not a Project structure container: use
+  `organize_files` or `ask_corvio` for Project front-door / Work Model maintenance, or create/update a child Page. A title-only Project
+  rename remains valid. For an existing Page with no new owner-bearing source to reconcile, fetch its current revision. Use
+  `append_document` for a true append and direct `update_document` only when replacing the whole body is itself the smallest faithful change.
+  When a large current Page
   needs localized semantic edits, reordering, splicing, or formatting, delegate the natural edit goal plus its canonical handle to
   `ask_corvio` so Corvio's Writer can preserve unchanged source-backed spans and mutate the smallest sufficient neighborhood; do not
   round-trip and regenerate the whole Page through the host merely because `update_document` accepts Markdown.

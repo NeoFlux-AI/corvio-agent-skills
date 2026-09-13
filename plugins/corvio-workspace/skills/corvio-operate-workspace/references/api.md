@@ -54,8 +54,10 @@ After terminal completion, consume `artifact.url` or `links.primary_artifact` ve
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
 
 A newly finalized Asset that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to
-one `organize_files` operation. That Mission owns source preparation and retry/resume; do not submit duplicate `ask_corvio` Questions to
-wait for readiness. Keep `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
+one `organize_files` operation. That Mission owns source preparation, affected-owner updates and retry/resume; do not submit an
+`ask_corvio` Question before or after it for the same source set. `target_root_node_id` accepts only a Project `node_id` returned by
+`list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
+`ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
 Do not encode file bytes as base64 in an MCP JSON call. Do not pass a local path and expect a remote server to read it. A prepared signed
 target is temporary capability, not a durable result; completion is the finalized Asset receipt and, when needed, current Asset readback.
@@ -256,7 +258,9 @@ on revision conflict, reconcile current content instead of overwriting. Agent-au
 comment receipt. First-party CLI document commands accept the canonical `workspace_id/document_id` handle returned by Corvio as
 well as a bare document ID. Prefer the canonical handle for continuation; the CLI validates its Workspace prefix locally and must not
 recover from a mismatch by listing unrelated documents or probing another Workspace.
-Direct Page writes use canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
+Direct body writes target non-Project Pages. A Project is a structure container: use `files organize` or `ask --allow-actions` for its
+front door / Work Model maintenance, or create/update a child Page; a title-only Project rename remains valid. Direct Page writes use
+canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
 a rich-table write, and never flatten
 Spreadsheet, Presentation, Code, or HTML Artifact state into Markdown as if lossless.
 
