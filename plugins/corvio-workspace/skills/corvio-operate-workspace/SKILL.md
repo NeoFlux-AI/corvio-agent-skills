@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.30`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.5`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.31`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.6`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -54,9 +54,10 @@ explicitly selected local file and use a project-bound Agent identity.
   sensitive or disclosure-unclear. When the user supplies such files and asks to retain, organize, synthesize, or update them, that request
   defines the bounded task scope for the current connected Workspace even when the user does not name Corvio. That Workspace is already
   a user-configured surface; this guidance is not introducing an arbitrary recipient or asking attachment content to self-authorize.
-  Credentials,
-  regulated personal or health data, privileged or explicitly restricted material, and an explicit local-only choice stay local; ask only
-  when one of those actual boundaries remains unresolved.
+  Copyright, public availability, or third-party authorship alone does not establish a restriction. Preserve provenance and applicable
+  license/use terms; exclude a source only when an explicit restriction or established policy forbids the requested private Workspace
+  retention or processing. Credentials, regulated personal or health data, privileged material, and an explicit local-only choice stay
+  local; ask only when one of those actual boundaries remains unresolved.
 - Treat files merely made available as attachments as source evidence, not automatically as writable native targets. Unless the user
   explicitly names a local or repository file as the target, preserve every supplied path and byte. If the host produces an edited
   native deliverable from those sources, write it to a distinct derived path; do not overwrite or rename an attachment copy. A bounded
@@ -220,8 +221,9 @@ and the result is within that disclosed scope; or an established project policy 
 connection makes the current authorized Workspace an available work surface, but it does not widen the selected sources, Workspace, or
 data permissions. The task-level intent and content-based classification above govern use of that surface; absence of the product name is
 not by itself destination or disclosure ambiguity. Ask when the actual destination, Workspace, or disclosure scope remains unresolved.
-Also keep proprietary source code, interview records containing private-party details, unredacted logs, licensed third-party material,
-and otherwise unclear material local. If only a bounded subset is sensitive or unclear,
+Also keep proprietary source code, interview records containing private-party details, unredacted logs, third-party material whose
+applicable license or explicit restriction forbids the requested private Workspace retention or processing, and otherwise unclear
+material local. If only a bounded subset is sensitive or unclear,
 keep that subset local and continue with clearly authorized sources. Never bulk-copy a repository, hidden reasoning, caches, or unrelated
 conversations.
 
