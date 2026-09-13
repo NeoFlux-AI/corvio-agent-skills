@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.33`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.8`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.34`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.9`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -36,6 +36,10 @@ explicitly selected local file and use a project-bound Agent identity.
 - If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
   make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
   instead of fanning out across unrelated documents or inventing which project the user meant.
+- If the host supplies exact continuation handles from prior work, they are the current subject boundary unless the user explicitly
+  changes subject. Read the narrowest relevant Page or Project handle before broad Workspace search. A lexical match outside that owner is
+  only a candidate: do not let it silently redefine the subject or fill an evidence gap. If the current owner does not support the requested
+  claim, say what is unsupported and what evidence is missing; broaden only when the user asks or the owner itself points to a related source.
 - When the user asks where or how people should continue, treat that as a continuation handoff rather than a request to list everything.
   Read current authority and return a compact map: the canonical current owner, only the next-useful leaves with their semantic roles and
   current revisions when returned, any reusable Skill that changes the future work, and the remaining unresolved checkpoint. Do not dump

@@ -32,6 +32,9 @@ or internal Corvio plan when the user left those choices open. Poll to terminal,
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
+When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior
+subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
+context or fill a gap the current owner does not support.
 
 ## Skill-only install
 
