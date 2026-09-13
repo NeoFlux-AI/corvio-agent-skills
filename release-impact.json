@@ -1,45 +1,45 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.29",
-  "contract_revision": "2026-09-13.4",
+  "release_version": "1.7.30",
+  "contract_revision": "2026-09-13.5",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Route each newly finalized Work Model source through one organization Mission, propagate the selected Workspace into Host reads and CLI subprocesses, and prevent duplicate readiness Questions or host-side whole-result reconstruction.",
+  "change_summary": "Preserve a compact current owner, leaf, Skill, revision, and unresolved-boundary map when a user asks where or how to continue, without expanding ordinary answers or dumping a Project.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The shared Skill and API reference make source-to-owner reconciliation the precedence branch and reserve ask_corvio for bounded work outside that lifecycle."
+      "note": "The shared Skill extends the existing terminal receipt contract to explicit read-only continuation handoffs while preserving the ordinary smallest-link counter-boundary."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/api/public_v1/mcp_routes.py"],
-      "note": "The shared contract and MCP descriptions expose one-Mission source preparation, owner reconciliation, Skill evaluation and retry ownership."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py"],
+      "note": "The shared contract and compact MCP instructions expose the current-map handoff without adding a new tool or semantic classifier."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.29 with collaboration contract 2026-09-13.4."
+      "note": "Plugin and Skill manifests advance together to 1.7.30 with collaboration contract 2026-09-13.5."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "The CLI already documents the direct organize_files route; the Host now supplies CORVIO_WORKSPACE_ID process-locally so no persisted selection mutation is required."
+      "note": "CLI commands and package bytes are unchanged; collaboration status consumes the server-owned 2026-09-13.5 freshness contract."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts"],
-      "note": "Localized Help guidance distinguishes new-source Work Model reconciliation from bounded ask_corvio work."
+      "paths": ["frontend/src/lib/i18n/developerPublicContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts"],
+      "note": "Localized Developer and MCP Help explain compact continuation maps and their no-link-dump boundary."
     },
     "package_setup": {
-      "disposition": "changed",
-      "paths": ["packaging/corvio-agent-skills/README.md"],
-      "note": "The package README mirrors the one-Mission decision order; the compact Claude hook remains compatible because the bundled Skill carries the detailed policy."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Package setup is unchanged; the bundled Skill and shared contract carry the continuation behavior."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/reference/cursor-harness/PROMPT_WRITING.md", "docs/reference/cursor-harness/TESTING_HARNESS.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/reports/agent-collaboration-work-model-longitudinal-30-case-plan-2026-09-12.md", "docs/logbook/entries/2026-09-13/092000-agent-host-source-route-and-workspace-scope.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The J1T3 failure is retained as trigger evidence; the mainline records route precedence, Workspace scoping and semantic acceptance boundaries."
+      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/logbook/entries/2026-09-13/103000-read-only-continuation-map.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
+      "note": "The two unchanged J1T6 failures remain trigger evidence; the mainline records the read-only continuation scope and transfer/countercase gates."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -48,8 +48,8 @@
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_agent_host_longitudinal_portfolio.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts"],
-      "note": "Changed focused tests cover exact Host read arguments, process-local Workspace routing, route precedence, MCP descriptions, localized guidance and package parity; the unchanged CLI compatibility suite also passes, and live J1T3 remains the effect-level gate."
+      "paths": ["backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/i18n/developerPublicContent.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts"],
+      "note": "Focused guards cover the shared Skill, contract, compact MCP instruction budget, localized Help and package parity; unchanged J1T6 plus transfer and countercase effects remain the live gate."
     }
   }
 }

@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.29`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.4`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.30`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.5`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -36,6 +36,10 @@ explicitly selected local file and use a project-bound Agent identity.
 - If a vague reference such as “this,” “the two options,” or “last time” has no handle, selected file, or other subject-bearing context,
   make one bounded search for a recent likely owner. When that produces multiple plausible owners, ask one small clarifying question
   instead of fanning out across unrelated documents or inventing which project the user meant.
+- When the user asks where or how people should continue, treat that as a continuation handoff rather than a request to list everything.
+  Read current authority and return a compact map: the canonical current owner, only the next-useful leaves with their semantic roles and
+  current revisions when returned, any reusable Skill that changes the future work, and the remaining unresolved checkpoint. Do not dump
+  unrelated Project nodes or add revision metadata to an ordinary answer when it neither helps continuation nor verifies a durable effect.
 - When the current turn includes a coherent set of user-provided files, interpret the whole task before choosing a transient or local-only
   path. Related ordinary files whose facts, decisions, evidence, or changes need sorting into a usable whole are a continuing-retrieval
   body of work by default; the user need not name Corvio, sharing, or a future use. Unless the request has an explicit FYI,
