@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.28`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.3`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.29`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.4`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -122,8 +122,9 @@ source under the same disclosure rules; its carrier extension alone does not mak
    directly through `source_asset_id`. When one coherent standalone Markdown document is meant to remain useful for future reading,
    preserve its existing hierarchy in one reader Page rather than forcing a multi-page tree. Asset-only retention is sufficient when the
    user explicitly wants only the raw/exact original or an additional reader has no continuing value. For other formats or semantic
-   transformation, use `ask_corvio` or `organize_files` to produce the appropriate Page, Spreadsheet, Presentation, Code, HTML Artifact,
-   or reader layer. Do not promise lossless direct Page conversion for every file type.
+   transformation, choose the semantic owner below: `organize_files` maintains a Work Model from newly retained evidence, while
+   `ask_corvio` answers or produces a bounded artifact when no source-to-owner reconciliation is required. Do not promise lossless direct
+   Page conversion for every file type.
 3. **Organize related evidence.** Run one `organize_files` mission over a coherent Asset set when structure, synthesis, or future retrieval
    matters; poll `get_file_operation` to terminal and inspect source reconciliation plus any output document. If the exact source set was
    already organized, read back its current Project and at least one current reader output instead of creating a duplicate. Exact-source
@@ -160,9 +161,15 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 
 - Unknown prior material: call MCP `search`; use `workspace_scope=all_authorized` only when the selected Workspace may be stale or the
   user asks across Workspaces. Fetch a full document only when it can change the work.
-- Cross-source synthesis or a typed Spreadsheet/Presentation/Code/HTML result: call `ask_corvio`; poll `get_question` and consume its
-  sources, artifacts, operations, links, and requested processing/knowledge policy receipt.
-- A new narrative result: call `create_document`. For an existing result, fetch its current revision. Use `append_document` for a true
+- When a newly finalized Asset should enter a Work Model, reconcile affected owners, or be evaluated for a Project Skill, call
+  `organize_files` directly and poll its one operation. This branch takes precedence over asking Corvio to edit one currently visible
+  Page: the organization mission owns source preparation, affected-owner analysis, and retry/resume. Do not submit one or more `ask_corvio`
+  Questions merely to wait for that source or then reconstruct its whole result in the host.
+- For a bounded cross-source answer or typed Spreadsheet/Presentation/Code/HTML result that does not need source-to-Work-Model
+  reconciliation, call `ask_corvio`; poll `get_question` and consume its sources, artifacts, operations, links, and requested
+  processing/knowledge policy receipt.
+- A new narrative result: call `create_document`. For an existing result with no new owner-bearing source to reconcile, fetch its current
+  revision. Use `append_document` for a true
   append and direct `update_document` only when replacing the whole body is itself the smallest faithful change. When a large current Page
   needs localized semantic edits, reordering, splicing, or formatting, delegate the natural edit goal plus its canonical handle to
   `ask_corvio` so Corvio's Writer can preserve unchanged source-backed spans and mutate the smallest sufficient neighborhood; do not
@@ -183,12 +190,9 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
   completeness, and truncation receipt; do not create a durable Question merely to read a file, and do not infer unseen rows, sheets,
   slides, or sections. Use `ask_corvio.asset_ids` only when Corvio should perform broader synthesis or document work. Retention alone does
   not make an unrelated question consume the file.
-- A coherent Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
+- A coherent existing Asset set that should become structured, searchable project context: call `organize_files`, then poll `get_file_operation`.
   Read its `output_document` link and `skills_evaluation`; when a Skill qualifies, preserve its candidate identity and typed resource
   receipts. When none qualifies, report `evaluated_no_qualifying_skill` without manufacturing one.
-- When a newly finalized Asset should enter a Work Model, reconcile affected owners, or be evaluated for a Project Skill, call
-  `organize_files` directly. Do not submit one or more `ask_corvio` Questions merely to wait for source processing; `organize_files`
-  owns source preparation, and its terminal receipt is the retry/resume boundary.
 
 ## Resolve authority before writing
 

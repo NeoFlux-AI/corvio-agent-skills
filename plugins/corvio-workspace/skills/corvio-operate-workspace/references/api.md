@@ -49,8 +49,13 @@ For `ask_corvio`, send the user's natural outcome plus complete decision-relevan
 delegation into an invented taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
+
 | Upload/download by local path, sync Markdown, or run a project Agent | CLI | Foreground local/project authority |
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
+
+A newly finalized Asset that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to
+one `organize_files` operation. That Mission owns source preparation and retry/resume; do not submit duplicate `ask_corvio` Questions to
+wait for readiness. Keep `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
 Do not encode file bytes as base64 in an MCP JSON call. Do not pass a local path and expect a remote server to read it. A prepared signed
 target is temporary capability, not a durable result; completion is the finalized Asset receipt and, when needed, current Asset readback.
