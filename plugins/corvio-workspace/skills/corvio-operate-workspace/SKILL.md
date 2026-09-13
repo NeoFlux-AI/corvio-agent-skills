@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.32`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.7`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.33`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -259,8 +259,9 @@ manifest or host package list for the installed version. Report `unknown` rather
 For a Claude/Cowork `<name>@synced`, direct-upload, shared, or organization-managed Plugin/Skill, preserve Claude's ownership boundary and
 give the exact Customize/publisher/admin action; do not claim a Cowork task updated account-owned bytes. A marketplace-installed Claude
 Code Plugin uses its marketplace/plugin update flow. A direct-archive standalone Skill is refreshed by rerunning the same
-`npx skills add` command in the same scope; use `skills update` only for an update-tracked source. Check the optional CLI separately with
-`corvio update check`. After a package or compatible MCP change, start a fresh host session or reload tools; reauthorize only for new OAuth
+`npx skills add` command in the same scope; use `skills update` only for an update-tracked source. `corvio capabilities --json --no-input`
+reads Corvio API capability/compatibility facts without contacting npm; check the optional CLI package separately with the explicit
+registry-backed `corvio update check`. After a package or compatible MCP change, start a fresh host session or reload tools; reauthorize only for new OAuth
 scopes or stale authorization. CLI and Skill upgrades never widen an existing OAuth grant and never require Workspace-data migration.
 
 `get_collaboration_contract.connection` reports only the current remote MCP principal, scopes, and advertised tools. `corvio

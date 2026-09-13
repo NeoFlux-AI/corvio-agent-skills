@@ -80,7 +80,8 @@ update action; Claude's `@synced` label means newest in that Claude account, not
 - A WorkBuddy Skill under `~/.workbuddy/skills/corvio-operate-workspace/` remains a manual host copy until a reviewed marketplace listing
   exists. Inspect it read-only with `corvio collaboration status --provider workbuddy --json --no-input`; replace it through WorkBuddy's
   Skills UI and start a fresh conversation when an update is required.
-- `corvio update check --json --no-input` checks only the `@corvio/cli` executable. It never updates the CLI or Skill automatically.
+- `corvio capabilities --json --no-input` reads Corvio API capability/compatibility facts without contacting npm. `corvio update check
+  --json --no-input` is the explicit registry-backed check for the `@corvio/cli` executable; it never updates the CLI or Skill automatically.
 - Remote MCP is server-delivered. Compatible changes normally need only a fresh host session/tool refresh; new OAuth scopes require
   reauthorization.
 
