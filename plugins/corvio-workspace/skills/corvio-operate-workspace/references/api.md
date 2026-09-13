@@ -252,6 +252,10 @@ comment receipt. Direct Page writes use canonical Markdown and ordinary pipe tab
 a rich-table write, and never flatten
 Spreadsheet, Presentation, Code, or HTML Artifact state into Markdown as if lossless.
 
+Projects are root-level grouping owners and cannot be moved under another Project. `docs move` accepts a non-Project document and a
+Project destination; a Project source fails with `project_nesting_disabled`. For a deeper Work Model, delegate the natural organization
+goal to `files organize` or `ask --allow-actions` so Corvio can create evidence-backed branch Pages and leaves without empty hierarchy.
+
 For an originating task/feedback surface, use `corvio agent closeout --document-id <id> [--thread-id <id>] --body <verified_result>
 [--status open|resolved] --json --no-input`. Mentioned people/Agents must first be resolved through
 `corvio agent mentions --document-id <id>`; display text, email addresses, and package names are not stable principals.

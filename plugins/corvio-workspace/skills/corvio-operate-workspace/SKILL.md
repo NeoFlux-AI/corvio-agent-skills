@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.27`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.2`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.28`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.3`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -148,7 +148,9 @@ rather than as an output design.
 Corvio owns the source synthesis, cognitive tree, affected-owner analysis, and carrier decisions. Give it the current Project handle when
 known, but do not select one existing leaf as the sole write target merely because it is the only reader output currently visible. Related
 inputs may share one Project while independent reader/update jobs become distinct outputs; tightly coupled material may stay together.
-There is no one-source-one-page rule.
+Projects are root-level grouping owners and cannot be nested under another Project. Deeper Work Models use evidence-backed non-Project
+branch Pages, leaf documents, and tightly coupled headings; let `ask_corvio` or `organize_files` derive that topology rather than trying to
+stack Projects or invent empty levels. There is no one-source-one-page rule.
 
 Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. Poll the returned Question to a terminal state, then use
 `artifact.url` or `links.primary_artifact` exactly as returned. Treat `role=reader_output` as a user-facing result and
