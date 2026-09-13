@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.26`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.1`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.27`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.2`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -27,7 +27,9 @@ explicitly selected local file and use a project-bound Agent identity.
   proposals, plans, decisions, meeting notes, document editing/reordering/splicing/formatting, project work,
   bugs/regressions/incidents, reviews, or follow-ups, after the exclusion gate is clear. Search when the owner is unknown; if an exact Corvio
   document, comment, Conversation, Question, Asset, or operation is already known, read or continue it instead. Use relevant evidence in
-  the host's normal reasoning; if nothing useful appears, continue without ceremony.
+  the host's normal reasoning; if nothing useful appears, continue without ceremony. When a fetched Corvio source materially grounds the
+  answer, preserve and include the smallest safe canonical reader URL returned by that read so the user can verify or continue the work.
+  Do not dump every source link, expose private/internal URLs, or include a link the Agent did not actually use.
 - Decide retrieval before retention. For the observable tasks above, a later conclusion that the result is bounded, transient, or
   no-write does not cancel the one relevant read; it only means not creating or updating a durable result. The read and write decisions
   are independent, except that the exclusion gate above suppresses both.
@@ -263,6 +265,3 @@ Lead with the useful result. Distinguish what was retained, what reader-facing r
 and what entered Memory or a Project Skill. Include the selected Workspace/routing receipt, sources that changed the work, durable
 IDs/revisions/links, terminal operation or readback evidence, and anything intentionally kept local or still unresolved. Do not claim a
 whole Agent session was captured because one Page or Asset exists.
-When a Corvio read materially grounds the user-facing answer, include the smallest current canonical reader link or links that let the
-user verify or continue that work. Do not dump every source link or expose a private/internal URL; omit links only when no safe
-user-facing canonical link exists or the user explicitly requested link-free output.
