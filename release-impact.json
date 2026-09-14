@@ -1,55 +1,55 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.38",
-  "contract_revision": "2026-09-13.13",
+  "release_version": "1.7.39",
+  "contract_revision": "2026-09-14.15",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Return an executable retry cadence for every non-terminal Question operation so external hosts wait once instead of spending model turns on tight polling.",
+  "change_summary": "Make broad research and substantive deliverables activate Corvio before host routing, publish WorkBuddy selective MCP loading and transport checks, and give users one plain-language installation trust and OAuth decision.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The Skill already owns foreground waiting on retry_after_seconds; its discovery description is corrected to retain configured Corvio authority without the over-broad connected Workspace phrase."
+      "note": "The discovery prefix covers external research and substantive deliverables without prior material, while install and update handling explains value, source, permissions, one informed decision, safety boundaries and terminal readback."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/api/public_v1/mcp_routes.py", "backend/app/application/developer_platform/coding_agent_collaboration.py", "frontend/src/lib/developerSkillPackage.ts"],
-      "note": "ask_corvio and get_question now expose retry_after_seconds=30 while queued or running and omit it at terminal state."
+      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "frontend/src/lib/developerSkillPackage.ts", "packaging/mcp-registry/server.json"],
+      "note": "Remote MCP initialization and the machine-readable package contract share the safety, pre-plan read, host continuation, substantive retention, readback and installation-trust story."
     },
     "package_manifests": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"],
-      "note": "Plugin and Skill manifests advance together to 1.7.38 with collaboration contract 2026-09-13.13."
+      "paths": ["frontend/Dockerfile", "frontend/Dockerfile.dockerignore", "frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json", "packaging/corvio-agent-skills/transport-constraints.json", "packaging/corvio-agent-skills/workbuddy-mcp.json"],
+      "note": "Skill and Plugin manifests advance together to 1.7.39; archives and the isolated frontend image carry transport constraints, WorkBuddy selective loading, provenance and trust metadata."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Workspace/Admin CLI 0.1.0-beta.31 consumes live contract discovery; it does not poll Remote MCP Question operations itself."
+      "note": "Workspace/Admin CLI behavior and release version are unchanged; the CLI reads the live collaboration contract and already separates package freshness from current-session loading."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicMcpHelpContent.ts", "packaging/corvio-agent-skills/README.md"],
-      "note": "Public MCP Help and package guidance tell hosts to honor the returned retry floor before polling the same operation."
+      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts", "frontend/src/app/llms.txt/route.ts", "frontend/src/lib/i18n/mcpAuthorizationContent.ts", "packaging/corvio-agent-skills/README.md", "packaging/corvio-agent-skills/SECURITY.md"],
+      "note": "Three-language guides lead with scenarios and value, document WorkBuddy's host-owned deferred-loading boundary, disclose package and OAuth boundaries, and give installation Agents one informed-decision sequence without bypassing policy stops."
     },
     "package_setup": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "OAuth, MCP endpoint and package installation steps are unchanged."
+      "disposition": "changed",
+      "paths": ["packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md", "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh", "scripts/export-official-agent-skills.sh", "scripts/validate-agent-skill-transport.py"],
+      "note": "Setup and SessionStart carry the broad trigger plus trust boundary, and package export rejects descriptions above the named transport limit before publication."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/logbook/entries/2026-09-13/234500-question-operation-poll-cadence.md", "docs/logbook/weekly/2026-09-07_to_2026-09-13.md"],
-      "note": "The owning RFCs and logbook preserve the result-contract drift, generic cadence repair and trigger/transfer/countercase boundary."
+      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/reports/corvio-workbuddy-cowork-activation-historical-audit-2026-09-14.md", "docs/logbook/entries/2026-09-14/063000-agent-installation-trust-and-value.md", "docs/logbook/entries/2026-09-14/072634-workbuddy-cowork-activation-mainline.md", "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"],
+      "note": "The historical audit preserves earlier activation lessons, records the superseded WorkBuddy loading assumption, and joins activation, trust, consent, package and OAuth boundaries, and per-host acceptance in one mainline."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "The official package publication is first-party; external directory review and independent Claude longitudinal acceptance remain separate evidence."
+      "note": "First-party provenance and hashes are reviewable, but WorkBuddy Marketplace and Claude directory acceptance plus fresh independent host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "developer-cli/tests/commands.test.mjs", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts"],
-      "note": "Focused tests cover queued/running retry hints, terminal omission, bounded tool descriptions, discovery wording and distribution parity; unchanged live J3T4 replay remains the effect gate."
+      "paths": ["backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "backend/tests/unit/test_alembic_revision_graph.py", "developer-cli/tests/commands.test.mjs", "frontend/e2e/developer-platform-public-smoke.spec.ts", "frontend/src/app/(app)/app/mcp/authorize/page.source.test.ts", "frontend/src/app/llms.txt/route.test.ts", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts", "scripts/tests/test_release_agent_skills.sh"],
+      "note": "Focused tests cover broad triggers, WorkBuddy eager entries, the 1,024-character admission gate, Docker context, archive parity, contract convergence, OAuth scope labels, static-hook boundaries, three-locale Help and explicit-confirmation behavior; fresh external host use remains pending."
     }
   }
 }

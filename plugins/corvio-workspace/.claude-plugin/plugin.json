@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.38",
-  "description": "Retain and organize useful attachments, search prior team work, and preserve reusable results through Corvio OAuth MCP.",
+  "version": "1.7.39",
+  "description": "Help Claude ground research, reports, plans, project work, document edits, and reusable deliverables in an authorized Corvio Workspace through OAuth.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai"

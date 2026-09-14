@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "corvio": {
+      "type": "http",
+      "url": "https://api.corvio.ai/mcp",
+      "description": "For research, reports, plans, decisions, project work, document edits, and substantive deliverables: search Corvio before planning and use ask_corvio for delegated synthesis or durable results.",
+      "defer_loading": true,
+      "tools": {
+        "search": {
+          "defer_loading": false
+        },
+        "ask_corvio": {
+          "defer_loading": false
+        }
+      }
+    }
+  }
+}

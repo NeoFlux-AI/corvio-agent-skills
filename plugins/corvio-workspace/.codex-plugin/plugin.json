@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.38",
-  "description": "Retain and organize useful attachments, search prior team work, and preserve reusable results through Corvio OAuth MCP.",
+  "version": "1.7.39",
+  "description": "Help your Agent ground research, reports, plans, project work, document edits, and reusable deliverables in an authorized Corvio Workspace through OAuth.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai",
@@ -35,9 +35,9 @@
     "privacyPolicyURL": "https://corvio.ai/privacy",
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
-      "For research, reporting, planning, decision, meeting-note, project, or debugging work, begin with one relevant Corvio read; continue normally if there is no match.",
+      "For any research, reporting, planning, decision, meeting-note, project, debugging, document-editing, or substantive-deliverable work, begin with one relevant Corvio read even without prior material; continue normally if there is no match.",
       "Retain user-provided files that should stay useful and organize coherent sets into a maintainable Work Model before treating a derived summary as complete.",
-      "Turn this valuable result into the right durable Corvio artifact and preserve its source lineage.",
+      "Treat a substantive authorized deliverable as worth saving unless the user makes it transient or local-only; read back the durable result and return its canonical link.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
     ],
     "brandColor": "#12351D"

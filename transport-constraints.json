@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "skill_frontmatter_description_max_characters": 1024,
+  "workbuddy": {
+    "official_docs_checked_at": "2026-09-14",
+    "defer_loading_documentation": "https://www.workbuddy.ai/docs/zh/cli/mcp#延迟加载-defer-loading",
+    "eager_entry_tools": ["search", "ask_corvio"]
+  }
+}

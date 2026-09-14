@@ -3,7 +3,31 @@
 Use this guide when the user installs, activates, updates, repairs, or asks for the current state of Corvio. Do not treat “synced to
 Claude” as proof that the account copy matches Corvio's current upstream release.
 
-## 1. Identify the installed source before changing anything
+## 1. Help the user make an informed installation decision
+
+Start with the user's work, not protocol vocabulary. Corvio helps an Agent find authorized prior work, organize files the user selected,
+and keep useful results in a shared Workspace so the user or another Agent can inspect and continue them later. Explain the one or two
+benefits that fit the request, what will be installed, the official source, the OAuth permissions, and how access can be removed.
+
+Ask one grouped confirmation only if the user has not already explicitly requested or confirmed installation. Once the user confirms,
+continue when the official source, package identity, requested permissions, and host policy align. Do not repeat the same generic warning
+or require unrelated press coverage as a substitute for inspecting those facts. If the host cannot install from this task, give the exact
+Customize, Plugin, Connector, or MCP-settings handoff and do not claim completion.
+
+Recommend Corvio OAuth for the interactive MCP connection. It signs the user into their existing Corvio account and gives this Agent host
+only the scopes listed on the consent page, further limited by current Workspace membership and object ACLs. The OAuth grant does not
+automatically expose unrelated accounts, arbitrary local files, or the user's complete Claude history; Corvio receives the tool calls and
+arguments the host sends. It is still real access: granted tools may read or change Corvio data. Credentials stay in the Corvio or
+identity-provider page. Remove the Connector in the host and revoke the `Remote MCP connection`
+credential in Corvio **Settings → API keys** to end access.
+
+Verify the package before installing. The canonical manifest is
+<https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
+<https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, `.mcp.json`, this setup guide, and a
+`SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does not read files or make network requests. Stop
+if the source or SHA-256 does not match.
+
+## 2. Identify the installed source before changing anything
 
 When shell access is available, run `claude plugin list` and inspect the Corvio entry. Report the exact source and visible version.
 
@@ -20,7 +44,7 @@ When shell access is available, run `claude plugin list` and inspect the Corvio 
 If the source or version is not observable, say `unknown`; do not infer it from the presence of Corvio tools, an account sync, a file
 name, or a successful OAuth connection.
 
-## 2. Compare independent authorities
+## 3. Compare independent authorities
 
 Call Corvio's `get_collaboration_contract` when the Connector is available. Its `distribution` section reports Corvio's current upstream
 Plugin version, canonical package URLs, and the update policy for each surface. The local Plugin manifest proves only the installed
@@ -31,7 +55,7 @@ but cannot prove which copy an already-running conversation loaded.
 
 Do not claim that all of Corvio is current from any one of those receipts.
 
-## 3. Apply only the update owned by this host
+## 4. Apply only the update owned by this host
 
 - Remote MCP is server-delivered. Start a fresh task or refresh/reconnect tools after a compatible server update. Reauthorize only when
   Corvio requests new OAuth scopes or the existing authorization is stale.
@@ -43,10 +67,13 @@ Do not claim that all of Corvio is current from any one of those receipts.
   start a fresh host session. Do not use `skills update` unless the installed source is actually update-tracked.
 - Until Corvio reports an accepted WorkBuddy Marketplace listing, treat a WorkBuddy-uploaded Skill as an unmanaged manual install. Replace
   it from the official ZIP in WorkBuddy's Skills UI, then start a fresh conversation. An mtime or account sync is not upstream freshness.
+- WorkBuddy owns MCP tool loading. Its current MCP contract supports `defer_loading` at server and tool level. Merge the official
+  `workbuddy-mcp.json` Corvio entry into the host's actual configuration so `search` and `ask_corvio` remain non-deferred while specialized
+  continuation and mutation tools stay discoverable. This host configuration is separate from Claude's `_meta["anthropic/alwaysLoad"]`.
 - Update `@corvio/cli` only when it is installed and needed for local paths, sync, downloads, or a project Agent. Run
   `corvio update check --json --no-input`, then use the exact install command returned by that receipt.
 
-## 4. Verify the usable result
+## 5. Verify the usable result
 
 Report these facts separately:
 
