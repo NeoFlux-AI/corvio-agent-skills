@@ -5,13 +5,13 @@
     "email": "support@corvio.ai"
   },
   "metadata": {
-    "description": "Official Corvio Agent Skills for finding prior work and preserving reusable results.",
-    "version": "1.7.39"
+    "description": "Official Corvio Agent Skills for private prior-work search, source-aware work, and user-approved reusable results.",
+    "version": "1.7.40"
   },
   "plugins": [
     {
       "name": "corvio-workspace",
-      "description": "Ground any research, report, plan, decision, project, document edit, or substantive deliverable with Corvio; no prior material or Corvio mention is required.",
+      "description": "Search the user's Corvio Workspace for relevant prior work, ask on conflicts, and confirm before saving an ordinary deliverable.",
       "source": "./plugins/corvio-workspace",
       "strict": false
     }

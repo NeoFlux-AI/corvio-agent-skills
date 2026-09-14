@@ -1,7 +1,7 @@
 interface:
-  display_name: "Corvio Team Knowledge"
-  short_description: "Find prior work and preserve reusable results"
-  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow for any research, report, comparison, proposal, plan, decision, review, project/debug task, document edit, or substantive deliverable, even without prior material or a Corvio mention. After the safety gate, read Corvio once before planning, continue normally if nothing helps, and preserve substantive authorized results with terminal readback and a canonical reader link."
+  display_name: "Corvio Research & Team Knowledge"
+  short_description: "Search prior work; ask before saving deliverables"
+  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow for research, reports, plans, project work, document edits, and substantive deliverables. After the safety gate, silently search Corvio once before planning. Ask me when sources conflict. Do not upload or write from a normal deliverable request alone: use my explicit request or a user-owned standing preference, otherwise deliver normally and ask once whether to save the specific result. Read back approved effects and return the canonical link."
 dependencies:
   tools:
     - type: "mcp"

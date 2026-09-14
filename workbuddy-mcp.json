@@ -3,7 +3,7 @@
     "corvio": {
       "type": "http",
       "url": "https://api.corvio.ai/mcp",
-      "description": "For research, reports, plans, decisions, project work, document edits, and substantive deliverables: search Corvio before planning and use ask_corvio for delegated synthesis or durable results.",
+      "description": "For research, reports, plans, project or document work: privately search the user's Corvio Workspace before planning; ask on source conflicts and before any unrequested write. Approved results become editable, shareable, reusable knowledge.",
       "defer_loading": true,
       "tools": {
         "search": {

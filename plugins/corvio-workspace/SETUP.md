@@ -21,6 +21,12 @@ arguments the host sends. It is still real access: granted tools may read or cha
 identity-provider page. Remove the Connector in the host and revoke the `Remote MCP connection`
 credential in Corvio **Settings → API keys** to end access.
 
+After installation, read and write are separate decisions. The Agent may silently search the user's authorized Corvio Workspace for a
+relevant research, report, plan, project, or document task. It should ask when sources conflict or authority is unclear. OAuth does not
+authorize automatic upload of an ordinary deliverable. Write only when the current request explicitly authorizes the stated Corvio
+action or a user-owned host Memory/Profile setting covers that class and scope. Otherwise deliver normally, explain what would be sent,
+where it would go, and why it would help, then ask once whether to save or organize it. A decline or no answer means no write.
+
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
 <https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, `.mcp.json`, this setup guide, and a

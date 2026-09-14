@@ -42,6 +42,18 @@ comparisons, proposals, plans, decisions, meeting notes, project work, debugging
 Corvio capabilities and receipts. It complements the host's normal file and tool workflow. The CLI is an additional local adapter for
 direct paths, downloads, sync, and project-Agent operation—not a replacement for MCP in hosts that support it.
 
+For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding sensitive, disclosure-unclear, and
+explicitly local-only material. It should ask when retrieved sources conflict or the governing owner is unclear. OAuth and installation
+make the user's own Workspace available; they do not create a standing preference to upload every deliverable. A current request that
+explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. A user-owned,
+host-visible Memory/Profile setting can also authorize a defined class and scope. Otherwise the Agent keeps the native result, explains
+the exact proposed Corvio action and benefit, and asks once before writing. A decline or no answer means no write.
+
+An approved Corvio result can be an editable online document and shareable collaboration link. When the approved material is a coherent
+set of fragmented sources, one organization mission can reconcile it into the user's Work Model and knowledge tree; stable preferences
+may enter the appropriate Memory and only evidence-backed reusable methods become Project Skills or Patterns. Search-call telemetry and
+dynamic Workspace/ACL state are receipts, not Memory. See the [Privacy Policy](https://corvio.ai/privacy) and [Security Policy](SECURITY.md).
+
 Codex and Claude Code plugin installs bundle the Skill and MCP configuration together. In hosts with separate Skill and MCP stores, install
 the Skill and also add `https://api.corvio.ai/mcp`; installing only one side is an incomplete collaboration setup.
 

@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.39",
-  "description": "Help your Agent ground research, reports, plans, project work, document edits, and reusable deliverables in an authorized Corvio Workspace through OAuth.",
+  "version": "1.7.40",
+  "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, resolve source conflicts, and save shareable deliverables only with user-owned consent.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai",
@@ -19,8 +19,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Corvio Workspace",
-    "shortDescription": "Search prior work first; preserve reusable results.",
-    "longDescription": "Use Corvio alongside the host's normal workflow for attached-file organization, research, reports, comparisons, proposals, plans, decisions, meeting notes, project work, debugging, reviews, and follow-ups. Retrieve authorized context, preserve original files and reusable results, and keep selected local-file access explicit.",
+    "shortDescription": "Search prior work; ask before saving results.",
+    "longDescription": "Use Corvio alongside the host's normal workflow for research, reports, plans, project work, document edits, and selected-file organization. Read-only search can run quietly; source conflicts and unrequested writes stay visible user decisions. Approved results become editable, shareable, reusable Workspace knowledge.",
     "developerName": "Corvio",
     "category": "Productivity",
     "capabilities": [
@@ -35,9 +35,10 @@
     "privacyPolicyURL": "https://corvio.ai/privacy",
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
-      "For any research, reporting, planning, decision, meeting-note, project, debugging, document-editing, or substantive-deliverable work, begin with one relevant Corvio read even without prior material; continue normally if there is no match.",
-      "Retain user-provided files that should stay useful and organize coherent sets into a maintainable Work Model before treating a derived summary as complete.",
-      "Treat a substantive authorized deliverable as worth saving unless the user makes it transient or local-only; read back the durable result and return its canonical link.",
+      "For research, reporting, planning, decision, project, debugging, or document work, make one narrow read-only Corvio search after the safety gate; continue normally if there is no match.",
+      "Ask the user when retrieved sources conflict or authority is unclear.",
+      "Do not upload or write an ordinary deliverable from OAuth availability alone. Use an explicit current request or user-owned standing preference; otherwise deliver normally and ask once whether to save the specific result.",
+      "Read back every approved durable effect and return its canonical link.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
     ],
     "brandColor": "#12351D"

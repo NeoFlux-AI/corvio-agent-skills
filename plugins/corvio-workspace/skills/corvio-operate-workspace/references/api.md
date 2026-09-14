@@ -3,6 +3,7 @@
 ## Contents
 
 - [Authority links](#authority-links)
+- [Resolve read and write authority](#resolve-read-and-write-authority)
 - [Current owner coverage](#current-owner-coverage)
 - [Choose a surface](#choose-a-surface)
 - [Bootstrap and readiness](#bootstrap-and-readiness)
@@ -35,6 +36,28 @@ need to coordinate a deliberate retry across invocations. Exact-resource follow-
 and upload finalization keeps the Workspace from the preparation receipt. `list_workspaces` returns caller-relative default/selection
 flags, disambiguated labels, and a writable recommendation without silently redirecting a write. `search(workspace_scope=all_authorized)`
 is an explicit bounded read fallback when the saved selection may be stale; it is not a write-routing shortcut.
+
+## Resolve read and write authority
+
+The user's OAuth connection authorizes the listed Corvio capabilities within current scopes, Workspace membership, and object ACLs. It
+does not create a standing preference to upload or mutate data. A normal request for a report or other deliverable authorizes the host
+result, not a Corvio write.
+
+- Read-only search may run silently after the sensitive, disclosure-unclear, and explicitly local-only exclusion. If results are clear
+  and non-conflicting, use them in the normal host loop. Ask the user before choosing among competing owners, stale decisions, or
+  materially conflicting sources.
+- A current request that explicitly says to save, upload, share, organize, synthesize, or update stated material in Corvio is bounded
+  write consent. Do not repeat the same confirmation.
+- A host-owned, user-visible Memory/Profile/setting may encode a standing preference for a defined result class and scope. Revalidate
+  live Workspace routing, OAuth scopes, ACLs, and content safety every time; dynamic Workspace state and search calls are not Memory.
+- Without either authority, deliver the host-native result first. Then explain the exact proposed content, destination if known, and
+  concrete benefit, and ask once whether to save or organize it. A decline or no answer means no write.
+- Work Model reconciliation and Memory/Skill evaluation are optional depths within an already authorized Corvio action. Do not offer a
+  generic menu or manufacture a Skill when the evidence contains no reusable method.
+
+Corvio uses the user's own account and authorized Workspace. It cannot scan arbitrary local paths or complete host-chat history. See
+the [Privacy Policy](https://corvio.ai/privacy) and public
+[Security Policy](https://github.com/NeoFlux-AI/corvio-agent-skills/blob/main/SECURITY.md).
 
 ## Choose a surface
 

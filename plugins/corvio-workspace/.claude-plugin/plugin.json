@@ -1,7 +1,7 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.39",
-  "description": "Help Claude ground research, reports, plans, project work, document edits, and reusable deliverables in an authorized Corvio Workspace through OAuth.",
+  "version": "1.7.40",
+  "description": "Help Claude privately ground research and project work in the user's Corvio Workspace, resolve source conflicts, and save shareable deliverables only with user-owned consent.",
   "author": {
     "name": "Corvio",
     "email": "support@corvio.ai"
