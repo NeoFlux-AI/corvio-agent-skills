@@ -28,7 +28,8 @@ so deterministic continuation and specialized mutation/lifecycle schemas remain 
 For delegated work, pass `ask_corvio` or `organize_files` a weak-but-complete handoff: the user's natural goal, stable source handles,
 explicit user constraints, and only authority facts needed to prevent a wrong identity or scope. Keep source-derived facts in the source;
 do not turn them into an outline, content-level edit checklist, taxonomy, titles, artifact count, sole leaf target from current visibility,
-or internal Corvio plan when the user left those choices open. Poll to terminal, then return
+or internal Corvio plan when the user left those choices open. When `ask_corvio` or `get_question` returns queued/running, wait in the
+foreground for at least `retry_after_seconds` before reading the same operation again. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.

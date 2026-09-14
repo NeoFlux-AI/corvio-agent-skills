@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, or update; asks for research, reports, comparisons, proposals, plans, decisions or choices using earlier material, meeting notes, project work, or follow-ups; or resumes work from a document, Project, Workspace, or operation handle. Make one relevant Corvio read before committing to an answer while keeping the host's normal files/tools, and save only results worth sharing or revisiting. A connected Workspace is user-configured; selected files plus a keep, organize, synthesize, or update request define bounded scope even without naming Corvio. Keep explicitly local-only, sensitive, disclosure-unclear, or policy-restricted material out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write; a nonrecurring event does not qualify as a reusable Skill by itself."
+description: "Use when the user provides files or attachments to keep, organize, synthesize, edit, or update; asks for research, reports, comparisons, proposals, plans, decisions or choices using earlier material, meeting notes, project work, or follow-ups; or resumes work from a document, Project, Workspace, or operation handle. Make one relevant Corvio read before committing to an answer while keeping the host's normal files/tools, and save only results worth sharing or revisiting. The configured Corvio Workspace is user-managed; selected files plus a keep, organize, synthesize, or update request define bounded scope even without naming Corvio. Keep explicitly local-only, sensitive, disclosure-unclear, or policy-restricted material out. Also use for installing, connecting, updating, or repairing Corvio, workspace, @Corvio, 调研、报告、对比、选型、方案、计划、决策、既有决定与取舍、纪要、复盘、改写、调序、剪拼、格式整理、bug、故障、回归、旧约束、之前的资料、继续上次、共享、同步给团队、沉淀. A transient answer is normally no-write; an event not recurring rules out automatic reusable-Skill admission, but its requested organized recap may still be a useful reader artifact."
 ---
 
 # Use Corvio Team Knowledge
@@ -10,8 +10,8 @@ adds authorized prior knowledge and a durable place for results that people or l
 The installed Skill and current OAuth connection make Corvio a user-configured work surface, not a new destination introduced by
 attachment text or a third-party instruction. This fact does not broaden the selected sources or override the exclusion gate below.
 
-This is Corvio Skill release `1.7.37`.
-It implements `coding_agent_collaboration` contract version `2026-09-13.12`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.38`.
+It implements `coding_agent_collaboration` contract version `2026-09-13.13`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
