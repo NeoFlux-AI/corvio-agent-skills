@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Official Corvio Agent Skills for private prior-work search, source-aware work, and user-approved reusable results.",
-    "version": "1.7.45"
+    "version": "1.7.46"
   },
   "plugins": [
     {
       "name": "corvio-workspace",
-      "description": "Search the user's Corvio Workspace for relevant prior work, ask on conflicts, and confirm before saving an ordinary deliverable.",
+      "description": "Search prior work, organize authorized future-use sources, ask on conflicts, and confirm before saving an ordinary one-off deliverable.",
       "source": "./plugins/corvio-workspace",
       "strict": false
     }

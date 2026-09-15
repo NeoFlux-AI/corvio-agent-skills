@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention or prior material. Corvio is the user's OAuth-connected Workspace for private search, shareable documents, collaboration, and reusable project knowledge. Before promising whether you will write, classify future reliance on selected material: it is consent for retention plus one Work Model reconciliation even without storage verbs. Do not upload, create, update, or organize from an ordinary deliverable request alone unless current-task consent or a user-owned standing preference applies; otherwise ask once whether to save. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back every approved effect and return the canonical link. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace for private search, shareable documents, collaboration, and reusable project knowledge. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation even without storage verbs. An ordinary one-off deliverable does not. Do not upload, create, update, or organize it unless a user-owned standing preference applies, and ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and return canonical links. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.45`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.5`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.46`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.6`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -29,7 +29,7 @@ wrong branch even if it reads the rest of the Skill afterward.
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | Corvio sources conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
-| The user makes selected related material an input to future work or decisions—even without saying “save,” “upload,” or “keep” | Treat that future-continuity goal as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. |
+| The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
 | The current turn already authorizes a Work Model update or relationship correction and includes user-selected attachments clearly about that same subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and topology. Do not complete only the topology through `ask_corvio` while silently leaving the related evidence local. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
@@ -37,6 +37,9 @@ wrong branch even if it reads the rest of the Skill afterward.
 
 OAuth connection is capability, not standing write preference. Never infer upload consent from installation, an available tool, an
 attachment, a successful search, or a substantive deliverable alone.
+The future-use purpose modifies the whole transformation request: phrasing such as making selected material useful for subsequent work
+is not an ordinary one-off deliverable merely because the user omitted a destination or storage verb. Resolve that branch before the
+ordinary-deliverable row. Attachment presence without this purpose or another bounded write instruction still authorizes nothing.
 Once the current task has separately authorized a bounded Work Model mutation, however, user-selected attachments whose relationship to
 that exact subject is clear are part of the same selected evidence scope. Unrelated, sensitive, disclosure-unclear, policy-restricted, or
 explicitly local-only attachments remain outside it; when relevance or disclosure is ambiguous, ask rather than broadening the write.
@@ -57,10 +60,10 @@ not automatically the durable destination for every learning. When a reusable pr
 an authorized organization action, first inspect the handle, then search in the same Project or Workspace for an existing Memory, Skill,
 or method owner before creating the narrowest qualifying owner.
 
-## Ask once before an unrequested write
+## Ask once only for a genuinely one-off unrequested write
 
-When the current request does not already authorize a Corvio write and no user-owned standing preference applies, finish or present the
-host-native result first. Then make one concrete proposal containing:
+Only after ruling out future-use continuity, another current-task write instruction, and a user-owned standing preference should the
+Host finish or present the host-native result first. Then make one concrete proposal containing:
 
 - what would be sent to Corvio and what would remain local;
 - the target Project or Workspace if known, otherwise the routing choice that still needs resolution;
@@ -86,10 +89,11 @@ tool. When selected attachments clearly support an already-authorized update, pr
 authorized update or continuity goal remains no-write.
 
 Classify the user's goal by meaning, not by storage verbs. “We will use these for later decisions,” “continue from these next time,” and
-equivalent future reliance on selected material are continuity requests rather than ordinary one-off deliverables. When that material
-contains related project evidence or several future reader/update jobs, upload preserves provenance and one `organize_files` mission
-makes it useful for continuation. Stop after upload only when the user explicitly asks for archive/original-only retention, or when the
-selected source has no evidence-backed semantic owner beyond the exact file.
+“structure this so later work can use it” are continuity requests rather than ordinary one-off deliverables. The future-use clause is
+the authorization boundary even when the requested transformation could also be returned in chat. When that material contains related
+project evidence or several future reader/update jobs, upload preserves provenance and one `organize_files` mission makes it useful for
+continuation. Stop after upload only when the user explicitly asks for archive/original-only retention, or when the selected source has
+no evidence-backed semantic owner beyond the exact file.
 
 On this authorized continuity route, preserve before exhaustive interpretation. Perform only the local safety, identity, hash, and
 bounded metadata/sample checks needed to transfer the selected files safely; do not make full local extraction of a large PDF,
@@ -157,6 +161,15 @@ Agent: “Would you like me to save this report to your Corvio Workspace as an e
         shareable document for later retrieval and collaboration?”
 User: No.
 Agent: [stops; no Corvio write and no second prompt]
+```
+
+### Future-use transformation without storage wording
+
+```text
+User: Restructure these selected notes so the team can handle the follow-up and review later.
+Agent: [classifies the stated future workflow before announcing write/no-write]
+Agent: [preserves the exact sources, runs one organize_files operation, and polls to terminal]
+Agent: [reports the canonical Work Model and current Tree readback; no duplicate save question]
 ```
 
 ### Conflicting prior decisions

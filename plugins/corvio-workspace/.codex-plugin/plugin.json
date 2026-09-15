@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.45",
+  "version": "1.7.46",
   "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",
@@ -19,7 +19,7 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Corvio Workspace",
-    "shortDescription": "Search prior work; ask before saving results.",
+    "shortDescription": "Search prior work; organize authorized future-use sources.",
     "longDescription": "Use Corvio alongside the host's normal workflow for research, reports, plans, project work, document edits, and selected-file organization. Read-only search can run quietly; source conflicts and unrequested writes stay visible user decisions. Approved results become editable, shareable, reusable Workspace knowledge.",
     "developerName": "Corvio",
     "category": "Productivity",

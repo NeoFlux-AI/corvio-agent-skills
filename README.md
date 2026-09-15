@@ -45,9 +45,11 @@ direct paths, downloads, sync, and project-Agent operation—not a replacement f
 For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding sensitive, disclosure-unclear, and
 explicitly local-only material. It should ask when retrieved sources conflict or the governing owner is unclear. OAuth and installation
 make the user's own Workspace available; they do not create a standing preference to upload every deliverable. A current request that
-explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. A user-owned,
-host-visible Memory/Profile setting can also authorize a defined class and scope. Otherwise the Agent keeps the native result, explains
-the exact proposed Corvio action and benefit, and asks once before writing. A decline or no answer means no write.
+explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. So is a request to
+transform selected material so it supports later action, follow-up, decisions, review, or another continuing workflow, even without
+storage wording: preserve the sources and reconcile their Work Model instead of first producing a chat-only rewrite and asking whether
+to save. A user-owned, host-visible Memory/Profile setting can also authorize a defined class and scope. Only an ordinary one-off result
+without those signals needs the specific save proposal. A decline or no answer means no write.
 
 An approved Corvio result can be an editable online document and shareable collaboration link. When the approved material is a coherent
 set of fragmented sources, one organization mission can reconcile it into the user's Work Model and knowledge tree; stable preferences
@@ -81,9 +83,11 @@ code task, or file is an event/source, not automatically a new Project or Page. 
 reparent existing work, pass that natural reconciliation goal and only proven handles; let Corvio compare the current Tree and choose
 the topology. After settlement, consume the canonical Project, affected-owner receipts, and current Tree readback before claiming the
 Work Model changed. Upload success or one new Page is not sufficient proof.
-Before the Agent announces whether it will write, it classifies future reliance. A request that makes selected related material an input to future work or decisions authorizes retention plus one Work Model reconciliation,
-even when the user does not say “save,” “upload,” “keep,” or “organize,” and does not name Corvio. On that route, do only the safety,
-identity, hash, and bounded metadata/sample checks needed for transfer; preserve the exact bytes before any exhaustive local parsing.
+Before the Agent announces whether it will write, it classifies future use. A request to transform selected related material so it
+supports later action, follow-up, decisions, review, or another continuing workflow authorizes retention plus one Work Model
+reconciliation, even when the user does not say “save,” “upload,” “keep,” or “organize,” and does not name Corvio. The future-use
+purpose governs the whole transformation: preserve the exact bytes before exhaustive local parsing instead of first producing a full
+chat-only rewrite and asking whether to save.
 Stop after upload only for explicit archive/original-only intent or material with no evidence-backed semantic owner beyond the exact file;
 otherwise pass the natural continuity goal to one `organize_files` mission.
 If the current turn already authorizes a bounded Work Model update or relationship correction and includes user-selected attachments clearly

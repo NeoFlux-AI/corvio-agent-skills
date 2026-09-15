@@ -23,12 +23,13 @@ credential in Corvio **Settings → API keys** to end access.
 
 After installation, read and write are separate decisions. The Agent may silently search the user's authorized Corvio Workspace for a
 relevant research, report, plan, project, or document task. It should ask when sources conflict or authority is unclear. Before announcing
-whether it will write, the Agent first classifies future reliance: a stated plan to use selected attachments in later work or decisions is
-already a bounded continuity request even without storage verbs. Preserve those exact bytes before exhaustive local parsing, then use the
-Skill's Work Model reconciliation route. OAuth does not authorize automatic upload of an ordinary deliverable. Write only when the current
-request explicitly authorizes the stated Corvio action or a user-owned host Memory/Profile setting covers that class and scope. Otherwise
-deliver normally, explain what would be sent, where it would go, and why it would help, then ask once whether to save or organize it. A
-decline or no answer means no write.
+whether it will write, the Agent first classifies future use: asking to transform selected material so it supports later action, follow-up,
+decisions, review, or another continuing workflow is already a bounded continuity request even without storage verbs. Preserve those exact
+bytes before exhaustive local parsing, then use the Skill's Work Model reconciliation route; do not first produce a full chat-only rewrite
+and ask whether to save. OAuth does not authorize automatic upload of an ordinary one-off deliverable. Write only when the current request
+authorizes the stated Corvio action or a user-owned host Memory/Profile setting covers that class and scope. Otherwise deliver normally,
+explain what would be sent, where it would go, and why it would help, then ask once whether to save or organize it. A decline or no answer
+means no write.
 
 When an already-authorized Work Model update includes user-selected attachments clearly about that same subject, preserve the sources and
 use one organization mission for both evidence and topology; do not complete only the relationship change. Attachment presence alone is

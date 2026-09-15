@@ -47,7 +47,9 @@ result, not a Corvio write.
   and non-conflicting, use them in the normal host loop. Ask the user before choosing among competing owners, stale decisions, or
   materially conflicting sources.
 - A current request that explicitly says to save, upload, share, organize, synthesize, or update stated material in Corvio is bounded
-  write consent. Do not repeat the same confirmation.
+  write consent. So is a request to transform selected material so it supports later action, follow-up, decisions, review, or another
+  continuing workflow, even when it omits storage words. Resolve this future-use branch before treating the request as an ordinary
+  deliverable, and do not repeat the same confirmation.
 - A host-owned, user-visible Memory/Profile/setting may encode a standing preference for a defined result class and scope. Revalidate
   live Workspace routing, OAuth scopes, ACLs, and content safety every time; dynamic Workspace state and search calls are not Memory.
 - Without either authority, deliver the host-native result first. Then explain the exact proposed content, destination if known, and
@@ -82,10 +84,10 @@ one `organize_files` operation. That Mission owns source preparation, affected-o
 `list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
-A request to keep selected related material so later work can continue from it is a Work Model intent, not raw retention alone. After
-finalizing the exact bytes, start one `organize_files` operation unless the user explicitly asked for archive/original-only storage or
-the material has no evidence-backed semantic owner beyond the file itself. The Host still passes only the natural continuity goal and
-proven handles; Corvio decides the topology.
+A request to transform selected related material so later action, follow-up, decisions, review, or another continuing workflow can use
+it is a Work Model intent, not a chat-only rewrite or raw retention. After finalizing the exact bytes, start one `organize_files`
+operation unless the user explicitly asked for archive/original-only storage or the material has no evidence-backed semantic owner
+beyond the file itself. The Host still passes only the natural continuity goal and proven handles; Corvio decides the topology.
 
 When the current turn already authorizes a bounded Work Model update or relationship correction and also contains user-selected files
 clearly about that same subject, retain those files and send one `organize_files` mission for the combined effect. Do not use a
