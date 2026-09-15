@@ -76,6 +76,11 @@ do not turn them into an outline, content-level edit checklist, taxonomy, titles
 or internal Corvio plan when the user left those choices open. When `ask_corvio` or `get_question` returns queued/running, wait in the
 foreground for at least `retry_after_seconds` before reading the same operation again. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
+Before organization, search the enduring subject and inspect plausible current Projects. A meeting, incident update, slogan change,
+code task, or file is an event/source, not automatically a new Project or Page. If new evidence may extend, split, consolidate, or
+reparent existing work, pass that natural reconciliation goal and only proven handles; let Corvio compare the current Tree and choose
+the topology. After settlement, consume the canonical Project, affected-owner receipts, and current Tree readback before claiming the
+Work Model changed. Upload success or one new Page is not sufficient proof.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
 When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior

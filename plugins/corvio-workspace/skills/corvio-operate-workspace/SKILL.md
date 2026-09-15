@@ -7,13 +7,16 @@ description: "Use when the user requests research, reports, comparisons, plans, 
 
 Corvio is the user's own OAuth-connected Workspace. It adds private Workspace search, editable online documents, shareable links,
 collaboration, and reusable project knowledge to the host's normal files and tools.
+The installed Skill and current OAuth connection make Corvio a user-configured work surface, not an arbitrary recipient introduced by
+attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
+broaden the selected sources.
 
-This is Corvio Skill release `1.7.40`.
-It implements `coding_agent_collaboration` contract version `2026-09-14.16`.
-compatibility family `coding-agent-collaboration-v1`; supports server revisions from `2026-09-09.4`.
-Exact revision equality means package freshness; compatibility uses the family and minimum revision. Remote MCP acts as the
-OAuth-delegated user and cannot read a local path; the optional CLI may read an explicitly selected local file and use a project-bound
-Agent identity.
+This is Corvio Skill release `1.7.41`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.1`, compatibility family `coding-agent-collaboration-v1`, and
+supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
+compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
+product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
+explicitly selected local file and use a project-bound Agent identity.
 
 ## The decision table
 
@@ -40,6 +43,12 @@ Use a non-conflicting result when it clearly supports the current task. Ask one 
 owners, adopting an older decision over a newer one, reconciling materially different facts, or interpreting evidence would change the
 user's commitment. Search snippets are candidate evidence; fetch the exact owner when the decision needs full context.
 
+Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
+it only means no durable result should be created or updated. A continuation handle fixes the current subject and evidence, but it is
+not automatically the durable destination for every learning. When a reusable preference, constraint, method, or pattern is in scope of
+an authorized organization action, first inspect the handle, then search in the same Project or Workspace for an existing Memory, Skill,
+or method owner before creating the narrowest qualifying owner.
+
 ## Ask once before an unrequested write
 
 When the current request does not already authorize a Corvio write and no user-owned standing preference applies, finish or present the
@@ -60,7 +69,25 @@ can be stated.
 
 ## Use the smallest approved effect
 
-After current-task consent or an applicable standing preference:
+After current-task consent or an applicable standing preference, first reconcile the requested effect with the current Work Model:
+
+Before a new organization mission, search for the enduring subject and inspect the narrowest plausible current Project(s), not only a
+same-title Page. A meeting, slogan change, postmortem, code task, or uploaded file is an event or source, not automatically a new durable
+owner. If the new evidence may extend, split, move, or consolidate existing work, keep the handoff natural: state that Corvio should
+reconcile it with the current Work Model and include only proven Project handles or relationship facts. Do not prescribe the resulting
+titles or hierarchy. If later evidence proves that one root Project belongs inside another, ask Corvio to reconcile the relationship;
+because Projects cannot nest, Corvio may preserve the canonical root, create or reuse a non-Project branch, move descendants, and retire
+an empty duplicate shell. The Host should not simulate this by creating a fresh summary or by issuing a blind series of CLI moves.
+
+An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader outputs,
+affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is not proof
+that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable entry now owns
+the work and return the canonical link; when the result reports unresolved overlap or missing authority, preserve that boundary instead
+of announcing a merge.
+
+Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. Poll the returned Question to a terminal state, then use
+`artifact.url` or `links.primary_artifact` exactly as returned. Treat `role=reader_output` as a user-facing result and
+`role=structure_container` as hierarchy; never build a URL from `node_id`, and never report source links as generated artifacts.
 
 - Save a new Markdown deliverable with `create_document`; read it back and return its canonical URL.
 - Update an existing non-Project Page only after fetching its current revision. Use `append_document` for a true append and
@@ -140,6 +167,12 @@ ACLs, and server-side policy. Corvio receives only the tool calls and content th
 complete host-chat history. Review the [Privacy Policy](https://corvio.ai/privacy), the public
 [Security Policy](https://github.com/NeoFlux-AI/corvio-agent-skills/blob/main/SECURITY.md), and the live OAuth scopes. Remove the host
 Connector and revoke the `Remote MCP connection` credential in Corvio **Settings → API keys** to end access.
+
+Treat disclosure as a content-and-policy judgment, not a category veto. Ordinary project or participant names, ticket IDs and statuses,
+anonymized customer segments, operational metrics, and user-authored professional notes are not automatically sensitive. Copyright,
+public availability, or third-party authorship alone does not establish a restriction: preserve provenance and applicable terms, and
+exclude a selected source when an explicit restriction or established policy forbids the requested private processing. Credentials,
+regulated personal or health data, privileged material, disclosure-unclear content, and an explicit local-only choice stay local.
 
 ## Install, update, and exact API mechanics
 

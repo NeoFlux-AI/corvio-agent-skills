@@ -82,6 +82,17 @@ one `organize_files` operation. That Mission owns source preparation, affected-o
 `list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
+Before choosing `target_root_node_id`, search the enduring work subject and read the narrowest plausible current Projects. An event-shaped
+input such as a meeting, incident update, slogan change, or code task is not itself evidence for a new Project. When the relation remains
+unclear, omit the target and pass the natural reconciliation goal; do not guess a title or taxonomy. When later evidence proves that two
+roots overlap or that one belongs under the other, pass the proven relationship and existing handles to one organization mission. Corvio
+owns the semantic comparison and may create a non-Project branch, move descendants, and retire an empty duplicate root; Remote MCP and
+CLI only transport explicit identities and effects and do not infer the hierarchy.
+
+After terminal settlement, inspect the operation's canonical Project, reader outputs, affected-owner receipts, and current Tree readback.
+Only then report whether the source established a new scope, extended current owners, split an overloaded owner, consolidated duplicate
+roots, or left topology unchanged. Upload/finalize success alone proves source retention, not Work Model completion.
+
 Do not encode file bytes as base64 in an MCP JSON call. Do not pass a local path and expect a remote server to read it. A prepared signed
 target is temporary capability, not a durable result; completion is the finalized Asset receipt and, when needed, current Asset readback.
 

@@ -1,55 +1,97 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.40",
-  "contract_revision": "2026-09-14.16",
+  "release_version": "1.7.41",
+  "contract_revision": "2026-09-15.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep broad silent Corvio grounding while restoring user-owned write consent and compact trusted guidance; also expose current document and credit readiness, reconcile select-column authoring, preserve structural revisions, and pin CLI updates to the exact registry version.",
+  "change_summary": "Preserve read-first and consent-before-write authority while keeping external handoffs weak, reconciling new evidence with the current Work Model, returning canonical topology readback, and retiring semantic Runtime fallback for duplicate roots.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
-      "paths": [".agents/skills/corvio-operate-workspace/SKILL.md", ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"],
-      "note": "The compact discovery surface preserves broad external-research recall, separates silent reads from user-owned write consent, and retains shared contract/version continuity without prompt-injection-like repetition."
+      "paths": [
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
+      ],
+      "note": "The canonical Skill preserves silent bounded reads and user-owned write consent while adding current-Project discovery, dynamic Work Model reconciliation, and canonical topology readback."
     },
     "server_contract": {
       "disposition": "changed",
-      "paths": ["backend/app/application/developer_platform/coding_agent_collaboration.py", "backend/app/api/public_v1/mcp_routes.py", "backend/app/api/public_v1/routes.py", "backend/app/api/v1/routes/tree.py", "backend/app/application/admission/credit_readiness.py", "backend/app/application/admission/doc_limits.py", "backend/app/application/developer_platform/tree_management.py", "backend/app/domains/tree/services.py", "frontend/src/lib/developerSkillPackage.ts", "packaging/mcp-registry/server.json"],
-      "note": "Contract 2026-09-14.16 aligns silent-read/conflict-question/write-consent behavior, current limit readiness, select-column authoring, and exact structural content-revision receipts across adapters."
+      "paths": [
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/api/public_v1/mcp_routes.py",
+        "frontend/src/lib/developerSkillPackage.ts"
+      ],
+      "note": "Contract 2026-09-15.1 aligns consent and readiness behavior with weak topology handoff and canonical result consumption across adapters."
     },
     "package_manifests": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/developerSkillPackage.test.ts", "packaging/corvio-agent-skills/.claude-plugin/marketplace.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json", "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json", "packaging/corvio-agent-skills/workbuddy-mcp.json"],
-      "note": "Skill and Plugin manifests advance together to 1.7.40; archives retain transport constraints, WorkBuddy selective loading, provenance, consent, readiness and exact-update metadata."
+      "paths": [
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "packaging/corvio-agent-skills/.claude-plugin/marketplace.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
+        "packaging/corvio-agent-skills/release-impact.json"
+      ],
+      "note": "Skill and Plugin manifests advance together to 1.7.41; archives retain transport constraints, WorkBuddy selective loading, provenance, trust, consent, readiness, and weak topology-reconciliation guidance."
     },
     "workspace_cli": {
-      "disposition": "changed",
-      "paths": ["developer-cli/packages/core/src/index.js", "developer-cli/packages/workspace/src/cli.js", "developer-cli/packages/workspace/package.json", "developer-cli/packages/admin/package.json", "developer-cli/package-lock.json"],
-      "note": "Workspace/Admin CLI advance together to 0.1.0-beta.32; registry-backed update checks return an exact install command plus a post-install version check, and Workspace capabilities expose limits at the top level."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Workspace/Admin CLI remain at 0.1.0-beta.32; registry-backed update checks return an exact install command plus post-install verification, and Workspace capabilities expose server-owned limits."
     },
     "help_center": {
       "disposition": "changed",
-      "paths": ["frontend/src/lib/help/publicHelpContent.ts", "frontend/src/lib/help/publicMcpHelpContent.ts", "packaging/corvio-agent-skills/README.md"],
-      "note": "Three-language guides explain the user's own OAuth Workspace, silent search versus confirmed writes, shareable-document value, Work Model compounding, privacy/security, and WorkBuddy's host-owned deferred-loading boundary."
+      "paths": [
+        "frontend/src/lib/help/publicMcpHelpContent.ts",
+        "frontend/src/lib/help/publicHelpContent.test.ts",
+        "packaging/corvio-agent-skills/README.md"
+      ],
+      "note": "Three-language guides explain user-owned read/write authority, Work Model compounding, event-versus-owner translation, current-Project discovery, and topology readback without exposing an internal recipe."
     },
     "package_setup": {
-      "disposition": "changed",
-      "paths": ["packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md", "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"],
-      "note": "Setup and the shorter SessionStart reminder preserve broad read activation without manufacturing write preference; package export continues to reject descriptions above the named transport limit."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Setup and the short SessionStart reminder preserve broad read activation without manufacturing write preference; canonical Skill projection carries the topology behavior."
     },
     "harness_and_mainline": {
       "disposition": "changed",
-      "paths": ["docs/reference/cursor-harness/AGENT_INTEGRATION.md", "docs/reference/cursor-harness/LEARNING_LOOP.md", "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md", "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md", "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md", "docs/rfc/docs-tree-mutation-substrate-v1.md", "docs/rfc/doc-table-operation-semantics-v1.md", "docs/reports/corvio-workbuddy-cowork-activation-historical-audit-2026-09-14.md", "docs/test-reports/workbuddy-cowork-consent-trust-acceptance-2026-09-14.md", "docs/logbook/entries/2026-09-14/113717-feedback-board-longitudinal-owner-repair.md", "docs/logbook/entries/2026-09-14/191800-workbuddy-cowork-consent-trust-mainline.md", "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"],
-      "note": "The owner history records the 1.7.39 authority regression, restored consent invariant, structural revision and quota scope, authoring projection, and adapter-version boundaries."
+      "paths": [
+        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
+        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
+        "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
+        "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/logbook/entries/2026-09-15/085626-dynamic-work-model-first-plan-ownership.md",
+        "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
+      ],
+      "note": "The owner history preserves read/write authority and makes dynamic topology a first-plan Reply/RunOps responsibility while retiring the conflicting semantic Runtime fallback."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.40 publication and hashes can be verified here; WorkBuddy Marketplace, Claude directory acceptance and fresh independent-host behavior remain external receipts."
+      "note": "First-party 1.7.41 publication and hashes can be verified here; WorkBuddy Marketplace, Claude directory acceptance, and fresh independent-host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
-      "paths": ["backend/tests/unit/test_product_guidance_and_mcp_contract.py", "backend/tests/unit/test_external_agent_work_model_portfolio.py", "backend/tests/unit/test_public_api_identity_limits.py", "backend/tests/integration/test_developer_api_key_public_contract.py", "backend/tests/integration/test_developer_limit_readiness.py", "backend/tests/integration/test_product_guidance_mcp_oauth_flow.py", "developer-cli/tests/commands.test.mjs", "frontend/e2e/developer-platform-public-smoke.spec.ts", "frontend/e2e/doc-history-readonly-session-contracts.spec.ts", "frontend/src/lib/developerSkillPackage.test.ts", "frontend/src/lib/help/publicHelpContent.test.ts"],
-      "note": "Focused tests cover consent and conflict behavior, transport limits, package parity, current document/credit readiness, exact update commands, structural revision preservation and current viewer/share behavior; fresh 1.7.40 host use remains pending."
+      "paths": [
+        "backend/scripts/agent_host_journey_portfolio.py",
+        "backend/scripts/run_agent_host_journey_suite.py",
+        "backend/scripts/collect_agent_host_journeys.py",
+        "backend/scripts/scenario_suites/external_agent_dynamic_work_model_longitudinal_v1.json",
+        "backend/tests/unit/test_agent_host_longitudinal_portfolio.py",
+        "backend/tests/unit/test_prompt_harness_mainline_contract.py",
+        "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
+        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
+        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "developer-cli/tests/commands.test.mjs",
+        "frontend/e2e/developer-platform-public-smoke.spec.ts",
+        "frontend/e2e/doc-history-readonly-session-contracts.spec.ts",
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "frontend/src/lib/help/publicHelpContent.test.ts"
+      ],
+      "note": "Focused tests cover consent, readiness, first-plan ownership, and a 30-turn evaluator-only topology matrix; fresh Codex execution and Claude calibration remain explicit external evidence gates."
     }
   }
 }
