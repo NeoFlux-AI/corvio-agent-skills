@@ -90,9 +90,10 @@ purpose governs the whole transformation: preserve the exact bytes before exhaus
 chat-only rewrite and asking whether to save.
 Stop after upload only for explicit archive/original-only intent or material with no evidence-backed semantic owner beyond the exact file;
 otherwise pass the natural continuity goal to one `organize_files` mission.
-If the current turn already authorizes a bounded Work Model update or relationship correction and includes user-selected attachments clearly
-about that same subject, preserve those sources and use one `organize_files` mission for both evidence and topology. Do not complete only
-the relationship change through `ask_corvio` while leaving the related files local. Attachment presence alone remains no-write.
+If the current turn authorizes a bounded durable Work Model change—updating existing owners or changing topology—and relies on
+user-selected attachments clearly about that subject, preserve those sources and use one `organize_files` mission for both evidence and
+the affected owners or structure. Do not paste the attachment facts into an `ask_corvio` mutation while leaving the related files local.
+Attachment presence alone remains no-write.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
 When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior

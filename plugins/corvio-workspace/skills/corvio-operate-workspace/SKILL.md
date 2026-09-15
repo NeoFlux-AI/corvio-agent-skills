@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace for private search, shareable documents, collaboration, and reusable project knowledge. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation even without storage verbs. An ordinary one-off deliverable does not. Do not upload, create, update, or organize it unless a user-owned standing preference applies, and ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and return canonical links. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation without storage verbs. When an authorized durable update relies on a selected attachment, retaining that evidence is part of the same effect; do not mutate owners from pasted excerpts while leaving the source local. Do not upload, create, update, or organize an ordinary one-off without current-task consent or a user-owned standing preference; ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and return canonical links. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.46`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.6`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.47`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -30,7 +30,7 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Corvio sources conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
 | The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
-| The current turn already authorizes a Work Model update or relationship correction and includes user-selected attachments clearly about that same subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and topology. Do not complete only the topology through `ask_corvio` while silently leaving the related evidence local. |
+| The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
 | Sensitive, disclosure-unclear, policy-restricted, or explicitly local-only material | Make no Corvio call for that material. Keep it local. |
@@ -40,8 +40,9 @@ attachment, a successful search, or a substantive deliverable alone.
 The future-use purpose modifies the whole transformation request: phrasing such as making selected material useful for subsequent work
 is not an ordinary one-off deliverable merely because the user omitted a destination or storage verb. Resolve that branch before the
 ordinary-deliverable row. Attachment presence without this purpose or another bounded write instruction still authorizes nothing.
-Once the current task has separately authorized a bounded Work Model mutation, however, user-selected attachments whose relationship to
-that exact subject is clear are part of the same selected evidence scope. Unrelated, sensitive, disclosure-unclear, policy-restricted, or
+Once the current task has separately authorized a bounded durable Work Model mutation, however, user-selected attachments that supply
+facts for that mutation are part of the same selected evidence scope. This applies whether the mutation changes existing content or
+topology. Unrelated, sensitive, disclosure-unclear, policy-restricted, or
 explicitly local-only attachments remain outside it; when relevance or disclosure is ambiguous, ask rather than broadening the write.
 
 ## Read quietly; ask at real decision points
@@ -82,11 +83,11 @@ can be stated.
 
 After current-task consent or an applicable standing preference, first reconcile the requested effect with the current Work Model:
 
-A single natural turn may combine new evidence with a correction to the existing tree. Decide that combined effect before choosing a
-tool. When selected attachments clearly support an already-authorized update, preserve them and give one weak, complete handoff to
-`organize_files`; that mission owns both source reconciliation and any evidence-backed split, merge, move, or reparent. A topology-only
-`ask_corvio` call is incomplete on this route even if the relationship change itself succeeds. Attachment presence without a separately
-authorized update or continuity goal remains no-write.
+A single natural turn may combine new evidence with updates to existing owners or the tree. Decide that combined effect before choosing
+a tool. When selected attachments supply facts for an already-authorized durable update, preserve them and give one weak, complete
+handoff to `organize_files`; that mission owns source reconciliation, bounded owner edits, and any evidence-backed split, merge, move, or
+reparent. An `ask_corvio` mutation based only on pasted excerpts is incomplete on this route even if the content or relationship change
+itself succeeds. Attachment presence without a separately authorized update or continuity goal remains no-write.
 
 Classify the user's goal by meaning, not by storage verbs. “We will use these for later decisions,” “continue from these next time,” and
 “structure this so later work can use it” are continuity requests rather than ordinary one-off deliverables. The future-use clause is

@@ -31,9 +31,9 @@ authorizes the stated Corvio action or a user-owned host Memory/Profile setting 
 explain what would be sent, where it would go, and why it would help, then ask once whether to save or organize it. A decline or no answer
 means no write.
 
-When an already-authorized Work Model update includes user-selected attachments clearly about that same subject, preserve the sources and
-use one organization mission for both evidence and topology; do not complete only the relationship change. Attachment presence alone is
-still not write consent.
+When an already-authorized durable Work Model update relies on user-selected attachments clearly about that subject, preserve the sources
+and use one organization mission for both evidence and the affected owners or topology; do not mutate from pasted excerpts while leaving
+the sources local. Attachment presence alone is still not write consent.
 
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
