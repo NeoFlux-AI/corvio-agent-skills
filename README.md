@@ -81,6 +81,9 @@ code task, or file is an event/source, not automatically a new Project or Page. 
 reparent existing work, pass that natural reconciliation goal and only proven handles; let Corvio compare the current Tree and choose
 the topology. After settlement, consume the canonical Project, affected-owner receipts, and current Tree readback before claiming the
 Work Model changed. Upload success or one new Page is not sufficient proof.
+A request to keep selected related material so future work can continue from it authorizes retention plus one Work Model reconciliation,
+even when the user does not say “organize” or name Corvio. Stop after upload only for explicit archive/original-only intent or material
+with no evidence-backed semantic owner beyond the exact file; otherwise pass the natural continuity goal to one `organize_files` mission.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
 When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior

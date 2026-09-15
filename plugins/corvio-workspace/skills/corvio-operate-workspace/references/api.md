@@ -82,6 +82,11 @@ one `organize_files` operation. That Mission owns source preparation, affected-o
 `list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
+A request to keep selected related material so later work can continue from it is a Work Model intent, not raw retention alone. After
+finalizing the exact bytes, start one `organize_files` operation unless the user explicitly asked for archive/original-only storage or
+the material has no evidence-backed semantic owner beyond the file itself. The Host still passes only the natural continuity goal and
+proven handles; Corvio decides the topology.
+
 Before choosing `target_root_node_id`, search the enduring work subject and read the narrowest plausible current Projects. An event-shaped
 input such as a meeting, incident update, slogan change, or code task is not itself evidence for a new Project. When the relation remains
 unclear, omit the target and pass the natural reconciliation goal; do not guess a title or taxonomy. When later evidence proves that two
