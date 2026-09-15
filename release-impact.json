@@ -1,41 +1,36 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.42",
-  "contract_revision": "2026-09-15.2",
+  "release_version": "1.7.43",
+  "contract_revision": "2026-09-15.3",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Translate future-continuity retention into one weak Work Model reconciliation, then require direct organization missions to choose corpus coverage from independent future-work duties before their first semantic plan.",
+  "change_summary": "Recognize future reliance on selected material as continuity intent without requiring storage verbs, and preserve large source bytes before exhaustive Host-side parsing so Corvio owns bounded carrier-aware Work Model reconciliation.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The canonical Skill keeps the Host handoff weak while making future-continuity retention proceed from verified upload into one Work Model reconciliation unless the user explicitly asks for raw archival only."
+      "note": "The canonical Skill now classifies future continuity by meaning rather than save/upload keywords and sends exact large sources to the carrier-aware Work Model path before exhaustive Host parsing."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/application/usecases/agent_run_executor.py",
-        "backend/app/domains/workspace_assets/mission_launcher.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-15.2 aligns the future-continuity route across adapters; direct Mission planning now proves one bounded future job before skipping the existing low-cost corpus manifest and carries the resulting owner map into first-plan RunOps."
+      "note": "Contract 2026-09-15.3 projects the semantic future-reliance trigger and upload-first context boundary through MCP while preserving Agent-owned topology planning and typed Runtime receipts."
     },
     "package_manifests": {
       "disposition": "changed",
       "paths": [
-        "frontend/src/lib/developerSkillPackage.test.ts",
         "packaging/corvio-agent-skills/.claude-plugin/marketplace.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.42 without changing transport, trust, consent, or compatibility-family boundaries."
+      "note": "Skill and Plugin manifests advance together to 1.7.43 without changing transport, trust, consent, or compatibility-family boundaries."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -47,15 +42,17 @@
       "paths": [
         "frontend/src/lib/help/publicMcpHelpContent.ts",
         "frontend/src/lib/help/publicHelpContent.ts",
-        "frontend/src/lib/help/publicHelpContent.test.ts",
         "packaging/corvio-agent-skills/README.md"
       ],
-      "note": "Three-language guides explain that future-continuity retention is not complete at upload when related evidence has a Work Model owner, without exposing an internal taxonomy recipe."
+      "note": "Public guidance distinguishes semantic future reliance from ordinary one-off delivery and directs large selected sources through exact retention before exhaustive local parsing."
     },
     "package_setup": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Setup and the short SessionStart reminder preserve broad read activation without manufacturing write preference; canonical Skill projection carries the topology behavior."
+      "disposition": "changed",
+      "paths": [
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
+      ],
+      "note": "Setup and SessionStart preserve the ordinary-deliverable consent boundary while making an explicit future-reliance request visible before Host-native full-file parsing can consume the turn."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -66,26 +63,24 @@
         "docs/logbook/entries/2026-09-15/085626-dynamic-work-model-first-plan-ownership.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The owner history records both the Host stop-after-upload miss and the subsequent source-shaped first Mission plan, keeping both repairs in Agent intent/Work Model planning rather than Runtime topology enforcement."
+      "note": "The owner history adds the live two-PDF Host miss and keeps its repair in semantic intent routing and source-transfer order rather than Runtime topology enforcement."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.42 publication and hashes can be verified here; WorkBuddy Marketplace, Claude directory acceptance, and fresh independent-host behavior remain external receipts."
+      "note": "First-party 1.7.43 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
-        "developer-cli/tests/commands.test.mjs",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
         "frontend/src/lib/developerSkillPackage.test.ts",
-        "frontend/src/lib/help/publicHelpContent.test.ts"
+        "backend/scripts/scenario_suites/external_agent_longitudinal_fixture_manifest_v1.json"
       ],
-      "note": "Focused tests cover adapter convergence, upload-to-organization routing, explicit retain-only countercases, package export, and localized Help; a fresh Codex J1T1 rerun is the behavior gate before the remaining 29 turns."
+      "note": "Focused tests cover semantic future-reliance triggers, upload-before-exhaustive-parse guidance, adapter convergence, ordinary-deliverable and local-only countercases, package export, and localized Help; the failed J2T1 receipt and fresh rerun are the live behavior gate."
     }
   }
 }

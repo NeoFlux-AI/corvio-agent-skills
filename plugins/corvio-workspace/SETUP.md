@@ -26,6 +26,8 @@ relevant research, report, plan, project, or document task. It should ask when s
 authorize automatic upload of an ordinary deliverable. Write only when the current request explicitly authorizes the stated Corvio
 action or a user-owned host Memory/Profile setting covers that class and scope. Otherwise deliver normally, explain what would be sent,
 where it would go, and why it would help, then ask once whether to save or organize it. A decline or no answer means no write.
+A stated plan to rely on selected attachments in later work or decisions is already a bounded continuity request, even without storage
+verbs. Preserve those exact bytes before exhaustive local parsing, then use the Skill's Work Model reconciliation route.
 
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
