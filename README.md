@@ -81,7 +81,7 @@ code task, or file is an event/source, not automatically a new Project or Page. 
 reparent existing work, pass that natural reconciliation goal and only proven handles; let Corvio compare the current Tree and choose
 the topology. After settlement, consume the canonical Project, affected-owner receipts, and current Tree readback before claiming the
 Work Model changed. Upload success or one new Page is not sufficient proof.
-A request that makes selected related material an input to future work or decisions authorizes retention plus one Work Model reconciliation,
+Before the Agent announces whether it will write, it classifies future reliance. A request that makes selected related material an input to future work or decisions authorizes retention plus one Work Model reconciliation,
 even when the user does not say “save,” “upload,” “keep,” or “organize,” and does not name Corvio. On that route, do only the safety,
 identity, hash, and bounded metadata/sample checks needed for transfer; preserve the exact bytes before any exhaustive local parsing.
 Stop after upload only for explicit archive/original-only intent or material with no evidence-backed semantic owner beyond the exact file;

@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention or prior material. Corvio is the user's OAuth-connected Workspace for private search, shareable documents, collaboration, and reusable project knowledge. When allowed, silently search once before planning; ask if sources conflict or authority is unclear. Do not upload, create, update, or organize from an ordinary deliverable request alone: require current-task consent or a user-owned standing preference, otherwise ask once whether to save. Future reliance on selected material counts as consent for retention plus one Work Model reconciliation even without storage verbs. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back every approved effect and return the canonical link. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention or prior material. Corvio is the user's OAuth-connected Workspace for private search, shareable documents, collaboration, and reusable project knowledge. Before promising whether you will write, classify future reliance on selected material: it is consent for retention plus one Work Model reconciliation even without storage verbs. Do not upload, create, update, or organize from an ordinary deliverable request alone unless current-task consent or a user-owned standing preference applies; otherwise ask once whether to save. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back every approved effect and return the canonical link. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,14 +11,17 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.43`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.3`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.44`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.4`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
 explicitly selected local file and use a project-bound Agent identity.
 
 ## The decision table
+
+Classify the request before announcing whether Corvio will write. A plan stated before this table is applied can lock the Host into the
+wrong branch even if it reads the rest of the Skill afterward.
 
 | Situation | Action |
 | --- | --- |
