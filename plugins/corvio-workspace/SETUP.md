@@ -30,6 +30,10 @@ request explicitly authorizes the stated Corvio action or a user-owned host Memo
 deliver normally, explain what would be sent, where it would go, and why it would help, then ask once whether to save or organize it. A
 decline or no answer means no write.
 
+When an already-authorized Work Model update includes user-selected attachments clearly about that same subject, preserve the sources and
+use one organization mission for both evidence and topology; do not complete only the relationship change. Attachment presence alone is
+still not write consent.
+
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
 <https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, `.mcp.json`, this setup guide, and a

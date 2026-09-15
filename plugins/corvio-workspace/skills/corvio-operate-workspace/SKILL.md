@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.44`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.4`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.45`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.5`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -30,12 +30,16 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Corvio sources conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
 | The user makes selected related material an input to future work or decisions—even without saying “save,” “upload,” or “keep” | Treat that future-continuity goal as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. |
+| The current turn already authorizes a Work Model update or relationship correction and includes user-selected attachments clearly about that same subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and topology. Do not complete only the topology through `ask_corvio` while silently leaving the related evidence local. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
 | Sensitive, disclosure-unclear, policy-restricted, or explicitly local-only material | Make no Corvio call for that material. Keep it local. |
 
 OAuth connection is capability, not standing write preference. Never infer upload consent from installation, an available tool, an
 attachment, a successful search, or a substantive deliverable alone.
+Once the current task has separately authorized a bounded Work Model mutation, however, user-selected attachments whose relationship to
+that exact subject is clear are part of the same selected evidence scope. Unrelated, sensitive, disclosure-unclear, policy-restricted, or
+explicitly local-only attachments remain outside it; when relevance or disclosure is ambiguous, ask rather than broadening the write.
 
 ## Read quietly; ask at real decision points
 
@@ -74,6 +78,12 @@ can be stated.
 ## Use the smallest approved effect
 
 After current-task consent or an applicable standing preference, first reconcile the requested effect with the current Work Model:
+
+A single natural turn may combine new evidence with a correction to the existing tree. Decide that combined effect before choosing a
+tool. When selected attachments clearly support an already-authorized update, preserve them and give one weak, complete handoff to
+`organize_files`; that mission owns both source reconciliation and any evidence-backed split, merge, move, or reparent. A topology-only
+`ask_corvio` call is incomplete on this route even if the relationship change itself succeeds. Attachment presence without a separately
+authorized update or continuity goal remains no-write.
 
 Classify the user's goal by meaning, not by storage verbs. “We will use these for later decisions,” “continue from these next time,” and
 equivalent future reliance on selected material are continuity requests rather than ordinary one-off deliverables. When that material

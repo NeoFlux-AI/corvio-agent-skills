@@ -87,6 +87,11 @@ finalizing the exact bytes, start one `organize_files` operation unless the user
 the material has no evidence-backed semantic owner beyond the file itself. The Host still passes only the natural continuity goal and
 proven handles; Corvio decides the topology.
 
+When the current turn already authorizes a bounded Work Model update or relationship correction and also contains user-selected files
+clearly about that same subject, retain those files and send one `organize_files` mission for the combined effect. Do not use a
+topology-only `ask_corvio` call and leave the new evidence behind. This composition rule does not turn attachment presence into consent:
+unrelated, sensitive, disclosure-unclear, policy-restricted, explicitly local-only, or ambiguously related files remain outside scope.
+
 Before choosing `target_root_node_id`, search the enduring work subject and read the narrowest plausible current Projects. An event-shaped
 input such as a meeting, incident update, slogan change, or code task is not itself evidence for a new Project. When the relation remains
 unclear, omit the target and pass the natural reconciliation goal; do not guess a title or taxonomy. When later evidence proves that two

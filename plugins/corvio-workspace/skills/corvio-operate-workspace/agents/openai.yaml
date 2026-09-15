@@ -1,7 +1,7 @@
 interface:
   display_name: "Corvio Research & Team Knowledge"
   short_description: "Search prior work; ask before saving deliverables"
-  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow for research, reports, plans, project work, document edits, and substantive deliverables. After the safety gate, silently search Corvio once before planning. Ask me when sources conflict. Do not upload or write from a normal deliverable request alone: use my explicit request or a user-owned standing preference, otherwise deliver normally and ask once whether to save the specific result. Read back approved effects and return the canonical link."
+  default_prompt: "Use $corvio-operate-workspace alongside my normal workflow for research, reports, plans, project work, document edits, and substantive deliverables. After the safety gate, silently search Corvio once before planning. Ask me when sources conflict. Do not upload or write from a normal deliverable request alone: use my explicit request or a user-owned standing preference, otherwise deliver normally and ask once whether to save the specific result. If an authorized Work Model update includes selected attachments clearly about the same subject, preserve and organize those sources as part of that one update instead of changing only the topology. Read back approved effects and return the canonical link."
 dependencies:
   tools:
     - type: "mcp"

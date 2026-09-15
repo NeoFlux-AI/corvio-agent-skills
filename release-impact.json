@@ -1,18 +1,20 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.44",
-  "contract_revision": "2026-09-15.4",
+  "release_version": "1.7.45",
+  "contract_revision": "2026-09-15.5",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Classify future reliance before announcing a no-write plan, then preserve large selected sources before exhaustive Host-side parsing so Corvio owns bounded carrier-aware Work Model reconciliation.",
+  "change_summary": "When one authorized Work Model update also carries clearly related selected attachments, preserve those sources and reconcile evidence plus topology in one organization mission without weakening the attachment-consent boundary.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The canonical Skill now classifies future continuity by meaning rather than save/upload keywords and sends exact large sources to the carrier-aware Work Model path before exhaustive Host parsing."
+      "note": "The canonical Skill composes an already-authorized Work Model correction with clearly related selected attachments so the Host cannot complete only topology and silently omit new evidence."
     },
     "server_contract": {
       "disposition": "changed",
@@ -20,7 +22,7 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-15.4 places semantic future-reliance classification before any no-write promise and projects the upload-first boundary through MCP while preserving Agent-owned topology planning and typed Runtime receipts."
+      "note": "Contract 2026-09-15.5 adds the same-turn evidence-and-topology route to MCP guidance while preserving Agent-owned planning and typed Runtime receipts."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -30,7 +32,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.44 without changing transport, trust, consent, or compatibility-family boundaries."
+      "note": "Skill and Plugin manifests advance together to 1.7.45 without changing transport, trust, consent, or compatibility-family boundaries."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -44,7 +46,7 @@
         "frontend/src/lib/help/publicHelpContent.ts",
         "packaging/corvio-agent-skills/README.md"
       ],
-      "note": "Public guidance distinguishes semantic future reliance from ordinary one-off delivery and directs large selected sources through exact retention before exhaustive local parsing."
+      "note": "Public guidance explains that related selected evidence travels with an authorized Work Model update while attachment presence alone remains no-write."
     },
     "package_setup": {
       "disposition": "changed",
@@ -52,7 +54,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "Setup and SessionStart preserve the ordinary-deliverable consent boundary while making an explicit future-reliance request visible before Host-native full-file parsing can consume the turn."
+      "note": "Setup and SessionStart make the compound evidence-and-topology route visible without turning arbitrary attachments into write consent."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -60,15 +62,15 @@
         "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
         "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/logbook/entries/2026-09-15/085626-dynamic-work-model-first-plan-ownership.md",
+        "docs/logbook/entries/2026-09-15/152201-agent-host-compound-evidence-topology-update.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The owner history adds the live two-PDF Host miss and keeps its repair in semantic intent routing and source-transfer order rather than Runtime topology enforcement."
+      "note": "The owner history adds the live relationship-update plus attachment omission and keeps its repair in Host decision order rather than Runtime semantic enforcement."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.44 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
+      "note": "First-party 1.7.45 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
@@ -77,9 +79,10 @@
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
-        "frontend/src/lib/developerSkillPackage.test.ts"
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "frontend/src/lib/help/publicHelpContent.test.ts"
       ],
-      "note": "Focused tests cover semantic future-reliance triggers, upload-before-exhaustive-parse guidance, adapter convergence, ordinary-deliverable and local-only countercases, package export, and localized Help; the failed J2T1 receipt and fresh rerun are the live behavior gate."
+      "note": "Focused tests cover the same-turn compound trigger, adapter convergence, ordinary-attachment and local-only countercases, package export, and localized Help; the failed J2T3 receipt and fresh rerun are the live behavior gate."
     }
   }
 }

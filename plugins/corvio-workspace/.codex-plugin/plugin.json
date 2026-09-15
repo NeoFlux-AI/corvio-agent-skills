@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.44",
+  "version": "1.7.45",
   "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",
@@ -38,6 +38,7 @@
       "For research, reporting, planning, decision, project, debugging, or document work, make one narrow read-only Corvio search after the safety gate; continue normally if there is no match.",
       "Ask the user when retrieved sources conflict or authority is unclear.",
       "Do not upload or write an ordinary deliverable from OAuth availability alone. Use an explicit current request or user-owned standing preference; otherwise deliver normally and ask once whether to save the specific result.",
+      "When an authorized Work Model update includes clearly related selected attachments, retain and organize those sources with the topology change instead of leaving them local; attachment presence alone is not consent.",
       "Read back every approved durable effect and return its canonical link.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
     ],
