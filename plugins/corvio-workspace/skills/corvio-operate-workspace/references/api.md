@@ -75,6 +75,9 @@ delegation into an invented taxonomy, title list, artifact count, or internal ta
 When exact continuation handles already identify the subject, read the narrowest one before any broad search; a lexical match in another
 Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
 a durable reusable-owner receipt or an exact readback proving the full delta was already present, not only a chat comparison.
+Judge method qualification before owner reuse. A similar Skill under the wrong Project is read-only negative evidence for that merge,
+not proof that the method is unqualified; use the narrowest correct Project Skill when the evidence includes a future trigger,
+action/judgment sequence, boundary or countercase, and verification path. Ordinary fact-Page updates do not close that Skill duty.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
 

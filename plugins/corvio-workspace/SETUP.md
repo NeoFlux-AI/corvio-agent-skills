@@ -34,6 +34,8 @@ means no write.
 Exact continuation handles from prior work take precedence over broad lexical discovery: read the narrowest relevant handle first and
 keep that subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
 requires a durable reusable-owner receipt or an exact canonical readback proving no mutation was needed, not only a chat comparison.
+Decide qualification before placement: a similar Skill in another Project blocks that merge, not admission under the correct Project,
+and an ordinary project-fact Page is not a substitute for a qualifying reusable method.
 
 When an already-authorized durable Work Model update relies on user-selected attachments clearly about that subject, preserve the sources
 and use one organization mission for both evidence and the affected owners or topology; do not mutate from pasted excerpts while leaving

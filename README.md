@@ -105,6 +105,9 @@ quality bar, or method should be reused later, search narrowly inside the same P
 before admitting or merging it; do not paste the guidance into the visible event or status Page by default. When the user asks to align
 that stable practice with prior work for future reuse, a chat comparison or offer to save later is not completion. Return a durable
 reusable-owner receipt, or an exact current-owner readback proving the complete delta was already present.
+Decide qualification before placement: a similar Skill under another Project blocks mutating that owner, not admission under the correct
+Project. When the evidence already contains a future trigger, action or judgment sequence, boundary/countercase, and verification path,
+an ordinary project-fact Page update does not close the reusable-method duty.
 
 Direct Markdown body updates and appends target non-Project Pages. A Project is a structure container: use `organize_files` or
 `ask_corvio` for its front door and Work Model, or create/update a child Page. A title-only Project rename remains valid; a direct Project
