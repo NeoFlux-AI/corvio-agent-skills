@@ -96,12 +96,15 @@ the affected owners or structure. Do not paste the attachment facts into an `ask
 Attachment presence alone remains no-write.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
-When the host carries exact continuation handles, read the narrowest relevant Page or Project first. Those handles preserve the prior
+When the host carries exact continuation handles, read the narrowest relevant Page or Project before any broad Workspace search. If that
+owner is sufficient, skip broad search. Those handles preserve the prior
 subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
 context or fill a gap the current owner does not support.
 A continuation handle is subject evidence, not necessarily the durable write destination. If a repeated pattern, preference, constraint,
 quality bar, or method should be reused later, search narrowly inside the same Project or Workspace for the fitting Memory or Skill owner
-before admitting or merging it; do not paste the guidance into the visible event or status Page by default.
+before admitting or merging it; do not paste the guidance into the visible event or status Page by default. When the user asks to align
+that stable practice with prior work for future reuse, a chat comparison or offer to save later is not completion. Return a durable
+reusable-owner receipt, or an exact current-owner readback proving the complete delta was already present.
 
 Direct Markdown body updates and appends target non-Project Pages. A Project is a structure container: use `organize_files` or
 `ask_corvio` for its front door and Work Model, or create/update a child Page. A title-only Project rename remains valid; a direct Project

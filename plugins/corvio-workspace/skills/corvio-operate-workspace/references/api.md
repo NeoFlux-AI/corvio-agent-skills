@@ -72,6 +72,9 @@ the [Privacy Policy](https://corvio.ai/privacy) and public
 
 For `ask_corvio`, send the user's natural outcome plus complete decision-relevant context or stable handles. Do not turn an open semantic
 delegation into an invented taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
+When exact continuation handles already identify the subject, read the narrowest one before any broad search; a lexical match in another
+Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
+a durable reusable-owner receipt or an exact readback proving the full delta was already present, not only a chat comparison.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
 

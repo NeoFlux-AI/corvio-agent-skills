@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.47",
-  "contract_revision": "2026-09-15.7",
+  "release_version": "1.7.48",
+  "contract_revision": "2026-09-15.8",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep selected attachment evidence in the same authorized effect as any durable owner or topology mutation, rather than applying pasted facts while leaving the source local.",
+  "change_summary": "Preserve exact continuation subjects before broad discovery and require durable owner evidence when a user asks to reconcile a reusable practice.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -14,7 +14,7 @@
         ".agents/skills/corvio-operate-workspace/references/api.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The canonical Skill generalizes compound evidence handling from topology corrections to every authorized durable owner mutation while preserving the one-off no-write boundary."
+      "note": "The canonical Skill makes exact continuation handles an ordering authority and distinguishes durable method reconciliation from a chat-only comparison."
     },
     "server_contract": {
       "disposition": "changed",
@@ -22,7 +22,7 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-15.7 makes selected evidence retention part of the same effect as content or topology mutation while preserving Agent-owned Work Model planning and typed Runtime receipts."
+      "note": "Contract 2026-09-15.8 exposes the same continuation and durable-reconciliation semantics across MCP hosts while preserving Agent-owned planning and typed Runtime receipts."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -32,7 +32,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.47 without changing transport, trust, consent, or compatibility-family boundaries."
+      "note": "Skill and Plugin manifests advance together to 1.7.48 without changing transport, trust, consent, or compatibility-family boundaries."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -46,7 +46,7 @@
         "frontend/src/lib/help/publicHelpContent.ts",
         "packaging/corvio-agent-skills/README.md"
       ],
-      "note": "Public guidance explains that a selected attachment used to update existing durable owners must remain traceable, while attachment presence alone stays no-write."
+      "note": "Public guidance explains continuation subject authority and the evidence needed to complete reusable-method reconciliation."
     },
     "package_setup": {
       "disposition": "changed",
@@ -54,7 +54,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "Setup and SessionStart keep selected evidence with authorized owner or topology mutations without turning arbitrary attachments into write consent."
+      "note": "Setup and SessionStart keep exact continuation subjects ahead of broad search and require durable method-owner closure without changing write consent."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -63,15 +63,15 @@
         "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
         "docs/reference/cursor-harness/TESTING_HARNESS.md",
-        "docs/logbook/entries/2026-09-15/174900-durable-owner-update-source-retention.md",
+        "docs/logbook/entries/2026-09-15/191500-dynamic-work-model-semantic-acceptance.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The owner history records the live localized-update provenance miss and keeps fresh effect proof explicit rather than adding Runtime semantic enforcement."
+      "note": "The owner history records the 30-turn semantic audit, preserves Prompt-owned planning, and adds deterministic lossless line movement as execution capability rather than semantic fallback."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.47 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
+      "note": "First-party 1.7.48 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
@@ -83,7 +83,7 @@
         "frontend/src/lib/developerSkillPackage.test.ts",
         "frontend/src/lib/help/publicHelpContent.test.ts"
       ],
-      "note": "Focused tests cover durable content and topology update composition, adapter convergence, ordinary one-off and attachment-only countercases, package export, and localized Help; J5T3 fresh rerun is the live behavior gate."
+      "note": "Focused tests cover continuation precedence, durable method reconciliation, lossless line movement, adapter convergence, package export, and localized Help; fresh semantic reruns are the live behavior gate."
     }
   }
 }

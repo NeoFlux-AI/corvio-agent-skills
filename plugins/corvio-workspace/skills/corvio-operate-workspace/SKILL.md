@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.47`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.7`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.48`.
+It implements `coding_agent_collaboration` contract version `2026-09-15.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -26,11 +26,13 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Situation | Action |
 | --- | --- |
 | Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. Continue normally if nothing helps. |
+| Exact continuation handles from the preceding work are present and the user has not changed subject | Read the narrowest relevant handle before any broad Workspace search. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | Corvio sources conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
 | The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
 | The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
+| The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. A chat comparison or offer to save later is not completion. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
 | Sensitive, disclosure-unclear, policy-restricted, or explicitly local-only material | Make no Corvio call for that material. Keep it local. |
@@ -56,10 +58,14 @@ owners, adopting an older decision over a newer one, reconciling materially diff
 user's commitment. Search snippets are candidate evidence; fetch the exact owner when the decision needs full context.
 
 Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
-it only means no durable result should be created or updated. A continuation handle fixes the current subject and evidence, but it is
-not automatically the durable destination for every learning. When a reusable preference, constraint, method, or pattern is in scope of
-an authorized organization action, first inspect the handle, then search in the same Project or Workspace for an existing Memory, Skill,
-or method owner before creating the narrowest qualifying owner.
+it only means no durable result should be created or updated. A continuation handle fixes the current subject and evidence: inspect the
+narrowest relevant handle before any broad Workspace search, and skip broad search when that owner is sufficient. An out-of-project
+lexical match cannot silently replace the subject. The handle is not automatically the durable destination for every learning. When a
+reusable preference, constraint, method, or pattern is in scope of an authorized organization action, first inspect the handle, then
+search in the same Project or Workspace for an existing Memory, Skill, or method owner before creating the narrowest qualifying owner.
+When the user asks to align that stable practice with prior work, finish with a durable owner receipt or an exact canonical readback
+proving the complete delta was already present. A prose comparison, “nothing changed” without readback, or an offer to save later is not
+a canonical no-op.
 
 ## Ask once only for a genuinely one-off unrequested write
 
