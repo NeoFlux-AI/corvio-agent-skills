@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.51",
+  "version": "1.7.52",
   "description": "Help Claude privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",

@@ -72,8 +72,10 @@ the [Privacy Policy](https://corvio.ai/privacy) and public
 
 For `ask_corvio`, send the user's natural outcome plus complete decision-relevant context or stable handles. Do not turn an open semantic
 delegation into an invented taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
-When exact continuation handles already identify the subject, read the narrowest one before any broad search; a lexical match in another
-Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
+Receipt-bound continuation handles are compact prior-work context even when a fresh process has no transcript. Read an identifiable leaf
+before broad search; if multiple unlabeled handles make the leaf unclear, fetch the carried Project, use its
+`metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Preserve an explicit incomplete
+boundary when that projection is truncated. A lexical match in another Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
 a durable reusable-owner receipt or an exact readback proving the full delta was already present, not only a chat comparison.
 Judge method qualification before owner reuse. A similar Skill under the wrong Project is read-only negative evidence for that merge,
 not proof that the method is unqualified; use the narrowest correct Project Skill when the evidence includes a future trigger,
@@ -200,7 +202,7 @@ npm view "@corvio/cli@$CLI_VERSION" version --json
 npm install --global "@corvio/cli@$CLI_VERSION"
 corvio --version
 
-npx skills add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip
+npx --yes skills@1.5.23 add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip --agent codex --skill corvio-operate-workspace --yes
 corvio auth status --json --no-input || corvio auth login --no-input
 corvio agents connect --provider codex --project . --json --no-input
 corvio collaboration status --json --no-input
@@ -232,6 +234,12 @@ corvio update check --json --no-input
 
 Skill, CLI, and MCP freshness are independent:
 
+On the first Corvio use in a fresh host session, call `get_collaboration_contract` once with `response_mode=freshness_only` and any loaded
+package facts the host already exposes: `loaded_surface`, `loaded_release_version`, `loaded_contract_revision`, `loaded_compatibility_family`, and
+`installation_channel`. These are host-reported facts, not proof that Remote MCP inspected local files. Surface
+`client_freshness.agent_notice` once when present; a current copy stays quiet. Do not spend user turns discovering an unavailable version,
+and do not repeat the check or notice during the same session.
+
 | Surface / installed source | Version authority | User-side refresh |
 | --- | --- | --- |
 | Claude/Cowork Plugin from the public Directory | Installed Plugin manifest plus `manifest.json.claude_plugin.version` | Publisher updates the GitHub source; Claude ingests the reviewed update. Start a fresh synced session after it arrives |
@@ -250,10 +258,9 @@ received the account copy; it does not prove that the account copy matches Corvi
 observable, report it as unknown and give the source-specific inspection step instead of guessing.
 
 The current canonical website install is a direct archive. Agent Skills CLI `1.5.23` installs that archive as a local copy but does not
-record it as an update-tracked package, so `npx skills update` cannot be relied on for this distribution path. Refresh by rerunning the
-same official `npx skills add` command; it overwrites the selected installed copy. Preserve the original scope: omit `--global` for a
-project install and add `--global` for a user-level install. In non-interactive automation, also select the actual host explicitly (for
-example `--agent codex`) and use `--yes`; do not update every host or scope by assumption.
+record it as an update-tracked package, so `npx skills update` cannot be relied on for this distribution path. Refresh with the exact
+provider-scoped command returned by `corvio collaboration status --provider <host> --json --no-input`; it pins the verified installer,
+selects one host, and preserves the original project/global scope. Do not update every host or scope by assumption.
 
 `corvio collaboration status` reports package freshness, compatibility, discoverable copies and update ownership separately. It hashes
 each local `SKILL.md`, reads release/revision/family markers, and detects conflicting copies. Use `--provider workbuddy` for the manual

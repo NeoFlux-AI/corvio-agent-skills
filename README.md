@@ -97,9 +97,11 @@ the affected owners or structure. Do not paste the attachment facts into an `ask
 Attachment presence alone remains no-write.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
-When the host carries exact continuation handles, a short or deictic follow-up is not contextless: load the Corvio Skill, read the
-narrowest relevant Page or Project before any broad Workspace search, and do not ask the user to repeat carried context. If that owner
-is sufficient, skip broad search. Those handles preserve the prior
+When the host carries exact continuation handles, a short or deictic follow-up is not contextless: their terminal receipts are the compact
+prior-work handoff even when the fresh process has no transcript. Load the Corvio Skill and read the handoff rather than asking the user to
+reconstruct it. Read the narrowest relevant Page first; if several unlabeled handles make the leaf unclear, fetch the carried Project,
+use its `metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Keep a truncation boundary
+explicit rather than treating a partial index as complete. If those owners are sufficient, skip broad search. Those handles preserve the prior
 subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
 context or fill a gap the current owner does not support.
 A continuation handle is subject evidence, not necessarily the durable write destination. If a repeated pattern, preference, constraint,
@@ -120,13 +122,16 @@ body write returns `project_structure_container_body_write_disabled` before muta
 Use this route only when the host cannot install the complete plugin, then connect Remote MCP separately:
 
 ```bash
-npx skills add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip
+# Choose the one host you are installing into. Add --global only for a user-level install.
+npx --yes skills@1.5.23 add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip --agent codex --skill corvio-operate-workspace --yes
+npx --yes skills@1.5.23 add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip --agent claude-code --skill corvio-operate-workspace --yes
+npx --yes skills@1.5.23 add https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip --agent github-copilot --skill corvio-operate-workspace --yes
 ```
 
 The Skill can also be installed from the official public GitHub repository:
 
 ```bash
-npx skills add NeoFlux-AI/corvio-agent-skills
+npx --yes skills@1.5.23 add NeoFlux-AI/corvio-agent-skills --agent codex --skill corvio-operate-workspace --yes
 ```
 
 Claude Code marketplace:
@@ -164,7 +169,8 @@ update action; Claude's `@synced` label means newest in that Claude account, not
 - A Claude/Cowork Plugin installed from a directory or marketplace follows that channel's update control. A Plugin uploaded in Claude
   Customize is a static account copy and must be replaced/re-uploaded there. Shared or organization-managed copies require their owner.
 - A Skill installed from the canonical website zip is a static local copy. The current Agent Skills CLI does not track direct-archive
-  installs for `skills update`; rerun the same `npx skills add` command in the same project/global scope, then start a fresh host session.
+  installs for `skills update`; use `corvio collaboration status --provider <host> --json --no-input` for the exact provider- and
+  scope-preserving install command, then start a fresh host session.
 - A WorkBuddy Skill under `~/.workbuddy/skills/corvio-operate-workspace/` remains a manual host copy until a reviewed marketplace listing
   exists. Inspect it read-only with `corvio collaboration status --provider workbuddy --json --no-input`; replace it through WorkBuddy's
   Skills UI and start a fresh conversation when an update is required.

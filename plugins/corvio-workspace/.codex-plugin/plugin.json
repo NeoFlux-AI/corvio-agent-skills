@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.51",
+  "version": "1.7.52",
   "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",
@@ -36,7 +36,7 @@
     "termsOfServiceURL": "https://corvio.ai/terms",
     "defaultPrompt": [
       "For research, reporting, planning, decision, project, debugging, or document work, make one narrow read-only Corvio search after the safety gate; continue normally if there is no match.",
-      "When exact continuation handles exist, read the narrowest relevant handle before broad search and keep that subject unless the user changes it.",
+      "Receipt-bound continuation handles are compact prior-work context even without a transcript. Read an identifiable leaf first; if unlabeled handles make it unclear, read the carried Project as a bounded topology index and then the relevant leaf, not a broad search.",
       "Apply a clear current user correction before asking about authority that remains unresolved.",
       "Do not upload or write an ordinary deliverable from OAuth availability alone. Use an explicit current request or user-owned standing preference; otherwise deliver normally and ask once whether to save the specific result.",
       "When an authorized durable Work Model update relies on related selected attachments, retain and organize those sources with the affected owners or topology instead of mutating from pasted excerpts and leaving them local; attachment presence alone is not consent.",

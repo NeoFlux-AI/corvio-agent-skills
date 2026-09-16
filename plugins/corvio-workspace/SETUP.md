@@ -33,8 +33,11 @@ explain what would be sent, where it would go, and why it would help, then ask o
 means no write.
 
 Exact continuation handles from prior work take precedence over broad lexical discovery. A short or deictic follow-up is not contextless
-when those handles are present: load `corvio-operate-workspace`, read the narrowest relevant handle first, and do not ask the user to
-repeat context the Host already carries. Keep that subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
+when those handles are present: their terminal receipts are the compact prior-work handoff even when this process has no transcript. Load
+`corvio-operate-workspace` and read the handoff instead of asking the user to reconstruct it. Read the narrowest relevant handle first; if
+several unlabeled handles make the leaf unclear, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded
+topology index, following only the relevant `has_children` branch until the leaf. Keep any reported truncation boundary explicit. Keep that
+subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
 requires a durable reusable-owner receipt or an exact canonical readback proving no mutation was needed, not only a chat comparison.
 Decide qualification before placement: a similar Skill in another Project blocks that merge, not admission under the correct Project,
 and an ordinary project-fact Page is not a substitute for a qualifying reusable method.
@@ -75,6 +78,12 @@ revision, and minimum supported revision separately. `corvio update check` prove
 update. `corvio collaboration status --provider workbuddy --json --no-input` can inspect WorkBuddy's discoverable local copy read-only,
 but cannot prove which copy an already-running conversation loaded.
 
+On the first Corvio use in a fresh session, pass already-visible loaded package facts to `get_collaboration_contract` with
+`response_mode=freshness_only`. Show its compact
+`client_freshness.agent_notice` once when present; say nothing about updating when the copy is current. Compatible legacy guidance may
+continue with Beta feedback labeled as legacy. A blocked copy must stop Corvio-dependent behavior. Do not ask the user to locate version
+facts the host does not expose, and do not turn this into a per-turn check.
+
 Do not claim that all of Corvio is current from any one of those receipts.
 
 ## 4. Apply only the update owned by this host
@@ -85,8 +94,9 @@ Do not claim that all of Corvio is current from any one of those receipts.
   described above. A Cowork task must not claim it changed the account-owned package.
 - For a marketplace-installed Claude Code Plugin, use Claude's marketplace/plugin update flow, then run `/reload-plugins` or start a new
   session so hooks and MCP definitions move to the new version.
-- For a standalone Skill installed from Corvio's direct ZIP, rerun the same `npx skills add` command in the same project/global scope, then
-  start a fresh host session. Do not use `skills update` unless the installed source is actually update-tracked.
+- For a standalone Skill installed from Corvio's direct ZIP, use the exact provider-scoped command returned by
+  `corvio collaboration status --provider <host> --json --no-input`. It pins the verified `skills@1.5.23`, selects one host, and preserves
+  project/global scope. Then start a fresh host session. Do not use `skills update` unless the installed source is actually update-tracked.
 - Until Corvio reports an accepted WorkBuddy Marketplace listing, treat a WorkBuddy-uploaded Skill as an unmanaged manual install. Replace
   it from the official ZIP in WorkBuddy's Skills UI, then start a fresh conversation. An mtime or account sync is not upstream freshness.
 - WorkBuddy owns MCP tool loading. Its current MCP contract supports `defer_loading` at server and tool level. Merge the official
