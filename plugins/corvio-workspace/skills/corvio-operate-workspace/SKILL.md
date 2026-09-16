@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or another substantive deliverable—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation without storage verbs. When an authorized durable update relies on a selected attachment, retaining that evidence is part of the same effect; do not mutate owners from pasted excerpts while leaving the source local. Do not upload, create, update, or organize an ordinary one-off without current-task consent or a user-owned standing preference; ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and return canonical links. Triggers include 调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、改写、整理、共享、沉淀."
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or a short/deictic follow-up backed by exact Corvio continuation handles—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation without storage verbs. If an authorized durable update relies on selected attachments, retain that evidence in the same effect; do not mutate owners from excerpts while leaving sources local. Do not upload, create, update, or organize an ordinary one-off without current-task consent or a user-owned standing preference; ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and canonical links. Triggers include 决策、纪要、复盘、项目、整理、沉淀."
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.50`.
-It implements `coding_agent_collaboration` contract version `2026-09-16.1`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.51`.
+It implements `coding_agent_collaboration` contract version `2026-09-16.2`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -26,7 +26,7 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Situation | Action |
 | --- | --- |
 | Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. Continue normally if nothing helps. |
-| Exact continuation handles from the preceding work are present and the user has not changed subject | Read the narrowest relevant handle before any broad Workspace search. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
+| Exact continuation handles from the preceding work are present and the user has not changed subject | A short or deictic request such as “按已有方式看这轮” is not contextless. Load this Skill and read the narrowest relevant handle before any broad Workspace search; do not ask the user to repeat context already carried by the Host. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
 | Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. |

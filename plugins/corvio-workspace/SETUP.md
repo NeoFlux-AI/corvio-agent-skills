@@ -32,8 +32,9 @@ authorizes the stated Corvio action or a user-owned host Memory/Profile setting 
 explain what would be sent, where it would go, and why it would help, then ask once whether to save or organize it. A decline or no answer
 means no write.
 
-Exact continuation handles from prior work take precedence over broad lexical discovery: read the narrowest relevant handle first and
-keep that subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
+Exact continuation handles from prior work take precedence over broad lexical discovery. A short or deictic follow-up is not contextless
+when those handles are present: load `corvio-operate-workspace`, read the narrowest relevant handle first, and do not ask the user to
+repeat context the Host already carries. Keep that subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
 requires a durable reusable-owner receipt or an exact canonical readback proving no mutation was needed, not only a chat comparison.
 Decide qualification before placement: a similar Skill in another Project blocks that merge, not admission under the correct Project,
 and an ordinary project-fact Page is not a substitute for a qualifying reusable method.

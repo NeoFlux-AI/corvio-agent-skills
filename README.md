@@ -97,8 +97,9 @@ the affected owners or structure. Do not paste the attachment facts into an `ask
 Attachment presence alone remains no-write.
 For a read-only answer materially grounded by Corvio, return the smallest current canonical reader link or links that let the user
 verify or continue the work; do not dump every source link or expose private/internal URLs.
-When the host carries exact continuation handles, read the narrowest relevant Page or Project before any broad Workspace search. If that
-owner is sufficient, skip broad search. Those handles preserve the prior
+When the host carries exact continuation handles, a short or deictic follow-up is not contextless: load the Corvio Skill, read the
+narrowest relevant Page or Project before any broad Workspace search, and do not ask the user to repeat carried context. If that owner
+is sufficient, skip broad search. Those handles preserve the prior
 subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
 context or fill a gap the current owner does not support.
 A continuation handle is subject evidence, not necessarily the durable write destination. If a repeated pattern, preference, constraint,
