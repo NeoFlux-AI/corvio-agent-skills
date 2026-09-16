@@ -1,20 +1,19 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.49",
-  "contract_revision": "2026-09-15.9",
+  "release_version": "1.7.50",
+  "contract_revision": "2026-09-16.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Separate reusable-method qualification from owner placement so a wrong-Project Skill cannot demote a qualifying method into ordinary project prose.",
+  "change_summary": "Honor an unambiguous current user correction to Workspace Project identity or relationship before escalating unresolved source authority.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The canonical Skill keeps exact continuation handles authoritative and requires qualifying reusable methods to reach the correct Project Skill owner even when a nearby Skill has incompatible scope."
+      "note": "The canonical Skill treats a clear current identity, relationship or owner correction as authority for that bounded change, preserves old material as lineage, and asks only when ambiguity remains."
     },
     "server_contract": {
       "disposition": "changed",
@@ -22,7 +21,7 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-15.9 separates method qualification from destination reuse across MCP hosts while preserving Agent-owned planning and typed Runtime receipts."
+      "note": "Contract 2026-09-16.1 orders current user correction before unresolved-conflict escalation across MCP hosts while preserving Agent-owned planning and typed Runtime receipts."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -32,7 +31,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.49 without changing transport, trust, consent, or compatibility-family boundaries."
+      "note": "Skill and Plugin manifests advance together to 1.7.50 without changing transport, trust, consent, or compatibility-family boundaries."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -43,10 +42,9 @@
       "disposition": "changed",
       "paths": [
         "frontend/src/lib/help/publicMcpHelpContent.ts",
-        "frontend/src/lib/help/publicHelpContent.ts",
         "packaging/corvio-agent-skills/README.md"
       ],
-      "note": "Public guidance explains continuation subject authority and why wrong-Project owner mismatch does not negate evidence-backed Skill admission."
+      "note": "Public guidance explains that a clear current structural correction resolves the bounded authority choice while older records remain lineage."
     },
     "package_setup": {
       "disposition": "changed",
@@ -54,36 +52,39 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "Setup and SessionStart keep exact continuation subjects ahead of broad search and distinguish Skill qualification from placement without changing write consent."
+      "note": "Setup and SessionStart put current user structural correction before unresolved-conflict questions without changing write consent."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
+        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
         "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
         "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/test-reports/dynamic-work-model-30-turn-semantic-acceptance-2026-09-15.md",
-        "docs/logbook/entries/2026-09-15/203000-reusable-method-qualification-before-placement.md",
+        "docs/logbook/entries/2026-09-16/080148-current-user-project-correction-authority.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The owner history records the focused post-release evidence and keeps method qualification, destination authority and Runtime execution as separate decisions without adding a semantic fallback."
+      "note": "The owner history records the fresh Claude split-then-correct trace and keeps current user authority, preserved lineage and Runtime execution as separate decisions without adding a semantic fallback."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.49 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
+      "note": "First-party 1.7.50 publication and hashes can be verified here; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
+        "backend/tests/unit/test_agent_host_longitudinal_portfolio.py",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/scripts/run_agent_host_journey_suite.py",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
         "frontend/src/lib/developerSkillPackage.test.ts",
         "frontend/src/lib/help/publicHelpContent.test.ts"
       ],
-      "note": "Focused tests cover continuation precedence, qualification-before-placement, durable method reconciliation, lossless line movement, adapter convergence, package export, and localized Help; fresh semantic reruns are the live behavior gate."
+      "note": "Focused tests cover current-correction precedence, unresolved-conflict countercases, MCP transport size, adapter convergence, package export and localized Help; a fresh semantic rerun is the live behavior gate."
     }
   }
 }

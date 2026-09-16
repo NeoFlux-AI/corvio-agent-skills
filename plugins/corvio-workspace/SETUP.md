@@ -22,7 +22,8 @@ identity-provider page. Remove the Connector in the host and revoke the `Remote 
 credential in Corvio **Settings → API keys** to end access.
 
 After installation, read and write are separate decisions. The Agent may silently search the user's authorized Corvio Workspace for a
-relevant research, report, plan, project, or document task. It should ask when sources conflict or authority is unclear. Before announcing
+relevant research, report, plan, project, or document task. A clear current user correction to Workspace identity, relationship, or owner
+governs that bounded change; preserve prior evidence and ask only when authority remains unresolved. Before announcing
 whether it will write, the Agent first classifies future use: asking to transform selected material so it supports later action, follow-up,
 decisions, review, or another continuing workflow is already a bounded continuity request even without storage verbs. Preserve those exact
 bytes before exhaustive local parsing, then use the Skill's Work Model reconciliation route; do not first produce a full chat-only rewrite

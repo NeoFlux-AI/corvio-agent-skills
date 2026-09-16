@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.49`.
-It implements `coding_agent_collaboration` contract version `2026-09-15.9`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.50`.
+It implements `coding_agent_collaboration` contract version `2026-09-16.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -28,7 +28,8 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. Continue normally if nothing helps. |
 | Exact continuation handles from the preceding work are present and the user has not changed subject | Read the narrowest relevant handle before any broad Workspace search. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
-| Corvio sources conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment | Ask the user which source or authority to adopt before relying on it. |
+| The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
+| Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
 | The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
 | The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
@@ -53,9 +54,12 @@ Search is read-only and limited by the user's current OAuth scopes, Workspace me
 local files or unrelated accounts. Run the narrowest relevant search as part of the host's existing research phase; do not interrupt the
 user merely to ask permission for that low-risk read.
 
-Use a non-conflicting result when it clearly supports the current task. Ask one focused question when choosing among competing canonical
-owners, adopting an older decision over a newer one, reconciling materially different facts, or interpreting evidence would change the
-user's commitment. Search snippets are candidate evidence; fetch the exact owner when the decision needs full context.
+Use a non-conflicting result when it clearly supports the current task. A current, unambiguous user correction to Workspace identity,
+relationship, or governing owner resolves that bounded authority decision before conflict escalation. Preserve prior material as lineage
+and let Corvio reconcile or supersede its outdated interpretation; do not turn the old record into a demand that the user prove or repeat
+the same correction. Ask one focused question only when the current statement is itself ambiguous, its scope is unclear, mutually
+exclusive authorities remain, or interpreting evidence would create a new commitment.
+Search snippets are candidate evidence; fetch the exact owner when the decision needs full context.
 
 Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
 it only means no durable result should be created or updated. A continuation handle fixes the current subject and evidence: inspect the
@@ -116,7 +120,8 @@ Before a new organization mission, search for the enduring subject and inspect t
 same-title Page. A meeting, slogan change, postmortem, code task, or uploaded file is an event or source, not automatically a new durable
 owner. If the new evidence may extend, split, move, or consolidate existing work, keep the handoff natural: state that Corvio should
 reconcile it with the current Work Model and include only proven Project handles or relationship facts. Do not prescribe the resulting
-titles or hierarchy. If later evidence proves that one root Project belongs inside another, ask Corvio to reconcile the relationship;
+titles or hierarchy. If later evidence or an unambiguous current user correction establishes that one root Project belongs inside another,
+ask Corvio to reconcile the relationship;
 because Projects cannot nest, Corvio may preserve the canonical root, create or reuse a non-Project branch, move descendants, and retire
 an empty duplicate shell. The Host should not simulate this by creating a fresh summary or by issuing a blind series of CLI moves.
 
@@ -193,6 +198,14 @@ Agent: [search finds two current-looking plans with different owners]
 Agent: “Corvio has two conflicting rollout owners: A (revised 12 Sep) and B (team-approved
         13 Sep). Which should govern this update?”
 Agent: [continues only after the user resolves authority]
+```
+
+### User corrects a Project relationship
+
+```text
+User: Aurora was Juniper's internal codename last month, not another project. Bring them back together.
+Agent: [reads both roots, treats this bounded relationship correction as authority, and asks Corvio to reconcile them]
+Agent: [reports the one canonical Project, preserved lineage, moved descendants, and current Tree readback; no proof request]
 ```
 
 ### Explicit organization request

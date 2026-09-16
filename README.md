@@ -43,7 +43,8 @@ Corvio capabilities and receipts. It complements the host's normal file and tool
 direct paths, downloads, sync, and project-Agent operation—not a replacement for MCP in hosts that support it.
 
 For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding sensitive, disclosure-unclear, and
-explicitly local-only material. It should ask when retrieved sources conflict or the governing owner is unclear. OAuth and installation
+explicitly local-only material. A clear current user correction to Workspace identity, relationship, or governing owner resolves that
+bounded authority choice; preserve prior evidence and ask only when authority remains unresolved. OAuth and installation
 make the user's own Workspace available; they do not create a standing preference to upload every deliverable. A current request that
 explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. So is a request to
 transform selected material so it supports later action, follow-up, decisions, review, or another continuing workflow, even without
