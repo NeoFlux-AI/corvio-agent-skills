@@ -127,6 +127,8 @@ The public Developer API already owns:
 - durable questions, history, conversations, sources, artifacts, operations, and usage;
 - Workspace search;
 - active/archived Page list, read/create/update/recoverable archive/restore, and private-link share;
+- progressive narrative Page reads (`auto`, overview, section, line range, literal search, or full) plus revision-bound exact line
+  patches with operation identity, canonical readback, and compact receipts;
 - bounded stable-ID table reads plus revision- and operation-guarded cell updates/clears or row appends; complex table structure,
   formulas, styles, sorting, and semantic rewrites remain delegated to Corvio's internal document Agent;
 - immutable Workspace Asset upload/finalize, ACL-filtered list/read/download, bounded hash-bound content projection, and Agentic organization receipts;
@@ -301,6 +303,11 @@ corvio projects list --json --no-input
 corvio projects create --title "Launch Research" --json --no-input
 corvio docs create --title "Decision brief" --parent-node-id <project_node_id> \
   --file decision-brief.md --json --no-input
+corvio docs read <workspace_id/document_id> --mode auto --json --no-input
+corvio docs read <workspace_id/document_id> --mode line-range \
+  --start-line 40 --end-line 52 --json --no-input
+corvio docs patch <workspace_id/document_id> --input page-patch.json \
+  --operation-id <stable_operation_id> --change-summary "Corrected the requested lines." --yes --json --no-input
 corvio docs get <workspace_id/document_id> --output launch-plan.md --json --no-input
 corvio docs table-read <workspace_id/document_id> --limit 50 --json --no-input
 corvio docs table-mutate <workspace_id/document_id> --input table-change.json \
@@ -323,6 +330,8 @@ front door / Work Model maintenance, or create/update a child Page; a title-only
 canonical Markdown and ordinary pipe tables by default; inspect `document_authoring` only before
 a rich-table write, and never flatten
 Spreadsheet, Presentation, Code, or HTML Artifact state into Markdown as if lossless.
+For the progressive read algorithm, exact patch payload, ROI boundary, and partial-effect recovery, read
+[documents.md](documents.md). The live tool schema remains field-level authority.
 
 Projects are root-level grouping owners and cannot be moved under another Project. `docs move` accepts a non-Project document and a
 Project destination; a Project source fails with `project_nesting_disabled`. For a deeper Work Model, delegate the natural organization

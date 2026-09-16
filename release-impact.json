@@ -1,32 +1,38 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.52",
-  "contract_revision": "2026-09-16.3",
+  "release_version": "1.7.53",
+  "contract_revision": "2026-09-16.4",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Treat receipt-bound continuation handles as prior-work context, expose bounded ACL-safe Work Model topology, and report source-aware package freshness without claiming local inspection.",
+  "change_summary": "Preserve Project identity evidence precedence while adding progressive Page reads, exact guarded line patches, compact mutation receipts, and a total-successful-work ROI boundary for external Agents.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
         ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/references/documents.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Skill reports already-visible freshness facts once, treats terminal-receipt handles as prior-work context, and consumes bounded Project topology before the relevant leaf."
+      "note": "The Skill keeps receipt-backed continuation without treating connective wording as Project identity, and progressively loads exact document mechanics with verified terminal receipts as completion evidence."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/chat/prompts/prompt_registry.py",
+        "backend/app/application/chat/prompts/prompt_texts.py",
+        "backend/app/application/usecases/chat_streaming/function_tools.py",
         "backend/app/application/developer_platform/documents.py",
+        "backend/app/application/usecases/docs_blocks_usecase.py",
         "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/api/public_v1/routes.py",
         "backend/app/api/public_v1/schemas.py",
         "backend/scripts/run_agent_host_case.py",
-        "frontend/src/lib/developerSkillPackage.ts"
+        "frontend/src/lib/developerSkillPackage.ts",
+        "frontend/src/app/developers/skills/corvio-operate-workspace/references/documents.md/route.ts"
       ],
-      "note": "Contract 2026-09-16.3 combines receipt-backed continuation and neutral topology projection with optional host-reported freshness evaluation; it does not move semantic routing into Runtime or claim local inspection."
+      "note": "Contract 2026-09-16.4 keeps Project relationship decisions in Corvio semantic lanes and projects one shared progressive read and exact line-patch owner through REST, MCP and packaged guidance."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -34,9 +40,10 @@
         "packaging/corvio-agent-skills/.claude-plugin/marketplace.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
-        "packaging/corvio-agent-skills/release-impact.json"
+        "packaging/corvio-agent-skills/release-impact.json",
+        "scripts/export-official-agent-skills.sh"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.52; manifest schema 6 publishes pinned commands for one explicit provider and project/global scope without changing write consent."
+      "note": "Skill and Plugin manifests advance together to 1.7.53; compatibility family, minimum revision, write consent and installation scope remain unchanged."
     },
     "workspace_cli": {
       "disposition": "changed",
@@ -48,22 +55,16 @@
         "developer-cli/package-lock.json",
         "backend/app/core/config.py"
       ],
-      "note": "Workspace/Admin CLI advance to 0.1.0-beta.33. Collaboration status now returns a pinned provider- and scope-specific installer command, a verification command, and one compact non-current Agent notice; conflicts and marketplace copies are not blindly overwritten."
+      "note": "Workspace/Admin CLI advance to 0.1.0-beta.34. Workspace CLI adds progressive document read/patch and compact receipts; collaboration status adds source-aware, provider- and scope-specific update guidance."
     },
     "help_center": {
-      "disposition": "changed",
-      "paths": [
-        "frontend/src/lib/help/publicMcpHelpContent.ts",
-        "frontend/src/components/developer/DeveloperWorkspaceSkillPage.tsx",
-        "frontend/src/lib/i18n/developerPublicContent.ts",
-        "packaging/corvio-agent-skills/README.md"
-      ],
-      "note": "Public guidance covers receipt-backed continuation, bounded structural topology, quiet-current and one-time legacy feedback, with install examples scoped to one explicit host."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Existing public setup guidance remains compatible; exact document mechanics are projected through the changed public API guide, CLI help and focused Skill reference."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
       "note": "Setup and SessionStart expose loaded release facts, run the first-use freshness check, and treat compact prior-work handles plus bounded topology as actionable context."
@@ -72,36 +73,46 @@
       "disposition": "changed",
       "paths": [
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
+        "docs/reference/cursor-harness/PROMPT_WRITING.md",
+        "docs/reference/cursor-harness/PROMPT_STACK_SUMMARY.md",
         "docs/reference/developer-api-v1.md",
-        "docs/rfc/document-child-index-block-mainline-v1.md",
-        "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
+        "docs/rfc/prompt-architecture-mainline-v1.md",
         "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
         "docs/logbook/entries/2026-09-16/094000-receipt-backed-continuation-topology-entry.md",
-        "docs/logbook/entries/2026-09-16/100555-agent-package-freshness-feedback-loop.md",
+        "docs/logbook/entries/2026-09-16/102308-external-agent-progressive-document-io.md",
+        "docs/logbook/entries/2026-09-16/124318-project-identity-evidence-precedence.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The owner history joins receipt-backed continuation and deep-tree topology with source-aware package freshness while preserving separate MCP, CLI, host-loading and semantic owners."
+      "note": "The owner history preserves same-subject continuation, makes contrary stable-subject evidence authoritative, preserves full-body compatibility, and defines bounded document I/O plus Host-versus-Corvio routing by total successful-work cost."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.52 publication and hashes can be verified after release; Claude directory acceptance and fresh secondary-host behavior remain external receipts."
+      "note": "First-party 1.7.53 publication, hashes, fresh released-host loading and deployed OAuth/MCP behavior remain release receipts; external directory acceptance remains outside the repository boundary."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
+        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/tests/unit/test_developer_live_projection_recovery.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/integration/test_developer_api_key_public_contract.py",
-        "backend/tests/unit/test_agent_host_longitudinal_portfolio.py",
+        "backend/tests/unit/test_prompt_harness_mainline_contract.py",
+        "backend/tests/unit/test_prompt_family_registry.py",
+        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
+        "backend/tests/unit/test_external_document_io_host_probe.py",
+        "backend/scripts/run_external_document_io_host_probe.py",
+        "backend/scripts/run_agent_host_case.py",
+        "backend/scripts/run_agent_host_suite.py",
+        "backend/scripts/scenario_suites/external_agent_document_io_host_v1.json",
         "developer-cli/tests/commands.test.mjs",
         "frontend/src/lib/developerSkillPackage.test.ts",
         "frontend/src/app/developers/skills/corvio-operate-workspace/page.source.test.ts",
         "frontend/e2e/developer-platform-public-smoke.spec.ts"
       ],
-      "note": "Focused tests cover receipt authority, ACL-safe topology, freshness states, provider-scoped update commands, package projection and static host hooks; a fresh external-host semantic rerun remains the live behavior gate."
+      "note": "Focused tests plus fresh Codex and Claude candidate-host probes cover Project identity, progressive reads, exact patches, stale/readback recovery, typed delegation, table safety, compact payloads and provider authority; fresh released-host semantic acceptance remains the live gate."
     }
   }
 }

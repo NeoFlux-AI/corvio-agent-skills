@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.52`.
-It implements `coding_agent_collaboration` contract version `2026-09-16.3`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.53`.
+It implements `coding_agent_collaboration` contract version `2026-09-16.4`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -136,6 +136,14 @@ ask Corvio to reconcile the relationship;
 because Projects cannot nest, Corvio may preserve the canonical root, create or reuse a non-Project branch, move descendants, and retire
 an empty duplicate shell. The Host should not simulate this by creating a fresh summary or by issuing a blind series of CLI moves.
 
+Treat conversational continuity and Project identity as separate evidence. Phrases such as “also add these,” “continue,” or “look at
+these together” authorize the current processing or retention effect, but do not by themselves prove that a newly selected source belongs
+to the Project from the previous receipt. When the source presents a different stable business subject and no explicit alias, lineage, or
+current-user correction links it, do not pin the old Project merely because its handle is available. Pass the new sources, the prior
+handle, and the known or unresolved relationship boundary to Corvio so its semantic lanes can decide whether to preserve siblings, relate
+them, or later consolidate them. Conversely, when the source continues the same subject without contrary identity evidence, reuse the
+receipt-backed continuation instead of manufacturing a Project for each artifact.
+
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader outputs,
 affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is not proof
 that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable entry now owns
@@ -147,8 +155,9 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 `role=structure_container` as hierarchy; never build a URL from `node_id`, and never report source links as generated artifacts.
 
 - Save a new Markdown deliverable with `create_document`; read it back and return its canonical URL.
-- Update an existing non-Project Page only after fetching its current revision. Use `append_document` for a true append and
-  `update_document` only for a faithful whole-body replacement.
+- Read an existing Page progressively: start with `read_document(mode=auto|overview)`, follow current section or line selectors, and
+  request the full body only when the outcome requires it. Use `patch_document` for exact revision-bound line replacements,
+  `append_document` for a true append, and `update_document` only when whole-body replacement is the smallest faithful effect.
 - Preserve an exact selected local file through `prepare_file_upload` → host PUT → `finalize_file_upload`. Remote MCP cannot read a local
   path. In a filesystem-capable coding host with the authenticated official CLI, prefer `corvio files upload --file <path>` for exact
   byte size and SHA-256 handling.
@@ -159,7 +168,14 @@ Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. 
 
 Pass the user's natural goal, stable source handles, explicit constraints, and authorized action boundary. Do not invent taxonomy,
 titles, artifact count, or Corvio's internal plan. Poll asynchronous work to terminal and inspect the current object or operation before
-claiming completion. Prepared, queued, or accepted is progress, not completion.
+claiming completion. A terminal artifact/operation with `readback_verified=true` is that authoritative inspection; do not reread it or open
+a second Question merely to verify the same effect. Re-read only when verification is missing, partial, or conflicts with another authority.
+Prepared, queued, or accepted is progress, not completion.
+
+Choose the execution owner by total successful-work cost. Keep exact, already-decided edits in the host and use bounded read/patch so
+unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,
+structure/formatting interpretation, or a typed carrier would otherwise make the host reconstruct context Corvio already owns. Count
+host and Corvio tokens, payload bytes, retries, latency, fidelity risk, and verified readback—not merely tool-call count.
 
 ## Memory, Work Model, and Skills
 
@@ -256,8 +272,9 @@ For installation, explain the concrete value, official source, package contents,
 confirmation unless the user already requested the install. Never bypass host or organization policy. Package source, account-synced
 copy, MCP server, optional CLI, and current host-session loading are separate freshness facts.
 
-Read [references/api.md](references/api.md) for exact tools, schemas, polling, routing, upload, update, and recovery mechanics. Live MCP
-schemas, `get_collaboration_contract`, CLI `--help`, and public OpenAPI are the final runtime authorities.
+Read [references/documents.md](references/documents.md) for the document read/edit decision and compact examples. Read
+[references/api.md](references/api.md) for routing, upload, organization, polling, installation, and broader recovery mechanics. Live
+MCP schemas, `get_collaboration_contract`, CLI `--help`, and public OpenAPI are the final runtime authorities.
 
 ## Finish
 
