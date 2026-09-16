@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.53`.
-It implements `coding_agent_collaboration` contract version `2026-09-16.4`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.55`.
+It implements `coding_agent_collaboration` contract version `2026-09-16.6`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -38,7 +38,7 @@ wrong branch even if it reads the rest of the Skill afterward.
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
 | Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. |
-| The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. |
+| The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. For a new unbound result, omit `workspace_id` so Remote MCP uses the user's writable personal default. Pass an explicit Workspace only when the user chose it in the current request or a stable originating/continuation/Project/Asset receipt binds it. |
 | The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
 | The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
 | The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. Decide whether the evidence qualifies before deciding whether a nearby owner is reusable: a wrong-Project Skill blocks that merge, not admission under the correct Project. A chat comparison, ordinary fact-Page update, or offer to save later is not completion. |
@@ -67,7 +67,10 @@ relationship, or governing owner resolves that bounded authority decision before
 and let Corvio reconcile or supersede its outdated interpretation; do not turn the old record into a demand that the user prove or repeat
 the same correction. Ask one focused question only when the current statement is itself ambiguous, its scope is unclear, mutually
 exclusive authorities remain, or interpreting evidence would create a new commitment.
-Search snippets are candidate evidence; fetch the exact owner when the decision needs full context.
+Search snippets are candidate evidence; fetch the exact owner when the decision needs full context. A result's Workspace ID is read
+provenance, not write-target authority. In particular, neither the first hit from `workspace_scope=all_authorized` nor the Workspace
+currently open in the Corvio shell may be copied into a new write unless the current request or a stable originating/continuation receipt
+actually binds that destination.
 
 Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
 it only means no durable result should be created or updated. A receipt-bound continuation handle fixes the current subject and evidence
@@ -144,6 +147,17 @@ handle, and the known or unresolved relationship boundary to Corvio so its seman
 them, or later consolidate them. Conversely, when the source continues the same subject without contrary identity evidence, reuse the
 receipt-backed continuation instead of manufacturing a Project for each artifact.
 
+Also distinguish a source's subject from the user's work subject. If the user presents a heterogeneous selected packet as one continuing
+workline, preserve that relationship as evidence in the natural `organize_files` goal; do not pre-split external papers, methods,
+inspiration, examples, or industry references into Projects merely because each source has a rich topic. That packet-level relationship
+is correctable rather than conclusive: direct evidence that the user is operating separate project-level state, ownership, cadence, or
+acceptance still requires distinct Projects. Keep this as a weak factual handoff and let Corvio design the actual tree.
+
+When the user explicitly corrects an identity, hierarchy, same-item, or cross-Project relationship, pass that correction, the known
+canonical handles, and any still-unresolved locator as facts in the natural goal. Do not require the Host to rediscover an exact old title
+or preselect Corvio's leaf. The correction is authority for the stated relationship, not for unrelated technical status; Corvio must read
+the affected owners, preserve that boundary, and materialize a missing projection when no lexical match already exists.
+
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader outputs,
 affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is not proof
 that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable entry now owns
@@ -153,6 +167,8 @@ of announcing a merge.
 Preserve any taxonomy, title, carrier, count, or non-goal the user did specify. Poll the returned Question to a terminal state, then use
 `artifact.url` or `links.primary_artifact` exactly as returned. Treat `role=reader_output` as a user-facing result and
 `role=structure_container` as hierarchy; never build a URL from `node_id`, and never report source links as generated artifacts.
+Every returned `id`, `*_id`, ref, and `read_arguments` value is an opaque canonical handle: copy the complete value verbatim into the
+matching tool argument instead of shortening, retyping, joining, or reconstructing it from a URL or another identifier.
 
 - Save a new Markdown deliverable with `create_document`; read it back and return its canonical URL.
 - Read an existing Page progressively: start with `read_document(mode=auto|overview)`, follow current section or line selectors, and

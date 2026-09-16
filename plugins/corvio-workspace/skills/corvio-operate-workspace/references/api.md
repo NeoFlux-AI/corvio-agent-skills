@@ -29,13 +29,16 @@ separate installers, install both: the Skill supplies discovery/decision policy 
 when the Agent needs direct local-path, sync, download, or project-Agent authority.
 
 For ordinary connected work, Remote MCP callers may omit `workspace_id` from Workspace-scoped discovery, question, file-intake,
-organization, Page-create, and Project-create calls. The server resolves the explicit/originating context first, then confirmed account
-selection, personal default, or a single authorized candidate, and returns `workspace_routing`. Real multi-Workspace ambiguity fails
-closed with candidates. MCP also owns routine `request_id` / `idempotency_key` generation; callers supply an explicit key only when they
-need to coordinate a deliberate retry across invocations. Exact-resource follow-ups keep the stable Workspace embedded in their handles,
-and upload finalization keeps the Workspace from the preparation receipt. `list_workspaces` returns caller-relative default/selection
-flags, disambiguated labels, and a writable recommendation without silently redirecting a write. `search(workspace_scope=all_authorized)`
-is an explicit bounded read fallback when the saved selection may be stale; it is not a write-routing shortcut.
+organization, Page-create, and Project-create calls. Read/navigation calls resolve explicit/originating context first, then confirmed
+account selection, personal default, or a single authorized candidate. A new external-Agent write with no object binding instead resolves
+explicit current-task choice or originating/continuation/Project/Asset receipt first, then the user's writable personal default, then a
+single writable candidate. The shell's ambient selection is not task-local write intent. Every route returns `workspace_routing`, and
+real ambiguity fails closed with candidates. MCP also owns routine `request_id` / `idempotency_key` generation; callers supply an
+explicit key only when they need to coordinate a deliberate retry across invocations. Exact-resource follow-ups keep the stable Workspace
+embedded in their handles, and upload finalization keeps the Workspace from the preparation receipt. `list_workspaces` returns
+caller-relative default/selection flags, disambiguated labels, and a writable recommendation without silently redirecting a write.
+`search(workspace_scope=all_authorized)` is an explicit bounded read fallback when the saved selection may be stale; the Workspace on a
+search hit is provenance and must never be promoted to a new write target.
 
 ## Resolve read and write authority
 
@@ -385,6 +388,11 @@ reconciliation, `output_document` or other derived artifacts, processing policy,
 while independently reusable methods, configurations, constraints, and quality bars may become Project Skills. If a terminal receipt is
 blocked, resolve the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. Never
 use an unbounded shell retry loop.
+
+Remote MCP intentionally keeps queued/running `get_file_operation` responses small: provisional artifacts and summaries are omitted
+until terminal readback. Use only the operation identity, phase, processing receipt, `retry_after_seconds`, and recovery links while it is
+non-terminal; do not infer or announce a user-visible result from those progress facts. The terminal response restores the complete
+artifact, source-reconciliation, Skill-evaluation, and link payload.
 
 ### Foreground Markdown sync
 
