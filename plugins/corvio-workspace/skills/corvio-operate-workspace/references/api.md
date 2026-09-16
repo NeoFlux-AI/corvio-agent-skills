@@ -113,6 +113,11 @@ roots overlap or that one belongs under the other, pass the proven relationship 
 owns the semantic comparison and may create a non-Project branch, move descendants, and retire an empty duplicate root; Remote MCP and
 CLI only transport explicit identities and effects and do not infer the hierarchy.
 
+For a governing-owner correction, include the old Project that currently contains the named branch, not only the branch and proposed new
+owner. Corvio must check whether the old root's remaining children are same-subject projections or independently operated work. Absence
+from the user's short correction is not independence evidence; do not accept a terminal result that moves one child while silently
+leaving a second same-subject root.
+
 After terminal settlement, inspect the operation's canonical Project, reader outputs, affected-owner receipts, and current Tree readback.
 Only then report whether the source established a new scope, extended current owners, split an overloaded owner, consolidated duplicate
 roots, or left topology unchanged. Upload/finalize success alone proves source retention, not Work Model completion.

@@ -44,7 +44,9 @@ direct paths, downloads, sync, and project-Agent operation—not a replacement f
 
 For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding sensitive, disclosure-unclear, and
 explicitly local-only material. A clear current user correction to Workspace identity, relationship, or governing owner resolves that
-bounded authority choice; preserve prior evidence and ask only when authority remains unresolved. OAuth and installation
+bounded authority choice; preserve prior evidence and ask only when authority remains unresolved. If the correction changes the enduring
+owner of a branch, include its old Project so Corvio can reconcile the remaining neighborhood; moving only the named child is not complete,
+and silence about the old root is not evidence of an independent lifecycle. OAuth and installation
 make the user's own Workspace available; they do not create a standing preference to upload every deliverable. A current request that
 explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. So is a request to
 transform selected material so it supports later action, follow-up, decisions, review, or another continuing workflow, even without

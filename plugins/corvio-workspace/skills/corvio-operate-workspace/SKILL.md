@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.55`.
-It implements `coding_agent_collaboration` contract version `2026-09-16.6`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.56`.
+It implements `coding_agent_collaboration` contract version `2026-09-16.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -157,6 +157,13 @@ When the user explicitly corrects an identity, hierarchy, same-item, or cross-Pr
 canonical handles, and any still-unresolved locator as facts in the natural goal. Do not require the Host to rediscover an exact old title
 or preselect Corvio's leaf. The correction is authority for the stated relationship, not for unrelated technical status; Corvio must read
 the affected owners, preserve that boundary, and materialize a missing projection when no lexical match already exists.
+
+When the correction changes the governing owner or enduring subject of a branch already inside another Project, include that old Project
+handle in the bounded handoff and let Corvio reassess its remaining branches. Moving only the child named in the user's sentence is not a
+complete reconciliation. Branches that are existing projections of the same corrected workline should move under the canonical Project
+and leave the emptied shell retired; a sibling Project remains only with direct independent state, ownership, cadence, acceptance, or an
+explicit user boundary. The user not repeating the old root's name is not evidence that it should stay independent. If the bounded reads
+still support materially different mutations, return the named conflict or ask rather than reporting two locally correct roots as done.
 
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader outputs,
 affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is not proof

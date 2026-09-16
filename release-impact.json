@@ -1,34 +1,32 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.55",
-  "contract_revision": "2026-09-16.6",
+  "release_version": "1.7.56",
+  "contract_revision": "2026-09-16.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Distinguish source topics from user Project identity, keep long-running MCP polling compact, preserve opaque handles and explicit relationship corrections, and separate ambient Workspace selection from new unbound external-Agent write intent.",
+  "change_summary": "Close governing-owner corrections across the old Project neighborhood, preserve repeated CLI receipts, and normalize bounded operation waits without moving semantic planning into Runtime.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "The Skill and API reference make search-hit Workspace identity read provenance only, default new unbound writes to the writable personal Workspace, and preserve explicit or receipt-bound destinations."
+      "note": "The Skill and API require an enduring-owner correction to carry the old Project and reconcile its remaining branches instead of accepting a named-child-only move."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/application/chat/prompts/prompt_texts.py",
-        "backend/app/application/usecases/chat_streaming/function_tools.py",
-        "backend/app/application/usecases/chat_streaming/subagent_runtime_inputs.py",
-        "backend/app/domains/workspace_assets/mission_launcher.py",
         "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/api/public_v1/schemas.py",
-        "backend/app/domains/workspace/access.py",
+        "backend/app/application/chat/prompts/prompt_texts.py",
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/usecases/chat_streaming/function_tools.py",
+        "backend/app/domains/workspace_assets/mission_launcher.py",
         "backend/scripts/run_agent_host_case.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-16.6 carries the unreleased 1.7.54 Work Model, compact polling and handle-integrity delta, then splits read/navigation selection from new unbound writes; Page, Project, Asset and allow-actions creation prefer personal default while explicit and object-bound routes remain authoritative."
+      "note": "Contract 2026-09-16.7 aligns Reply, direct organization and RunOps on governing-owner neighborhood closure; transport also expands repeated same-command CLI receipts and caps positive operation waits at the advertised maximum."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -38,24 +36,27 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.55; compatibility family, minimum revision, write consent and installation scope remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.56; compatibility family, minimum revision, write consent and installation scope remain unchanged."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Workspace/Admin CLI remain at 0.1.0-beta.34; an explicit CLI project or workspaces-use selection is process-local authority and remains compatible with contract 2026-09-16.6."
+      "note": "Workspace/Admin CLI remain at 0.1.0-beta.34 and remain compatible with contract 2026-09-16.7; the changed receipt collector is test-Harness code, not a published CLI command."
     },
     "help_center": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Existing public setup guidance remains compatible; exact document mechanics are projected through the changed public API guide, CLI help and focused Skill reference."
+      "disposition": "changed",
+      "paths": [
+        "frontend/src/lib/help/publicMcpHelpContent.ts"
+      ],
+      "note": "Public MCP guidance now explains that an enduring-owner correction includes the old Project neighborhood and is not complete after only the named child moves."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
+        "packaging/corvio-agent-skills/README.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart exposes release 1.7.55 and makes the unbound-write personal-default boundary visible before a Host can promote a search hit or shell selection."
+      "note": "README and SessionStart expose release 1.7.56 and the compact old-Project handoff boundary without asking the Host to design Corvio topology."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -64,44 +65,34 @@
         "docs/reference/cursor-harness/PRODUCT_VALUES.md",
         "docs/reference/cursor-harness/PROMPT_WRITING.md",
         "docs/reference/cursor-harness/TESTING_HARNESS.md",
-        "docs/rfc/prompt-architecture-mainline-v1.md",
-        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/logbook/entries/2026-09-16/154206-external-agent-operation-poll-context-economy.md",
-        "docs/logbook/entries/2026-09-16/171449-codex-unbound-workspace-write-routing.md",
+        "docs/rfc/acceptance-portfolio-execution-control-mainline-v1.md",
+        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
+        "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
+        "docs/logbook/entries/2026-09-16/182400-repeated-cli-receipt-projection.md",
+        "docs/logbook/entries/2026-09-16/185600-operation-wait-overflow-normalization.md",
+        "docs/logbook/entries/2026-09-16/193000-governing-owner-neighborhood-reconciliation.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The cumulative mainline preserves source-subject versus user-work-subject reasoning and explicit correction authority, then records why reads retain ambient selection while new unbound writes use personal default without weakening explicit or object-owned continuity."
+      "note": "The mainline records immutable multi-receipt evaluation, typed wait normalization and the semantic completion boundary for corrected Project ownership while preserving Runtime as a protocol executor."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.55 publication, hashes, fresh released-host loading and deployed OAuth/MCP behavior remain release receipts; external directory acceptance remains outside the repository boundary."
+      "note": "First-party 1.7.56 publication, hashes, fresh released-host loading and deployed OAuth/MCP behavior remain release receipts; external directory acceptance remains outside the repository boundary."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "backend/scripts/run_agent_host_case.py",
-        "backend/scripts/run_agent_host_journey_suite.py",
-        "backend/scripts/scenario_suites/external_agent_latent_work_model_fixture_manifest_v1.json",
-        "backend/scripts/scenario_suites/external_agent_latent_work_model_longitudinal_v1.json",
-        "backend/scripts/scenario_suites/external_agent_longitudinal_fixture_manifest_v1.json",
-        "backend/scripts/scenarios/blank_registered_reply_latent_alias_project_reconciliation.json",
-        "backend/tests/fixtures/agent_host_longitudinal/borealis/bug-delta-2026-09-12.md",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
-        "backend/tests/integration/test_product_guidance_mcp_oauth_flow.py",
-        "backend/tests/integration/test_workspace_request_context_contract.py",
-        "backend/tests/unit/test_agent_host_longitudinal_portfolio.py",
+        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
         "backend/tests/unit/test_function_tools.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_prompt_harness_mainline_contract.py",
         "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
-        "backend/tests/unit/test_subagent_runtime_inputs.py",
         "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
-        "frontend/src/lib/developerSkillPackage.test.ts",
-        "frontend/e2e/developer-platform-public-smoke.spec.ts"
+        "frontend/e2e/developer-platform-public-smoke.spec.ts",
+        "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Cumulative evidence covers longitudinal Work Model identity and correction, compact operation payloads and fixture integrity, plus selected-Team versus personal-default routing, explicit Team preservation, write recommendation, MCP tool guidance and package freshness; fresh released-host semantic acceptance remains the live gate."
+      "note": "Focused guards cover package freshness, old-root handoff and planning semantics; fresh released-host trigger, transfer and countercase effects plus authoritative Tree readback remain the live gate."
     }
   }
 }
