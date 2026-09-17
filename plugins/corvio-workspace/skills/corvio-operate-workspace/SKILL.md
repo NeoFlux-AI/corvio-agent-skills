@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.64`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.4`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.66`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.5`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -35,7 +35,7 @@ wrong branch even if it reads the rest of the Skill afterward.
 | Situation | Action |
 | --- | --- |
 | Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. Continue normally if nothing helps. |
-| Exact continuation handles from the preceding work are present and the user has not changed subject | A short or deictic request such as “按已有方式看这轮” is not contextless. The receipt-bound handles are the Host's compact prior-work handoff even when this process has no transcript; do not demote them to labels or ask the user to repeat them. Load this Skill and read the narrowest relevant handle before any broad Workspace search. If multiple unlabeled handles make the leaf unknowable before reading, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded topology index, then follow only the relevant `has_children` branch until the leaf. If a projection says it is truncated, do not claim the omitted topology is complete. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
+| Exact continuation handles from the preceding work are present and the user has not changed subject | A short or deictic request such as “按已有方式看这轮” is not contextless. The receipt-bound handles are the Host's compact prior-work handoff even when this process has no transcript; do not demote them to labels or ask the user to repeat them. Load this Skill and read the narrowest relevant handle before any broad Workspace search. Receipt-observed titles or roles may select the first read but never replace current readback. When the user asks to recall or apply an established method and a carried Project Skill plausibly matches, read that Skill first, then only the current factual owners its method requires; an ordinary project Page may support the decision but does not replace the reusable-method owner. If multiple handles still make the leaf unknowable before reading, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded topology index, then follow only the relevant `has_children` branch until the leaf. If a projection says it is truncated, do not claim the omitted topology is complete. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
 | A relevant result agrees with the current task | Use it in the host's normal work. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
 | Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. |
@@ -78,9 +78,12 @@ actually binds that destination.
 
 Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
 it only means no durable result should be created or updated. A receipt-bound continuation handle fixes the current subject and evidence
-even when a fresh Host process lacks the prior transcript: inspect the narrowest relevant handle before any broad Workspace search. When
-multiple unlabeled handles make that leaf unknowable, fetch the carried Project, use its `metadata.content_projection.direct_children` as the
-bounded topology index, and follow only the relevant `has_children` branch until the leaf. If a projection is truncated, keep that topology boundary explicit;
+even when a fresh Host process lacks the prior transcript: inspect the narrowest relevant handle before any broad Workspace search.
+Receipt-observed titles or roles may select the first read but never replace current readback. When the user asks to recall or apply an
+established method and a carried Project Skill plausibly matches, read that Skill first, then only the current factual owners its method
+requires; an ordinary project Page may support the decision but does not replace the reusable-method owner. When multiple handles still
+make that leaf unknowable, fetch the carried Project, use its `metadata.content_projection.direct_children` as the bounded topology index,
+and follow only the relevant `has_children` branch until the leaf. If a projection is truncated, keep that topology boundary explicit;
 skip broad search when those owners are sufficient. An out-of-project
 lexical match cannot silently replace the subject. The handle is not automatically the durable destination for every learning. When a
 reusable preference, constraint, method, or pattern is in scope of an authorized organization action, first inspect the handle, then
@@ -225,6 +228,16 @@ Choose the execution owner by total successful-work cost. Keep exact, already-de
 unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,
 structure/formatting interpretation, or a typed carrier would otherwise make the host reconstruct context Corvio already owns. Count
 host and Corvio tokens, payload bytes, retries, latency, fidelity risk, and verified readback—not merely tool-call count.
+
+Choose `processing_profile` from the unresolved semantic bottleneck before starting the Corvio operation; do not start cheaply and use
+failure/rework as the routing mechanism. Use `economy` only after evidence, owner, and exact mutation are settled and objective readback can
+verify the remaining transformation. Use `standard` for ordinary bounded retrieval, organization, or semantic writing. Use `deep` when
+the requested outcome still depends on reconciling several evidence branches into a corpus-wide owner/topology map, resolving material
+cross-source conflict, or proving source-wide completeness before the first durable plan. A heterogeneous source packet, workbook, long
+history, or large file is not intrinsically `deep`: keep `standard` when bounded evidence already settles one cohesive lifecycle and its
+owner. Conversely, do not cap a topology/completeness decision at `standard` merely because each source is individually readable or one
+native carrier can preserve the raw records. Pass a maximum profile only when the user or host owns that cost/latency ceiling, and report
+the resulting effective profile when it materially limits completion.
 
 ## Memory, Work Model, and Skills
 

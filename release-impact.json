@@ -1,27 +1,26 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.64",
-  "contract_revision": "2026-09-17.4",
+  "release_version": "1.7.66",
+  "contract_revision": "2026-09-17.5",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Align local Agent import guidance with the shipped metadata-only inventory, exact-selection freeze, and selected-body parsing boundary without expanding upload consent.",
+  "change_summary": "Choose processing cost from the unresolved semantic bottleneck so corpus-wide Work Model topology and completeness use deep reasoning before the first durable plan while bounded cohesive work stays standard or economy.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-import-local-work/CORVIO_SKILL_REVIEW.json",
-        ".agents/skills/corvio-import-local-work/SKILL.md",
-        ".agents/skills/corvio-import-local-work/references/privacy-and-sources.md"
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The local-import Skill now keeps discovery body-blind, freezes exact selected session references before parsing, and preserves the existing explicit upload-consent boundary."
+      "note": "The Workspace Skill selects economy, standard, or deep from remaining judgment and routes corpus-wide owner/topology or completeness decisions to deep without using file type or size as a classifier."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/application/developer_platform/coding_agent_collaboration.py"
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/domains/workspace_assets/mission_launcher.py"
       ],
-      "note": "The server advertises Skill release 1.7.64 while retaining collaboration contract 2026-09-17.4 and its existing compatibility boundary."
+      "note": "The server advertises Skill release 1.7.66 and collaboration contract 2026-09-17.5, while Mission planning requires branch-level source sufficiency before a first durable topology plan."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -31,32 +30,37 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.64; compatibility family and minimum revision remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.66; compatibility family and minimum revision remain unchanged."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Workspace and Admin CLI remain at 0.1.0-beta.35 and are compatible with the unchanged collaboration contract."
+      "note": "Workspace and Admin CLI remain at 0.1.0-beta.35; their shared server-discovered processing-profile contract remains compatible and needs no CLI protocol change."
     },
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Public Help remains compatible because the release narrows local parsing stages without changing the remote MCP connection or installation flow."
+      "note": "Public Help remains compatible because the public Skill page projects this shared package and the release does not change remote MCP connection or installation steps."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports Skill 1.7.64 and contract 2026-09-17.4 so installed hosts can detect freshness accurately without expanding write authority."
+      "note": "SessionStart reports Skill 1.7.66 and continues to route detailed processing-profile decisions through the loaded canonical Skill."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
-        "docs/logbook/entries/2026-09-17/154900-codex-local-import-skill-version-release.md",
+        "backend/scripts/run_agent_host_case.py",
+        "backend/scripts/run_agent_host_journey_suite.py",
+        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
+        "docs/test-reports/ambient-work-model-30-turn-acceptance-2026-09-17.md",
+        "docs/logbook/entries/2026-09-17/130500-host-selected-workspace-routing-closure.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The logbook records why changed local-import guidance requires a new immutable package version and keeps the existing contract revision."
+      "note": "The Harness now verifies selected-Workspace routing, and the mainline records the first-plan evidence sufficiency and processing-profile boundary exposed by a fresh Codex organization run."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -69,7 +73,7 @@
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Backend and frontend package-contract tests assert the new immutable release number, generated source tag and SessionStart freshness metadata."
+      "note": "Backend, Mission Prompt, external-host, and frontend package-contract tests assert the new release, profile decision boundary, selected-Workspace receipt, and source-coverage sufficiency rule."
     }
   }
 }

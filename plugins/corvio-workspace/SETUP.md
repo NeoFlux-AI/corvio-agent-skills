@@ -34,8 +34,10 @@ means no write.
 
 Exact continuation handles from prior work take precedence over broad lexical discovery. A short or deictic follow-up is not contextless
 when those handles are present: their terminal receipts are the compact prior-work handoff even when this process has no transcript. Load
-`corvio-operate-workspace` and read the handoff instead of asking the user to reconstruct it. Read the narrowest relevant handle first; if
-several unlabeled handles make the leaf unclear, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded
+`corvio-operate-workspace` and read the handoff instead of asking the user to reconstruct it. Receipt-observed titles or roles may choose
+the first read but never replace current readback. When the user asks to recall or apply an established method and a carried Project Skill
+plausibly matches, read that Skill first, then only the factual owners its method requires. Otherwise read the narrowest relevant handle; if
+several handles still make the leaf unclear, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded
 topology index, following only the relevant `has_children` branch until the leaf. Keep any reported truncation boundary explicit. Keep that
 subject unless the user changes it. When the user asks to reconcile a repeated stable practice for future reuse, completion
 requires a durable reusable-owner receipt or an exact canonical readback proving no mutation was needed, not only a chat comparison.

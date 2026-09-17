@@ -106,7 +106,9 @@ For a read-only answer materially grounded by Corvio, return the smallest curren
 verify or continue the work; do not dump every source link or expose private/internal URLs.
 When the host carries exact continuation handles, a short or deictic follow-up is not contextless: their terminal receipts are the compact
 prior-work handoff even when the fresh process has no transcript. Load the Corvio Skill and read the handoff rather than asking the user to
-reconstruct it. Read the narrowest relevant Page first; if several unlabeled handles make the leaf unclear, fetch the carried Project,
+reconstruct it. Receipt-observed titles or roles may choose the first read but never replace current readback. When the user asks to recall
+or apply an established method and a carried Project Skill plausibly matches, read that Skill first, then only the factual owners its
+method requires. Otherwise read the narrowest relevant Page; if several handles still make the leaf unclear, fetch the carried Project,
 use its `metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Keep a truncation boundary
 explicit rather than treating a partial index as complete. If those owners are sufficient, skip broad search. Those handles preserve the prior
 subject unless the user explicitly changes it; a lexical match in another Project is only a candidate and cannot silently replace that
