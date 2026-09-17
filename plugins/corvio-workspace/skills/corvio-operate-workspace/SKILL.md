@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.60`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.1`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.61`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.2`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -208,10 +208,12 @@ Prepared, queued, or accepted is progress, not completion.
 
 A terminal `partial` receipt is not automatically the end of the authorized user outcome. Inspect its typed mismatch, blocker, and
 recovery action. If it names missing user input, permission, disclosure authority, or another external condition, preserve that boundary
-and ask or report it. If the current request still authorizes the unfinished slice and fresh canonical readback already contradicts a
-stale reconciliation mismatch, call `resume_file_operation` once with the same exact operation ID so Corvio can reconcile its durable
-plan under the current contract. Do not re-upload settled sources, start a duplicate organization operation, or have the Host choose a
-replacement taxonomy. Poll the resumed operation to terminal; if the same mismatch remains, report it instead of looping.
+and ask or report it. Otherwise, when the current request still authorizes the unfinished slice and the receipt's typed recovery action
+is `resume_file_operation`, call it once with the same exact operation ID. That explicit bounded invitation is sufficient even when one
+direct source read is unavailable: organization may have rehomed or hidden the source, and the same operation owns exact structural
+recovery. Fresh canonical readback that contradicts a stale mismatch is another reason to take the same one-shot route. Do not re-upload
+settled sources, start a duplicate organization operation, or have the Host choose a replacement taxonomy. Poll the resumed operation to
+terminal; if the same mismatch remains, report it instead of looping.
 
 Choose the execution owner by total successful-work cost. Keep exact, already-decided edits in the host and use bounded read/patch so
 unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,

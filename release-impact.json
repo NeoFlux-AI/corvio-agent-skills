@@ -1,31 +1,28 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.60",
-  "contract_revision": "2026-09-17.1",
+  "release_version": "1.7.61",
+  "contract_revision": "2026-09-17.2",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Preserve authorized private/confidential selected work in bounded private scopes while keeping true local-only and restricted material outside Corvio; retain the preceding same-operation partial recovery contract.",
+  "change_summary": "Treat a typed same-operation recovery action as a bounded one-shot resume invitation when the unfinished slice remains authorized and no user, permission, disclosure, or external blocker is missing.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md"
+        ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "The Skill and API reference distinguish privacy scope from a local-only transport veto, keep whole selected packets causally complete, and retain typed same-operation recovery."
+      "note": "The Skill and API reference make the operation receipt the primary recovery authority while preserving explicit user, permission, disclosure, and external blockers."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/api/public_v1/mcp_routes.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/application/developer_platform/files.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-17.1 distinguishes private owner and ACL constraints from true restricted or local-only exclusions, while preserving bounded same-operation recovery without moving semantic planning into Runtime."
+      "note": "Contract 2026-09-17.2 allows one receipt-authorized same-operation resume even when a direct source read is unavailable, without moving semantic planning into Runtime."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -35,12 +32,12 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.60; compatibility family and minimum revision remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.61; compatibility family and minimum revision remain unchanged."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Workspace and Admin CLI versions are unchanged and remain compatible with contract 2026-09-17.1."
+      "note": "Workspace and Admin CLI versions are unchanged and remain compatible with contract 2026-09-17.2."
     },
     "help_center": {
       "disposition": "changed",
@@ -48,7 +45,7 @@
         "frontend/src/lib/help/publicMcpHelpContent.ts",
         ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "Public MCP guidance explains private-scope retention, true local-only exclusions, whole-packet reconciliation, and bounded same-operation recovery."
+      "note": "Public MCP guidance explains receipt-first one-shot recovery and the external-authority stop boundary."
     },
     "package_setup": {
       "disposition": "changed",
@@ -56,22 +53,16 @@
         "packaging/corvio-agent-skills/README.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "README, Codex defaults, and SessionStart carry the compact privacy/scope boundary without asking the Host to design the Tree or reinterpret source placement."
+      "note": "README, Codex defaults, and SessionStart carry the compact receipt-first recovery boundary without asking the Host to design the Tree."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
-        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/reference/cursor-harness/TESTING_HARNESS.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
-        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
-        "docs/logbook/entries/2026-09-16/102308-external-agent-progressive-document-io.md",
-        "docs/logbook/entries/2026-09-16/195500-host-local-edge-is-not-owner-settlement.md",
-        "docs/logbook/entries/2026-09-17/000611-private-scope-is-not-local-only.md",
+        "docs/logbook/entries/2026-09-17/013720-typed-recovery-action-authorizes-one-resume.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The mainline records the released-host semantic miss, preserves full-body compatibility and total-work routing, and keeps Runtime as typed execution and receipt owner."
+      "note": "The mainline records the released-host recovery miss, makes the typed receipt authoritative for one bounded retry, and keeps Runtime as typed execution and receipt owner."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -83,14 +74,11 @@
       "paths": [
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_external_document_io_host_probe.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/scripts/run_external_document_io_host_probe.py",
-        "backend/scripts/scenario_suites/external_agent_document_io_host_v1.json",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Source guards, typed recovery receipts, the 30-turn ambient Work Model portfolio and live Codex samples cover causal intake, topology, one-shot recovery and ROI; fresh released-host and Claude readback remain live gates."
+      "note": "Source guards, typed recovery receipts and the 30-turn ambient Work Model portfolio cover causal intake, topology and one-shot recovery; fresh released-host and Claude readback remain live gates."
     }
   }
 }

@@ -402,9 +402,11 @@ reconciliation, `output_document` or other derived artifacts, processing policy,
 `evaluated_no_qualifying_skill` is an equally valid evidence-based result. Stable facts/preferences belong to the appropriate Memory,
 while independently reusable methods, configurations, constraints, and quality bars may become Project Skills. If a terminal receipt is
 blocked, resolve the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. For a
-partial receipt, inspect its typed mismatch and recovery action. If the current request still authorizes the unfinished slice and fresh
-canonical readback already contradicts a stale reconciliation mismatch, resume that exact operation once instead of re-uploading settled
-sources or starting a duplicate organization operation. If the same mismatch survives the resumed terminal readback, report the exact
+partial receipt, inspect its typed mismatch and recovery action. If the current request still authorizes the unfinished slice and no
+named user, permission, disclosure, or external condition is missing, an explicit `resume_file_operation` recovery action is sufficient
+to resume that exact operation once—even when one direct source read is unavailable. Fresh canonical readback that contradicts a stale
+mismatch is another reason to take that route. Do not re-upload settled sources or start a duplicate organization operation. If the same
+mismatch survives the resumed terminal readback, report the exact
 boundary. Never use an unbounded shell retry loop.
 
 When an organization command needs Asset IDs created by earlier uploads, keep the causal boundary explicit: complete each upload (parallel

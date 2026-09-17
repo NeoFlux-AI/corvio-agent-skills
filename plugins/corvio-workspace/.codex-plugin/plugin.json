@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.60",
+  "version": "1.7.61",
   "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",
@@ -41,7 +41,7 @@
     "Apply a clear current user correction before asking about authority that remains unresolved.",
     "When a correction changes the enduring owner of an existing branch, include its old Project and reconcile the remaining neighborhood; moving only the named child is not complete, and silence about the old root is not independence evidence.",
       "A read-only fetch proving the named child already sits under the requested owner settles only that edge; while the old Project remains unclassified, pass both Project handles to one Corvio organization operation and accept no-op only from its terminal result and current Tree.",
-      "A terminal partial organization receipt still carries a typed recovery boundary. When fresh canonical readback disproves a stale mismatch and no user, permission, or external authority is missing, resume the same exact operation once; do not re-upload settled sources, open a duplicate mission, or invent replacement taxonomy.",
+      "A terminal partial organization receipt still carries a typed recovery boundary. When its unfinished slice remains authorized, no user, permission, disclosure, or external condition is missing, and recovery.action names resume_file_operation, resume the same exact operation once even if one direct source read is unavailable; do not re-upload settled sources, open a duplicate mission, invent replacement taxonomy, or loop.",
       "For a new unbound write, omit workspace_id so Corvio uses the writable personal default; pass one only from current user intent or a stable object/continuation receipt, never from a search hit or ambient shell selection.",
       "Do not upload or write an ordinary deliverable from OAuth availability alone. Use an explicit current request or user-owned standing preference; otherwise deliver normally and ask once whether to save the specific result.",
       "When an authorized durable Work Model update relies on related selected attachments, retain and organize those sources with the affected owners or topology instead of mutating from pasted excerpts and leaving them local; attachment presence alone is not consent.",
