@@ -15,7 +15,8 @@ The importer does not traverse the full Home directory. A user-selected custom r
 | Stage | May read locally | May upload |
 |---|---|---|
 | detect | directory entries and file metadata | source kind, counts, availability, errors |
-| sample | bounded recent local text | statistics only; no bodies |
+| session index | file/session metadata only; no conversation bodies | opaque session refs, titles/times/sizes, metadata fingerprints and diff state |
+| select | no new local body access | exact selected session refs, scopes and selection revision |
 | parse/redact | selected full bodies in the foreground process | locally redacted complete user-to-assistant turns after confirmation |
 | finalize | no new source scope | manifest/chunk receipts and final report state |
 

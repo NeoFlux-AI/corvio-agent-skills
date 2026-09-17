@@ -5,7 +5,7 @@ description: Safely discover and import selected local Codex, Claude Code, or Cu
 
 # Import local Agent work into Corvio
 
-Use Corvio's reviewed local-import path to turn selected local Agent history into a revocable Corvio source library and report. The signed/native CLI owns local discovery, bounded sampling, parsing, local redaction, and upload. This Skill owns user guidance and consent sequencing; it does not implement a second scanner.
+Use Corvio's reviewed local-import path to turn selected local Agent history into a revocable Corvio source library and report. The signed/native CLI owns local discovery, metadata-only session indexing, exact selected-session parsing, local redaction, and upload. This Skill owns user guidance and consent sequencing; it does not implement a second scanner.
 
 This workflow owns native Agent stores and raw Host exports, not every structured-text attachment. A separately reviewed,
 privacy-reduced projection that contains only allowed user/assistant work, excludes Host control text and tool traces, carries no blocked
@@ -42,7 +42,7 @@ Ask for an explicit selection when more than one supported source exists or when
 
 For a custom root, use the narrow source-specific command and repeat the resolved source kind and path for confirmation. Never replace a missing adapter with recursive Home-directory search.
 
-### 4. Review the bounded sample receipt
+### 4. Review and select the metadata-only session inventory
 
 Start the interactive import:
 
@@ -50,11 +50,11 @@ Start the interactive import:
 corvio agent-history import
 ```
 
-The importer may read a bounded local sample but uploads statistics only. Summarize candidate conversations/turn counts, approximate size and time range, sensitive/blocked counts, exclusions, and the next operation. Ask before continuing to full body parsing.
+The importer indexes opaque session identities, titles, timestamps, sizes and metadata fingerprints without opening conversation bodies. Present the `new`, `changed`, `unchanged`, `missing_local` and `unsupported` states, and keep missing/unsupported sessions unavailable for selection. Freeze the exact selected session refs and scopes before continuing.
 
 ### 5. Confirm body parsing and upload separately
 
-Full parsing must stay inside the foreground CLI. It converts only complete user-to-assistant turns, redacts locally, blocks high-risk credentials, and never uploads raw JSONL/SQLite files, absolute paths, system/developer prompts, hidden reasoning, tool output, or media.
+Full parsing must stay inside the foreground CLI and may open only the exact selected session refs. It converts only complete user-to-assistant turns, redacts locally, blocks high-risk credentials, and never uploads raw JSONL/SQLite files, absolute paths, system/developer prompts, hidden reasoning, tool output, or media.
 
 Do not add `--confirm-upload` or approve the Web review step unless the user explicitly approved the selected sources and upload in the current interaction. Non-interactive use requires both `--non-interactive` and `--confirm-upload`; automation convenience is not consent.
 
@@ -64,7 +64,7 @@ Report completion only when the server returns the terminal import receipt. Pres
 
 - Run/session ID and final status;
 - selected-source manifest;
-- discovery and sample receipts;
+- discovery, metadata-index and exact-selection receipts;
 - uploaded/blocked/skipped turn counts;
 - Corvio report URL or durable resource handle;
 - retry or rollback guidance.
