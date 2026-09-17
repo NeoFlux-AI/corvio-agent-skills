@@ -42,16 +42,21 @@ comparisons, proposals, plans, decisions, meeting notes, project work, debugging
 Corvio capabilities and receipts. It complements the host's normal file and tool workflow. The CLI is an additional local adapter for
 direct paths, downloads, sync, and project-Agent operation—not a replacement for MCP in hosts that support it.
 
-For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding sensitive, disclosure-unclear, and
-explicitly local-only material. A clear current user correction to Workspace identity, relationship, or governing owner resolves that
+For those tasks, the Agent may silently make one narrow read-only Corvio search after excluding credentials, regulated or privileged
+data, genuinely disclosure-unclear sources, and explicitly local-only material. Private or confidential material selected for an
+authorized private Workspace workflow instead carries owner, ACL, and cross-scope reuse constraints; it is not automatically local-only.
+A clear current user correction to Workspace identity, relationship, or governing owner resolves that
 bounded authority choice; preserve prior evidence and ask only when authority remains unresolved. If the correction changes the enduring
 owner of a branch, include its old Project so Corvio can reconcile the remaining neighborhood; moving only the named child is not complete,
-and silence about the old root is not evidence of an independent lifecycle. OAuth and installation
+and silence about the old root is not evidence of an independent lifecycle. A read-only fetch that finds the named child under the requested
+owner settles only that edge; while the old Project remains unclassified, pass both Project handles to one Corvio organization operation
+and accept no-op only from its terminal result and current Tree. OAuth and installation
 make the user's own Workspace available; they do not create a standing preference to upload every deliverable. A current request that
 explicitly asks to save, upload, share, organize, synthesize, or update stated material is bounded write consent. So is a request to
 transform selected material so it supports later action, follow-up, decisions, review, or another continuing workflow, even without
 storage wording: preserve the sources and reconcile their Work Model instead of first producing a chat-only rewrite and asking whether
-to save. A user-owned, host-visible Memory/Profile setting can also authorize a defined class and scope. Only an ordinary one-off result
+to save. A selected source unrelated to the current Project still needs a distinct-scope or standalone decision when that whole packet
+is in scope; do not silently drop it. A user-owned, host-visible Memory/Profile setting can also authorize a defined class and scope. Only an ordinary one-off result
 without those signals needs the specific save proposal. A decline or no answer means no write.
 
 An approved Corvio result can be an editable online document and shareable collaboration link. When the approved material is a coherent
@@ -189,7 +194,9 @@ the installer-supported `npx skills update` only when their install record is up
 
 Local history import is a separate foreground path. The `corvio-import-local-work` Skill guides the signed native importer and keeps metadata discovery, body parsing, and upload confirmation separate. Remote MCP never scans a computer. Native Agent stores and raw Host exports stay on that reviewed importer path; a separately reviewed, privacy-reduced projection selected by the user is an ordinary file. For any large selected file, inspect metadata, hashes, schema and bounded samples instead of placing the complete body in model context. A filesystem-capable host may then use MCP to prepare a signed upload, perform the byte PUT locally, and finalize the durable Asset; the CLI offers the same mechanical bridge as one command. A finalized Markdown Asset can become a Page through `source_asset_id`, without placing the whole file in a second tool call.
 
-That upload is the provenance layer, not the end of the product story. Copyright, public availability, or third-party authorship alone does not make a user-selected source restricted; preserve provenance and applicable use terms, and exclude it only when an explicit restriction forbids the requested private Workspace retention or processing. A newly finalized source that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to one `organize_files` operation; that Mission owns source preparation and retry/resume. Do not open `ask_corvio` before or after it for the same source set. An optional `target_root_node_id` is a Project `node_id` returned by `list_projects`, never a Page/document UUID or leaf node. Use `ask_corvio` for a bounded answer or artifact only when that source-to-owner lifecycle is not required. Poll the operation to terminal and inspect `output_document`, `source_reconciliation`, and `skills_evaluation`; do not submit duplicate Questions merely to wait for source readiness. Stable facts/preferences may enter Memory; only an evidence-backed reusable method, configuration, constraint, or quality bar becomes a Project Skill. `skills_extraction_mode=always` requires this decision and may correctly return `evaluated_no_qualifying_skill`.
+That upload is the provenance layer, not the end of the product story. Copyright, public availability, or third-party authorship alone does not make a user-selected source restricted; preserve provenance and applicable use terms, and exclude it only when an explicit restriction forbids the requested private Workspace retention or processing. A newly finalized source that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to one `organize_files` operation; that Mission owns source preparation and retry/resume. Do not open `ask_corvio` before or after it for the same source set. An optional `target_root_node_id` is a Project `node_id` returned by `list_projects`, never a Page/document UUID or leaf node. Use `ask_corvio` for a bounded answer or artifact only when that source-to-owner lifecycle is not required. Poll the operation to terminal and inspect `output_document`, `source_reconciliation`, and `skills_evaluation`; do not submit duplicate Questions merely to wait for source readiness. A terminal `partial` receipt still carries a typed recovery boundary: if fresh canonical readback already contradicts a stale reconciliation mismatch and no user, permission, or external authority is missing, resume the same operation once rather than re-uploading settled sources or opening a duplicate organization operation. Stable facts/preferences may enter Memory; only an evidence-backed reusable method, configuration, constraint, or quality bar becomes a Project Skill. `skills_extraction_mode=always` requires this decision and may correctly return `evaluated_no_qualifying_skill`.
+
+For a multi-file intake, finish the independent uploads and capture every exact Asset ID before constructing an organization command that depends on those IDs. If a later step fails, keep the earlier durable receipts and retry only the missing effect; do not upload successful sources again.
 
 ## Official sources
 

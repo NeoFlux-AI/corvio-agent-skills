@@ -1,32 +1,31 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.56",
-  "contract_revision": "2026-09-16.7",
+  "release_version": "1.7.60",
+  "contract_revision": "2026-09-17.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Close governing-owner corrections across the old Project neighborhood, preserve repeated CLI receipts, and normalize bounded operation waits without moving semantic planning into Runtime.",
+  "change_summary": "Preserve authorized private/confidential selected work in bounded private scopes while keeping true local-only and restricted material outside Corvio; retain the preceding same-operation partial recovery contract.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
       ],
-      "note": "The Skill and API require an enduring-owner correction to carry the old Project and reconcile its remaining branches instead of accepting a named-child-only move."
+      "note": "The Skill and API reference distinguish privacy scope from a local-only transport veto, keep whole selected packets causally complete, and retain typed same-operation recovery."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/application/chat/prompts/prompt_texts.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/application/usecases/chat_streaming/function_tools.py",
-        "backend/app/domains/workspace_assets/mission_launcher.py",
-        "backend/scripts/run_agent_host_case.py",
+        "backend/app/application/developer_platform/files.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-16.7 aligns Reply, direct organization and RunOps on governing-owner neighborhood closure; transport also expands repeated same-command CLI receipts and caps positive operation waits at the advertised maximum."
+      "note": "Contract 2026-09-17.1 distinguishes private owner and ACL constraints from true restricted or local-only exclusions, while preserving bounded same-operation recovery without moving semantic planning into Runtime."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -36,19 +35,20 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.56; compatibility family, minimum revision, write consent and installation scope remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.60; compatibility family and minimum revision remain unchanged."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Workspace/Admin CLI remain at 0.1.0-beta.34 and remain compatible with contract 2026-09-16.7; the changed receipt collector is test-Harness code, not a published CLI command."
+      "note": "Workspace and Admin CLI versions are unchanged and remain compatible with contract 2026-09-17.1."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
-        "frontend/src/lib/help/publicMcpHelpContent.ts"
+        "frontend/src/lib/help/publicMcpHelpContent.ts",
+        ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "Public MCP guidance now explains that an enduring-owner correction includes the old Project neighborhood and is not complete after only the named child moves."
+      "note": "Public MCP guidance explains private-scope retention, true local-only exclusions, whole-packet reconciliation, and bounded same-operation recovery."
     },
     "package_setup": {
       "disposition": "changed",
@@ -56,43 +56,41 @@
         "packaging/corvio-agent-skills/README.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "README and SessionStart expose release 1.7.56 and the compact old-Project handoff boundary without asking the Host to design Corvio topology."
+      "note": "README, Codex defaults, and SessionStart carry the compact privacy/scope boundary without asking the Host to design the Tree or reinterpret source placement."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
-        "docs/reference/cursor-harness/PROMPT_WRITING.md",
         "docs/reference/cursor-harness/TESTING_HARNESS.md",
-        "docs/rfc/acceptance-portfolio-execution-control-mainline-v1.md",
-        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
+        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
         "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
-        "docs/logbook/entries/2026-09-16/182400-repeated-cli-receipt-projection.md",
-        "docs/logbook/entries/2026-09-16/185600-operation-wait-overflow-normalization.md",
-        "docs/logbook/entries/2026-09-16/193000-governing-owner-neighborhood-reconciliation.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/logbook/entries/2026-09-16/102308-external-agent-progressive-document-io.md",
+        "docs/logbook/entries/2026-09-16/195500-host-local-edge-is-not-owner-settlement.md",
+        "docs/logbook/entries/2026-09-17/000611-private-scope-is-not-local-only.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The mainline records immutable multi-receipt evaluation, typed wait normalization and the semantic completion boundary for corrected Project ownership while preserving Runtime as a protocol executor."
+      "note": "The mainline records the released-host semantic miss, preserves full-body compatibility and total-work routing, and keeps Runtime as typed execution and receipt owner."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party 1.7.56 publication, hashes, fresh released-host loading and deployed OAuth/MCP behavior remain release receipts; external directory acceptance remains outside the repository boundary."
+      "note": "First-party publication, public hashes and fresh released-host readback remain release gates; external directory acceptance stays outside repository authority."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_function_tools.py",
+        "backend/tests/unit/test_external_document_io_host_probe.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
-        "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
+        "backend/scripts/run_external_document_io_host_probe.py",
+        "backend/scripts/scenario_suites/external_agent_document_io_host_v1.json",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Focused guards cover package freshness, old-root handoff and planning semantics; fresh released-host trigger, transfer and countercase effects plus authoritative Tree readback remain the live gate."
+      "note": "Source guards, typed recovery receipts, the 30-turn ambient Work Model portfolio and live Codex samples cover causal intake, topology, one-shot recovery and ROI; fresh released-host and Claude readback remain live gates."
     }
   }
 }

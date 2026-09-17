@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or a short/deictic follow-up backed by exact Corvio continuation handles—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace. Before promising whether you will write, classify future use: making selected material usable for later action, follow-up, decisions, or review authorizes retention plus one Work Model reconciliation without storage verbs. If an authorized durable update relies on selected attachments, retain that evidence in the same effect; do not mutate owners from excerpts while leaving sources local. Do not upload, create, update, or organize an ordinary one-off without current-task consent or a user-owned standing preference; ask once before saving. Exclude sensitive, disclosure-unclear, and explicitly local-only material; read back approved effects and canonical links. Triggers include 决策、纪要、复盘、项目、整理、沉淀."
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, or a short/deictic follow-up backed by exact Corvio continuation handles—even without a Corvio mention. Corvio is the user's OAuth-connected Workspace. Before promising whether you will write, classify future use: making selected material useful for later action, follow-up, decisions, or review authorizes retention and one Work Model reconciliation without storage verbs. For authorized updates, retain selected evidence; do not mutate owners from excerpts while sources stay local. Do not upload, create, update, or organize an ordinary one-off without consent or a standing preference; ask once before saving. Keep credentials, regulated or privileged data, genuinely disclosure-unclear sources, and explicitly local-only material outside Corvio. Authorized private or confidential work instead needs bounded owner and ACL. Read back effects and links. 中文触发包括决策、纪要、复盘."
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.56`.
-It implements `coding_agent_collaboration` contract version `2026-09-16.7`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.60`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
@@ -44,7 +44,8 @@ wrong branch even if it reads the rest of the Skill afterward.
 | The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. Decide whether the evidence qualifies before deciding whether a nearby owner is reusable: a wrong-Project Skill blocks that merge, not admission under the correct Project. A chat comparison, ordinary fact-Page update, or offer to save later is not completion. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
-| Sensitive, disclosure-unclear, policy-restricted, or explicitly local-only material | Make no Corvio call for that material. Keep it local. |
+| Selected private or confidential work that the user authorized for future use in a private Corvio scope | Treat privacy as an owner, reader, ACL, and reuse constraint rather than a category veto. Preserve the selected source in the narrow private scope; do not copy its facts into another Project, a global method, or a shared/public surface. Ask only when the available Workspace or audience cannot satisfy that boundary. |
+| Credentials, regulated personal or health data, privileged/restricted material, genuinely disclosure-unclear content, or an explicit local/device-only choice | Make no Corvio call for that material. Keep it local. |
 
 OAuth connection is capability, not standing write preference. Never infer upload consent from installation, an available tool, an
 attachment, a successful search, or a substantive deliverable alone.
@@ -53,8 +54,10 @@ is not an ordinary one-off deliverable merely because the user omitted a destina
 ordinary-deliverable row. Attachment presence without this purpose or another bounded write instruction still authorizes nothing.
 Once the current task has separately authorized a bounded durable Work Model mutation, however, user-selected attachments that supply
 facts for that mutation are part of the same selected evidence scope. This applies whether the mutation changes existing content or
-topology. Unrelated, sensitive, disclosure-unclear, policy-restricted, or
-explicitly local-only attachments remain outside it; when relevance or disclosure is ambiguous, ask rather than broadening the write.
+topology. An attachment unrelated to the current Project is not necessarily unrelated to an explicit request covering the whole selected
+packet: retain it as a distinct scope or standalone reference when that future-use request includes it. Material outside the selected set,
+credentials, regulated or privileged data, genuinely disclosure-unclear sources, and explicitly local-only attachments remain outside;
+when the destination or reader boundary is ambiguous, ask rather than broadening the write.
 
 ## Read quietly; ask at real decision points
 
@@ -165,6 +168,12 @@ and leave the emptied shell retired; a sibling Project remains only with direct 
 explicit user boundary. The user not repeating the old root's name is not evidence that it should stay independent. If the bounded reads
 still support materially different mutations, return the named conflict or ask rather than reporting two locally correct roots as done.
 
+A read-only `search` or `fetch` that shows the named child already under the requested owner settles only that edge; it does not settle the
+correction while the old Project still exists with unclassified branches. In that state, pass the user's natural correction plus the old
+and requested-owner handles to one Corvio semantic organization operation: use `ask_corvio` to reconcile existing Workspace work, or the
+source organization path when newly selected files are part of the same authorized effect. A canonical no-op is valid only when the
+terminal Corvio result and current Tree prove the old Project retired, or direct independent-lifecycle evidence justifies keeping it.
+
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader outputs,
 affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is not proof
 that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable entry now owns
@@ -183,7 +192,9 @@ matching tool argument instead of shortening, retyping, joining, or reconstructi
   `append_document` for a true append, and `update_document` only when whole-body replacement is the smallest faithful effect.
 - Preserve an exact selected local file through `prepare_file_upload` → host PUT → `finalize_file_upload`. Remote MCP cannot read a local
   path. In a filesystem-capable coding host with the authenticated official CLI, prefer `corvio files upload --file <path>` for exact
-  byte size and SHA-256 handling.
+  byte size and SHA-256 handling. Keep causally dependent CLI effects as separate steps: finish the selected uploads, capture their exact
+  Asset IDs from successful receipts, and only then issue an organization command that consumes those IDs. Independent uploads may run
+  concurrently, but never precompose a later argument from an empty, guessed, shortened, or not-yet-returned handle.
 - Use one `organize_files` operation when authorized selected sources should enter a Work Model, reconcile current owners, or receive
   evidence-based Memory/Skill evaluation. Do not open `ask_corvio` before or after it for the same source set.
 - Use `ask_corvio` for bounded cross-source synthesis or a typed Spreadsheet, Presentation, Code, or HTML result when source-to-Work-Model
@@ -194,6 +205,13 @@ titles, artifact count, or Corvio's internal plan. Poll asynchronous work to ter
 claiming completion. A terminal artifact/operation with `readback_verified=true` is that authoritative inspection; do not reread it or open
 a second Question merely to verify the same effect. Re-read only when verification is missing, partial, or conflicts with another authority.
 Prepared, queued, or accepted is progress, not completion.
+
+A terminal `partial` receipt is not automatically the end of the authorized user outcome. Inspect its typed mismatch, blocker, and
+recovery action. If it names missing user input, permission, disclosure authority, or another external condition, preserve that boundary
+and ask or report it. If the current request still authorizes the unfinished slice and fresh canonical readback already contradicts a
+stale reconciliation mismatch, call `resume_file_operation` once with the same exact operation ID so Corvio can reconcile its durable
+plan under the current contract. Do not re-upload settled sources, start a duplicate organization operation, or have the Host choose a
+replacement taxonomy. Poll the resumed operation to terminal; if the same mismatch remains, report it instead of looping.
 
 Choose the execution owner by total successful-work cost. Keep exact, already-decided edits in the host and use bounded read/patch so
 unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,
@@ -284,10 +302,14 @@ complete host-chat history. Review the [Privacy Policy](https://corvio.ai/privac
 Connector and revoke the `Remote MCP connection` credential in Corvio **Settings → API keys** to end access.
 
 Treat disclosure as a content-and-policy judgment, not a category veto. Ordinary project or participant names, ticket IDs and statuses,
-anonymized customer segments, operational metrics, and user-authored professional notes are not automatically sensitive. Copyright,
-public availability, or third-party authorship alone does not establish a restriction: preserve provenance and applicable terms, and
-exclude a selected source when an explicit restriction or established policy forbids the requested private processing. Credentials,
-regulated personal or health data, privileged material, disclosure-unclear content, and an explicit local-only choice stay local.
+anonymized customer segments, operational metrics, user-authored professional notes, and the words private or confidential are not by
+themselves a local-only instruction. When the user selected that material for an authorized future-use workflow and no external sharing
+is requested, interpret its stated audience as a private owner/ACL and cross-scope reuse boundary. Do not surface confidential examples in
+a personal or reusable method; link or abstract only what the source permits. Ask if the available Workspace or intended readers cannot
+preserve that boundary. Copyright, public availability, or third-party authorship alone does not establish a restriction: preserve
+provenance and applicable terms, and exclude a selected source when an explicit restriction or established policy forbids the requested
+private processing. Credentials, regulated personal or health data, privileged material, genuinely disclosure-unclear content, and an
+explicit local/device-only or no-cloud choice stay local.
 
 ## Install, update, and exact API mechanics
 

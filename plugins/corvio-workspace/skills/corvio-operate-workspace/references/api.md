@@ -46,7 +46,9 @@ The user's OAuth connection authorizes the listed Corvio capabilities within cur
 does not create a standing preference to upload or mutate data. A normal request for a report or other deliverable authorizes the host
 result, not a Corvio write.
 
-- Read-only search may run silently after the sensitive, disclosure-unclear, and explicitly local-only exclusion. If results are clear
+- Read-only search may run silently after excluding credentials, regulated or privileged data, genuinely disclosure-unclear sources,
+  and explicitly local-only material. A private or confidential label is an owner/ACL constraint when private Workspace use is
+  authorized; it is not by itself a local-only instruction. If results are clear
   and non-conflicting, use them in the normal host loop. Ask the user before choosing among competing owners, stale decisions, or
   materially conflicting sources.
 - A current request that explicitly says to save, upload, share, organize, synthesize, or update stated material in Corvio is bounded
@@ -103,8 +105,10 @@ beyond the file itself. The Host still passes only the natural continuity goal a
 When the current turn authorizes a bounded durable Work Model change—updating existing owners or correcting, splitting, merging, moving,
 or reparenting structure—and relies on user-selected files clearly about that subject, retain those files and send one `organize_files`
 mission for the combined effect. Do not paste their facts into an `ask_corvio` mutation and leave the source evidence behind. This
-composition rule does not turn attachment presence into consent:
-unrelated, sensitive, disclosure-unclear, policy-restricted, explicitly local-only, or ambiguously related files remain outside scope.
+composition rule does not turn attachment presence into consent. A selected file unrelated to the current Project still belongs to an
+explicit whole-packet future-use request and needs a distinct-scope or standalone-reference decision. Material outside the selected set,
+credentials, regulated or privileged data, genuinely disclosure-unclear sources, explicitly local-only files, and destinations whose
+reader boundary is still ambiguous remain outside scope.
 
 Before choosing `target_root_node_id`, search the enduring work subject and read the narrowest plausible current Projects. An event-shaped
 input such as a meeting, incident update, slogan change, or code task is not itself evidence for a new Project. When the relation remains
@@ -117,6 +121,12 @@ For a governing-owner correction, include the old Project that currently contain
 owner. Corvio must check whether the old root's remaining children are same-subject projections or independently operated work. Absence
 from the user's short correction is not independence evidence; do not accept a terminal result that moves one child while silently
 leaving a second same-subject root.
+
+Finding the named child under the requested owner with read-only `search` or `fetch` proves only that local edge. If the old Project still
+exists and its remaining branches are not classified, call one semantic organization operation with the natural correction and both
+Project handles: `ask_corvio` for existing Workspace reconciliation, or `organize_files` when newly selected sources belong to the same
+authorized effect. Return no-op only after the terminal result and current Tree prove the old Project retired or direct evidence proves an
+independent Project lifecycle.
 
 After terminal settlement, inspect the operation's canonical Project, reader outputs, affected-owner receipts, and current Tree readback.
 Only then report whether the source established a new scope, extended current owners, split an overloaded owner, consolidated duplicate
@@ -391,8 +401,17 @@ reconciliation, `output_document` or other derived artifacts, processing policy,
 `skills_evaluation` returns stable candidate identities and typed `page:` / `node:` resource receipts when exposed by the durable write;
 `evaluated_no_qualifying_skill` is an equally valid evidence-based result. Stable facts/preferences belong to the appropriate Memory,
 while independently reusable methods, configurations, constraints, and quality bars may become Project Skills. If a terminal receipt is
-blocked, resolve the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. Never
-use an unbounded shell retry loop.
+blocked, resolve the named condition and resume the same operation; cancel it explicitly when the user no longer wants the effect. For a
+partial receipt, inspect its typed mismatch and recovery action. If the current request still authorizes the unfinished slice and fresh
+canonical readback already contradicts a stale reconciliation mismatch, resume that exact operation once instead of re-uploading settled
+sources or starting a duplicate organization operation. If the same mismatch survives the resumed terminal readback, report the exact
+boundary. Never use an unbounded shell retry loop.
+
+When an organization command needs Asset IDs created by earlier uploads, keep the causal boundary explicit: complete each upload (parallel
+is fine for independent files), record every successful receipt, and only then construct the organization command from those exact IDs.
+Do not chain a later command whose arguments depend on shell variables or placeholders that the earlier commands have not populated yet.
+If a later shell step fails after earlier JSON receipts were emitted, preserve and verify those durable Assets, report the failed step,
+and retry only the missing effect instead of uploading the successful sources again.
 
 Remote MCP intentionally keeps queued/running `get_file_operation` responses small: provisional artifacts and summaries are omitted
 until terminal readback. Use only the operation identity, phase, processing receipt, `retry_after_seconds`, and recovery links while it is

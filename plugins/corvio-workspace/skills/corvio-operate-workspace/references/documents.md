@@ -22,19 +22,26 @@ For a full rewrite, compare both viable routes instead of treating semantic comp
 writing is appropriate when one complete Page is already in context, the host can preserve every required fact, and one guarded update plus
 verified receipt finishes the outcome. Delegate when another Corvio model pass replaces larger source transfer/reconstruction, typed-carrier
 knowledge, Work Model reconciliation, or risky host-side truncation. Do not split one coherent rewrite between both Agents.
+When stable Workspace source and target handles already make a cross-source or typed task decision-ready, pass them directly to one
+`ask_corvio` operation. Do not pre-read the target merely to restate its title, revision, or contents to Corvio; read first only when a
+missing fact could change the execution owner, target, scope, or constraint.
 
 ## Progressive read loop
 
 1. Resolve the canonical `workspace_uuid/page_uuid` handle from continuation context, `search`, or `list_documents`.
-2. When the user supplied an exact literal locator, start with `mode=search`; `match_count` plus `matches_truncated=false` is exhaustive for
-   that literal, so do not fan out into speculative synonym searches unless broader semantic recall is actually requested. Otherwise call
-   `read_document` with `mode=auto` (or CLI `corvio docs read <id> --mode auto`). Small Pages return the complete body; large Pages return
-   an overview with current `S#` section and `L#` line navigation.
-3. Follow one returned selector with `mode=section` or `mode=line_range`. Use `mode=search` for a literal in-document locator when the
+2. First classify the read purpose. For one read-only current fact or no-op check, use `mode=auto` even when the prompt names an expected
+   value or uses a localized field label; do not open an `ask_corvio` Question or translate/synonymize the label into a guessed literal
+   search. Small Pages return the complete body and large Pages return bounded navigation. Reserve explicit `overview` for outline discovery.
+3. For an active exact replacement that supplies the current literal, a request asking where a supplied phrase appears, or a request asking
+   which sections discuss that exact term, start with `mode=search` and do not read `auto`/`overview` first. It returns writable `L#` anchors,
+   while a complete `auto`/`full` body is content evidence but not a line locator for `patch_document`. `match_count` plus
+   `matches_truncated=false` is exhaustive for that literal, so do not fan out into speculative synonym searches unless broader semantic
+   recall is actually requested. Otherwise call `read_document` with `mode=auto` (or CLI `corvio docs read <id> --mode auto`).
+4. Follow one returned selector with `mode=section` or `mode=line_range`. Use `mode=search` for a literal in-document locator when the
    outline is insufficient.
-4. Continue only while the result says the requested projection is incomplete. Request `mode=full` only when the whole body is actually
+5. Continue only while the result says the requested projection is incomplete. Request `mode=full` only when the whole body is actually
    needed for the user outcome.
-5. Carry `content_revision`, `snapshot_id`, completeness, and any continuation field into the next decision. Never reuse `S#` or `L#`
+6. Carry `content_revision`, `snapshot_id`, completeness, and any continuation field into the next decision. Never reuse `S#` or `L#`
    aliases after the revision changes.
 
 MCP `fetch` and CLI `docs get` remain compatibility full-body readers. `corvio docs get <id> --output <path>` writes the body to the
@@ -82,9 +89,12 @@ read only to confirm it. If a
 receipt says the Page changed but its collaboration comment was not verified, do not repeat the patch; read the Page/comments and add
 the missing comment once if needed.
 
-For Page-table writes, copy `read_document_table.content_revision` to `expected_content_revision`, use a stable `operation_id`, and put
-cell changes under `cell_updates`. A successful `readback_verified=true` mutation receipt is sufficient; do not reread the table solely to
-confirm it.
+For Page-table writes, copy `read_document_table.table_id` and `content_revision` to `table_id` and `expected_content_revision`, send a
+stable `operation_id` plus a concise required `change_summary`, and put cell changes under `cell_updates`, for example
+`[{"row_id":"row-id","column_id":"column-id","content_markdown":"new value"}]` (not `changes` or `value`). For appends, use
+`append_rows: [{"cells": {"column_id": "value"}}]`; the nested `cells` value is an object keyed by stable column ID, not the array shape
+returned by a table read. `readback_verified` is result evidence, not a request field. A successful `readback_verified=true` mutation receipt is
+sufficient; do not reread the table solely to confirm it.
 
 Do not use line patching to emulate semantic editing. Delegate when the host still needs to decide what the document should say, how
 sections should be reorganized, how formatting should be interpreted, or how multiple sources should be reconciled.
