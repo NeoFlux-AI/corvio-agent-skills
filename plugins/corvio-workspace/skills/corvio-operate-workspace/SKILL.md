@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.72`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.11`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.73`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.12`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -170,6 +170,8 @@ co-location; pass a real unresolved conflict explicitly instead of silently over
 Do not turn a complex source into one catch-all working document in the handoff. Keep the instruction weak and leave titles and hierarchy to Corvio, but preserve evidence that later reader questions, update events, action/authority paths, or acceptance checks differ. A frozen source carrier owns provenance only; it does not replace independently continued timeline, evidence, decision, status/action, hypothesis, method, or verification owners.
 
 A Project root is the durable work identity and a compact project-wide navigation/current-state/control surface, not the default body for all of those owners. One genuinely shared project-level control question may stay on the root. If the material will later reopen history, decisions, responsibilities/actions, evidence, methods, risks, or verification independently, ask Corvio for the natural work outcome and let it create or reuse non-Project branches/leaves in the first plan; do not treat sections in a long Project body as equivalent. This is a semantic boundary, not a minimum-child or depth rule.
+
+When handing Corvio an existing Project handle, describe it as the durable work scope or continuation hint, not as the presumed content destination. Corvio must still read its bounded current topology and choose the actual existing/new non-Project carriers for independently maintained worklines. Keep this instruction weak: preserve the scope-versus-carrier boundary and user authority, but do not prescribe titles, counts, or a host-invented hierarchy.
 
 The retained source carrier is provenance, not a spare Project container. When one heterogeneous source informs several independently
 governed Projects, keep that source as one document-level standalone reference and let Corvio write or update the semantic units in the

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.72",
-  "contract_revision": "2026-09-17.11",
+  "release_version": "1.7.73",
+  "contract_revision": "2026-09-17.12",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep Project roots as identity and project-wide control surfaces while materializing independent reader jobs in non-Project branches and leaves.",
+  "change_summary": "Carry typed workline destinations so existing Project scope cannot be mistaken for a root-body content destination.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -12,7 +12,7 @@
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Skill passes the Project-root versus reader-job boundary without prescribing Project names, leaf taxonomy, child count, or depth."
+      "note": "The Skill passes the Project-scope versus content-carrier boundary without prescribing Project names, leaf taxonomy, child count, or depth."
     },
     "server_contract": {
       "disposition": "changed",
@@ -20,10 +20,13 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "backend/app/application/usecases/chat_streaming/function_tools.py",
         "backend/app/application/usecases/agent_run_executor.py",
+        "backend/app/domains/workspace_assets/mission_knowledge.py",
+        "backend/app/domains/workspace_assets/models.py",
+        "backend/alembic/versions/20260917_0003_mission_workline_destinations.py",
         "frontend/src/lib/developerSkillPackage.ts",
         "backend/app/domains/workspace_assets/mission_launcher.py"
       ],
-      "note": "The server keeps Project roots as identity and compact project-wide control surfaces while first-plan Mission and RunOps semantics materialize independent content duties; Runtime remains a non-semantic executor."
+      "note": "The server persists Agent-authored workline destinations, keeps Project scope distinct from actual content carriers, and leaves Runtime as a non-semantic executor."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -50,7 +53,7 @@
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports the new Skill release; the full Skill carries the Project-root and independent-reader-owner handoff boundary."
+      "note": "SessionStart reports the new Skill release; the full Skill carries the Project-scope and independent-reader-carrier handoff boundary."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -61,10 +64,10 @@
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
         "docs/rfc/prompt-architecture-mainline-v1.md",
         "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/215852-project-root-is-not-a-reader-job-carrier.md",
+        "docs/logbook/entries/2026-09-17/225226-mission-plan-scope-carrier-proof.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The Harness distinguishes structural Project identity from substantive reader-job ownership and keeps the single-control-question countercase without shape quotas."
+      "note": "The Harness distinguishes structural Project scope from substantive carrier ownership and keeps the single-control-question countercase without shape quotas."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -74,13 +77,14 @@
     "release_evidence": {
       "disposition": "changed",
       "paths": [
+        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/tests/integration/test_workspace_assets_acl_missions.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_function_tools.py",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Focused Prompt, Mission, RunOps, Host-routing and package gates cover root-body compression, the compact-root countercase and unchanged Runtime authority; fresh Codex effect/readback remains the release acceptance gate."
+      "note": "Focused Prompt, Mission, RunOps, Host-routing and package gates cover typed workline destinations, root-body compression, the compact-root countercase and unchanged Runtime authority; fresh Codex effect/readback remains the release acceptance gate."
     }
   }
 }
