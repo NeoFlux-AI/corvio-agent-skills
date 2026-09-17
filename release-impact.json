@@ -1,28 +1,35 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.61",
-  "contract_revision": "2026-09-17.2",
+  "release_version": "1.7.63",
+  "contract_revision": "2026-09-17.4",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Treat a typed same-operation recovery action as a bounded one-shot resume invitation when the unfinished slice remains authorized and no user, permission, disclosure, or external blocker is missing.",
+  "change_summary": "Keep retained source carriers distinct from Project owners, make incremental topology a first-plan semantic decision, and bind newly authorized Remote MCP clients to durable Agent principals with auditable attribution.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
-        ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        ".agents/skills/corvio-operate-workspace/SKILL.md"
       ],
-      "note": "The Skill and API reference make the operation receipt the primary recovery authority while preserving explicit user, permission, disclosure, and external blockers."
+      "note": "The Skill preserves the source-carrier boundary and treats OAuth as user authorization for a client-bound Agent principal, keeping authorizer, actor, host, transport, and reported model distinct."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/alembic/versions/20260917_0001_mcp_oauth_agent_principal.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/developer_platform/mcp_oauth.py",
+        "backend/app/application/developer_platform/mcp_questions.py",
+        "backend/app/application/developer_platform/agent_comments.py",
+        "backend/app/domains/agent_collaboration/service.py",
+        "backend/app/domains/developer_platform/models.py",
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/api/v1/routes/developer_mcp_auth.py",
+        "frontend/src/features/developer-mcp/api.ts",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Contract 2026-09-17.2 allows one receipt-authorized same-operation resume even when a direct source read is unavailable, without moving semantic planning into Runtime."
+      "note": "Contract 2026-09-17.4 combines the weak source-carrier boundary with canonical Workspace Agent, grant, credential, comment, and Run attribution owners. New OAuth grants bind to a stable Agent; legacy user-bound refresh tokens remain legacy until explicit reconnection."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -32,37 +39,53 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.61; compatibility family and minimum revision remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.63; compatibility family and minimum revision remain unchanged."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "Workspace and Admin CLI versions are unchanged and remain compatible with contract 2026-09-17.2."
+      "disposition": "changed",
+      "paths": [
+        "developer-cli/package-lock.json",
+        "developer-cli/packages/admin/package.json",
+        "developer-cli/packages/workspace/package.json",
+        "developer-cli/packages/workspace/src/cli.js"
+      ],
+      "note": "Workspace CLI help carries the natural-goal boundary without asking the Host to predesign an umbrella Project; both immutable CLI package identities advance together to 0.1.0-beta.35."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
         "frontend/src/lib/help/publicMcpHelpContent.ts",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        "frontend/src/lib/help/publicHelpContent.ts",
+        "frontend/src/app/llms.txt/route.ts",
+        "frontend/src/lib/i18n/mcpAuthorizationContent.ts"
       ],
-      "note": "Public MCP guidance explains receipt-first one-shot recovery and the external-authority stop boundary."
+      "note": "Public Help explains source-carrier ownership and that the user approves access while the named host Agent performs and owns Agent-authored work."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/README.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "README, Codex defaults, and SessionStart carry the compact receipt-first recovery boundary without asking the Host to design the Tree."
+      "note": "SessionStart reports Skill 1.7.63 and contract 2026-09-17.4 so installed hosts can detect freshness accurately without expanding write authority."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/013720-typed-recovery-action-authorizes-one-resume.md",
+        "docs/rfc/workspace-asset-organization-and-permission-mainline-v1.md",
+        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
+        "docs/reference/cursor-harness/TESTING_HARNESS.md",
+        "docs/logbook/entries/2026-09-17/035400-source-carrier-is-not-a-project.md",
+        "docs/adr/0074-account-agent-grants-runtime-binding-and-origin-scope.md",
+        "docs/rfc/agent-to-agent-document-collaboration-mainline-v1.md",
+        "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
+        "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
+        "docs/test-reports/ambient-work-model-30-turn-acceptance-2026-09-17.md",
+        "docs/logbook/entries/2026-09-17/remote-mcp-agent-principal-parity.md",
+        "docs/logbook/entries/2026-09-17/052833-incremental-work-model-topology-delta.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The mainline records the released-host recovery miss, makes the typed receipt authoritative for one bounded retry, and keeps Runtime as typed execution and receipt owner."
+      "note": "The mainline records source-carrier identity, first-plan topology ownership, and one auditable identity model across CLI and Remote MCP."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -72,13 +95,23 @@
     "release_evidence": {
       "disposition": "changed",
       "paths": [
+        "backend/tests/integration/test_product_guidance_mcp_oauth_flow.py",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/tests/integration/test_workspace_assets_acl_missions.py",
+        "backend/tests/unit/test_tree_move_query_surface_index.py",
+        "backend/tests/unit/test_workspace_asset_conversion.py",
+        "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
+        "docs/test-reports/ambient-work-model-30-turn-acceptance-2026-09-17.md",
         "frontend/e2e/developer-platform-public-smoke.spec.ts",
-        "frontend/src/lib/developerSkillPackage.test.ts"
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "backend/tests/unit/test_mcp_oauth_authorization_states.py",
+        "frontend/src/app/(app)/app/mcp/authorize/page.source.test.ts",
+        "frontend/src/components/workspace/docEditor/DocCommentRail.test.tsx",
+        "frontend/src/lib/i18n/mcpAuthorizationContent.test.ts"
       ],
-      "note": "Source guards, typed recovery receipts and the 30-turn ambient Work Model portfolio cover causal intake, topology and one-shot recovery; fresh released-host and Claude readback remain live gates."
+      "note": "Trigger, transfer and countercase tests cover source identity, topology planning, known/custom host identity, Agent-bound OAuth, grants, attribution, authorization UI and public package parity; fresh released-host readback remains a live gate."
     }
   }
 }

@@ -11,12 +11,13 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.61`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.2`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.63`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.4`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
-product contract with different authority: MCP acts as the OAuth-delegated user and cannot read a local path; the CLI may read an
-explicitly selected local file and use a project-bound Agent identity.
+product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
+may read an explicitly selected local file and use a project-bound Agent identity. In both cases the Agent is the actor and the user is
+the authorizer; transport, client, and caller-reported model remain separate provenance facts.
 
 On the first Corvio use in a fresh host session, pass this loaded release, contract revision, compatibility family, visible surface, and
 installation channel to `get_collaboration_contract` with `response_mode=freshness_only` when that MCP tool is available. If its
@@ -155,6 +156,11 @@ workline, preserve that relationship as evidence in the natural `organize_files`
 inspiration, examples, or industry references into Projects merely because each source has a rich topic. That packet-level relationship
 is correctable rather than conclusive: direct evidence that the user is operating separate project-level state, ownership, cadence, or
 acceptance still requires distinct Projects. Keep this as a weak factual handoff and let Corvio design the actual tree.
+
+The retained source carrier is provenance, not a spare Project container. When one heterogeneous source informs several independently
+governed Projects, keep that source as one document-level standalone reference and let Corvio write or update the semantic units in the
+separate owners. Do not ask Corvio to promote the source Page itself into an umbrella Project merely because it must remain at Docs root.
+When the source itself proves one enduring Project, Corvio may create that separate Project and place the retained carrier beneath it.
 
 When the user explicitly corrects an identity, hierarchy, same-item, or cross-Project relationship, pass that correction, the known
 canonical handles, and any still-unresolved locator as facts in the natural goal. Do not require the Host to rediscover an exact old title
