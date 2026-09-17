@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Official Corvio Agent Skills for private prior-work search, source-aware work, and user-approved reusable results.",
-    "version": "1.7.68"
+    "version": "1.7.69"
   },
   "plugins": [
     {

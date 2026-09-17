@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.68`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.7`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.69`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.8`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -159,7 +159,9 @@ receipt-backed continuation instead of manufacturing a Project for each artifact
 Also distinguish a source's subject from the user's work subject. Merely selecting a heterogeneous packet together, asking to review it
 together, or continuing the same host action is a correctable shared-scope prior: pass that context without pre-splitting external papers,
 methods, inspiration, examples, or industry references, while allowing source evidence of separately operated user subjects to change the
-final scope. A current user statement that the materials are the same work, different facets of one workline, or in a stated containment
+final scope. A shared company, product, domain, portfolio, corpus, history, audience, or navigation label is also only context: do not
+force independently operated scopes into one Project unless the evidence establishes a shared project-level objective, state, decision
+owner, cadence, or acceptance loop. A current user statement that the materials are the same work, different facets of one workline, or in a stated containment
 relationship is stronger relationship authority. Preserve it in the natural `organize_files` goal and do not weaken it with a generic
 "unless the topics differ" caveat. Corvio still designs the tree, and different source topics, readers, update rhythms, or acceptance paths
 may require independently maintained branches, but they do not reopen the common ancestor. Separate root Projects despite that statement
@@ -231,9 +233,11 @@ settled sources, start a duplicate organization operation, or have the Host choo
 terminal; if the same mismatch remains, report it instead of looping.
 
 Choose the execution owner by total successful-work cost. Keep exact, already-decided edits in the host and use bounded read/patch so
-unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,
-structure/formatting interpretation, or a typed carrier would otherwise make the host reconstruct context Corvio already owns. Count
-host and Corvio tokens, payload bytes, retries, latency, fidelity risk, and verified readback—not merely tool-call count.
+unchanged document content never crosses the model boundary. A self-contained whole-Page rewrite also stays in the host when one bounded
+read provides the complete authoritative Page, the user's constraints make the target decision-ready, and one guarded update can preserve
+all required facts; semantic rewriting by itself is not a reason to delegate. Delegate when sources are cross-document or typed, the body
+cannot be carried safely, durable Work Model structure remains undecided, or another Corvio model pass lowers total successful-work cost.
+Count host and Corvio tokens, payload bytes, retries, latency, fidelity risk, and verified readback—not merely tool-call count.
 
 ## Memory, Work Model, and Skills
 

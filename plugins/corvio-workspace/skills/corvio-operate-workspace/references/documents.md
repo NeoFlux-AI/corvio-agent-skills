@@ -22,6 +22,8 @@ For a full rewrite, compare both viable routes instead of treating semantic comp
 writing is appropriate when one complete Page is already in context, the host can preserve every required fact, and one guarded update plus
 verified receipt finishes the outcome. Delegate when another Corvio model pass replaces larger source transfer/reconstruction, typed-carrier
 knowledge, Work Model reconciliation, or risky host-side truncation. Do not split one coherent rewrite between both Agents.
+A rewrite request does not become a Corvio delegation merely because the host must rephrase or reorganize prose; unresolved source scope,
+carrier semantics, durable structure, or unsafe context transfer is the deciding boundary.
 When stable Workspace source and target handles already make a cross-source or typed task decision-ready, pass them directly to one
 `ask_corvio` operation. Do not pre-read the target merely to restate its title, revision, or contents to Corvio; read first only when a
 missing fact could change the execution owner, target, scope, or constraint.

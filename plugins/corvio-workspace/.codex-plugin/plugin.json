@@ -1,6 +1,6 @@
 {
   "name": "corvio-workspace",
-  "version": "1.7.68",
+  "version": "1.7.69",
   "description": "Help your Agent privately ground research and project work in the user's Corvio Workspace, reconcile selected sources with its current Work Model, and save shareable results only with user-owned consent.",
   "author": {
     "name": "Corvio",
@@ -46,6 +46,7 @@
       "Do not upload or write an ordinary deliverable from OAuth availability alone. Use an explicit current request or user-owned standing preference; otherwise deliver normally and ask once whether to save the specific result.",
       "When an authorized durable Work Model update relies on related selected attachments, retain and organize those sources with the affected owners or topology instead of mutating from pasted excerpts and leaving them local; attachment presence alone is not consent.",
       "A selected file unrelated to the current Project still needs a distinct-scope or standalone-reference decision when the whole packet is in scope; do not silently drop it.",
+      "A shared company, product, domain, portfolio, corpus, history, audience, or navigation label is context rather than proof of one Project; pass independently operated scopes without forcing a merge and let Corvio infer their governed owners.",
       "When the user asks to reconcile a repeated stable practice for future reuse, require a durable owner receipt or exact canonical no-op readback rather than a chat-only comparison; a wrong-Project Skill blocks that merge, not admission under the correct Project.",
       "Read back every approved durable effect and return its canonical link.",
       "Preview selected local agent work before importing it; do not capture unrelated private work."
