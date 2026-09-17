@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.67`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.6`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.68`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.7`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -156,11 +156,15 @@ handle, and the known or unresolved relationship boundary to Corvio so its seman
 them, or later consolidate them. Conversely, when the source continues the same subject without contrary identity evidence, reuse the
 receipt-backed continuation instead of manufacturing a Project for each artifact.
 
-Also distinguish a source's subject from the user's work subject. If the user presents a heterogeneous selected packet as one continuing
-workline, preserve that relationship as evidence in the natural `organize_files` goal; do not pre-split external papers, methods,
-inspiration, examples, or industry references into Projects merely because each source has a rich topic. That packet-level relationship
-is correctable rather than conclusive: direct evidence that the user is operating separate project-level state, ownership, cadence, or
-acceptance still requires distinct Projects. Keep this as a weak factual handoff and let Corvio design the actual tree.
+Also distinguish a source's subject from the user's work subject. Merely selecting a heterogeneous packet together, asking to review it
+together, or continuing the same host action is a correctable shared-scope prior: pass that context without pre-splitting external papers,
+methods, inspiration, examples, or industry references, while allowing source evidence of separately operated user subjects to change the
+final scope. A current user statement that the materials are the same work, different facets of one workline, or in a stated containment
+relationship is stronger relationship authority. Preserve it in the natural `organize_files` goal and do not weaken it with a generic
+"unless the topics differ" caveat. Corvio still designs the tree, and different source topics, readers, update rhythms, or acceptance paths
+may require independently maintained branches, but they do not reopen the common ancestor. Separate root Projects despite that statement
+only when the user explicitly requires separate roots or a hard owner, ACL, disclosure, or incompatible-governance boundary prevents
+co-location; pass a real unresolved conflict explicitly instead of silently overriding the relationship.
 
 The retained source carrier is provenance, not a spare Project container. When one heterogeneous source informs several independently
 governed Projects, keep that source as one document-level standalone reference and let Corvio write or update the semantic units in the

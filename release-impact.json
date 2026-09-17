@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.67",
-  "contract_revision": "2026-09-17.6",
+  "release_version": "1.7.68",
+  "contract_revision": "2026-09-17.7",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Select the processing profile before source-body enumeration so the Host preserves exact inputs, gives Corvio a weak Asset-handle handoff, and waits for terminal Work Model readback without precomputing taxonomy or opening duplicate operations.",
+  "change_summary": "Preserve an explicit current user same-work or containment relationship as the common Work Model ancestor while Corvio uses source evidence to design independently maintained branches beneath it.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -12,14 +12,18 @@
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Workspace Skill resolves the remaining semantic bottleneck before reading source bodies, forbids Host-side corpus enumeration as a downgrade signal, keeps source facts behind Asset handles, and moves the terminal-operation boundary into the first decision table."
+      "note": "The Workspace Skill distinguishes weak same-batch continuity from an explicit same-work or containment relationship, preserving the latter as common-ancestor authority without precomputing Corvio's internal tree."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/application/developer_platform/coding_agent_collaboration.py"
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/chat/prompts/prompt_texts.py",
+        "backend/app/application/usecases/chat_streaming/function_tools.py",
+        "backend/app/application/usecases/chat_streaming/subagent_runtime_inputs.py",
+        "backend/app/domains/workspace_assets/mission_launcher.py"
       ],
-      "note": "The server advertises Skill release 1.7.67 and collaboration contract 2026-09-17.6 while retaining Mission branch-level source sufficiency as the semantic organization owner."
+      "note": "The server advertises Skill release 1.7.68 and collaboration contract 2026-09-17.7 and carries the same relationship-authority ordering into the Host contract."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -29,7 +33,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together to 1.7.67; compatibility family and minimum revision remain unchanged."
+      "note": "Skill and Plugin manifests advance together to 1.7.68; compatibility family and minimum revision remain unchanged."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -46,17 +50,20 @@
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports Skill 1.7.67 and foregrounds bounded preflight, no Host-side corpus enumeration, and profile selection before source-body interpretation."
+      "note": "SessionStart reports Skill 1.7.68; its compact correction guidance remains compatible while the full Skill carries the common-ancestor boundary."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/reference/cursor-harness/PRODUCT_VALUES.md",
+        "docs/reference/cursor-harness/PROMPT_WRITING.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/140500-host-source-preflight-before-semantic-enumeration.md",
+        "docs/rfc/prompt-architecture-mainline-v1.md",
+        "docs/logbook/entries/2026-09-17/180500-explicit-same-work-common-ancestor.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The Harness keeps selected-Workspace routing and adds released-host evidence that source enumeration belongs behind Corvio Asset handles rather than in the Host prompt."
+      "note": "The Harness records that explicit same-work identity governs the common ancestor while source evidence governs factual and independently maintained leaves; runtime remains non-semantic."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -67,9 +74,12 @@
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
+        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
+        "backend/tests/unit/test_subagent_runtime_inputs.py",
+        "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Backend, Skill, external-host, and frontend package-contract tests assert the new release, pre-enumeration profile boundary, weak handoff, terminal completion, selected-Workspace receipt, and source-coverage sufficiency rule."
+      "note": "Prompt, Mission, source-manifest, Host Skill, backend contract, and package tests assert the relationship-authority order plus separate-root counter-boundary."
     }
   }
 }
