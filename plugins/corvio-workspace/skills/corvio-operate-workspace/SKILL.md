@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.69`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.8`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.71`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.10`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -159,14 +159,15 @@ receipt-backed continuation instead of manufacturing a Project for each artifact
 Also distinguish a source's subject from the user's work subject. Merely selecting a heterogeneous packet together, asking to review it
 together, or continuing the same host action is a correctable shared-scope prior: pass that context without pre-splitting external papers,
 methods, inspiration, examples, or industry references, while allowing source evidence of separately operated user subjects to change the
-final scope. A shared company, product, domain, portfolio, corpus, history, audience, or navigation label is also only context: do not
-force independently operated scopes into one Project unless the evidence establishes a shared project-level objective, state, decision
-owner, cadence, or acceptance loop. A current user statement that the materials are the same work, different facets of one workline, or in a stated containment
-relationship is stronger relationship authority. Preserve it in the natural `organize_files` goal and do not weaken it with a generic
+final scope. A shared company, product, domain, portfolio, corpus, history, audience, navigation label, strategy, or broad objective is also only context: do not
+force independently operated scopes into one Project unless exact evidence establishes one concrete operational closure—the same durable project state and the decision/acceptance loop that plans and closes the worklines together. If one scope can be replanned, accepted, completed, paused, or archived while another continues without changing its project-level state, pass that independence to Corvio even when both serve the same product. Calling inputs one record, history, export, packet, archive, batch, upload, conversation, or set of files only describes the source container; do not turn that wording into same-work authority. A current user statement that the underlying initiatives are the same work, different facets of one operated workline, or in a stated containment
+relationship is stronger relationship authority. Preserve that semantic relationship in the natural `organize_files` goal and do not weaken it with a generic
 "unless the topics differ" caveat. Corvio still designs the tree, and different source topics, readers, update rhythms, or acceptance paths
 may require independently maintained branches, but they do not reopen the common ancestor. Separate root Projects despite that statement
 only when the user explicitly requires separate roots or a hard owner, ACL, disclosure, or incompatible-governance boundary prevents
 co-location; pass a real unresolved conflict explicitly instead of silently overriding the relationship.
+
+Do not turn a complex source into one catch-all working document in the handoff. Keep the instruction weak and leave titles and hierarchy to Corvio, but preserve evidence that later reader questions, update events, action/authority paths, or acceptance checks differ. A frozen source carrier owns provenance only; it does not replace independently continued timeline, evidence, decision, status/action, hypothesis, method, or verification owners.
 
 The retained source carrier is provenance, not a spare Project container. When one heterogeneous source informs several independently
 governed Projects, keep that source as one document-level standalone reference and let Corvio write or update the semantic units in the

@@ -1,38 +1,31 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.69",
-  "contract_revision": "2026-09-17.8",
+  "release_version": "1.7.71",
+  "contract_revision": "2026-09-17.10",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Distinguish broad portfolio context from Project governance, keep decision-ready whole-Page rewrites with the Host, expose literal-search completeness, and make heading style an explicit preserve-or-decimal choice.",
+  "change_summary": "Distinguish source-container grouping from work-subject identity while retaining operational closure and semantic-leaf ownership.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Skill passes broad context without forcing an umbrella Project, keeps decision-ready whole-Page rewrites with the Host, and preserves Corvio delegation for cross-source, typed, structurally unresolved, or context-unsafe work."
+      "note": "The Skill passes source-container, work-subject, closure and independent-duty evidence without prescribing Project names, leaf taxonomy, or artifact count."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/api/v1/routes/chat.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/application/developer_platform/documents.py",
-        "backend/app/application/docs/document_read_navigation.py",
-        "backend/app/application/chat/prompts/prompt_texts.py",
-        "backend/app/application/usecases/chat_streaming/function_tools.py",
         "backend/app/application/usecases/chat_streaming/subagent_runtime_inputs.py",
-        "backend/app/application/usecases/chat_streaming_usecase.py",
-        "backend/app/domains/chat/schemas.py",
-        "backend/app/domains/docs/heading_numbering.py",
+        "backend/app/application/usecases/chat_streaming/function_tools.py",
+        "backend/app/application/usecases/chat_streaming/subagent_surface.py",
+        "backend/app/application/usecases/agent_run_executor.py",
         "frontend/src/lib/developerSkillPackage.ts",
         "backend/app/domains/workspace_assets/mission_launcher.py"
       ],
-      "note": "The server advertises the new Skill and contract revisions, carries the portfolio-context versus Project-governance boundary through source manifest, Reply, Mission, and RunOps, and projects the shared execution-owner and literal-search completeness contract through REST and MCP."
+      "note": "The server keeps source-container wording weaker than work-subject identity and carries Project-closure and semantic-leaf owner proofs while Runtime remains a non-semantic executor."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -59,7 +52,7 @@
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports the new Skill release; its compact handoff guidance remains compatible while the full Skill carries the Project-governance boundary."
+      "note": "SessionStart reports the new Skill release; the full Skill carries the closure and independent-owner handoff boundary."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -69,13 +62,12 @@
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
         "docs/rfc/prompt-architecture-mainline-v1.md",
         "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/183130-portfolio-context-is-not-project-governance.md",
-        "docs/rfc/doc-editing-mainline-v1.md",
-        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/181651-cross-host-model-surface-and-corvio-mainline.md",
+        "docs/rfc/agentic-knowledge-organization-and-long-running-missions-v1.md",
+        "docs/logbook/entries/2026-09-17/194611-project-closure-and-semantic-leaf-ownership.md",
+        "docs/logbook/entries/2026-09-17/203049-source-container-is-not-work-subject.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The Harness distinguishes portfolio context from Project governance, preserves full-body compatibility, defines Host-versus-Corvio routing by total successful-work cost, and records Writer heading intent without adding Runtime semantic classifiers."
+      "note": "The Harness separates input-container cohesion from governed work identity, retains the operational-closure counterfactual, and defines the leaf as the smallest independently continued semantic owner."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -86,23 +78,13 @@
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
         "backend/tests/unit/test_subagent_runtime_inputs.py",
         "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_external_document_io_host_probe.py",
-        "backend/tests/unit/test_heading_numbering.py",
-        "backend/tests/unit/test_prompt_texts_ordered_headings.py",
-        "backend/tests/unit/test_chat_streaming_reasoning_config.py",
-        "backend/scripts/run_external_document_io_host_probe.py",
-        "backend/scripts/run_agent_host_suite.py",
-        "backend/scripts/scenario_suites/external_agent_document_io_host_v1.json",
-        "backend/scripts/scenario_suites/cross_host_model_surface_evaluation_v1.json",
-        "docs/reports/cross-host-model-surface-and-corvio-mainline-evaluation-2026-09-17.md",
-        "docs/test-reports/cross-host-model-surface-and-corvio-mainline-2026-09-17.json",
+        "backend/tests/unit/test_chat_streaming_function_call_batch.py",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Focused tests plus cross-host matrices cover progressive reads, exact patches, owner ROI, model identity, heading-style intent, portfolio topology, coherent-single-Project counter-boundaries, effects, and readback. The committed Cowork/WorkBuddy grid remains pending real fresh-host operator receipts."
+      "note": "Focused schema and prompt gates cover container-singular countercases, true same-work transfer, Project closure, leaf ownership and unchanged Runtime authority; fresh Codex and Claude effect/readback remain release gates."
     }
   }
 }
