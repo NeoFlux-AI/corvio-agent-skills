@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.66`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.5`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.67`.
+It implements `coding_agent_collaboration` contract version `2026-09-17.6`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -40,7 +40,9 @@ wrong branch even if it reads the rest of the Skill afterward.
 | The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
 | Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. For a new unbound result, omit `workspace_id` so Remote MCP uses the user's writable personal default. Pass an explicit Workspace only when the user chose it in the current request or a stable originating/continuation/Project/Asset receipt binds it. |
-| The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first produce a full chat-only rewrite or ask whether to save. |
+| The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Before interpreting source bodies, do only the bounded safety, identity, hash, and metadata/sample checks needed to transfer the selected bytes. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first enumerate a workbook, archive, transcript, or document corpus; produce a chat-only rewrite; or ask whether to save. |
+| The authorized organization outcome still requires Corvio to discover or reconcile corpus-wide owners, topology, material cross-source conflict, or source-wide completeness | Choose `processing_profile=deep` before starting the operation and leave source-derived facts behind their Asset handles. Host-local enumeration or sampling does not settle this bottleneck and must not be used to downgrade the operation or precompute its outline, taxonomy, titles, artifact count, or sole leaf target. Use `standard` for ordinary bounded organization after owner and lifecycle are already settled, and `economy` only for a decided mechanical transformation with objective readback. File type, size, source count, or a long history alone does not select `deep`. |
+| An authorized durable operation has been accepted and is `prepared`, `queued`, or `running` | Keep the same operation handle and poll according to `retry_after_seconds` until its terminal result or an actual Host deadline. These states prove progress only; do not answer as though “processing” were the requested user outcome, and do not open a duplicate operation. |
 | The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
 | The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. Decide whether the evidence qualifies before deciding whether a nearby owner is reusable: a wrong-Project Skill blocks that merge, not admission under the correct Project. A chat comparison, ordinary fact-Page update, or offer to save later is not completion. |
 | The user asks only for an ordinary report or other deliverable | Keep the host-native result. Do not write to Corvio yet. Explain one concrete benefit and ask once whether to save or organize the specific result. |
@@ -228,16 +230,6 @@ Choose the execution owner by total successful-work cost. Keep exact, already-de
 unchanged document content never crosses the model boundary. Delegate to Corvio when document-wide judgment, cross-source synthesis,
 structure/formatting interpretation, or a typed carrier would otherwise make the host reconstruct context Corvio already owns. Count
 host and Corvio tokens, payload bytes, retries, latency, fidelity risk, and verified readback—not merely tool-call count.
-
-Choose `processing_profile` from the unresolved semantic bottleneck before starting the Corvio operation; do not start cheaply and use
-failure/rework as the routing mechanism. Use `economy` only after evidence, owner, and exact mutation are settled and objective readback can
-verify the remaining transformation. Use `standard` for ordinary bounded retrieval, organization, or semantic writing. Use `deep` when
-the requested outcome still depends on reconciling several evidence branches into a corpus-wide owner/topology map, resolving material
-cross-source conflict, or proving source-wide completeness before the first durable plan. A heterogeneous source packet, workbook, long
-history, or large file is not intrinsically `deep`: keep `standard` when bounded evidence already settles one cohesive lifecycle and its
-owner. Conversely, do not cap a topology/completeness decision at `standard` merely because each source is individually readable or one
-native carrier can preserve the raw records. Pass a maximum profile only when the user or host owns that cost/latency ceiling, and report
-the resulting effective profile when it materially limits completion.
 
 ## Memory, Work Model, and Skills
 
