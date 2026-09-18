@@ -74,9 +74,13 @@ the [Privacy Policy](https://corvio.ai/privacy) and public
 | Read bounded facts from one retained Asset without creating a Question | MCP `get_file(read_mode=content)`, or CLI `files get <id> --content` | Returns a hash-bound AI-safe projection with explicit completeness/truncation |
 | Ask Corvio about an explicitly selected local file | MCP prepare → host PUT → finalize → `ask_corvio(asset_ids=[...])`, or CLI `ask --file` | The host reads bytes; Corvio binds the finalized Asset to that exact question |
 | Retain an explicitly selected local file without asking about it | MCP `prepare_file_upload` → host PUT → `finalize_file_upload`, or CLI `files upload` | Retention creates an Asset in intake; it does not silently create a root document or a question input |
+| Continue one bounded read-only synthesis after a trusted receipt already proves this Host used the authenticated CLI in the exact Workspace | One foreground CLI `ask`; answer-only is the default, so omit `--allow-actions` and do not pass `--mode` | Preserves transport and returns the terminal Question without model-visible polling; never install, probe, or switch solely for this optimization |
 
-For `ask_corvio`, send the user's natural outcome plus complete decision-relevant context or stable handles. Do not turn an open semantic
-delegation into an invented taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
+For `ask_corvio` or foreground CLI `ask`, keep the user's question unchanged and append the smallest complete decision-relevant context
+or stable handles as a separate context clause. A carried Project handle is normally the complete scope for a cross-branch question;
+do not expand it into every descendant handle. Handles are evidence addresses, not a reason to enumerate sibling labels, substitute a
+different objective, invent a comparison rubric, or prescribe reasoning steps. Do not turn an open semantic delegation into an invented
+taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
 Receipt-bound continuation handles are compact prior-work context even when a fresh process has no transcript. Read an identifiable leaf
 before broad search; if multiple unlabeled handles make the leaf unclear, fetch the carried Project, use its
 `metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Preserve an explicit incomplete
@@ -309,7 +313,14 @@ corvio workspaces use <workspace_id> --json --no-input
 corvio search "quarterly launch risks" --limit 10 --json --no-input
 corvio ask --prompt "Which launch risks recur?" --sources workspace,memory --json --no-input
 corvio ask --prompt "Prioritize them" --conversation-id <conversation_id> --json --no-input
+corvio ask --workspace <workspace_id> --prompt "<unchanged question>; Context: project:<workspace_id>/<project_id>" --json --no-input
 ```
+
+The last form is only for the receipt-proven bounded continuation above. Start it once; do not launch an identical Question concurrently
+or retry before that foreground process exits. If the shell yields a running-session handle, wait on that exact handle until the CLI
+exits; do not answer from prior output. Answer-only is the default; the CLI intentionally has no `--mode` option. Add
+`--allow-actions` only when a durable action is separately authorized. Transport continuity does not prove a cheaper processing profile;
+leave profile selection on `auto` unless the unresolved semantic bottleneck independently justifies another profile.
 
 Keep the exact Workspace from the original Conversation/operation. A persisted selection is only a candidate; do not try a Conversation
 ID across Workspaces or inspect every Workspace merely to choose one.

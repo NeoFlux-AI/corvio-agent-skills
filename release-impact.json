@@ -1,26 +1,28 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.78",
-  "contract_revision": "2026-09-18.4",
+  "release_version": "1.7.79",
+  "contract_revision": "2026-09-18.5",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Restore GitHub Releases as a receipt-verified immutable mirror of the canonical website Agent Skills packages without restoring a broad cross-repository publisher token.",
+  "change_summary": "Keep receipt-proven bounded answer-only continuations on one foreground CLI ask, preserve the unchanged user question and Project-bounded handoff, and keep completed server results authoritative when local continuity cache writes are permission-blocked.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The package release marker advances with the public distribution contract; the Skill behavior and compatibility floor remain unchanged."
+      "note": "The Skill adds receipt-backed foreground answer-only selection, exact CLI syntax, unchanged-question and Project-bounded weak handoffs, profile-neutral transport continuity, and explicit MCP and durable-write countercases."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/api/public_v1/mcp_routes.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Machine-readable contracts expose exact versioned GitHub Release archives and checksums alongside the canonical Corvio URLs."
+      "note": "The machine-readable contract and MCP schema expose the same foreground trigger, exact answer-only syntax, Project-bounded handoff, result, and counter-boundaries as the canonical Skill."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -33,36 +35,41 @@
       "note": "Skill and Plugin versions advance together because exported source and immutable release assets change as one package family."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "CLI commands and npm package versions are unchanged."
+      "disposition": "changed",
+      "paths": [
+        "developer-cli/packages/workspace/src/cli.js",
+        "developer-cli/packages/workspace/README.md",
+        "developer-cli/packages/workspace/package.json",
+        "developer-cli/packages/admin/package.json",
+        "developer-cli/package-lock.json",
+        "backend/app/core/config.py"
+      ],
+      "note": "Workspace and Admin CLI advance together to 0.1.0-beta.37; ask help explains exact bounded foreground continuation syntax, and permission-only local routing-cache failures no longer erase a completed server Question."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
+        "frontend/src/lib/help/publicHelpContent.ts",
         "frontend/src/lib/help/publicMcpHelpContent.ts"
       ],
-      "note": "Claude setup guidance identifies the GitHub Release as a byte-identical immutable fallback while retaining Corvio as canonical origin."
+      "note": "English, Simplified Chinese, and Traditional Chinese guidance explains unchanged-question, Project-bounded weak handoff, receipt-backed CLI continuity, exact answer-only syntax, profile-neutral transport selection, and counter-boundaries."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports the synchronized Skill release and collaboration revision."
+      "note": "SessionStart reports the synchronized release/revision and carries the unchanged-question, Project-bounded Host decision boundary plus exact answer-only CLI syntax."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/rfc/deploy-release-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md",
-        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
-        "docs/logbook/entries/2026-09-18/081007-agent-skills-github-release-projection.md",
+        "docs/logbook/entries/2026-09-18/084241-foreground-answer-only-continuation.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The release mainline records one canonical artifact identity with website origin and GitHub Release projection, plus receipt-backed completion."
+      "note": "The mainline records the new transport-continuity decision after the existing one-owner read and deterministic-wait protections."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -72,18 +79,14 @@
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
-        ".github/workflows/agent-skills-release.yml",
-        "packaging/corvio-agent-skills/.github/workflows/publish-release-assets.yml",
-        "scripts/export-official-agent-skills.sh",
-        "scripts/release-agent-skills.sh"
+        "scripts/export-official-agent-skills.sh"
       ],
-      "note": "The public repository uses its scoped GITHUB_TOKEN to publish exact website bytes, while the private release owner waits for workflow and asset parity readback."
+      "note": "Canonical export regenerates both public packages from the reviewed Skill and all referenced modules, including work-model.md, without changing release transport ownership."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "scripts/tests/test_release_agent_skills.sh",
-        "scripts/tests/test_github_actions_cost_guards.py",
+        "scripts/tests/test_export_official_agent_skills.sh",
         "developer-cli/tests/commands.test.mjs",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
@@ -91,7 +94,7 @@
         "frontend/src/lib/developerSkillPackage.test.ts",
         "frontend/src/lib/help/publicHelpContent.test.ts"
       ],
-      "note": "Trigger, transfer, countercase, idempotency and contract tests cover missing or divergent immutable assets and the user-visible fallback."
+      "note": "Contract, CLI, package and localized Help tests cover the receipt-backed trigger, exact CLI grammar, local-cache partial failure, Project-bounded handoff transfer, no-switch countercase, version synchronization and referenced Work Model module."
     }
   }
 }
