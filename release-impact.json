@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "release_version": "1.7.73",
-  "contract_revision": "2026-09-17.12",
+  "release_version": "1.7.74",
+  "contract_revision": "2026-09-17.13",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Carry typed workline destinations so existing Project scope cannot be mistaken for a root-body content destination.",
+  "change_summary": "Require source-impact coverage before destination choice and preserve re-entrant discovery, continuation identity, and exact Writer capability handoff through the full Function Call loop.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -12,21 +12,34 @@
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Skill passes the Project-scope versus content-carrier boundary without prescribing Project names, leaf taxonomy, child count, or depth."
+      "note": "The Skill preserves multi-impact source evidence in a weak handoff while leaving Project and carrier design to Corvio."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/chat/clarification_sessions.py",
+        "backend/app/application/chat/knowledge_schemas.py",
+        "backend/app/application/chat/ops_ndjson.py",
+        "backend/app/application/chat/prompts/prompt_texts.py",
+        "backend/app/application/chat/prompts/writer_prompt_assembler.py",
+        "backend/app/application/docs/spreadsheet_document.py",
+        "backend/app/application/retrieval/retrieval_pack_v1.py",
+        "backend/app/application/usecases/chat_streaming/developer_context.py",
         "backend/app/application/usecases/chat_streaming/function_tools.py",
+        "backend/app/application/usecases/chat_streaming/progressive_tool_surface.py",
+        "backend/app/application/usecases/chat_streaming/run_ops_task_summaries.py",
+        "backend/app/application/usecases/chat_streaming/subagent_runtime_inputs.py",
+        "backend/app/application/usecases/chat_streaming_types.py",
         "backend/app/application/usecases/agent_run_executor.py",
+        "backend/app/application/usecases/chat_streaming_usecase.py",
+        "backend/app/domains/docs/table_block.py",
         "backend/app/domains/workspace_assets/mission_knowledge.py",
-        "backend/app/domains/workspace_assets/models.py",
-        "backend/alembic/versions/20260917_0003_mission_workline_destinations.py",
+        "backend/app/domains/workspace_assets/services.py",
         "frontend/src/lib/developerSkillPackage.ts",
         "backend/app/domains/workspace_assets/mission_launcher.py"
       ],
-      "note": "The server persists Agent-authored workline destinations, keeps Project scope distinct from actual content carriers, and leaves Runtime as a non-semantic executor."
+      "note": "The server persists Agent-authored source-impact coverage before destination choice, keeps discovery and clarification continuations re-entrant, and projects only typed Writer capability choices while leaving Runtime non-semantic."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -53,7 +66,7 @@
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports the new Skill release; the full Skill carries the Project-scope and independent-reader-carrier handoff boundary."
+      "note": "SessionStart reports the new Skill release; the full Skill carries the weak multi-impact handoff boundary."
     },
     "harness_and_mainline": {
       "disposition": "changed",
@@ -62,12 +75,15 @@
         "docs/reference/cursor-harness/PROMPT_WRITING.md",
         "docs/reference/cursor-harness/PRODUCT_VALUES.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
+        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
         "docs/rfc/prompt-architecture-mainline-v1.md",
         "docs/rfc/work-model-case-library-production-portfolio-mainline-v1.md",
-        "docs/logbook/entries/2026-09-17/225226-mission-plan-scope-carrier-proof.md",
+        "docs/prompt-audits/2026-09-16-agentic-discovery-function-loop-audit.md",
+        "docs/logbook/entries/2026-09-16/0948-codex-agentic-discovery-function-loop.md",
+        "docs/logbook/entries/2026-09-17/235431-source-impact-coverage-before-destination.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The Harness distinguishes structural Project scope from substantive carrier ownership and keeps the single-control-question countercase without shape quotas."
+      "note": "The Harness adds source-to-impact completeness before scope/carrier selection, re-entrant epistemic checkpoints, and a source-frozen 30-case Function Call portfolio without shape quotas."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -79,12 +95,30 @@
       "paths": [
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "backend/tests/integration/test_workspace_assets_acl_missions.py",
+        "backend/tests/integration/test_tree_mutations_bump_docs_snapshot_version.py",
+        "backend/tests/unit/test_agentic_discovery_function_loop_suite.py",
+        "backend/tests/unit/test_chat_streaming_function_call_batch.py",
+        "backend/tests/unit/test_chat_streaming_loop_persistence.py",
+        "backend/tests/unit/test_chat_streaming_working_plan_runtime.py",
+        "backend/tests/unit/test_clarification_sessions.py",
+        "backend/tests/unit/test_function_tools.py",
+        "backend/tests/unit/test_ops_ndjson_tail_flush.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
+        "backend/tests/unit/test_progressive_tool_surface.py",
+        "backend/tests/unit/test_prompt_regression_harness.py",
+        "backend/tests/unit/test_prompt_regression_runtime_isolation.py",
+        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
+        "backend/tests/unit/test_retrieval_overview_support_contract.py",
+        "backend/tests/unit/test_run_ops_task_summaries.py",
+        "backend/tests/unit/test_spreadsheet_document.py",
+        "backend/tests/unit/test_subagent_runtime_inputs.py",
         "backend/tests/unit/test_workspace_asset_agentic_contracts.py",
-        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
+        "backend/tests/unit/test_writer_prompt_assembler.py",
+        "backend/scripts/scenario_suites/agentic_discovery_function_loop_v1.json",
+        "scripts/run-worktree-prompt-live-acceptance.sh",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Focused Prompt, Mission, RunOps, Host-routing and package gates cover typed workline destinations, root-body compression, the compact-root countercase and unchanged Runtime authority; fresh Codex effect/readback remains the release acceptance gate."
+      "note": "Focused schema, Mission, continuation and package gates cover source-impact mapping, provenance-only rejection, complete A# coverage, re-entrant discovery, exact capability handoff and unchanged Runtime authority; the source-frozen Function Call portfolio passed 30/30, while fresh Codex Work Model effect/readback remains the release acceptance gate."
     }
   }
 }
