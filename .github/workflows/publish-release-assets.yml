@@ -1,0 +1,169 @@
+name: Publish immutable Agent Skills release assets
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact public source tag version to recover
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agent-skills-release-assets-${{ github.event_name == 'workflow_dispatch' && inputs.version || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Resolve immutable source identity
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [ -n "$INPUT_VERSION" ]; then
+            release_version="$INPUT_VERSION"
+          else
+            release_version="${GITHUB_REF_NAME#v}"
+          fi
+          if ! [[ "$release_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid Agent Skills release version: $release_version" >&2
+            exit 1
+          fi
+          release_tag="v$release_version"
+          git fetch --force origin "refs/tags/$release_tag:refs/tags/$release_tag"
+          source_sha="$(git rev-list -n 1 "$release_tag")"
+          test -n "$source_sha"
+          git show "$release_tag:.claude-plugin/marketplace.json" > "$RUNNER_TEMP/marketplace.json"
+          git show "$release_tag:plugins/corvio-workspace/.claude-plugin/plugin.json" > "$RUNNER_TEMP/claude-plugin.json"
+          git show "$release_tag:plugins/corvio-workspace/.codex-plugin/plugin.json" > "$RUNNER_TEMP/codex-plugin.json"
+          node - "$RUNNER_TEMP" "$release_version" <<'NODE'
+          const { readFileSync } = require("node:fs");
+          const path = require("node:path");
+          const [root, expected] = process.argv.slice(2);
+          const marketplace = JSON.parse(readFileSync(path.join(root, "marketplace.json"), "utf8"));
+          const claude = JSON.parse(readFileSync(path.join(root, "claude-plugin.json"), "utf8"));
+          const codex = JSON.parse(readFileSync(path.join(root, "codex-plugin.json"), "utf8"));
+          for (const [name, version] of [["marketplace", marketplace.metadata?.version], ["claude", claude.version], ["codex", codex.version]]) {
+            if (version !== expected) throw new Error(`${name} public manifest is ${version}; expected ${expected}`);
+          }
+          NODE
+          echo "RELEASE_VERSION=$release_version" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
+          echo "SOURCE_SHA=$source_sha" >> "$GITHUB_ENV"
+      - name: Download canonical website assets
+        run: |
+          set -euo pipefail
+          asset_root="$RUNNER_TEMP/release-assets"
+          mkdir -p "$asset_root"
+          curl --fail --silent --show-error --location --max-time 30 \
+            https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json \
+            -o "$RUNNER_TEMP/website-manifest.json"
+          node - "$RUNNER_TEMP/website-manifest.json" "$asset_root/SHA256SUMS" "$RELEASE_VERSION" <<'NODE'
+          const { readFileSync, writeFileSync } = require("node:fs");
+          const [manifestFile, sumsFile, expected] = process.argv.slice(2);
+          const manifest = JSON.parse(readFileSync(manifestFile, "utf8"));
+          const expectedSkillUrl = "https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip";
+          const expectedPluginUrl = "https://corvio.ai/developers/plugins/claude/corvio-workspace.zip";
+          if (manifest.release_version !== expected || manifest.claude_plugin?.version !== expected) {
+            throw new Error(`website package version ${manifest.release_version}/${manifest.claude_plugin?.version}; expected ${expected}`);
+          }
+          if (manifest.archive !== expectedSkillUrl || manifest.claude_plugin?.archive !== expectedPluginUrl) {
+            throw new Error("website manifest archive URLs do not match the canonical Corvio origins");
+          }
+          const releaseBase = `https://github.com/NeoFlux-AI/corvio-agent-skills/releases/download/v${expected}`;
+          if (manifest.github_release_archive !== `${releaseBase}/corvio-operate-workspace.zip` ||
+              manifest.github_release_checksums !== `${releaseBase}/SHA256SUMS` ||
+              manifest.claude_plugin?.github_release_archive !== `${releaseBase}/corvio-workspace.zip` ||
+              manifest.claude_plugin?.github_release_checksums !== `${releaseBase}/SHA256SUMS`) {
+            throw new Error("website manifest does not identify this exact GitHub Release projection");
+          }
+          for (const digest of [manifest.archive_sha256, manifest.claude_plugin_sha256]) {
+            if (!/^[a-f0-9]{64}$/.test(String(digest || ""))) throw new Error("website manifest contains an invalid SHA-256");
+          }
+          writeFileSync(
+            sumsFile,
+            `${manifest.archive_sha256}  corvio-operate-workspace.zip\n${manifest.claude_plugin_sha256}  corvio-workspace.zip\n`,
+            "utf8",
+          );
+          NODE
+          curl --fail --silent --show-error --location --max-time 60 \
+            https://corvio.ai/developers/skills/corvio-operate-workspace/corvio-operate-workspace.zip \
+            -o "$asset_root/corvio-operate-workspace.zip"
+          curl --fail --silent --show-error --location --max-time 60 \
+            https://corvio.ai/developers/plugins/claude/corvio-workspace.zip \
+            -o "$asset_root/corvio-workspace.zip"
+          (cd "$asset_root" && sha256sum --check SHA256SUMS)
+      - name: Publish or verify immutable GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          asset_root="$RUNNER_TEMP/release-assets"
+          expected_assets=(corvio-operate-workspace.zip corvio-workspace.zip SHA256SUMS)
+          release_exists=false
+          if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            release_exists=true
+          else
+            gh release create "$RELEASE_TAG" "$asset_root"/* \
+              --repo "$GITHUB_REPOSITORY" \
+              --verify-tag \
+              --draft \
+              --title "Corvio Agent Skills $RELEASE_TAG" \
+              --notes "Immutable mirror of the canonical Corvio website artifacts. Source: $SOURCE_SHA"
+          fi
+
+          release_json="$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets,isDraft,isPrerelease,tagName,url)"
+          is_draft="$(jq -r '.isDraft' <<<"$release_json")"
+          is_prerelease="$(jq -r '.isPrerelease' <<<"$release_json")"
+          observed_tag="$(jq -r '.tagName' <<<"$release_json")"
+          test "$observed_tag" = "$RELEASE_TAG"
+          test "$is_prerelease" = false
+
+          mapfile -t observed_assets < <(jq -r '.assets[].name' <<<"$release_json" | sort)
+          for observed in "${observed_assets[@]}"; do
+            case "$observed" in
+              corvio-operate-workspace.zip|corvio-workspace.zip|SHA256SUMS) ;;
+              *) echo "Unexpected immutable release asset: $observed" >&2; exit 1 ;;
+            esac
+          done
+
+          existing_root="$RUNNER_TEMP/existing-release"
+          mkdir -p "$existing_root"
+          for asset in "${expected_assets[@]}"; do
+            if printf '%s\n' "${observed_assets[@]}" | grep -Fxq "$asset"; then
+              gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$asset" --dir "$existing_root"
+              cmp "$asset_root/$asset" "$existing_root/$asset"
+            else
+              if [ "$release_exists" = true ] && [ "$is_draft" != true ]; then
+                echo "Published immutable release is missing asset: $asset" >&2
+                exit 1
+              fi
+              gh release upload "$RELEASE_TAG" "$asset_root/$asset" --repo "$GITHUB_REPOSITORY"
+            fi
+          done
+
+          rm -rf "$existing_root"
+          mkdir -p "$existing_root"
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir "$existing_root" \
+            --pattern 'corvio-operate-workspace.zip' \
+            --pattern 'corvio-workspace.zip' \
+            --pattern 'SHA256SUMS'
+          for asset in "${expected_assets[@]}"; do
+            cmp "$asset_root/$asset" "$existing_root/$asset"
+          done
+          if [ "$is_draft" = true ]; then
+            gh release edit "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
+          fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq '.tag_name')" = "$RELEASE_TAG"
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json url --jq '.url'
