@@ -1,10 +1,10 @@
 {
-  "schema_version": 1,
-  "release_version": "1.7.77",
-  "contract_revision": "2026-09-18.3",
+  "schema_version": 2,
+  "release_version": "1.7.78",
+  "contract_revision": "2026-09-18.4",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Keep deterministic file-operation waiting inside one foreground CLI invocation while preserving semantic ownership, terminal readback, and honest deadline continuation.",
+  "change_summary": "Restore GitHub Releases as a receipt-verified immutable mirror of the canonical website Agent Skills packages without restoring a broad cross-repository publisher token.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -12,7 +12,7 @@
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "The Skill selects foreground CLI waiting only when that authenticated transport is already natural, while MCP-only Hosts retain bounded operation polling."
+      "note": "The package release marker advances with the public distribution contract; the Skill behavior and compatibility floor remain unchanged."
     },
     "server_contract": {
       "disposition": "changed",
@@ -20,7 +20,7 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "The collaboration revision advances so installed Hosts can distinguish the new transport-efficiency guidance from the prior compatible contract."
+      "note": "Machine-readable contracts expose exact versioned GitHub Release archives and checksums alongside the canonical Corvio URLs."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -30,63 +30,68 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin manifests advance together; compatibility family and minimum revision remain unchanged."
+      "note": "Skill and Plugin versions advance together because exported source and immutable release assets change as one package family."
     },
     "workspace_cli": {
-      "disposition": "changed",
-      "paths": [
-        "developer-cli/packages/core/src/index.js",
-        "developer-cli/packages/workspace/src/cli.js",
-        "developer-cli/packages/workspace/package.json",
-        "developer-cli/packages/admin/package.json",
-        "developer-cli/package-lock.json",
-        "backend/app/core/config.py"
-      ],
-      "note": "Workspace CLI adds bounded foreground wait flags for file operations; both protected packages advance together to 0.1.0-beta.36."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "CLI commands and npm package versions are unchanged."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
-        "frontend/src/lib/i18n/developerPublicContent.ts"
+        "frontend/src/lib/help/publicMcpHelpContent.ts"
       ],
-      "note": "Public CLI examples show the bounded foreground wait path without changing OAuth, MCP connection, or installation steps."
+      "note": "Claude setup guidance identifies the GitHub Release as a byte-identical immutable fallback while retaining Corvio as canonical origin."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "SessionStart reports the new Skill release; the full Skill remains the authority for transport choice and completion boundaries."
+      "note": "SessionStart reports the synchronized Skill release and collaboration revision."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
-        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/rfc/deploy-release-mainline-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/logbook/entries/2026-09-18/055551-codex-foreground-cli-file-operation-wait.md",
+        "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md",
+        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
+        "docs/logbook/entries/2026-09-18/081007-agent-skills-github-release-projection.md",
         "docs/logbook/weekly/2026-09-14_to_2026-09-20.md"
       ],
-      "note": "The mainline records why deterministic status waiting belongs below the Host reasoning loop while semantic planning and completion remain Agent-owned."
+      "note": "The release mainline records one canonical artifact identity with website origin and GitHub Release projection, plus receipt-backed completion."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "First-party publication, public hashes and fresh released-host readback remain release gates; external directory acceptance stays outside repository authority."
+      "note": "External marketplace review remains account-owned and is not implied by first-party publication."
+    },
+    "public_release_assets": {
+      "disposition": "changed",
+      "paths": [
+        ".github/workflows/agent-skills-release.yml",
+        "packaging/corvio-agent-skills/.github/workflows/publish-release-assets.yml",
+        "scripts/export-official-agent-skills.sh",
+        "scripts/release-agent-skills.sh"
+      ],
+      "note": "The public repository uses its scoped GITHUB_TOKEN to publish exact website bytes, while the private release owner waits for workflow and asset parity readback."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
+        "scripts/tests/test_release_agent_skills.sh",
+        "scripts/tests/test_github_actions_cost_guards.py",
         "developer-cli/tests/commands.test.mjs",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_agent_host_longitudinal_portfolio.py",
+        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
         "frontend/src/lib/developerSkillPackage.test.ts",
-        "frontend/src/lib/i18n/developerPublicContent.test.ts",
-        "frontend/src/app/(marketing)/developers/cli/page.source.test.ts"
+        "frontend/src/lib/help/publicHelpContent.test.ts"
       ],
-      "note": "Trigger, transfer and countercase gates cover one-invocation terminal wait, honest deadline continuation, unchanged immediate reads, Host receipt accounting and synchronized public surfaces."
+      "note": "Trigger, transfer, countercase, idempotency and contract tests cover missing or divergent immutable assets and the user-visible fallback."
     }
   }
 }
