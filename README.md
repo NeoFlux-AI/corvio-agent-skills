@@ -83,8 +83,11 @@ so deterministic continuation and specialized mutation/lifecycle schemas remain 
 For delegated work, pass `ask_corvio` or `organize_files` a weak-but-complete handoff: the user's natural goal, stable source handles,
 explicit user constraints, and only authority facts needed to prevent a wrong identity or scope. Keep source-derived facts in the source;
 do not turn them into an outline, content-level edit checklist, taxonomy, titles, artifact count, sole leaf target from current visibility,
-or internal Corvio plan when the user left those choices open. When `ask_corvio` or `get_question` returns queued/running, wait in the
-foreground for at least `retry_after_seconds` before reading the same operation again. Poll to terminal, then return
+or internal Corvio plan when the user left those choices open. `ask_corvio` returns one durable operation identity. When
+`get_question` returns queued/running, use bounded `wait_seconds`, carry its `progress_cursor` into the next `after_cursor`, and report
+only materially new user-visible milestones—not hidden reasoning, raw tool output, or a provisional answer. Use `cancel_question` on
+that same operation when the user asks to stop; `cancellation_requested` is non-terminal and only `cancelled` proves the stop. To correct
+the objective, finish or cancel first, then create a successor Question with the terminal `conversation_id`. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
 Before organization, search the enduring subject and inspect plausible current Projects. A meeting, incident update, slogan change,
 code task, or file is an event/source, not automatically a new Project or Page. If new evidence may extend, split, consolidate, or

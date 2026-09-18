@@ -314,6 +314,9 @@ corvio search "quarterly launch risks" --limit 10 --json --no-input
 corvio ask --prompt "Which launch risks recur?" --sources workspace,memory --json --no-input
 corvio ask --prompt "Prioritize them" --conversation-id <conversation_id> --json --no-input
 corvio ask --workspace <workspace_id> --prompt "<unchanged question>; Context: project:<workspace_id>/<project_id>" --json --no-input
+corvio ask --background --prompt "Reconcile the launch evidence." --json --no-input
+corvio questions operation <operation_id> --after-cursor <progress_cursor> --wait-until-terminal --json --no-input
+corvio questions cancel <operation_id> --yes --json --no-input
 ```
 
 The last form is only for the receipt-proven bounded continuation above. Start it once; do not launch an identical Question concurrently
@@ -321,6 +324,19 @@ or retry before that foreground process exits. If the shell yields a running-ses
 exits; do not answer from prior output. Answer-only is the default; the CLI intentionally has no `--mode` option. Add
 `--allow-actions` only when a durable action is separately authorized. Transport continuity does not prove a cheaper processing profile;
 leave profile selection on `auto` unless the unresolved semantic bottleneck independently justifies another profile.
+
+For work that may outlive a host turn, `--background` returns a durable Question operation immediately. The equivalent Remote MCP flow
+is `ask_corvio` followed by bounded `get_question` calls. Preserve one `operation_id`; copy each `progress_cursor` into the next MCP
+`after_cursor` or CLI `--after-cursor` so Corvio returns only later milestones. Progress reports stable phase changes and safe status
+messages, never hidden reasoning, raw tool output, or provisional answer text. Surface only meaningful changes to the user; no new event
+is a normal state, not a reason to open another Question. `--wait-until-terminal` keeps deterministic waiting inside the CLI process, and
+its deadline receipt does not cancel the remote work.
+
+To stop work, use MCP `cancel_question` or `corvio questions cancel <operation_id> --yes`. The request is idempotent. Treat
+`cancellation_requested` as non-terminal and verify `cancelled` before claiming the operation stopped; effects that settled before the
+stop remain durable. To correct or redirect the objective, cancel or finish the current operation and then start a successor Question
+with the terminal `conversation_id`. Do not edit an in-flight objective or retry it under a new identity. Terminal completion still
+requires the canonical Question, source/operation/artifact receipts, and any requested durable readback.
 
 Keep the exact Workspace from the original Conversation/operation. A persisted selection is only a candidate; do not try a Conversation
 ID across Workspaces or inspect every Workspace merely to choose one.

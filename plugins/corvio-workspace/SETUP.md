@@ -48,6 +48,12 @@ When an already-authorized durable Work Model update relies on user-selected att
 and use one organization mission for both evidence and the affected owners or topology; do not mutate from pasted excerpts while leaving
 the sources local. Attachment presence alone is still not write consent.
 
+Long-running Questions keep one durable `operation_id` across host turns and reconnects. Use bounded `get_question` reads, copy
+`progress_cursor` into `after_cursor`, and surface only meaningful phase changes. These milestones are not hidden reasoning or a final
+answer. Use `cancel_question` for an explicit stop, verify `cancelled` before saying it stopped, and remember that already-settled effects
+remain. A correction or redirect becomes a successor Question using the terminal `conversation_id`; do not silently replace in-flight
+work or start a duplicate operation.
+
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
 <https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, `.mcp.json`, this setup guide, and a
