@@ -385,18 +385,25 @@ corvio ask --prompt "Compare these retained sources." --asset-ids <asset_id_1>,<
 corvio files upload --file ./research.pdf --json --no-input
 corvio files upload --file ./research.pdf --organize \
   --instruction "Organize this source for future use and evaluate reusable methods." \
-  --skills-extraction-mode auto --processing-profile standard --yes --json --no-input
+  --skills-extraction-mode auto --processing-profile standard --yes \
+  --wait-until-terminal --timeout-seconds 1200 --json --no-input
 corvio files organize <asset_id> --additional-asset-ids <asset_id_2>,<asset_id_3> \
   --instruction "Organize this coherent evidence set and evaluate reusable methods." \
   --scan-mode always --skills-extraction-mode auto --processing-profile standard \
-  --yes --json --no-input
-corvio files operation <operation_id> --json --no-input
-corvio files resume <operation_id> --yes --json --no-input
+  --yes --wait-until-terminal --timeout-seconds 1200 --json --no-input
+corvio files operation <operation_id> --wait-until-terminal --timeout-seconds 1200 --json --no-input
+corvio files resume <operation_id> --yes --wait-until-terminal --timeout-seconds 1200 --json --no-input
 corvio files cancel <operation_id> --yes --json --no-input
 ```
 
-Upload and organization are separate effects even when one command composes them. Preserve the upload receipt, then poll the operation by
-its exact ID until a terminal state or the current wait budget is exhausted. Completion requires all source Asset IDs, source
+Upload and organization are separate effects even when one command composes them. Preserve the upload receipt, then wait on the operation
+by its exact ID until a terminal state or the current wait budget is exhausted. When the authenticated official CLI is already available,
+`--wait-until-terminal` keeps deterministic polling inside that one foreground process; it does not create, resume, or semantically alter
+the operation. `--timeout-seconds` is a bounded local deadline from 1 to 7200 seconds and defaults to 1200. On deadline the CLI returns the
+latest ordinary non-terminal operation plus `transport_wait.status=deadline_reached`; continue the same operation later and never call
+that receipt completion. Without the flag, `files operation` remains one immediate status read. Do not install or switch to the CLI only
+to avoid MCP polls; Remote MCP instead uses bounded `wait_seconds` reads. Interrupting the foreground process stops only the local wait;
+it does not cancel the durable operation, which requires the explicit cancel command. Completion requires all source Asset IDs, source
 reconciliation, `output_document` or other derived artifacts, processing policy, Skill admission outcome, and final links. A qualifying
 `skills_evaluation` returns stable candidate identities and typed `page:` / `node:` resource receipts when exposed by the durable write;
 `evaluated_no_qualifying_skill` is an equally valid evidence-based result. Stable facts/preferences belong to the appropriate Memory,
