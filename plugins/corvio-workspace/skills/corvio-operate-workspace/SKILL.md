@@ -11,8 +11,8 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.74`.
-It implements `coding_agent_collaboration` contract version `2026-09-17.13`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.75`.
+It implements `coding_agent_collaboration` contract version `2026-09-18.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -170,6 +170,14 @@ co-location; pass a real unresolved conflict explicitly instead of silently over
 Do not turn a complex source into one catch-all working document in the handoff. Keep the instruction weak and leave titles and hierarchy to Corvio, but preserve evidence that later reader questions, update events, action/authority paths, or acceptance checks differ. A frozen source carrier owns provenance only; it does not replace independently continued timeline, evidence, decision, status/action, hypothesis, method, or verification owners.
 
 Before handing selected material to Corvio, preserve the fact that one source may change several different parts of the Work Model. Do not reduce a meeting, long conversation, report, workbook, or mixed packet to one topic label or one requested deliverable. Keep the handoff weak, but state any evidenced action-changing impacts and any genuine uncertainty: each impact should reach its existing/new owner or remain explicitly unresolved, while an impact-free source may stay provenance/context only. The Host must not invent the destination tree; Corvio owns that planning and must not silently omit an impact merely because its Project identity is unclear.
+
+Preserve impact boundaries before grouping by theme. If two source-grounded changes can be maintained, accepted, paused, completed, or
+archived independently, keep them as separate candidate impacts even when they share a broad topic, reader, vocabulary, or nearby
+existing Project. An explicitly named program, initiative, customer, incident, product surface, or other stable work subject remains a
+separate owner hypothesis until current Workspace evidence proves the same canonical owner and one coupled reader/update/action/
+acceptance lifecycle. A nearest adjacent Project is a search lead, not merge authority; when no existing owner matches, a new sibling
+Project or an explicit unresolved owner may be the correct result. The Host preserves these distinctions without prescribing titles or
+tree shape, and Corvio must test them against the live Work Model before co-location.
 
 A Project root is the durable work identity and a compact project-wide navigation/current-state/control surface, not the default body for all of those owners. One genuinely shared project-level control question may stay on the root. If the material will later reopen history, decisions, responsibilities/actions, evidence, methods, risks, or verification independently, ask Corvio for the natural work outcome and let it create or reuse non-Project branches/leaves in the first plan; do not treat sections in a long Project body as equivalent. This is a semantic boundary, not a minimum-child or depth rule.
 
