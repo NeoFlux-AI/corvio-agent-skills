@@ -69,7 +69,7 @@ Report completion only when the server returns the terminal import receipt. Pres
 - Corvio report URL or durable resource handle;
 - retry or rollback guidance.
 
-Imported history remains a revocable source library. Do not promote it into Memory unless the user separately confirms that durable Memory action.
+Imported history remains a revocable source library. Consent to parse/upload the exact selected sources does not itself prove any particular durable fact, but it also does not disable learning. After upload, let the ordinary Reply/RunOps evidence review automatically admit reusable methods to the most specific Project Skill and stable user facts to canonical Personal Memory; explicit user opt-out stops the corresponding writes. Keep Team Memory closed without Team-visible evidence, and keep Editing Insights limited to actual user edits. Report exact write/no-write receipts and preserve rollback/undo boundaries rather than asking for per-candidate learning permission.
 
 ## Web-created run
 

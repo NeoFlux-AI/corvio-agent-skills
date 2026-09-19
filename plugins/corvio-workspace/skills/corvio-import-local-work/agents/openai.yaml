@@ -1,4 +1,4 @@
 interface:
   display_name: "Import local agent work"
   short_description: "Preview and import local agent work safely"
-  default_prompt: "Use $corvio-import-local-work to preview and import selected local agent work into Corvio with explicit consent at each stage."
+  default_prompt: "Use $corvio-import-local-work to preview and import selected local agent work into Corvio with explicit source-access and upload consent, then audit durable organization and knowledge receipts."

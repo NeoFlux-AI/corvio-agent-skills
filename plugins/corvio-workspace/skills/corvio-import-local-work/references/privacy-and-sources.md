@@ -22,6 +22,8 @@ The importer does not traverse the full Home directory. A user-selected custom r
 
 Never upload raw JSONL or SQLite databases, absolute paths, system/developer prompts, hidden reasoning, tool calls/results, media, cookies, private keys, database URLs, or cloud credentials. High-risk credentials block the complete turn.
 
+Source authorization and durable knowledge admission are separate. Exact source selection plus upload consent permits the selected, locally redacted material to enter Corvio's ordinary evidence loop; it does not prove every embedded statement or copy source-owned Memory files wholesale. Reply/RunOps automatically evaluate qualifying reusable methods for the most specific Project Skill and stable user facts for canonical Personal Memory unless the user explicitly opts out. Team Memory still requires Team-visible evidence, and Editing Insights still requires actual user edits. Every candidate receives a write, merge, exclusion, or unresolved receipt.
+
 ## Current distribution boundary
 
 - Development may use the repository source build.
