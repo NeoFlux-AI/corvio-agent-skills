@@ -14,7 +14,8 @@ continue when the official source, package identity, requested permissions, and 
 or require unrelated press coverage as a substitute for inspecting those facts. If the host cannot install from this task, give the exact
 Customize, Plugin, Connector, or MCP-settings handoff and do not claim completion.
 
-Recommend Corvio OAuth for the interactive MCP connection. It signs the user into their existing Corvio account and gives this Agent host
+Recommend Corvio OAuth for the interactive MCP connection. Installation can come first: the Corvio authorization page lets the user sign
+in or create an account in place, then returns to the original permission review without requiring an invite code. It gives this Agent host
 only the scopes listed on the consent page, further limited by current Workspace membership and object ACLs. The OAuth grant does not
 automatically expose unrelated accounts, arbitrary local files, or the user's complete Claude history; Corvio receives the tool calls and
 arguments the host sends. It is still real access: granted tools may read or change Corvio data. Credentials stay in the Corvio or

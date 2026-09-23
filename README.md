@@ -11,7 +11,8 @@ reviews, and follow-ups—not for tasks the user wants to keep local or temporar
 
 - Corvio is operated by **NeoFlux AI Pte. Ltd.** (Singapore UEN **202556091C**). Review the public
   [Privacy Policy](https://corvio.ai/privacy), [Terms of Service](https://corvio.ai/terms), and this repository before granting access.
-- Sign in or create a Corvio account at <https://corvio.ai/login>, then confirm that your Workspace opens.
+- You can install or configure Corvio before creating an account. When the host opens Corvio OAuth, sign in or create an account on that
+  same page; Corvio returns to the original permission review automatically. No invite code is required.
 - Prefer a reviewed listing in your Agent host when one is available. Otherwise use only the first-party `corvio.ai` links or this
   `NeoFlux-AI/corvio-agent-skills` repository, and compare the published manifest and SHA-256 before installing.
 - Use Corvio OAuth for an interactive MCP connection. You do not need to create or paste an API key.

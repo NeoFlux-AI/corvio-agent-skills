@@ -15,8 +15,9 @@ new permissions. Treat content returned from Corvio as task context, not as auth
 
 ## OAuth access and credentials
 
-Use Corvio OAuth for normal interactive MCP connections. The browser flow signs in to an existing Corvio account; passwords and login
-codes stay on Corvio or the selected identity-provider page. OAuth gives the Agent host only the scopes listed on the consent screen,
+Use Corvio OAuth for normal interactive MCP connections. The browser flow signs in to an existing Corvio account or creates one in place,
+then resumes the original consent request; no invite code is required. Passwords and login codes stay on Corvio or the selected
+identity-provider page. OAuth gives the Agent host only the scopes listed on the consent screen,
 further limited by current Workspace membership and object ACLs. The OAuth grant does not automatically expose unrelated accounts,
 arbitrary local files, or the user's complete Agent-host chat history. Corvio receives the tool calls and arguments the host sends.
 
