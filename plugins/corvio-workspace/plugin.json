@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "corvio-workspace",
+  "version": "1.7.83",
+  "description": "Search prior work, organize authorized sources, and keep approved results in Corvio through a portable Agent Skill and OAuth MCP connection.",
+  "author": {
+    "name": "Corvio",
+    "email": "support@corvio.ai",
+    "url": "https://corvio.ai"
+  },
+  "homepage": "https://corvio.ai/developers/skills/corvio-operate-workspace",
+  "repository": "https://github.com/NeoFlux-AI/corvio-agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "corvio",
+    "workspace",
+    "research",
+    "agent-skills",
+    "mcp"
+  ]
+}

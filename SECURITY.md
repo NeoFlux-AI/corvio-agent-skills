@@ -6,7 +6,8 @@ The standalone Skill archive contains Markdown, a small YAML description, the AP
 and does not itself grant access to Corvio or the local computer. Running `npx skills add` also invokes the separately distributed
 `skills` installer; use a host-reviewed installer or inspect that dependency before running it.
 
-The Claude Plugin additionally contains `.mcp.json`, `SETUP.md`, and a `SessionStart` shell hook. The hook only prints static Corvio
+The portable Agent Plugin additionally contains root `plugin.json` and `mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`,
+`SETUP.md`, and a `SessionStart` shell hook. The hook only prints static Corvio
 guidance into Claude. It does not read local files, inspect environment variables, or make network requests. The exact hook is reviewable
 at `plugins/corvio-workspace/hooks/session-start.sh`.
 

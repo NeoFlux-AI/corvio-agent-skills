@@ -23,8 +23,8 @@ reviews, and follow-ups—not for tasks the user wants to keep local or temporar
 - To end access, remove the Corvio Connector in the Agent host and revoke the `Remote MCP connection` credential from Corvio
   **Settings → API keys**.
 
-The standalone Skill archive contains reviewed text/configuration files and no credential. The Claude Plugin contains the two Corvio
-Skills, `.mcp.json`, this setup guide, and a `SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does
+The standalone Skill archive contains reviewed text/configuration files and no credential. The portable Agent Plugin contains the two Corvio
+Skills, standard root `plugin.json` + `mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, this setup guide, and a `SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does
 not read files or make network requests. Remote MCP network calls go to `https://api.corvio.ai/mcp` only after OAuth approval. Using
 `npx skills add` also runs the separately distributed `skills` installer, so prefer your host's reviewed installation UI when available.
 
@@ -161,6 +161,17 @@ codex plugin marketplace add .
 ```
 
 In Codex, open `/plugins`, install `corvio-workspace`, and start a new session. The package connects to `https://api.corvio.ai/mcp` with Corvio OAuth; it does not embed an API key. ChatGPT private testing uses Developer mode and the same MCP URL. Public Plugin Directory availability starts only after external marketplace review completes.
+
+Muse Code discovers the same Skill from `$XDG_CONFIG_HOME/muse/skills`, `~/.agents/skills`, or a project `.agents/skills` directory.
+Configure a `corvio` entry in Muse Code's `mcp_servers` settings with `transport: "streamable_http"`, `url: "https://api.corvio.ai/mcp"`,
+`enabled: true`, and `mode: "optional"`; then run `muse mcp login corvio`. Meta's hosted Muse product is a separate Work-mode surface:
+as of 2026-09-26 it has no documented public third-party Plugin or custom MCP directory, so use Corvio's web UI through its browser and
+do not claim native installation.
+
+Grok Build loads Claude-compatible plugins, Skills, MCP configuration, and `AGENTS.md`, and it also discovers `~/.agents/skills`.
+The root `plugin.json` and `mcp.json` make this archive a standard Agent Plugin suitable for Cursor review. Grok Bot is the hosted
+Work-mode product on a Cursor cloud computer; a successful Grok Build install does not prove Bot availability. Submit the public Git
+repository at <https://cursor.com/marketplace/publish>, then verify the accepted listing inside a real Bot before claiming support.
 
 For WorkBuddy, install/upload the official `corvio-operate-workspace` Skill through its Skills surface and configure Corvio in Connector/MCP
 settings. WorkBuddy currently owns these as separate installation surfaces, so both receipts must be checked in a fresh conversation.

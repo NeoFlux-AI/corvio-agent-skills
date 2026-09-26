@@ -57,7 +57,8 @@ work or start a duplicate operation.
 
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
-<https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, `.mcp.json`, this setup guide, and a
+<https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, standard Agent Plugin `plugin.json` and
+`mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, this setup guide, and a
 `SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does not read files or make network requests. Stop
 if the source or SHA-256 does not match.
 
@@ -111,6 +112,11 @@ Do not claim that all of Corvio is current from any one of those receipts.
 - WorkBuddy owns MCP tool loading. Its current MCP contract supports `defer_loading` at server and tool level. Merge the official
   `workbuddy-mcp.json` Corvio entry into the host's actual configuration so `search` and `ask_corvio` remain non-deferred while specialized
   continuation and mutation tools stay discoverable. This host configuration is separate from Claude's `_meta["anthropic/alwaysLoad"]`.
+- Muse Code loads the official Skill from its native or shared Agent Skill roots. Configure Corvio as an optional `streamable_http`
+  server and run `muse mcp login corvio`; start a fresh session after either surface changes. Hosted Muse is a separate product and,
+  until Meta publishes a third-party extension surface, uses only the browser fallback.
+- Grok Build can load the portable Agent Plugin or the existing Claude-compatible package. Grok Bot uses Cursor's hosted Work surface;
+  prefer the reviewed Cursor Marketplace listing after acceptance and keep direct/manual installs labeled as such.
 - Update `@corvio/cli` only when it is installed and needed for local paths, sync, downloads, or a project Agent. Run
   `corvio update check --json --no-input`, then use the exact install command returned by that receipt.
 
