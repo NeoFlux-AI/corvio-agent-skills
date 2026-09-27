@@ -59,8 +59,10 @@ result, not a Corvio write.
   live Workspace routing, OAuth scopes, ACLs, and content safety every time; dynamic Workspace state and search calls are not Memory.
 - Without either authority, deliver the host-native result first. Then explain the exact proposed content, destination if known, and
   concrete benefit, and ask once whether to save or organize it. A decline or no answer means no write.
-- Work Model reconciliation and Memory/Skill evaluation are optional depths within an already authorized Corvio action. Do not offer a
-  generic menu or manufacture a Skill when the evidence contains no reusable method.
+- Work Model reconciliation follows the artifact/source write authority above. Within an authorized Corvio semantic action, however,
+  Memory/Skill evaluation is a default completion depth, not optional aftercare. Review substantive evidence while its module is fresh;
+  skip remote learning only for a greeting, context-free transient lookup, explicit local/no-record boundary, or an evidence-based
+  no-write disposition. Do not manufacture a Skill when no reusable operating signature exists.
 
 Corvio uses the user's own account and authorized Workspace. It cannot scan arbitrary local paths or complete host-chat history. See
 the [Privacy Policy](https://corvio.ai/privacy) and public
@@ -74,6 +76,8 @@ the [Privacy Policy](https://corvio.ai/privacy) and public
 | Read bounded facts from one retained Asset without creating a Question | MCP `get_file(read_mode=content)`, or CLI `files get <id> --content` | Returns a hash-bound AI-safe projection with explicit completeness/truncation |
 | Ask Corvio about an explicitly selected local file | MCP prepare → host PUT → finalize → `ask_corvio(asset_ids=[...])`, or CLI `ask --file` | The host reads bytes; Corvio binds the finalized Asset to that exact question |
 | Retain an explicitly selected local file without asking about it | MCP `prepare_file_upload` → host PUT → `finalize_file_upload`, or CLI `files upload` | Retention creates an Asset in intake; it does not silently create a root document or a question input |
+| Reconcile Markdown the Host just composed into future work when its owner or structure is not decided | MCP `ask_corvio(mode=allow_actions, inline_materials=[...])`, or CLI `ask --allow-actions --inline-material-file <path>` | The body stays typed source evidence while Corvio chooses the fitting Page/Project/Memory/Skill effect; no synthetic upload or root-Page prewrite |
+| Reconcile finalized original Assets and Host-generated Markdown as one future-use outcome | MCP `ask_corvio(mode=allow_actions, asset_ids=[...], inline_materials=[...])`, or CLI `ask --allow-actions --asset-ids ... --inline-material-file <path>` | One Question keeps the original bytes and Host result as distinct typed sources while owning their joint semantic effect |
 | Continue one bounded read-only synthesis after a trusted receipt already proves this Host used the authenticated CLI in the exact Workspace | One foreground CLI `ask`; answer-only is the default, so omit `--allow-actions` and do not pass `--mode` | Preserves transport and returns the terminal Question without model-visible polling; never install, probe, or switch solely for this optimization |
 
 For `ask_corvio` or foreground CLI `ask`, keep the user's question unchanged and append the smallest complete decision-relevant context
@@ -91,15 +95,37 @@ not proof that the method is unqualified; use the narrowest correct Project Skil
 action/judgment sequence, boundary or countercase, and verification path. Ordinary fact-Page updates do not close that Skill duty.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
+Also consume `execution.durable_learning` when present. It is the public, bounded receipt for Memory reviews/executions, reusable-procedure
+outcomes, and residual-lane deduplication; it intentionally excludes candidate text and hidden Memory tree refs. A host should pass
+natural evidence and stable source/result handles, never choose the Memory leaf or Skill title itself.
 
 | Upload/download by local path, sync Markdown, or run a project Agent | CLI | Foreground local/project authority |
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
 
 A newly finalized Asset that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to
-one `organize_files` operation. That Mission owns source preparation, affected-owner updates and retry/resume; do not submit an
-`ask_corvio` Question before or after it for the same source set. `target_root_node_id` accepts only a Project `node_id` returned by
+one `organize_files` operation when the durable input set is Asset-only. That Mission owns source preparation, affected-owner updates and
+retry/resume; do not submit an `ask_corvio` Question before or after it for the same Asset-only source set. `target_root_node_id` accepts only a Project `node_id` returned by
 `list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
+
+Host-generated Markdown has a separate one-operation path because it has no original local bytes to retain. When future use is
+authorized and durable ownership is unresolved, pass the complete generated body as `inline_materials` on one `allow_actions` Question.
+With CLI, write that already-generated body to the Host's task-local file and pass `--inline-material-file`; this reads the text into the
+Question but does not upload an Asset. `--inline-material-title` supplies a source label. Do not use this path for PDFs, exports, user
+files, or any evidence whose exact original bytes/provenance matter; those remain Assets. Do not call `docs create` first or schedule a
+second cleanup Question afterward. Rejection, blocking, or pre-acceptance failure leaves the owner unresolved: follow typed recovery or
+report that unresolved effect without a direct Page or synthetic Asset fallback. If one standalone Page is already the settled owner,
+direct `docs create` is the cheaper complete path.
+
+When one coherent authorized outcome combines finalized original Assets with Host-generated Markdown, keep both source kinds distinct
+but choose one semantic owner: send the exact `asset_ids` and complete `inline_materials` together on one `allow_actions` Question. The
+Assets preserve original bytes and provenance; the inline resources preserve the Host's current-turn result without pretending it is an
+original file. Do not run `organize_files` before or after that Question for the same packet. Use `organize_files` when only the original
+Assets need Work Model reconciliation and the Host body is not part of the durable outcome.
+
+If the current turn already carries a complete current owner receipt plus the exact Memory/Skill correction or non-merge boundary, include those facts
+with the selected inline body in one `allow_actions` Question. Do not search or open an `answer_only` Question first; read only when a missing fact
+could still change target, scope, authority, or constraints.
 
 A request to transform selected related material so later action, follow-up, decisions, review, or another continuing workflow can use
 it is a Work Model intent, not a chat-only rewrite or raw retention. After finalizing the exact bytes, start one `organize_files`
@@ -175,7 +201,9 @@ The public Developer API already owns:
   document/comment state back before reporting completion.
 - a bounded iterative Agent Runner that returns each Query/Writer result to the same provider task, continues through the same Corvio
   Conversation when more evidence or a complex edit is needed, and records every question ID in the completion receipt;
-- remote MCP `ask_corvio` continuation in `answer_only` or explicitly authorized `allow_actions` mode for complex Workspace editing.
+- remote MCP `ask_corvio` continuation in `answer_only` or explicitly authorized `allow_actions` mode for complex Workspace editing,
+  including typed `inline_materials` for current-turn Markdown the Host composed. The body persists as a current-request Resource instead
+  of being concatenated into instructions; original local evidence remains on the Asset route.
 - remote MCP question/conversation history discovery through `list_conversations`, `get_conversation`, `list_questions`, and
   `get_saved_question`, so a fresh host session can recover stable continuation handles instead of depending on prompt memory.
 - remote MCP comment list/create/reply/status plus `complete_document_work` through explicit `comments:read` / `comments:write` OAuth
@@ -184,6 +212,8 @@ The public Developer API already owns:
 - remote MCP revision-guarded `update_document` / `append_document` with required `change_summary`; a successful change creates and
   reads back a visible document-level comment. Page Markdown is only the deterministic direct-write carrier—typed Spreadsheet,
   Presentation, Code, and HTML Artifact work remains available through `ask_corvio(mode=allow_actions)`.
+- remote MCP `create_document` returns a compact canonical body fingerprint, character length, and `readback_verified=true`; callers
+  treat that as terminal instead of reopening or duplicating the write merely because the complete body is not echoed.
 - remote MCP staged upload (`prepare_file_upload` → host-native signed PUT → `finalize_file_upload`) plus exact Question binding through
   `ask_corvio(asset_ids=[...])`, and Asset list/get/organization/operation readback. `get_file(read_mode=content)` projects one retained
   source through a bounded, hash-checked, non-mutating read and reports incomplete/truncated coverage explicitly. The host or CLI reads selected local bytes; the remote
@@ -331,6 +361,12 @@ is `ask_corvio` followed by bounded `get_question` calls. Preserve one `operatio
 messages, never hidden reasoning, raw tool output, or provisional answer text. Surface only meaningful changes to the user; no new event
 is a normal state, not a reason to open another Question. `--wait-until-terminal` keeps deterministic waiting inside the CLI process, and
 its deadline receipt does not cancel the remote work.
+
+`needs_user_input` is a typed continuation state rather than terminal completion. Relay `question.clarification.questions` through the
+Coding Agent's native user-input UI without choosing, skipping, or rewriting the decision for the user. Then call
+`submit_question_clarification` with the original operation ID, exact session ID, and only the user's selected option keys or note. Poll
+the returned continuation operation with `get_question`; it resumes the original Corvio Question and may itself return another bounded
+clarification. Never replace this handshake with a new `ask_corvio` prompt or a host-authored guess.
 
 To stop work, use MCP `cancel_question` or `corvio questions cancel <operation_id> --yes`. The request is idempotent. Treat
 `cancellation_requested` as non-terminal and verify `cancelled` before claiming the operation stopped; effects that settled before the

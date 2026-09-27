@@ -1,24 +1,38 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.83",
-  "contract_revision": "2026-09-26.1",
+  "release_version": "1.7.84",
+  "contract_revision": "2026-09-27.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Add truthful Muse and Grok host projections, a portable Agent Plugin envelope, Grok Build CLI support, and an explicit inbound-mailbox boundary so outbound-only Work agents are never advertised as comment listeners.",
+  "change_summary": "Unify durable learning, typed same-Question clarification, and Host-generated or mixed-source material under one evidence-backed Corvio Question while preserving direct writes for decision-ready Pages.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md"
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/references/documents.md",
+        ".agents/skills/corvio-operate-workspace/references/work-model.md"
       ],
-      "note": "The canonical Skill advances with the portable Muse/Grok host guidance while preserving the same read, consent, retention, and terminal-readback contract."
+      "note": "The canonical Skill distinguishes direct Page writes, Asset-only organization, inline and mixed-source Work Model reconciliation, durable-learning receipts, and typed clarification while preserving consent, provenance, economics, and terminal readback."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/application/developer_platform/coding_agent_collaboration.py"
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/api/public_v1/schemas.py",
+        "backend/app/application/chat/durable_learning_memory_planner.py",
+        "backend/app/application/chat/thread_resource_contracts.py",
+        "backend/app/application/chat/thread_resource_inputs.py",
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/developer_platform/mcp_questions.py",
+        "backend/app/application/developer_platform/questions.py",
+        "backend/app/application/usecases/chat_streaming/function_tools.py",
+        "backend/app/application/usecases/chat_streaming_usecase.py",
+        "docs/reference/developer-api-v1.md"
       ],
-      "note": "The server advertises release 1.7.83 and contract 2026-09-26.1, including the portable Agent Plugin boundary and explicit host-channel readiness."
+      "note": "The server advertises release 1.7.84 and contract 2026-09-27.1 with durable-learning receipts, needs_user_input continuation, and the same inline, Asset-only, mixed-source, direct-write and Work Model boundary as MCP and CLI."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -27,87 +41,102 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json",
         "packaging/corvio-agent-skills/release-impact.json"
       ],
-      "note": "Skill and Plugin versions advance together; standard root Agent Plugin and MCP manifests join the existing Claude/Codex envelopes."
+      "note": "Skill and Plugin versions advance together for durable learning, host clarification, and cross-host semantic materialization."
     },
     "workspace_cli": {
       "disposition": "changed",
       "paths": [
-        "developer-cli/packages/workspace/src/cli.js",
-        "scripts/export-official-agent-skills.sh",
-        "scripts/release-agent-skills.sh"
+        "developer-cli/packages/workspace/src/cli.js"
       ],
-      "note": "The CLI discovers Grok/Muse Skill locations and adds a bounded Grok Build project Runner; Muse Code remains MCP-only until its unattended permission boundary is verified."
+      "note": "The CLI exposes --inline-material-file for Host-generated Markdown and stays compatible with durable-learning receipts; interactive clarification remains additive to Remote MCP."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
-        "frontend/src/lib/help/publicMcpHelpContent.ts"
+        "frontend/src/lib/help/publicHelpContent.ts"
       ],
-      "note": "Localized Help distinguishes Muse Code/hosted Muse and Grok Build/Grok Bot, including Marketplace and inbound-listener boundaries."
+      "note": "Public Help explains the one semantic owner rule for mixed original Assets and Host-generated Markdown."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/README.md",
-        "packaging/corvio-agent-skills/SECURITY.md",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "Package setup and security guidance document portable Agent Plugin installation, direct Muse Code MCP, Grok Build compatibility, hosted-mode limits, and release 1.7.83."
+      "note": "The session hook carries durable-learning, typed clarification, and cross-host materialization boundaries while detailed routing remains in the loaded Skill."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/adr/0074-account-agent-grants-runtime-binding-and-origin-scope.md",
+        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
+        "docs/rfc/memory-doc-semantics-and-routing-v1.md",
+        "docs/adr/0081-continuous-durable-learning-closure.md",
+        "docs/rfc/prompt-architecture-mainline-v1.md",
         "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/reports/muse-grok-agent-integration-historical-audit-2026-09-26.md",
-        "docs/runbooks/CORVIO_REMOTE_MCP_HOST_SETUP.md",
-        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
-        "docs/logbook/entries/2026-09-26/111500-codex-muse-grok-agent-integration-and-comment-mailbox-truth.md",
+        "docs/reference/cursor-harness/TESTING_HARNESS.md",
+        "docs/reports/continuous-durable-learning-historical-mainline-audit-2026-09-27.md",
+        "docs/reports/host-generated-material-work-model-historical-audit-2026-09-27.md",
+        "docs/test-reports/host-generated-material-work-model-case-by-case-semantic-audit-2026-09-27.md",
+        "docs/test-reports/host-generated-material-work-model-host-matrix-2026-09-27.md",
+        "docs/test-reports/continuous-durable-learning-runtime-acceptance-2026-09-27.md",
+        "docs/logbook/entries/2026-09-27/084811-codex-continuous-durable-learning-runtime.md",
+        "docs/logbook/entries/2026-09-27/102140-codex-ask-question-decision-alignment-and-host-relay.md",
+        "docs/logbook/entries/2026-09-27/105500-host-generated-material-process-audit-and-stress-matrix.md",
+        "docs/logbook/entries/2026-09-27/061220-codex-host-generated-material-work-model-convergence.md",
         "docs/logbook/weekly/2026-09-21_to_2026-09-27.md"
       ],
-      "note": "The mainline records the historical comment root cause, capability-based mailbox eligibility, Code/Work matrix, presentation choices, official source audit, and external gates."
+      "note": "ADR/RFC/Harness and acceptance evidence record the durable-learning planner, semantic Ask relay, Host-generated material boundary, and their trigger, transfer, countercase and open release evidence."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Cursor Marketplace submission and fresh Grok Bot acceptance remain account-owned external gates; Meta exposes no public Muse submission route as of the audit date."
+      "note": "Publishing release 1.7.84 and fresh external Codex/Claude host acceptance remain separate release-owned gates."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/references/work-model.md",
         "packaging/corvio-agent-skills/README.md",
-        "packaging/corvio-agent-skills/SECURITY.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json"
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "The canonical exporter will include the portable root manifests and regenerate both immutable archives from synchronized 1.7.83 source."
+      "note": "The canonical exporter will regenerate both immutable archives from synchronized 1.7.84 Skill, references, manifests, and hook source."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
+        "backend/tests/unit/test_durable_learning_memory_planner.py",
+        "backend/tests/unit/test_function_tools.py",
+        "backend/tests/unit/test_context_economy_runtime_contracts.py",
+        "backend/tests/unit/test_prompt_regression_suite_manifest.py",
+        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
+        "backend/tests/unit/test_run_ops_task_summaries.py",
+        "backend/tests/unit/test_prompt_regression_harness.py",
+        "backend/tests/unit/test_mcp_question_worker.py",
+        "backend/tests/unit/test_developer_question_clarification.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_agent_identity_defaults.py",
-        "backend/tests/unit/test_mcp_oauth_authorization_states.py",
-        "backend/tests/integration/test_product_guidance_mcp_oauth_flow.py",
+        "backend/tests/integration/test_developer_question_public_contract.py",
+        "backend/tests/unit/test_developer_run_origin_and_processing.py",
+        "backend/tests/unit/test_thread_resource_inputs.py",
+        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/scripts/run_host_generated_material_host_probe.py",
+        "backend/scripts/scenario_suites/host_generated_material_work_model_stress_v2.json",
+        "backend/tests/unit/test_host_generated_material_host_probe.py",
         "developer-cli/tests/commands.test.mjs",
-        "scripts/tests/test_export_official_agent_skills.sh",
-        "scripts/tests/test_release_agent_skills.sh",
         "frontend/src/lib/developerSkillPackage.test.ts",
-        "frontend/src/lib/help/publicHelpContent.test.ts",
-        "frontend/src/components/workspace/AgentProviderAvatar.test.tsx",
-        "frontend/src/components/workspace/docEditor/DocCommentRail.test.tsx"
+        "scripts/codex/mcp_resource_guard.py",
+        "scripts/tests/test_mcp_resource_guard.py"
       ],
-      "note": "Contract, identity, OAuth, CLI, package, Help and comment UI tests verify provider classification, listener truth, release bytes, and user-visible status."
+      "note": "Planner/runtime, Prompt, worker, MCP/API routing, CLI, host portfolios, Skill transport, package export, frontend manifest, and resource cleanup checks cover all three additive contracts; the Host-generated stress matrix remains 13/20 strict and 14/20 outcome-passed with explicit open behavior gaps."
     }
   }
 }

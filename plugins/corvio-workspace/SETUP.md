@@ -54,6 +54,9 @@ Long-running Questions keep one durable `operation_id` across host turns and rec
 answer. Use `cancel_question` for an explicit stop, verify `cancelled` before saying it stopped, and remember that already-settled effects
 remain. A correction or redirect becomes a successor Question using the terminal `conversation_id`; do not silently replace in-flight
 work or start a duplicate operation.
+When `get_question` returns `needs_user_input`, show the typed `clarification.questions` through the host's native input surface and wait
+for the user's answer. Never choose, skip, or rewrite the decision on the user's behalf. Call `submit_question_clarification` with that
+answer and poll its continuation operation, which resumes the original Corvio Question.
 
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is

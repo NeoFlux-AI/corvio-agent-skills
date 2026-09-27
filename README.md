@@ -90,6 +90,9 @@ only materially new user-visible milestones—not hidden reasoning, raw tool out
 that same operation when the user asks to stop; `cancellation_requested` is non-terminal and only `cancelled` proves the stop. To correct
 the objective, finish or cancel first, then create a successor Question with the terminal `conversation_id`. Poll to terminal, then return
 `artifact.url` or `links.primary_artifact` verbatim; `node_id` is hierarchy identity, not a document URL.
+If `get_question` returns `needs_user_input`, relay its typed `clarification.questions` through the host's native user-input UI. Do not
+choose a default, skip, or rewrite the decision for the user. Submit only the user's answers with `submit_question_clarification`, then
+poll the returned continuation operation; it resumes the same Corvio Question rather than starting a replacement task.
 Before organization, search the enduring subject and inspect plausible current Projects. A meeting, incident update, slogan change,
 code task, or file is an event/source, not automatically a new Project or Page. If new evidence may extend, split, consolidate, or
 reparent existing work, pass that natural reconciliation goal and only proven handles; let Corvio compare the current Tree and choose

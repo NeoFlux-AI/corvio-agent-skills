@@ -11,6 +11,8 @@ Optimize total successful-work cost, not just the number of tool calls:
 | --- | --- | --- |
 | The host already knows the exact replacement text and current lines | `read_document` then `patch_document`, or CLI `docs read` then `docs patch` | No second semantic model pass; unchanged content stays server-side; response is a compact verified delta |
 | The host already has the complete authoritative source and can produce the complete final Markdown within its context | `update_document`, or CLI `docs update` | A guarded full replacement can be the lowest total-cost faithful effect; compact mutation output avoids echoing the body |
+| The host just composed new Markdown for authorized future use, but its durable owner, lifecycle, Work Model structure, Memory, or Skill outcome is still undecided | `ask_corvio(mode=allow_actions, inline_materials=[...])`, or CLI `ask --allow-actions --inline-material-file` | One semantic operation receives the body as source evidence, reads current owners, and chooses the durable effect before writing |
+| One authorized outcome combines finalized original Assets with Host-generated Markdown and their joint durable effect remains semantic | `ask_corvio(mode=allow_actions, asset_ids=[...], inline_materials=[...])`, or CLI `ask --allow-actions --asset-ids ... --inline-material-file ...` | One Question preserves original provenance, carries the Host result as a different typed source, and owns the joint reconciliation without a second organization run |
 | Source material is Workspace-resident, cross-source or typed; the body is too large to carry safely; or Corvio must still decide the durable structure | `ask_corvio(mode=allow_actions)` | Corvio has the relevant source/carrier context and owns semantic writing plus durable readback |
 | Existing ordinary Page table needs exact cell edits or row appends | `read_document_table` then `mutate_document_table` | Stable row/column IDs avoid replaying the table through host context |
 
@@ -24,6 +26,18 @@ verified receipt finishes the outcome. Delegate when another Corvio model pass r
 knowledge, Work Model reconciliation, or risky host-side truncation. Do not split one coherent rewrite between both Agents.
 A rewrite request does not become a Corvio delegation merely because the host must rephrase or reorganize prose; unresolved source scope,
 carrier semantics, durable structure, or unsafe context transfer is the deciding boundary.
+For a newly composed body, “complete in host context” does not by itself prove that a new Page is the right durable owner. Use direct
+create only when the user-facing Page and its owner are already decided. If later continuation, independent reader/update duties,
+Memory, Skill, or topology remain semantic, send the body once as `inline_materials` before any durable write. Never implement this as
+`create_document` followed by an automatic low-cost cleanup run; that duplicates effects and races the first receipt.
+For a direct create, pass the body as `markdown`, never `content_markdown`. A successful compact response includes the canonical body's
+SHA-256, character length, and `readback_verified=true`; that is terminal evidence. Do not open a Question, read, update, or create again
+merely because the receipt avoids echoing the full body.
+If inline-material admission is rejected, blocked, or fails before acceptance, the owner remains unresolved. Follow typed recovery or
+report the unresolved effect; do not fall back to a direct Page or synthetic Asset unless a later user instruction independently fixes it.
+If the same future-use outcome includes original files, finalize them first and attach their exact Asset IDs to that one Question alongside
+the inline body. Do not call `organize_files` as a separate semantic pass for the same mixed packet. Asset-only Work Model intake still
+uses `organize_files`; inline text never replaces the original bytes.
 When stable Workspace source and target handles already make a cross-source or typed task decision-ready, pass them directly to one
 `ask_corvio` operation. Do not pre-read the target merely to restate its title, revision, or contents to Corvio; read first only when a
 missing fact could change the execution owner, target, scope, or constraint.

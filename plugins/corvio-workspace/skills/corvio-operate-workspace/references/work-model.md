@@ -15,6 +15,17 @@ ask Corvio to reconcile the relationship. Because Projects cannot nest, Corvio m
 non-Project branch, move descendants, and retire an empty duplicate shell. The Host should not simulate this by creating a fresh summary
 or by issuing a blind series of CLI moves.
 
+A current-turn report, plan, analysis, meeting note, or other Markdown body composed by the Host is likewise an input event, not proof of
+one new root Page. When the user authorized future use and the lasting owner, reader/update lifecycle, topology, Memory, or Skill outcome
+is still undecided, pass the complete body as typed `inline_materials` to one `ask_corvio(mode=allow_actions)` operation. It remains
+source evidence behind a resource handle while Corvio reads the live Work Model and plans the durable effect. Do not first create the Page
+and ask another run to repair it. If the body is already one decision-ready standalone Page, use direct create and stop; a later cleanup
+run would add cost and race a settled effect. Original local files still require Asset retention because inline text does not preserve
+their exact bytes or provenance. For an Asset-only Work Model intake, use one `organize_files` mission. When one coherent authorized
+outcome combines finalized original Assets with Host-generated Markdown, pass both the exact `asset_ids` and typed `inline_materials` to
+one `ask_corvio(mode=allow_actions)` operation so Corvio reads and reconciles both source kinds once. Do not precede or follow that mixed
+Question with `organize_files` for the same packet.
+
 Treat conversational continuity and Project identity as separate evidence. Phrases such as “also add these,” “continue,” or “look at
 these together” authorize the current processing or retention effect, but do not by themselves prove that a newly selected source belongs
 to the Project from the previous receipt. When the source presents a different stable business subject and no explicit alias, lineage, or
@@ -22,6 +33,11 @@ current-user correction links it, do not pin the old Project merely because its 
 handle, and the known or unresolved relationship boundary to Corvio so its semantic lanes can decide whether to preserve siblings, relate
 them, or later consolidate them. Conversely, when the source continues the same subject without contrary identity evidence, reuse the
 receipt-backed continuation instead of manufacturing a Project for each artifact.
+
+When one bounded discovery returns multiple plausible current owners and no exact receipt or current user statement selects one, this is
+a user-authority gap rather than a harder semantic classification problem. Stop before `ask_corvio(mode=allow_actions)`,
+`organize_files`, or any direct write and ask the user to choose among the concrete candidates. Do not repeat the search with synonyms or
+delegate the choice to a write-capable Question; neither creates authority for the destination.
 
 ## Infer Project and leaf boundaries from operating lifecycles
 
@@ -105,3 +121,9 @@ outputs, affected owners, and any topology change that actually occurred. A succ
 not proof that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable
 entry now owns the work and return the canonical link; when the result reports unresolved overlap or missing authority, preserve that
 boundary instead of announcing a merge.
+
+The same completion check covers durable learning without turning the Host into the Memory/Skill router. For each coherent source,
+document, or decision module, pass the natural preference, identity/context, active-goal, Workspace-operation, collaboration, or reusable-
+procedure evidence and its stable handles to Corvio while that evidence is fresh. Corvio decides canonical personal/Team Memory leaves
+and Project Skill ownership. Co-close independent effects in one operation when possible; otherwise use the terminal document receipt as
+the bounded successor context. Consume `execution.durable_learning`, and leave residual lanes only the late/missed-candidate safety net.
