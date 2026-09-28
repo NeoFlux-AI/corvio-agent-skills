@@ -28,7 +28,8 @@ A rewrite request does not become a Corvio delegation merely because the host mu
 carrier semantics, durable structure, or unsafe context transfer is the deciding boundary.
 For a newly composed body, “complete in host context” does not by itself prove that a new Page is the right durable owner. Use direct
 create only when the user-facing Page and its owner are already decided. If later continuation, independent reader/update duties,
-Memory, Skill, or topology remain semantic, send the body once as `inline_materials` before any durable write. Never implement this as
+Memory, Skill, topology, or semantic incorporation remain, send the body once as `inline_materials` before any durable write. A known
+destination owner does not turn the Host body into prompt prose or remove that typed-source requirement. Never implement this as
 `create_document` followed by an automatic low-cost cleanup run; that duplicates effects and races the first receipt.
 For a direct create, pass the body as `markdown`, never `content_markdown`. A successful compact response includes the canonical body's
 SHA-256, character length, and `readback_verified=true`; that is terminal evidence. Do not open a Question, read, update, or create again
@@ -41,6 +42,11 @@ uses `organize_files`; inline text never replaces the original bytes.
 When stable Workspace source and target handles already make a cross-source or typed task decision-ready, pass them directly to one
 `ask_corvio` operation. Do not pre-read the target merely to restate its title, revision, or contents to Corvio; read first only when a
 missing fact could change the execution owner, target, scope, or constraint.
+A handle proves identity, not current contents. Treat an owner receipt as complete only when it also carries every current revision,
+topology, content, and constraint fact needed by the decision. Use `search`, `fetch`, or `read_document` for missing owner evidence;
+`answer_only` is a terminal semantic-answer route, not an owner reader or a preview before a later `allow_actions` Question. When one
+search distinguishes the write target from a stale, archived, wrong-scope, or non-merge owner, preserve both exact handles in the single
+effect handoff so the execution owner can verify both the positive and negative boundary.
 
 ## Progressive read loop
 

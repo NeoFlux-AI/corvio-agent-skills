@@ -32,7 +32,8 @@ For ordinary connected work, Remote MCP callers may omit `workspace_id` from Wor
 organization, Page-create, and Project-create calls. Read/navigation calls resolve explicit/originating context first, then confirmed
 account selection, personal default, or a single authorized candidate. A new external-Agent write with no object binding instead resolves
 explicit current-task choice or originating/continuation/Project/Asset receipt first, then the user's writable personal default, then a
-single writable candidate. The shell's ambient selection is not task-local write intent. Every route returns `workspace_routing`, and
+single writable candidate. On MCP, `workspace_id` is only a bare Workspace UUID; Project/Page/Memory/Skill handles belong in the
+natural prompt context or their exact read field, never in `workspace_id`. The shell's ambient selection is not task-local write intent. Every route returns `workspace_routing`, and
 real ambiguity fails closed with candidates. MCP also owns routine `request_id` / `idempotency_key` generation; callers supply an
 explicit key only when they need to coordinate a deliberate retry across invocations. Exact-resource follow-ups keep the stable Workspace
 embedded in their handles, and upload finalization keeps the Workspace from the preparation receipt. `list_workspaces` returns
@@ -85,14 +86,20 @@ or stable handles as a separate context clause. A carried Project handle is norm
 do not expand it into every descendant handle. Handles are evidence addresses, not a reason to enumerate sibling labels, substitute a
 different objective, invent a comparison rubric, or prescribe reasoning steps. Do not turn an open semantic delegation into an invented
 taxonomy, title list, artifact count, or internal task plan. Explicit user constraints remain authoritative.
-Receipt-bound continuation handles are compact prior-work context even when a fresh process has no transcript. Read an identifiable leaf
-before broad search; if multiple unlabeled handles make the leaf unclear, fetch the carried Project, use its
+Receipt-bound continuation handles are compact prior-work context even when a fresh process has no transcript. When their receipt lacks
+current content, read the narrowest relevant handle before any Workspace search or `answer_only` Question. Multiple handles alone do not
+justify semantic synthesis: read only the method and factual owners needed by the judgment, then answer directly when their returned
+fields settle it. If multiple unlabeled handles make the leaf unclear, fetch the carried Project, use its
 `metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Preserve an explicit incomplete
 boundary when that projection is truncated. A lexical match in another Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
 a durable reusable-owner receipt or an exact readback proving the full delta was already present, not only a chat comparison.
 Judge method qualification before owner reuse. A similar Skill under the wrong Project is read-only negative evidence for that merge,
 not proof that the method is unqualified; use the narrowest correct Project Skill when the evidence includes a future trigger,
 action/judgment sequence, boundary or countercase, and verification path. Ordinary fact-Page updates do not close that Skill duty.
+For `inline_materials`, copy the selected Host-generated title and Markdown exactly after only user-required safety exclusions. A known
+destination owner does not turn the Host body into prompt prose: whenever that body participates in semantic incorporation, the typed
+`inline_materials` source remains required. Do not rewrite, summarize, reorder, retitle, or add policy prose before the call; Corvio owns
+the requested semantic transformation.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
 Also consume `execution.durable_learning` when present. It is the public, bounded receipt for Memory reviews/executions, reusable-procedure
@@ -109,7 +116,9 @@ retry/resume; do not submit an `ask_corvio` Question before or after it for the 
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
 
 Host-generated Markdown has a separate one-operation path because it has no original local bytes to retain. When future use is
-authorized and durable ownership is unresolved, pass the complete generated body as `inline_materials` on one `allow_actions` Question.
+authorized and any durable owner, structure, Memory, or Skill decision or semantic incorporation remains, pass the complete generated
+body as `inline_materials` on one `allow_actions` Question. This remains true when owner discovery has already found the destination:
+the owner handle is routing evidence, while the typed body is source evidence.
 With CLI, write that already-generated body to the Host's task-local file and pass `--inline-material-file`; this reads the text into the
 Question but does not upload an Asset. `--inline-material-title` supplies a source label. Do not use this path for PDFs, exports, user
 files, or any evidence whose exact original bytes/provenance matter; those remain Assets. Do not call `docs create` first or schedule a
@@ -124,8 +133,21 @@ original file. Do not run `organize_files` before or after that Question for the
 Assets need Work Model reconciliation and the Host body is not part of the durable outcome.
 
 If the current turn already carries a complete current owner receipt plus the exact Memory/Skill correction or non-merge boundary, include those facts
-with the selected inline body in one `allow_actions` Question. Do not search or open an `answer_only` Question first; read only when a missing fact
-could still change target, scope, authority, or constraints.
+with the selected inline body in one `allow_actions` Question. “Complete” means both the stable binding and every current content, revision,
+topology, or constraint fact needed by this decision; a bare handle proves binding only. Use `search`, `fetch`, or `read_document` for
+owner discovery and current readback. Never open an `answer_only` Question as an owner lookup or preview before the `allow_actions`
+Question for the same objective. If discovery found a chosen owner plus a stale, archived, wrong-scope, or non-merge owner that constrains
+the effect, carry both exact handles and the boundary into that one Question. A bound Project plus unambiguous current-user update facts
+is already enough to delegate reconciliation; absence of a matching leaf, assignee, or old wording does not create new authority ambiguity.
+`search.content_complete=true` closes the discovery result set; it does not turn a returned title or snippet into the owner's complete
+current body. Fetch before an effect that updates that same content-bearing Page, Memory, or Skill when current wording can change
+preservation, removal, ordering, or merge. This does not relax exact continuation: fetch a carried Project when its receipt lacks the
+current body or topology needed for handoff. Do not fetch a Project newly selected by complete search merely to route new current-turn
+material or reconfirm an archive/non-merge boundary already established there.
+For read-only continuation, read the smallest required exact-owner set first when its returned fields can supply every operand for a
+bounded deterministic judgment. If they do, decide in the Host and do not open an `answer_only` Question before or after merely to
+restate them. Unless the user explicitly requests only a verdict, report the decisive reusable rule together with the current operands
+that settle the judgment. Delegate once only when the answer still requires cross-owner semantic synthesis or a typed result.
 
 A request to transform selected related material so later action, follow-up, decisions, review, or another continuing workflow can use
 it is a Work Model intent, not a chat-only rewrite or raw retention. After finalizing the exact bytes, start one `organize_files`
@@ -159,6 +181,8 @@ authorized effect. Return no-op only after the terminal result and current Tree 
 independent Project lifecycle.
 
 After terminal settlement, inspect the operation's canonical Project, reader outputs, affected-owner receipts, and current Tree readback.
+The terminal operation's embedded owner/topology readback satisfies this step when it returns those fields; do not fetch the new Page
+merely because the source has detailed facts. Read an exact content owner only for body-level acceptance not present in the receipt.
 Only then report whether the source established a new scope, extended current owners, split an overloaded owner, consolidated duplicate
 roots, or left topology unchanged. Upload/finalize success alone proves source retention, not Work Model completion.
 
@@ -214,6 +238,25 @@ The public Developer API already owns:
   Presentation, Code, and HTML Artifact work remains available through `ask_corvio(mode=allow_actions)`.
 - remote MCP `create_document` returns a compact canonical body fingerprint, character length, and `readback_verified=true`; callers
   treat that as terminal instead of reopening or duplicating the write merely because the complete body is not echoed.
+- Question/file-operation `readback_verified=true` proves only the identity, revision, topology and other fields present in that receipt;
+  it does not prove omitted body text. Effect summaries, include/exclude lists, hashes, excerpts, and `readback_verified` prove only
+  those returned fields; none is the exact owner body. A typed effect field may prove only the semantic classification or named
+  per-owner inclusion/exclusion it explicitly returns, such as current versus historical owner or a batch fact excluded from a reusable
+  Skill, when exact wording is not required; it proves no unreturned fact or exact body. Decide acceptance evidence before the effect.
+  If the receipt returns every required typed include/exclude result, that closes semantic separation without another body read.
+  Otherwise, adding, preserving, or removing specific statements in a final owner, preserving a conflicting source/current-conclusion
+  distinction, or keeping named facts out of a reusable owner makes exact post-effect wording part of acceptance: read each affected exact owner once,
+  limited to the content-bearing owner, then stop. Before the final reply, compare the user's acceptance wording with the receipt rather
+  than relying on the Host's handoff prompt as proof; do
+  not also read its structural Project. Merely retaining or connecting selected material and reporting its final location does not require another body read.
+  “Keep/connect this material” remains general even when it contains specific factual bullets; exact-body
+  acceptance requires explicit wording or separation such as verbatim/unchanged, must contain/remove, or must not appear in a named
+  owner. The source's detail, a final response that mentions its facts, a new Skill, or Corvio choosing several new owners do not change this boundary. If
+  excluded bytes were removed before dispatch and the accepted
+  source receipt identifies that sanitized input, no output read is needed to prove they were not sent. An explicit typed receipt that
+  an archived owner was unchanged likewise needs no body read.
+- A verified terminal owner/topology receipt remains authoritative when Corvio chooses a title different from the user's descriptive
+  phrase. That difference alone is not a reason to ask the user to recheck the owner or offer another move.
 - remote MCP staged upload (`prepare_file_upload` → host-native signed PUT → `finalize_file_upload`) plus exact Question binding through
   `ask_corvio(asset_ids=[...])`, and Asset list/get/organization/operation readback. `get_file(read_mode=content)` projects one retained
   source through a bounded, hash-checked, non-mutating read and reports incomplete/truncated coverage explicitly. The host or CLI reads selected local bytes; the remote

@@ -16,9 +16,10 @@ non-Project branch, move descendants, and retire an empty duplicate shell. The H
 or by issuing a blind series of CLI moves.
 
 A current-turn report, plan, analysis, meeting note, or other Markdown body composed by the Host is likewise an input event, not proof of
-one new root Page. When the user authorized future use and the lasting owner, reader/update lifecycle, topology, Memory, or Skill outcome
-is still undecided, pass the complete body as typed `inline_materials` to one `ask_corvio(mode=allow_actions)` operation. It remains
-source evidence behind a resource handle while Corvio reads the live Work Model and plans the durable effect. Do not first create the Page
+one new root Page. When the user authorized future use and any lasting owner, reader/update lifecycle, topology, Memory, or Skill decision
+or semantic incorporation remains, pass the complete body as typed `inline_materials` to one `ask_corvio(mode=allow_actions)` operation.
+A known destination owner does not turn the Host body into prompt prose: the handle is routing evidence and the typed body remains source
+evidence while Corvio reads the live Work Model and plans the durable effect. Do not first create the Page
 and ask another run to repair it. If the body is already one decision-ready standalone Page, use direct create and stop; a later cleanup
 run would add cost and race a settled effect. Original local files still require Asset retention because inline text does not preserve
 their exact bytes or provenance. For an Asset-only Work Model intake, use one `organize_files` mission. When one coherent authorized
@@ -38,6 +39,18 @@ When one bounded discovery returns multiple plausible current owners and no exac
 a user-authority gap rather than a harder semantic classification problem. Stop before `ask_corvio(mode=allow_actions)`,
 `organize_files`, or any direct write and ask the user to choose among the concrete candidates. Do not repeat the search with synonyms or
 delegate the choice to a write-capable Question; neither creates authority for the destination.
+
+Owner discovery and semantic execution are different phases, not two Questions. Use `search`, `fetch`, or `read_document` to establish
+the current owner and the decision-grade facts needed for the effect. Do not open an `answer_only` Question to look up or preview that
+owner before a second `allow_actions` Question; `answer_only` is terminal only when the user's outcome is itself a read-only semantic
+answer. `search.content_complete=true` closes the discovery result set; it does not make a returned title or snippet the owner's complete
+current body. Fetch before an effect that updates that same content-bearing Page, Memory, or Skill when its wording can change
+preservation, removal, ordering, or merge. This does not relax exact continuation: fetch a carried Project when its receipt lacks the
+current body or topology needed for handoff. Do not fetch a Project newly selected by complete search merely to route new current-turn
+material or reconfirm an archive/non-merge boundary already established there. A bare stable handle proves binding but not
+current contents. When discovery identifies both the selected target and a stale,
+archived, wrong-scope, or non-merge owner that constrains the update, carry both exact handles and their roles into the one semantic
+effect so negative scope remains verifiable.
 
 ## Infer Project and leaf boundaries from operating lifecycles
 
@@ -117,13 +130,17 @@ terminal Corvio result and current Tree prove the old Project retired, or direct
 ## Completion
 
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader
-outputs, affected owners, and any topology change that actually occurred. A successful upload, queued mission, or newly created Page is
-not proof that the prior tree was searched, duplicates were reconciled, or the right leaves were updated. Tell the user what durable
-entry now owns the work and return the canonical link; when the result reports unresolved overlap or missing authority, preserve that
-boundary instead of announcing a merge.
+outputs, affected owners, and any topology change that actually occurred. The terminal operation's embedded owner/topology readback is
+that evidence when it returns those fields; do not fetch the resulting Page merely because the work has detailed facts or several owners.
+Read an exact content owner afterward only when the user's acceptance requires body wording or a named-fact exclusion that the receipt
+does not return. A successful upload, queued mission, or newly created Page is not proof that the prior tree was searched, duplicates
+were reconciled, or the right leaves were updated. Tell the user what durable entry now owns the work and return the canonical link; when
+the result reports unresolved overlap or missing authority, preserve that boundary instead of announcing a merge. When the terminal
+receipt verifies owner and topology, do not reopen that decision or ask the user to recheck it merely because Corvio selected a title
+different from the user's descriptive phrase.
 
 The same completion check covers durable learning without turning the Host into the Memory/Skill router. For each coherent source,
 document, or decision module, pass the natural preference, identity/context, active-goal, Workspace-operation, collaboration, or reusable-
 procedure evidence and its stable handles to Corvio while that evidence is fresh. Corvio decides canonical personal/Team Memory leaves
 and Project Skill ownership. Co-close independent effects in one operation when possible; otherwise use the terminal document receipt as
-the bounded successor context. Consume `execution.durable_learning`, and leave residual lanes only the late/missed-candidate safety net.
+the bounded successor context. Consume `execution.durable_learning`, and leave residual lanes only as the late/missed-candidate safety net.
