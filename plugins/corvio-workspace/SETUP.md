@@ -62,7 +62,8 @@ Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
 <https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, standard Agent Plugin `plugin.json` and
 `mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, this setup guide, and a
-`SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does not read files or make network requests. Stop
+`SessionStart` shell hook. It does not read files or make network requests. The hook only prints a compact static activation spine into
+Codex or Claude, and the canonical Skill remains the detailed semantic owner. Stop
 if the source or SHA-256 does not match.
 
 ## 2. Identify the installed source before changing anything
@@ -91,8 +92,10 @@ revision, and minimum supported revision separately. `corvio update check` prove
 update. `corvio collaboration status --provider workbuddy --json --no-input` can inspect WorkBuddy's discoverable local copy read-only,
 but cannot prove which copy an already-running conversation loaded.
 
-On the first Corvio use in a fresh session, pass already-visible loaded package facts to `get_collaboration_contract` with
-`response_mode=freshness_only`. Show its compact
+On the first Corvio use in a fresh session, call `get_collaboration_contract` with `response_mode=freshness_only`. The official Plugin's
+MCP declaration carries its public release, contract revision, and compatibility family outside model-authored arguments; pass only the
+Host-visible surface and installation channel. A standalone/manual copy without that transport metadata may pass its already-visible
+package facts. Show the compact
 `client_freshness.agent_notice` once when present; say nothing about updating when the copy is current. Compatible legacy guidance may
 continue with Beta feedback labeled as legacy. A blocked copy must stop Corvio-dependent behavior. Do not ask the user to locate version
 facts the host does not expose, and do not turn this into a per-turn check.
@@ -130,7 +133,7 @@ Report these facts separately:
 1. installed Plugin/Skill source and visible version or hash;
 2. Corvio's current upstream Plugin version and collaboration-contract version;
 3. Connector authorization and a successful `list_workspaces` call;
-4. one natural research, report, plan, decision, project, debugging, or follow-up request that causes Claude to use relevant Corvio context;
+4. one natural research, report, plan, decision, project, debugging, or follow-up request that causes the installed Host to load the Skill and use relevant Corvio context;
 5. for write access, one reversible durable effect plus authoritative readback.
 
 An uploaded package, “synced” label, successful consent page, tool list, or CLI version alone is not completion.

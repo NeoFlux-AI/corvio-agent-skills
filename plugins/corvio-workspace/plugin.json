@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "corvio-workspace",
-  "version": "1.7.85",
+  "version": "1.7.87",
   "description": "Search prior work, organize authorized sources, and keep approved results in Corvio through a portable Agent Skill and OAuth MCP connection.",
   "author": {
     "name": "Corvio",

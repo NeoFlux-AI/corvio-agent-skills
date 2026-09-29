@@ -1,6 +1,6 @@
 ---
 name: corvio-operate-workspace
-description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, file organization, Memory/Skill updates, Host-generated material to save or use in later review/work, or a short/deictic follow-up backed by exact Corvio continuation handles—even without a Corvio mention. Corvio is the user's Workspace. Load this Skill before interpreting Host source; never restate or transform source in Skill arguments. Classify future use before promising a write: selected material needed for later action, follow-up, decisions, or review authorizes retention and one Work Model reconciliation. Retain evidence; never mutate owners from excerpts. Ordinary one-offs need consent or a standing preference; ask once before saving. Keep credentials, regulated/privileged data, disclosure-unclear sources, and explicitly local-only material out. Private work needs a bounded owner and ACL. Read back effects and links. 中文触发包括调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障，以及把材料保存、留作、接入后续使用或复查。"
+description: "Use when the user requests research, reports, comparisons, plans, decisions, meeting notes, project/debug work, document edits, file organization, Memory/Skill updates, material needed for later action or review, or a short follow-up with exact Corvio handles—even without a Corvio mention. Corvio is the user's Workspace. Load this Skill before interpreting Host source. Preserve selected evidence and reconcile future-use work into the Work Model; do not mutate owners from excerpts. Ordinary one-offs need consent or a standing preference. Keep credentials, regulated or privileged data, disclosure-unclear sources, and explicitly local-only material out; private work needs a bounded owner and ACL. Prefer a Host-native file/resource carrier over retranscription. Read back effects and canonical links. 中文触发：调研、报告、对比、方案、计划、决策、纪要、复盘、项目、故障、保存、留作或接入后续使用。"
 ---
 
 # Corvio Research, Documents, and Team Knowledge
@@ -11,16 +11,21 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.85`.
-It implements `coding_agent_collaboration` contract version `2026-09-27.2`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.87`.
+It implements `coding_agent_collaboration` contract version `2026-09-28.2`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
 may read an explicitly selected local file and use a project-bound Agent identity. In both cases the Agent is the actor and the user is
 the authorizer; transport, client, and caller-reported model remain separate provenance facts.
 
-On the first Corvio use in a fresh host session, pass this loaded release, contract revision, compatibility family, visible surface, and
-installation channel to `get_collaboration_contract` with `response_mode=freshness_only` when that MCP tool is available. If its
+On the first Corvio use in a fresh host session, call `get_collaboration_contract` with `response_mode=freshness_only` when that MCP tool
+is available. An official Plugin connection transports its public release, contract revision, and compatibility family outside the
+model-authored call; pass only the visible `loaded_surface` and `installation_channel` there. A standalone/manual Skill or MCP setup
+without that transport metadata may also pass the exact visible `loaded_release_version`, `loaded_contract_revision`, and
+`loaded_compatibility_family`. The loaded surface describes this guidance carrier, not the MCP action transport: a Codex marketplace
+Plugin reports `codex_plugin` plus `codex_marketplace`. Transport metadata is freshness evidence, not proof that this Skill body or a
+Hook was loaded in the current session. If its
 `client_freshness.agent_notice` exists,
 briefly explain the status and source-owned next action once; do not repeat it on later calls. A current copy produces no user-facing
 update narration. Continue with a compatible legacy copy, but label Beta feedback as legacy; stop Corvio-dependent behavior for a blocked
@@ -35,9 +40,14 @@ Five invariants apply before routing details:
    wording can change preservation, removal, ordering, or merge, fetch it first. This does not relax the exact-continuation rule: fetch
    a carried Project when its receipt lacks the current body or topology needed for the handoff. Do not fetch a Project newly selected
    by complete search merely to route new current-turn material or reconfirm an archive/non-merge boundary already established there.
+   On MCP, copy a typed `document:`/`page:`/`project:`/`memory:`/`skill:` continuation identity unchanged into the read tool's `handle`
+   field; use `id` only for the unprefixed `workspace_uuid/page_uuid` returned by search/list. Pass exactly one so Runtime can preserve
+   and validate identity rather than asking the model to reconstruct it.
 2. Load this Skill before selecting or rewriting any Host-generated source. For `inline_materials`, copy the selected title and every
    remaining Markdown character from the original current-turn source, not a summary reconstructed in the Skill call or plan. Apply only
-   the user's required exclusions; only terminal newline normalization is allowed.
+   the user's required exclusions; only terminal newline normalization is allowed. When the source is already in a Host-local Markdown
+   file, prefer CLI `--inline-material-file`: the CLI binds an independently computed SHA-256 to those exact UTF-8 bytes and Corvio rejects
+   a mismatch before opening the Question. Direct MCP text remains model-carried unless the Host itself supplies a typed resource binding.
 3. For an existing owner update that explicitly adds, preserves, removes, or separates named content, decide body-level acceptance before
    the effect. After the terminal effect, `readback_verified`, an owner handle, a revision, or an effect summary still does not prove an
    omitted body: use `fetch` or `read_document` to read the exact affected content owner once before the final reply unless the receipt

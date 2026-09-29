@@ -9,3 +9,5 @@ dependencies:
       description: "Corvio OAuth Remote MCP for authorized Workspace search, collaboration, provenance-preserving file intake, reader-facing artifacts, reusable knowledge, and readback."
       transport: "streamable_http"
       url: "https://api.corvio.ai/mcp"
+policy:
+  allow_implicit_invocation: true

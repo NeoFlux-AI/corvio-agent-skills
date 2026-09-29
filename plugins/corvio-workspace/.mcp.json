@@ -3,7 +3,12 @@
     "corvio": {
       "type": "http",
       "url": "https://api.corvio.ai/mcp",
-      "oauth_resource": "https://api.corvio.ai/mcp"
+      "oauth_resource": "https://api.corvio.ai/mcp",
+      "headers": {
+        "X-Corvio-Plugin-Release": "1.7.87",
+        "X-Corvio-Collaboration-Revision": "2026-09-28.2",
+        "X-Corvio-Compatibility-Family": "coding-agent-collaboration-v1"
+      }
     }
   }
 }

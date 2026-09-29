@@ -93,6 +93,10 @@ fields settle it. If multiple unlabeled handles make the leaf unclear, fetch the
 `metadata.content_projection.direct_children` as the bounded topology index, and follow only the relevant `has_children` branch until the leaf. Preserve an explicit incomplete
 boundary when that projection is truncated. A lexical match in another Project is only a candidate. If the user asks to reconcile a repeated stable practice for future reuse, the terminal effect must include
 a durable reusable-owner receipt or an exact readback proving the full delta was already present, not only a chat comparison.
+For MCP narrative reads, copy an exact typed `document:`/`page:`/`project:`/`memory:`/`skill:` continuation identity unchanged into
+`fetch.handle` or `read_document.handle`. Use `id` only for an unprefixed `workspace_uuid/page_uuid` returned by search/list, and pass
+exactly one. The server validates the typed owner kind after ACL resolution and returns both the canonical id and requested handle; do
+not strip the prefix, guess a bare UUID, or search merely to translate a carried identity.
 Judge method qualification before owner reuse. A similar Skill under the wrong Project is read-only negative evidence for that merge,
 not proof that the method is unqualified; use the narrowest correct Project Skill when the evidence includes a future trigger,
 action/judgment sequence, boundary or countercase, and verification path. Ordinary fact-Page updates do not close that Skill duty.
@@ -120,8 +124,10 @@ authorized and any durable owner, structure, Memory, or Skill decision or semant
 body as `inline_materials` on one `allow_actions` Question. This remains true when owner discovery has already found the destination:
 the owner handle is routing evidence, while the typed body is source evidence.
 With CLI, write that already-generated body to the Host's task-local file and pass `--inline-material-file`; this reads the text into the
-Question but does not upload an Asset. `--inline-material-title` supplies a source label. Do not use this path for PDFs, exports, user
-files, or any evidence whose exact original bytes/provenance matter; those remain Assets. Do not call `docs create` first or schedule a
+Question but does not upload an Asset. The CLI preserves the file's UTF-8 text exactly, computes its SHA-256 outside the model-visible
+body, and the API rejects a mismatch before a Question can be created. Treat `caller_digest_verified` as transport-integrity evidence,
+not authorship proof. `--inline-material-title` supplies a source label. Do not use this path for PDFs, exports, user files, or any
+evidence whose exact original bytes/provenance matter; those remain Assets. Do not call `docs create` first or schedule a
 second cleanup Question afterward. Rejection, blocking, or pre-acceptance failure leaves the owner unresolved: follow typed recovery or
 report that unresolved effect without a direct Page or synthetic Asset fallback. If one standalone Page is already the settled owner,
 direct `docs create` is the cheaper complete path.
@@ -331,9 +337,12 @@ corvio update check --json --no-input
 
 Skill, CLI, and MCP freshness are independent:
 
-On the first Corvio use in a fresh host session, call `get_collaboration_contract` once with `response_mode=freshness_only` and any loaded
-package facts the host already exposes: `loaded_surface`, `loaded_release_version`, `loaded_contract_revision`, `loaded_compatibility_family`, and
-`installation_channel`. These are host-reported facts, not proof that Remote MCP inspected local files. Surface
+On the first Corvio use in a fresh host session, call `get_collaboration_contract` once with `response_mode=freshness_only`. An official
+Plugin MCP request already carries public release, contract-revision and compatibility-family metadata outside model-authored arguments,
+so pass only the visible `loaded_surface` and `installation_channel`. A standalone/manual Skill or MCP setup without that transport
+metadata may also pass already-visible `loaded_release_version`, `loaded_contract_revision`, and `loaded_compatibility_family`. Both
+transport- and host-reported facts are compatibility evidence, not proof that Remote MCP inspected local files, verified package bytes,
+trusted a Hook, or observed this Skill being read. Surface
 `client_freshness.agent_notice` once when present; a current copy stays quiet. Do not spend user turns discovering an unavailable version,
 and do not repeat the check or notice during the same session.
 

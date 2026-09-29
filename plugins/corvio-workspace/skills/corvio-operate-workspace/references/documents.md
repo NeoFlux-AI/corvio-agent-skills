@@ -31,6 +31,9 @@ create only when the user-facing Page and its owner are already decided. If late
 Memory, Skill, topology, or semantic incorporation remain, send the body once as `inline_materials` before any durable write. A known
 destination owner does not turn the Host body into prompt prose or remove that typed-source requirement. Never implement this as
 `create_document` followed by an automatic low-cost cleanup run; that duplicates effects and races the first receipt.
+For a Host-local Markdown file, prefer CLI `--inline-material-file`: it preserves the exact UTF-8 text, computes SHA-256 outside the
+model-visible body, and the API rejects a mismatch before opening the Question. This closes file-carrier integrity, not arbitrary chat
+message binding or source authorship.
 For a direct create, pass the body as `markdown`, never `content_markdown`. A successful compact response includes the canonical body's
 SHA-256, character length, and `readback_verified=true`; that is terminal evidence. Do not open a Question, read, update, or create again
 merely because the receipt avoids echoing the full body.
