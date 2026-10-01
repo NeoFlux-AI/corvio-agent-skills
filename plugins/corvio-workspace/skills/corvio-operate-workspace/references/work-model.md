@@ -27,6 +27,12 @@ outcome combines finalized original Assets with Host-generated Markdown, pass bo
 one `ask_corvio(mode=allow_actions)` operation so Corvio reads and reconciles both source kinds once. Do not precede or follow that mixed
 Question with `organize_files` for the same packet.
 
+Classify a mixed packet item by item before choosing that operation. A current Workspace owner exported only to compare or update it is
+existing-owner evidence, not a newly selected source to re-upload. A genuinely new local source may require Asset provenance, while an
+ordinary Host-local result remains local unless its own carrier is authorized. A search miss proves only that discovery found no current
+owner; it does not authorize retaining any of those bytes or results. `asset_ids` and `inline_materials` admit sources to the semantic
+effect, so never use them merely to give a learning review more context.
+
 Treat conversational continuity and Project identity as separate evidence. Phrases such as “also add these,” “continue,” or “look at
 these together” authorize the current processing or retention effect, but do not by themselves prove that a newly selected source belongs
 to the Project from the previous receipt. When the source presents a different stable business subject and no explicit alias, lineage, or
@@ -109,6 +115,28 @@ When the source itself proves one enduring Project, Corvio may create that separ
 
 ## Apply corrections across the affected neighborhood
 
+When selected evidence is presented as the latest or corrected fact set and the user asks to check, align, reconcile, or continue the
+related Workspace surfaces, that request authorizes the bounded evidence-backed update. Preserve the exact source, reconcile the
+canonical owner and only proven dependents, and return which surfaces changed or remained current. Do not reinterpret an informal verb
+as inspect-only or ask for the same edit authority again. Stay read-only when the user explicitly asked for inspection, a proposal, or
+approval before changes, or when source authority, subject identity, or affected scope remains genuinely unresolved.
+
+Do not infer durable organization from language that only describes the condition of a source or a Host transformation. “These files are
+messy,” “normalize the formatting,” “rewrite,” and “compare” remain Host-native result requests unless the object of the user's action is
+future use, Workspace organization, or a durable owner update. A learning-only closeout for such work carries natural candidate signals
+without the source/result body and cannot create an ordinary Page or Project.
+
+For externally consequential material, a user-requested risk, authority, or messaging review that precedes drafting is a real stage gate.
+When the review exposes an unresolved approval or responsibility that changes permitted claims or commitments, stop at the assessment
+and return the owner decision needed next. Do not use placeholders to draft or persist a near-final artifact before that authority exists.
+
+An unambiguous correction need not be restated in chat when the user selected a governing source and asked the Host to process it. If
+that source names the existing subject, approved authority, exact replacement, and facts that must remain unchanged, those source facts
+plus the user's current processing instruction authorize the bounded correction and provenance retention. Read the current owner and use
+one organization operation; do not ask whether to apply or save the same correction again. This boundary does not resolve an uncertain
+source authority, ambiguous subject, mutually exclusive current authorities, or an unstated propagation scope; ask only for that real
+choice. The Host's decision to be cautious is execution strategy, not user/source evidence and never a Team Memory candidate.
+
 When the user explicitly corrects an identity, hierarchy, same-item, or cross-Project relationship, pass that correction, the known
 canonical handles, and any still-unresolved locator as facts in the natural goal. Do not require the Host to rediscover an exact old title
 or preselect Corvio's leaf. The correction is authority for the stated relationship, not for unrelated technical status; Corvio must read
@@ -142,5 +170,25 @@ different from the user's descriptive phrase.
 The same completion check covers durable learning without turning the Host into the Memory/Skill router. For each coherent source,
 document, or decision module, pass the natural preference, identity/context, active-goal, Workspace-operation, collaboration, or reusable-
 procedure evidence and its stable handles to Corvio while that evidence is fresh. Corvio decides canonical personal/Team Memory leaves
-and Project Skill ownership. Co-close independent effects in one operation when possible; otherwise use the terminal document receipt as
-the bounded successor context. Consume `execution.durable_learning`, and leave residual lanes only as the late/missed-candidate safety net.
+and Project Skill ownership. Co-close independent effects in one operation when possible. Only a host-owned/direct edit with no existing
+semantic operation may use its terminal document receipt as bounded successor context; an `organize_files` mission or write-capable Question
+already owns its packet and exposes the learning receipt itself. Consume `execution.durable_learning`, and leave residual lanes only as the
+late/missed-candidate safety net.
+
+Closing the result or Skill lane does not automatically close the other learning lanes. “This output/event will not be reused” can make
+the ordinary artifact transient and may show that no reusable procedure qualifies, but it is not a no-learning instruction: still review
+any substantive Personal Memory or Workspace-goal/Team Memory evidence. Conversely, an explicitly local/no-record boundary applies to
+the material and its derived facts and blocks that remote review. When the packet's sole semantic owner is already terminal, consume its
+learning receipt; if an older server omitted the field, report the freshness gap rather than opening a second semantic operation.
+
+Do not collapse this checkpoint into the current-result or provenance decision. A local/chat deliverable can still yield Memory or Skill;
+a retained source can remain only provenance with no ordinary derivative Page; and a reusable method may require only its Skill plus the
+minimum real Project owner. Descriptions of audience, tone, polish, or shareability do not authorize a Workspace artifact. If a durable
+owner mutation depends on selected local evidence, retain the exact bytes; a learning-only pass may receive only natural candidate facts
+and safe handles, never the source or ordinary output as a disguised artifact. `unresolved` leaves the candidate open, while `no_write`
+requires an evidence-based terminal disposition.
+
+Canonical reuse of a selected local source is likewise a provenance judgment, not a topical one. A title, lexical match, similar Page, or
+matching rendered content does not prove that exact source is retained. Reuse it without upload only when a current Asset receipt from
+`list_files(content_sha256=...)` or `get_file` reports the same `content_sha256` as the locally computed hash; otherwise preserve and
+reconcile the selected bytes through the normal source path.

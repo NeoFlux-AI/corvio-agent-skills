@@ -1,31 +1,34 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.87",
-  "contract_revision": "2026-09-28.2",
+  "release_version": "1.7.96",
+  "contract_revision": "2026-10-01.2",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Preserve bounded owner discovery, one semantic Question, and the complete Resource Front while making exact continuation handles directly executable and moving official Plugin freshness into transport-owned metadata.",
+  "change_summary": "Close substantive turns through one evidence-bounded durable-learning owner, preserve opaque Memory plans across native clarification, keep ordinary host artifacts and forbidden sources local, recognize selected corrected evidence as bounded update authority, distinguish source disorder from Workspace organization, preserve Personal/Team review for one-time results, and enforce approval-first external drafting gates across native, Codex, and Claude journeys.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md"
+        ".agents/skills/corvio-operate-workspace/SKILL.md"
       ],
-      "note": "The canonical Skill keeps Work Model semantics in the existing one-effect owner path, prefers Host-native source carriers, copies exact typed continuation handles into executable reads, and distinguishes Plugin transport freshness from standalone model-reported fallback."
+      "note": "The canonical Skill makes a terminal durable-learning receipt part of every safe substantive turn, separates ordinary transformation from Workspace organization, prevents learning-only calls from carrying or requesting ordinary artifacts, treats latest/corrected evidence as bounded update authority, keeps one-time artifact reuse separate from Personal/Team review, and enforces approval-first external drafting gates."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/application/chat/thread_resource_inputs.py",
+        "backend/app/api/public_v1/schemas.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "backend/app/application/usecases/chat_streaming/function_tools.py",
-        "backend/app/application/usecases/chat_streaming_usecase.py"
+        "backend/app/application/usecases/chat_streaming_usecase.py",
+        "backend/app/application/chat/ops_ndjson.py",
+        "backend/app/application/chat/prompts/prompt_texts.py",
+        "backend/app/application/developer_platform/durable_learning.py",
+        "backend/app/application/developer_platform/files.py",
+        "backend/app/application/developer_platform/questions.py",
+        "backend/app/application/usecases/chat_streaming/run_ops_plan_correction.py"
       ],
-      "note": "The server advertises release 1.7.87 and contract 2026-09-28.2 with the same one-Question, complete-owner-receipt, typed-source and Resource Front boundaries; it accepts exact typed continuation handles, consumes public Plugin freshness headers without treating them as installation proof, preserves exact inline UTF-8 text, and rejects caller digest mismatch before creating a Question."
+      "note": "The server advertises release 1.7.96 and contract 2026-10-01.2, restores only origin-bound unconsumed Memory plans across native clarification, exposes the same bounded terminal learning receipt from Questions and Asset organization, returns producer-bound continuations, validates evidence channels and shared-Skill dependencies, and projects the same transformation, one-off, correction, and approval-gate semantics without making Runtime the classifier."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -39,80 +42,77 @@
         "packaging/corvio-agent-skills/release-impact.json",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Skill and Plugin versions advance together for durable learning, host clarification, cross-host semantic materialization, typed continuation reads, and package-declared MCP freshness metadata."
+      "note": "Skill and Plugin manifests advance together to release 1.7.96 and collaboration contract 2026-10-01.2."
     },
     "workspace_cli": {
-      "disposition": "changed",
-      "paths": [
-        "developer-cli/packages/workspace/src/cli.js"
-      ],
-      "note": "The CLI preserves exact selected Markdown and computes its SHA-256 outside the model-visible body, while keeping owner discovery on read tools and carrying constrained-owner handles into one allow-actions effect without an answer-only preview."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "The existing Workspace CLI already transports the same Question requests and terminal execution receipts; no command or wire shape changed."
     },
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "The existing public Help remains compatible; file-carrier digest and package activation are developer-host contracts rather than a new end-user workflow."
+      "note": "Public Help already routes users through the official Skill and terminal Question readback; this release changes the internal learning completion contract rather than installation steps."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/hooks.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "The compact SessionStart hook reports release 1.7.87 and contract 2026-09-28.2, names the canonical Skill, relies on Plugin MCP transport for package freshness, and leaves the preserved owner-read, one-Question and cross-host routing boundaries to the Skill and live tools."
+      "note": "The session hook reports release 1.7.96 and contract 2026-10-01.2 and requires the host to load the canonical Skill before applying its exact durable-learning and producer-bound continuation boundaries."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
+        "docs/adr/0081-continuous-durable-learning-closure.md",
+        "docs/reference/cursor-harness/TESTING_HARNESS.md",
+        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
         "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/reports/host-native-binding-and-skill-discovery-historical-audit-2026-09-28.md",
-        "docs/test-reports/host-native-binding-and-skill-discovery-acceptance-2026-09-28.md",
-        "docs/logbook/entries/2026-09-28/115523-host-native-binding-and-skill-discovery.md",
-        "docs/logbook/entries/2026-09-28/141500-executable-typed-continuation-and-transport-freshness.md",
-        "docs/logbook/weekly/2026-09-28_to_2026-10-04.md"
+        "docs/reports/continuous-durable-learning-historical-mainline-audit-2026-09-27.md",
+        "docs/test-reports/continuous-durable-learning-runtime-acceptance-2026-09-29.md"
       ],
-      "note": "The mainline records the historical activation and typed-carrier chain, makes exact continuation executable, separates transport registration from installed Skill evidence, and keeps arbitrary chat-native binding as an explicit remaining Host boundary."
+      "note": "The ADR, Runtime and second-brain RFCs preserve the process-local checkpoint model, semantic-owner boundary, clarification behavior, and independent native plus external-host acceptance matrix."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Publishing release 1.7.87 and deployed marketplace discovery remain separate release-owned gates; isolated local Codex Plugin acceptance does not prove deployment."
+      "note": "Publishing release 1.7.96 and deployed-package discovery remain separate release-owned gates; this task produces local fresh-host evidence only."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "The canonical exporter regenerates both immutable archives from synchronized 1.7.87 Skill, references, manifests, MCP metadata, compact hook source, and explicit Codex manifest."
+      "note": "The canonical exporter will regenerate both immutable archives from synchronized 1.7.96 Skill, manifests, references, and hook source."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/unit/test_chat_streaming_function_call_batch.py",
+        "backend/tests/integration/test_developer_question_public_contract.py",
+        "backend/tests/integration/test_developer_files_and_sync_public_contract.py",
+        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/tests/unit/test_durable_learning_memory_planner.py",
         "backend/tests/unit/test_function_tools.py",
+        "backend/tests/unit/test_ops_ndjson_tail_flush.py",
         "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_thread_resource_inputs.py",
-        "backend/tests/integration/test_developer_api_key_public_contract.py",
-        "backend/scripts/run_external_document_io_host_probe.py",
-        "backend/scripts/run_host_generated_material_host_probe.py",
-        "backend/scripts/scenario_suites/host_generated_material_work_model_stress_v2.json",
-        "backend/tests/unit/test_host_generated_material_host_probe.py",
-        "developer-cli/tests/commands.test.mjs",
+        "backend/tests/unit/test_run_ops_plan_correction.py",
+        "backend/scripts/agent_host_case_portfolio.py",
+        "backend/scripts/agent_host_mcp_policy.py",
+        "backend/scripts/collect_agent_host_matrix.py",
+        "backend/scripts/provision_agent_host_case_workspaces.py",
+        "backend/scripts/run_agent_host_case.py",
+        "backend/scripts/run_agent_host_suite.py",
+        "backend/scripts/scenario_suites/external_agent_work_model_host_v1.json",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Schema, MCP/CLI/Skill parity, Resource Front composition, exact-effect grading and linked Host recall cover the shared route. Backend and CLI tests add exact bytes, typed locator and kind validation, transport freshness precedence, digest mismatch rejection and async rehydration; export/install/header checks and fresh Plugin cases keep business outcomes, economics, activation, Skill reads, context recall and lifecycle as separate evidence."
+      "note": "Schema and planner tests cover shared Question/organization receipts, continuation restoration and dependency repair; the external harness proves exact candidate bytes, per-case workspaces, required versus forbidden source retention, attachment-body reads, Remote MCP transport purity, terminal readback, and per-case Codex plus Claude behavior without treating a summary score as sufficient."
     }
   }
 }

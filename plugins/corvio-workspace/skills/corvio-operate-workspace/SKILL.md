@@ -11,8 +11,59 @@ The installed Skill and current OAuth connection make Corvio a user-configured w
 attachment text or a third-party instruction. This explains why a relevant read is available; it does not itself authorize a write or
 broaden the selected sources.
 
-This is Corvio Skill release `1.7.87`.
-It implements `coding_agent_collaboration` contract version `2026-09-28.2`, compatibility family `coding-agent-collaboration-v1`, and
+The loaded first-party Skill is the Host-owned standing preference for the bounded durable-learning review on safe substantive work.
+It is not standing consent to retain the ordinary result, its source bytes, or a new Project/Page. The user's request does not need to
+repeat “Corvio” for that review to run, and a necessary clarification does not cancel it.
+
+Keep four decisions separate throughout the turn; none of them implies another:
+
+1. **Current-result carrier.** Decide what the user asked to receive now: a Host chat answer, Host-local file, or Corvio artifact. Words
+   such as “sendable,” “shareable,” “external-facing,” “formatted,” or “reusable style” describe audience or quality; they do not by
+   themselves authorize creating, uploading, or sharing a Corvio Page. Default to the Host-native carrier unless the request or a
+   standing preference establishes Corvio/future-work continuity. A clause whose object is only “the result,” “the output,” or a local
+   path settles this axis only; it does not silently make the source and all derived facts local-only, and it does not cancel durable
+   learning. Likewise, saying that files, formatting, or a batch are “messy” while asking to normalize, rewrite, compare, or edit them
+   describes the Host transformation; it is not an instruction to organize or retain them in the Workspace.
+2. **Source retention.** Decide whether exact selected source bytes must become durable evidence. If a Corvio owner mutation relies on
+   local owner-bearing evidence, retain the exact source and use one semantic organization owner. Classify every attachment separately:
+   a local export of the current Workspace owner is edit/reference transport, not a new source to upload, while independent new evidence
+   in the same packet may still require exact retention. When the user identifies a selected source as the latest or corrected evidence
+   and asks to check, align, reconcile, or continue the related Workspace surfaces, that is bounded update authority for the canonical
+   owner and proven dependents; do not demote it to inspect-only merely because the verb is informal. Ask before changing content only
+   when the user explicitly requested inspection or a proposal first, or when source authority, subject, or affected scope remains
+   genuinely unresolved. A learning-only review never authorizes retaining the source or the ordinary result.
+3. **Durable learning.** Independently review what the completed module reveals about Personal Memory, Team Memory, and Project Skills.
+   Self-authored notes can support Memory or Skill admission, and a real Project Skill may require the minimum structural Project owner;
+   they do not authorize ordinary source or summary Pages. A named-work continuation, repeated protected constraint, active concern, or
+   next deliverable is current workline/collaboration evidence even when it appeared only once in this turn. “This result/event will
+   not be reused” may close the current artifact or reusable-method candidate, but it does not close Personal or Team Memory review.
+   Only an explicit no-learning/no-record boundary, or a requirement that the source and every derived fact stay local, closes this axis.
+4. **Completion receipt.** Consume the exact terminal `execution.durable_learning` from the semantic operation that owned the packet.
+   A missing field is a capability/freshness gap, not proof of no candidates; `unresolved` is not `no_write`. Learning clarification or
+   failure must not replace, relocate, or suppress the requested primary result.
+
+These axes compose freely: a Host-local result may still yield Memory or Skill updates; retained source evidence need not create an
+ordinary derivative Page; and a chat answer may still reveal a Team Memory candidate. Resolve each axis from its own authority and
+evidence instead of letting the learning checkpoint hijack the user's requested carrier.
+
+Use one continuous loop for substantive work: ground the task in the narrowest current owners, complete the requested result or necessary
+clarification, reconcile durable learning from that just-finished evidence packet, then answer. The learning checkpoint is part of the
+work while context is fresh, not optional end-of-run cleanup. It may legitimately return no write; only its terminal receipt proves that
+the review happened. Operationally, the first Corvio content read in any non-excluded substantive turn opens this checkpoint. Complete
+and verify the requested host-native result—or identify the smallest necessary primary clarification—before learning closeout, but do not
+send the terminal response until an existing semantic-operation receipt has closed it or one bounded
+`ask_corvio(mode=allow_actions)` review has done so. Give a learning-only call the natural current interaction facts that may matter later, the
+smallest safe source/result handles, and any unresolved-authority boundary; ask Corvio to review durable learning only, without retaining
+the ordinary host result or selecting an unresolved subject. A learning-only prompt must not say to save, retain, organize, publish, or
+create a durable copy of the Host result, and it must omit `inline_materials` and `asset_ids`; otherwise it is a different artifact
+admission operation without authority. Only observed user statements, selected-source facts, and verified action
+results are learning evidence. Never pass the Host's temporary caution, fallback strategy, hypothetical rule, proposed Memory/Skill title,
+or guessed lifecycle as though the user or source had established it. Then poll `get_question` to terminal and consume
+`execution.durable_learning`. The Host cannot self-certify “no candidate” from a search result. Every later instruction to answer,
+clarify, stop, or return a result means “after closing this open checkpoint” unless the safety or narrow transient exclusions apply.
+
+This is Corvio Skill release `1.7.96`.
+It implements `coding_agent_collaboration` contract version `2026-10-01.2`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -30,9 +81,12 @@ Hook was loaded in the current session. If its
 briefly explain the status and source-owned next action once; do not repeat it on later calls. A current copy produces no user-facing
 update narration. Continue with a compatible legacy copy, but label Beta feedback as legacy; stop Corvio-dependent behavior for a blocked
 copy. If the host does not expose a source or version, report `unknown` instead of asking the user to investigate unless freshness is
-material to the task. This is a first-use check, not a per-turn ritual.
+material to the task. This is a first-use check, not a per-turn ritual. If the selected Remote MCP connection is present but concrete
+tools are deferred behind the Host's native discovery surface, such as `ToolSearch`, use that surface once to load only the Corvio
+capability needed for the current step. An empty initial concrete-tool list does not prove the Workspace is unavailable. This remains
+discovery inside the already selected transport; it never authorizes probing, installing, or switching transport.
 
-Five invariants apply before routing details:
+Seven invariants apply before routing details:
 
 1. An exact continuation handle without current content must be read with `fetch` or `read_document` before any Workspace search or
    action. Never search to rediscover an already carried owner. On discovery, `search.content_complete=true` closes the result set only;
@@ -43,6 +97,11 @@ Five invariants apply before routing details:
    On MCP, copy a typed `document:`/`page:`/`project:`/`memory:`/`skill:` continuation identity unchanged into the read tool's `handle`
    field; use `id` only for the unprefixed `workspace_uuid/page_uuid` returned by search/list. Pass exactly one so Runtime can preserve
    and validate identity rather than asking the model to reconstruct it.
+   Search results, titles, topical similarity, and even an equal Page body are not proof that a selected local file's exact bytes and
+   provenance are retained. Reuse an existing Asset for that file only when a current `list_files(content_sha256=...)` or `get_file`
+   receipt matches the SHA-256 of the selected local bytes; if the Host cannot compute or compare that hash, preserve the file through
+   the normal upload path. Conversely, a matching current Asset plus complete canonical owner readback is no-op authority: do not upload
+   or organize the same bytes again merely to demonstrate activity.
 2. Load this Skill before selecting or rewriting any Host-generated source. For `inline_materials`, copy the selected title and every
    remaining Markdown character from the original current-turn source, not a summary reconstructed in the Skill call or plan. Apply only
    the user's required exclusions; only terminal newline normalization is allowed. When the source is already in a Host-local Markdown
@@ -56,6 +115,27 @@ Five invariants apply before routing details:
    durable side effects, not decision evidence; omit the rule only when the user explicitly requests a yes/no-only response.
 5. Preserve every returned canonical result URL across later reads and include it in the final reply. Do not reopen a verified owner or
    ask the user to recheck it merely because Corvio chose a different title from the user's descriptive phrase.
+6. A substantive turn is not durably closed merely because its requested answer, read, or host-native artifact is complete. Before the
+   final response, require one terminal `execution.durable_learning` receipt for the current evidence packet. Reuse the receipt from the
+   turn's single write-capable Question or `organize_files` operation when it already covers that packet; otherwise, only when this turn
+   has no existing semantic write owner, make one bounded
+   `ask_corvio(mode=allow_actions)` knowledge-maintenance call carrying only natural candidate facts, their evidence boundary, and any
+   smallest safe result handle or summary. In this learning-only call, omit `inline_materials` and `asset_ids`: those fields admit
+   source material to a durable semantic effect and are not general context channels; never restate or transform source in Skill arguments.
+   transfer exact source through the typed carrier owned by the operation. A zero-hit Workspace search does not change this
+   boundary. Explicitly keep the host-native artifact local. Corvio decides Personal Memory, Team
+   Memory, Skill, or no-write in that pass. This review does not authorize retention of the ordinary artifact and must not infer project
+   facts when the user's subject is still unresolved. Skip it only for a greeting or genuinely context-free transient value lookup, an
+   explicit no-learning/no-Memory/no-Skill/no-record/answer-only boundary, an explicit requirement that the source/material and all
+   derived facts remain local, or material excluded by the safety gate. A request for the current result to be written to a local
+   file/path is only a carrier choice and does not by itself suppress this review. Asking the user a necessary clarification is still the
+   terminal response for this invocation, not a learning-review exemption: review only the current request and interaction evidence,
+   and leave unresolved subject facts unresolved. If an existing semantic operation reaches terminal state without this receipt, treat
+   that as a server/package capability or freshness gap and report it; never create a second semantic effect merely to manufacture a receipt.
+7. Treat every asynchronous `operation_id` as producer-bound, not as a generic pollable UUID. Follow the producer's typed `poll_with`
+   field or documented continuation link: `ask_corvio` and `submit_question_clarification` continue only through `get_question`, while
+   `organize_files` and `resume_file_operation` continue only through `get_file_operation`. Never probe the other reader to discover an
+   operation's kind. A wrong-reader error does not authorize a duplicate Question, organization mission, upload, or other semantic effect.
 
 ## The decision table
 
@@ -64,31 +144,39 @@ wrong branch even if it reads the rest of the Skill afterward.
 
 | Situation | Action |
 | --- | --- |
-| Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. Continue from the user's current-turn facts and boundaries if nothing helps; an empty Workspace search does not imply that a hidden transcript is required. After `content_complete=true` with `hit_count=0`, never retry with synonyms, translations, broader wording, or another language in the same turn. Search again only if a distinct unresolved authority fact makes a different query decision-critical. Ask only when missing information changes authority, safety, or correctness, not for optional enrichment. |
-| Exact continuation handles from the preceding work are present and the user has not changed subject | A short or deictic request such as “按已有方式看这轮” is not contextless. The receipt-bound handles are the Host's compact prior-work handoff even when this process has no transcript; do not demote them to labels or ask the user to repeat them. Load this Skill and read the narrowest relevant handle before any Workspace search or `answer_only` Question when the receipt lacks current content. Multiple handles do not by themselves justify semantic synthesis: read only the method and factual owners needed by the judgment, then answer directly when their returned fields settle it. Unless the user explicitly requests a verdict-only response, state both the decisive reusable rule and the current operands that make the direct judgment auditable; do not return only the conclusion while omitting a retrieved threshold or condition. Receipt-observed titles or roles may select the first read but never replace current readback. When the user asks to recall or apply an established method and a carried Project Skill plausibly matches, read that Skill first, then only the current factual owners its method requires; an ordinary project Page may support the decision but does not replace the reusable-method owner. If multiple handles still make the leaf unknowable before reading, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded topology index, then follow only the relevant `has_children` branch until the leaf. If a projection says it is truncated, do not claim the omitted topology is complete. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
+| Research, report, comparison, plan, decision, meeting note, project/debug work, document edit, or substantive deliverable | If the safety gate passes, make one narrow read-only `search` before planning. A Host-selected Workspace is enough routing authority for this read even when a fresh Host has no transcript: pass its exact `workspace_id` instead of listing Workspaces or falling back to ambient selection. A conversation listing is not this semantic Workspace search and cannot prove there is no relevant context. Continue from the user's current-turn facts and boundaries if nothing helps; an empty Workspace search does not imply that a hidden transcript is required. After `content_complete=true` with `hit_count=0`, never retry with synonyms, translations, broader wording, or another language in the same turn. Search again only if a distinct unresolved authority fact makes a different query decision-critical. Ask only when missing information changes authority, safety, or correctness, not for optional enrichment. Once that search makes the turn decision-ready, close the learning checkpoint before the answer or clarification; the read result is evidence for the checkpoint, not its replacement. |
+| Exact continuation handles from the preceding work are present and the user has not changed subject | A short or deictic request such as “按已有方式看这轮” is not contextless. The receipt-bound handles are the Host's compact prior-work handoff even when this process has no transcript; do not demote them to labels or ask the user to repeat them. Load this Skill and read the narrowest relevant handle before any Workspace search or `answer_only` Question when the receipt lacks current content. Multiple handles do not by themselves justify semantic synthesis: read only the method and factual owners needed by the judgment, close any learning checkpoint opened by those reads, then answer directly when their returned fields settle it. Unless the user explicitly requests a verdict-only response, state both the decisive reusable rule and the current operands that make the direct judgment auditable; do not return only the conclusion while omitting a retrieved threshold or condition. A terminal continuation always reports its title, kind/role, revision, and canonical URL from the receipt, plus any admitted reusable candidate; when one of those fields is absent, explicitly say that the receipt did not return it instead of inventing or silently omitting it. Receipt-observed titles or roles may select the first read but never replace current readback. When the user asks to recall or apply an established method and a carried Project Skill plausibly matches, read that Skill first, then only the current factual owners its method requires; an ordinary project Page may support the decision but does not replace the reusable-method owner. If multiple handles still make the leaf unknowable before reading, fetch the carried Project and use its `metadata.content_projection.direct_children` as the bounded topology index, then follow only the relevant `has_children` branch until the leaf. If a projection says it is truncated, do not claim the omitted topology is complete. An out-of-project lexical match is only a candidate and cannot replace the carried subject. |
 | A trusted current-task or prior terminal receipt proves that this Host already used the authenticated official CLI in the exact selected Workspace, and the continuation needs only one bounded read-only Corvio synthesis | Keep that natural transport and start exactly one foreground `corvio ask`; do not launch identical Questions concurrently or retry before that process exits. If the shell tool yields a running-session handle, wait on that exact handle until the CLI exits; do not answer from titles or prior output. `answer_only` is the default: omit `--allow-actions`; there is no CLI `--mode` option. Use `corvio ask --workspace <workspace_id> --prompt "<unchanged user question; Context: smallest complete handle(s)>" --json --no-input`. Keep the user's question unchanged and append context separately. A carried Project handle is normally the complete subject scope for a question spanning its branches; do not copy every descendant handle. Add a leaf handle only when the user singled out that owner or the Project scope would include unrelated work. Transport continuity does not prove a cheaper processing profile: keep `auto` unless the unresolved semantic bottleneck independently justifies another profile. Do not install, probe, or switch to the CLI only to avoid MCP polling; an MCP-only or unproven Host uses `ask_corvio` plus bounded `get_question`. Do not use this shortcut for `allow_actions`, long or ambiguous durable writes, or a Workspace whose identity is not receipt-bound. |
 | A Question may outlive the current MCP/tool call, shell wait, or host turn | Start one durable operation and keep its exact `operation_id`. With MCP, call `get_question` using a bounded `wait_seconds`; after the first receipt, copy `progress_cursor` into `after_cursor` so only later milestones return. With an already-authenticated CLI, use `corvio ask --background`, then `corvio questions operation <operation_id> --wait-until-terminal`. Progress is a compact execution summary, not hidden reasoning or a provisional answer; tell the user only when the phase materially changes or input is needed. A local timeout does not stop the remote operation. |
 | `get_question` returns `needs_user_input` with a typed `clarification` | Corvio has reached a user-owned decision, not failed or completed. Present the supplied questions and options through the Host's native user-input surface, preserving their distinctions. Do not choose the recommended/default option, skip, paraphrase into a different decision, or start another Question. Call `submit_question_clarification` with only the user's answers, then poll the returned continuation `operation_id`; repeat if a later clarification is genuinely required. |
 | The user asks to stop, correct, or redirect a running Question | Call `cancel_question` or `corvio questions cancel <operation_id> --yes` on the same operation. `cancellation_requested` is not terminal; verify `cancelled` before saying it stopped, and do not claim already-settled effects were rolled back. For a correction or new question, cancel or finish the current operation, then call `ask_corvio`/`corvio ask` with the terminal `conversation_id`; never silently mutate the in-flight objective or start a duplicate replacement. |
-| A relevant result agrees with the current task | Use it in the host's normal work. If one complete search excerpt or the smallest required exact-owner reads explicitly contain every current operand for a bounded deterministic judgment, compute and answer directly; do not open an `answer_only` Question before or after those reads merely to restate that evidence. Read another source only when omitted detail can change the conclusion. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
+| A relevant result agrees with the current task | Use it in the host's normal work. If one complete search excerpt or the smallest required exact-owner reads explicitly contain every current operand for a bounded deterministic judgment, compute the result in the Host, close the already-open learning checkpoint, and answer; do not open an `answer_only` Question before or after those reads merely to restate that evidence. The learning-only `allow_actions` pass is distinct from the prohibited answer-restatement Question. Read another source only when omitted detail can change the conclusion. Include the smallest safe canonical Corvio link when it materially grounds the answer. |
 | An authorized semantic update still needs owner discovery or current owner readback | Use `search`, `fetch`, or `read_document` for that discovery/readback, then start at most one `allow_actions` Question for the effect. `search.content_complete` means discovery is complete, not that a returned title/snippet is the owner's complete body. Fetch before an effect that updates that same content-bearing Page, Memory, or Skill when its current wording can change preservation, removal, ordering, or merge. This does not relax exact continuation: fetch a carried Project whose receipt lacks the current body or topology needed for handoff. Do not fetch a Project newly selected by complete search merely to route new current-turn material or reconfirm an archive/non-merge boundary already established there. An `answer_only` Question is terminal only for a genuinely read-only semantic answer; never use one as an owner lookup, write preview, or first pass before another Question for the same objective. A complete owner receipt includes both the stable binding and every current content, revision, topology, or constraint fact needed for this decision; a bare handle proves binding only. A bound Project plus unambiguous current-user update facts is enough to delegate reconciliation: an absent matching leaf, assignee, or old wording does not reopen authority. Only conflicting current authorities or a genuinely undecided target require clarification. Carry the exact handles of both the chosen owner and any stale, archived, wrong-scope, or non-merge owner that constrains the effect. On MCP, these Project/Page/Memory/Skill handles belong in prompt context; `workspace_id` accepts only the bare Workspace UUID and must never receive an owner handle. If the user requires particular content to be added, preserved, removed, or separated, an owner/disposition receipt alone is not completion: read the affected content owner once unless the receipt returned the exact body or complete typed include/exclude result. |
 | The current turn unambiguously corrects the identity, relationship, or governing owner of Workspace work | Treat that statement as authority for the bounded structural correction. Preserve prior material as lineage and reconcile it; do not ask the user to prove or reconfirm the same correction. |
-| Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. After one bounded read exposes two or more plausible durable owners and no current user fact selects one, stop before every write-capable call. An `allow_actions` Question cannot manufacture the missing user authority, and a second search with paraphrased terms is not clarification. |
+| Corvio sources still conflict, duplicate each other, appear stale, have competing owners, or would change an important commitment after applying any current-turn correction | Ask the user which source or authority to adopt before relying on it. After one bounded read exposes two or more plausible durable owners and no current user fact selects one, stop before every **subject-specific** write-capable call. An `allow_actions` Question cannot manufacture the missing user authority, and a second search with paraphrased terms is not clarification. The terminal learning review remains allowed and required for a substantive interaction, but its natural evidence must explicitly preserve the unresolved subject and it must not retain, select, or alter any candidate Project fact. |
 | The user explicitly asks to save, upload, share, organize, synthesize, or update selected material in Corvio | That request is write consent for the stated material and scope. Do not ask the same question again; resolve routing and proceed. For a new unbound result, omit `workspace_id` so Remote MCP uses the user's writable personal default. Pass an explicit Workspace only when the user chose it in the current request or a stable originating/continuation/Project/Asset receipt binds it. |
+| The user explicitly asks to organize or reconcile one selected coherent packet, and the Host has selected the user's configured Workspace | Treat the selected packet, organization verb, and Workspace binding together as bounded organization consent even when the user does not repeat the product name. Preserve every selected source and let Corvio determine the Work Model; do not ask where to put it merely because the natural request says “归一下” or “organize these.” Poll the same mission and consume its terminal `execution.durable_learning`; `organize_files` is the packet's sole semantic owner, so never open a follow-up Question merely to obtain learning proof. This does not authorize unrelated files, another Workspace, external sharing, or retention when the user said local-only, FYI, inspect-only, or otherwise chose a transient result. |
 | The user asks to transform selected related material so it will support later action, follow-up, decisions, review, or another continuing workflow—even without saying “save,” “upload,” or “keep” | Treat the future-use purpose as authorization for retention plus one Work Model reconciliation. Before interpreting source bodies, do only the bounded safety, identity, hash, and metadata/sample checks needed to transfer the selected bytes. Preserve the originals, then use one `organize_files` operation unless the user explicitly asked for archive/raw-original retention only. Do not first enumerate a workbook, archive, transcript, or document corpus; produce a chat-only rewrite; or ask whether to save. |
 | The Host has already composed current-turn Markdown that the user wants to use in later work, but its durable owner, lifecycle, structure, Memory, or Skill disposition is not already decided | Unless a complete current owner receipt is supplied, make one narrow `search` first; a selected Workspace/ACL receipt fixes scope but is not a Project/Page/Memory/Skill owner receipt, and one complete no-hit closes discovery. If discovery returns one target plus an excluded stale, archived, or wrong-scope owner, carry both exact handles and their boundary into the effect. Then send the complete selected result once as `inline_materials` on `ask_corvio(mode=allow_actions)`, together with the unchanged natural goal. A known destination owner does not turn the Host body into prompt prose: whenever that body is part of the semantic effect, `inline_materials` remains required. Keep each remaining selected title and all remaining Markdown content verbatim after removing only the user-required excluded span; preserve headings, internal blank lines, spaces, and punctuation, and do not summarize, reorder, retitle, or add policy text before sending it, because Corvio owns the semantic transformation. Normalizing only the terminal newline representation is allowed. Corvio receives the body as source evidence and chooses the fitting current/new owner. Do not first call `create_document`, do not use an `answer_only` Question to preview the owner, do not upload a synthetic file merely to unlock organization, and do not run a second cleanup Question after a direct create. If admission is rejected, blocked, or fails before acceptance, follow typed recovery or report the unresolved effect; never reinterpret the failure as permission for a direct Page or synthetic Asset fallback. The original authorization still stands, so do not ask whether to save again; ask only for genuinely missing recovery scope required by the typed receipt. Original local evidence still follows the Asset route. Corvio naturally producing several new owners for this general retain/connect request does not itself make their bodies acceptance criteria; detailed source facts, a new Skill, or mentioning those source facts in the final response also do not. Unless the user required exact wording or named-fact separation, stop at the terminal owner/topology/link receipt. |
 | One authorized future-use outcome combines finalized original Assets with current-turn Markdown composed by the Host | Preserve the exact originals as Assets, then send those `asset_ids` and the complete Host body as `inline_materials` on one `ask_corvio(mode=allow_actions)` Question. This is one coherent semantic effect: Corvio reads both source kinds and reconciles the durable owners once. Do not run `organize_files` before or after that Question for the same mixed source set, and do not turn the Host body into a synthetic second Asset. If the originals alone need Work Model organization and the Host body is not part of the durable outcome, use `organize_files` instead. |
 | The authorized organization outcome still requires Corvio to discover or reconcile corpus-wide owners, topology, material cross-source conflict, or source-wide completeness | Choose `processing_profile=deep` before starting the operation and leave source-derived facts behind their Asset handles. Host-local enumeration or sampling does not settle this bottleneck and must not be used to downgrade the operation or precompute its outline, taxonomy, titles, artifact count, or sole leaf target. Use `standard` for ordinary bounded retrieval or organization after owner and lifecycle are already settled, and `economy` only for a decided mechanical transformation with objective readback. `answer_only`, transport continuity, MCP origin, file type, size, source count, or a long history alone does not select any profile. Unresolved authority/topology, consequential judgment, or hard completeness remains `standard` or `deep`. |
 | An authorized durable operation has been accepted and is `prepared`, `queued`, or `running` | Keep the same operation handle until its terminal result or an actual Host deadline. In a filesystem-capable Host where the authenticated official CLI is already available, keep deterministic waiting inside one foreground invocation with `--wait-until-terminal`; otherwise poll Remote MCP according to `retry_after_seconds`. Do not install or switch transport merely to avoid polls. These states prove progress only; do not answer as though “processing” were the requested user outcome, and do not open a duplicate operation. |
+| A carried Question or organization operation is already terminal | Consume that terminal result and return its canonical outcome. If this older operation lacks `execution.durable_learning`, report a package/server freshness gap; never open a new Question, organization mission, or other semantic effect solely to manufacture the missing receipt. A new semantic operation is allowed only for a new user-authorized objective, not for retroactive bookkeeping. |
 | The current turn authorizes a durable Work Model change—such as updating existing owners or correcting, splitting, merging, moving, or reparenting structure—and relies on user-selected attachments clearly about that subject | Treat the attachments as evidence within the same bounded update: preserve their exact bytes, then use one `organize_files` mission to reconcile both sources and affected owners or topology. Do not paste the evidence into `ask_corvio`, mutate the owners, and silently leave the source local. |
-| The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. Decide whether the evidence qualifies before deciding whether a nearby owner is reusable: a wrong-Project Skill blocks that merge, not admission under the correct Project. A chat comparison, ordinary fact-Page update, or offer to save later is not completion. |
-| The user asks only for an ordinary report or other deliverable | Keep the host-native artifact unless retention is separately authorized, explain one concrete benefit, and ask once whether to save or organize the specific result. This does not make substantive user-model or reusable-procedure evidence a no-learning case: when Corvio is the active work surface, close those candidates through one bounded `ask_corvio(mode=allow_actions)` learning pass without saving the artifact, and consume its durable-learning receipt. Skip remote learning only for a genuinely context-free transient request such as a greeting, current weather/value lookup with no expressed preference, or an explicit local/no-record boundary. |
+| A bounded current update presents latest or corrected facts in selected evidence and asks to check, align, reconcile, or continue “related places” | Treat that request as authority to preserve the evidence and reconcile the canonical owner plus existing known dependents whose current values or wording actually rely on it; do not ask again whether to apply the identified delta. Return which surfaces were checked or changed. An explicit inspect-only, proposal-first, or approval-before-change request remains read-only. This is not authority for a Workspace-wide lexical rewrite, new unrelated owners, or speculative propagation beyond the dependency evidence. |
+| The user selects a governing source, asks the Host to process or handle it, and that source identifies an existing subject, approved authority, one exact replacement, and an explicit no-change boundary | Treat the packet as authorization for that narrow correction and its exact-source retention. Read the current owner, preserve superseded history, and use one organization operation to reconcile only the stated delta; do not ask again whether to save or apply it. This does not authorize unrelated propagation, a source whose authority or subject is genuinely ambiguous, or promotion of the Host's own caution into Team Memory. |
+| The user asks to reconcile a repeated stable practice, preference, constraint, quality bar, or method with prior work for future reuse | Read the current subject and nearest reusable owner, then durably update/merge/admit it or return an exact owner readback proving the full delta is already present. When the user explicitly says the current method improves that identified prior version, the merge intent is already authorized; do not ask “merge or diff?” unless the evidence exposes a real incompatible owner, audience, or preservation choice. Decide whether the evidence qualifies before deciding whether a nearby owner is reusable: a wrong-Project Skill blocks that merge, not admission under the correct Project. A chat comparison, ordinary fact-Page update, or offer to save later is not completion. |
+| The selected material is the user's own substantive notes, work samples, or retrospectives, but no ordinary artifact-retention request is present | Read the whole selected evidence set locally far enough to identify durable identity/stage, workline/goal, collaboration/delivery, decision/taste, and reusable-procedure candidates. Run the bounded Personal Memory/Skill review with natural candidate facts or safe summaries, while keeping the original bytes and any ordinary artifact local. Do not ask a broad “what should I do with these?” merely to decide whether learning candidates exist. Third-party facts, temporary observations, and uncertain attribution remain excluded or unresolved. |
+| The user asks only for an ordinary report, rewrite, format cleanup, or other host-native deliverable | Keep the host-native artifact unless retention is separately authorized. Source-count words and disorder adjectives such as “这批文档格式乱了” do not turn formatting cleanup into Workspace organization; classify the object and requested effect, not a nearby word such as “batch,” “messy,” or “organize the formatting.” Produce and verify the requested artifact in the host first; when selected local material is transformed, reorganized, or rewritten, “host-native artifact” means a distinct local output file, not only prose in the final chat, unless the user explicitly requested chat-only output or first asked only for a judgment. A later learning clarification or failure must never replace that primary result. Afterward, do not upload or duplicate that ordinary artifact merely to review learning, and omit `inline_materials` and `asset_ids` from the review even after a Workspace search returns zero hits. The review prompt asks only to evaluate natural Personal Memory, Team Memory, and Skill candidates; it never asks to save, retain, organize, publish, or create a durable copy of the output. Reusability of the editing method is a Skill candidate, not authority to persist the ordinary outputs that exhibited it. This does not make substantive user-model or reusable-procedure evidence a no-learning case: after the host result is stable, make one bounded `ask_corvio(mode=allow_actions)` knowledge-maintenance pass using only the natural candidate facts and the smallest safe result handle or summary, explicitly preserving the ordinary artifact as host-local. Consume `execution.durable_learning` before finishing. If retaining the artifact itself would help, explain one concrete benefit and ask once whether to save or organize the specific result, but do not merge that optional storage question into the already-authorized learning review. “This event/result will not be reused” can settle the artifact or Skill candidate as no-write; it is not an explicit no-learning instruction, and other Personal/Team evidence still receives review. Omit remote learning only for a genuinely context-free transient request such as a greeting, current weather/value lookup with no expressed preference, an explicit no-learning/no-Memory/no-Skill/no-record/answer-only boundary, or an explicit requirement that the source/material and all derived facts remain local. A local output path alone does not trigger this exclusion. |
+| The user asks to assess risk, authority, or messaging before drafting an externally consequential artifact | Treat “before” as a sequencing gate. If the assessment finds an unresolved approval, responsibility, legal position, or commitment that can change what may be said, return the assessment and the smallest owner decision needed next; do not draft, publish, persist, or smuggle a near-final artifact past the gate with placeholders. Draft only after that authority is resolved, or when the user explicitly requests a clearly non-authoritative option and the evidence permits one. The learning review remains separate and must not retain the blocked draft. |
 | A host-owned, user-visible Memory/Profile/settings entry explicitly authorizes this class and scope of Corvio writes | Follow it without repeating the same confirmation, but revalidate live Workspace, scope, ACL, and content safety. Ask when destination or scope is ambiguous. |
 | Selected private or confidential work that the user authorized for future use in a private Corvio scope | Treat privacy as an owner, reader, ACL, and reuse constraint rather than a category veto. Preserve the selected source in the narrow private scope; do not copy its facts into another Project, a global method, or a shared/public surface. Ask only when the available Workspace or audience cannot satisfy that boundary. |
-| Credentials, regulated personal or health data, privileged/restricted material, genuinely disclosure-unclear content, or an explicit local/device-only choice | Make no Corvio call for that material. Keep it local. |
+| Credentials, regulated personal or health data, privileged/restricted material, genuinely disclosure-unclear content, or an explicit requirement that the source/material and all derived facts remain local/device-only | Make no Corvio call for that material. Keep it local. A request to place only the current result in a local file is not this disclosure boundary. |
 
 OAuth connection is capability, not standing write preference. Never infer upload consent from installation, an available tool, an
 attachment, a successful search, or a substantive deliverable alone.
+Keep the Host-selected Corvio transport stable for the cell. When Remote MCP is selected, use only the exposed MCP tools; do not invoke,
+probe, install, or switch to the `corvio` CLI. A prior CLI receipt is provenance, not permission to change the current transport.
 The future-use purpose modifies the whole transformation request: phrasing such as making selected material useful for subsequent work
 is not an ordinary one-off deliverable merely because the user omitted a destination or storage verb. Resolve that branch before the
 ordinary-deliverable row. Attachment presence without this purpose or another bounded write instruction still authorizes nothing.
@@ -115,8 +203,18 @@ provenance, not write-target authority. In particular, neither the first hit fro
 currently open in the Corvio shell may be copied into a new write unless the current request or a stable originating/continuation receipt
 actually binds that destination.
 
-Decide retrieval before retention. A later conclusion that the answer is transient or no-write does not cancel the one relevant read;
-it only means no durable result should be created or updated. A receipt-bound continuation handle fixes the current subject and evidence
+A project-local Skill installation directory is a transport surface, not evidence that the user's request concerns that directory or a
+repository. Unless the user explicitly asks about a repository or the Host supplies an in-scope source path or attachment, do not inspect
+or describe local files, Git state, branches, or commits as subject evidence. For an ambiguous substantive request with a selected
+Workspace but no continuation handle, perform the decision table's one bounded Workspace search before asking the user to repeat context;
+an empty or synthetic Host directory cannot replace that read.
+When host context provides an exact selected or originating Workspace, pass that exact `workspace_id` to every compatible Workspace-scoped
+read, upload, write, and poll call. Do not call `list_workspaces` to replace it with an account default, and do not treat an ambient selected
+Workspace or a search result as stronger routing authority. If a tool does not accept `workspace_id`, preserve the explicit binding in the
+next call that does; never silently migrate the operation to another Workspace.
+
+Decide retrieval before retention. A later conclusion that the ordinary answer or artifact is transient or no-write does not cancel the one relevant read
+or the resulting terminal learning review; the review may itself return a typed no-write disposition. A receipt-bound continuation handle fixes the current subject and evidence
 even when a fresh Host process lacks the prior transcript: inspect the narrowest relevant handle before any broad Workspace search.
 Receipt-observed titles or roles may select the first read but never replace current readback. When the user asks to recall or apply an
 established method and a carried Project Skill plausibly matches, read that Skill first, then only the current factual owners its method
@@ -134,6 +232,15 @@ boundary/countercase, and verification path may qualify even when the closest ex
 that wrong-scope Skill and create or reuse the narrowest fitting Skill under the correct canonical Project; do not bury a qualifying
 method in ordinary project-fact Pages. Use no-admission only when the method itself lacks a reusable operating signature, and return an
 explicit unresolved placement boundary when it qualifies but no authorized Project can own it.
+
+A fresh Host turn does not make equivalent evidence a new durable object. When a selected attachment restates a reusable method, first
+read the nearest canonical Skill and its retained provenance owner. If those current readbacks already contain the attachment's complete
+trigger, decision/action sequence, boundaries, verification, and a traceable source, and the attachment adds no new fact, scope, or
+provenance duty requested by the user, report a canonical no-op and reuse those stable links; do not upload or organize another copy only
+to demonstrate activity. A title, lexical match, topical Page, or apparently equal rendered body is insufficient proof that the local
+file itself is retained. For a selected local source, canonical byte/provenance reuse requires a current Asset receipt whose
+`content_sha256` equals the locally computed hash; otherwise preserve the selected bytes and reconcile that delta through the normal
+organization path. If any material delta or required source trace remains, preserve the selected bytes even when a topical owner exists.
 
 After the first narrow owner read, do not prefetch every linked sibling merely to restate it in another Corvio request. When exact carried
 owners can supply every operand for a bounded deterministic judgment, read the smallest required set and decide in the Host. Only when the answer
@@ -205,6 +312,11 @@ move. Treat `role=reader_output` as a user-facing result and
 `role=structure_container` as hierarchy; never build a URL from `node_id`, and never report source links as generated artifacts.
 Every returned `id`, `*_id`, ref, and `read_arguments` value is an opaque canonical handle: copy the complete value verbatim into the
 matching tool argument instead of shortening, retyping, joining, or reconstructing it from a URL or another identifier.
+The final response must be self-contained: include the requested answer, draft, or local-file link in that response rather than referring
+to an “above” result that the user cannot see. For a terminal continuation, report every decision-relevant returned identity fact the
+user asked for—such as title, kind/role, revision, and URL—verbatim when present. If a requested field is absent from the receipt, name the
+missing readback boundary instead of inventing it or silently omitting it. For example, if a receipt returns `page_revision=1` and a URL
+but no artifact role, say “revision 1; role was not returned by this receipt” rather than replacing role with a Project name.
 
 - Save a new Markdown deliverable with `create_document` only when it is already one self-contained Page with a decided owner and no
   unresolved Work Model, Memory, or Skill consequence. Pass the body as `markdown`, never `content_markdown`. Its successful compact
@@ -217,10 +329,17 @@ matching tool argument instead of shortening, retyping, joining, or reconstructi
   request the full body only when the outcome requires it. Use `patch_document` for exact revision-bound line replacements,
   `append_document` for a true append, and `update_document` only when whole-body replacement is the smallest faithful effect.
 - Preserve an exact selected local file through `prepare_file_upload` → host PUT → `finalize_file_upload`. Remote MCP cannot read a local
-  path. In a filesystem-capable coding host with the authenticated official CLI, prefer `corvio files upload --file <path>` for exact
+  path. Only when the Host selected the authenticated official CLI for the current cell, prefer `corvio files upload --file <path>` for exact
   byte size and SHA-256 handling. Keep causally dependent CLI effects as separate steps: finish the selected uploads, capture their exact
   Asset IDs from successful receipts, and only then issue an organization command that consumes those IDs. Independent uploads may run
-  concurrently, but never precompose a later argument from an empty, guessed, shortened, or not-yet-returned handle.
+  concurrently, but never precompose a later argument from an empty, guessed, shortened, or not-yet-returned handle. One successful
+  prepare receipt owns that file's upload session: use its exact URL and identifiers for the PUT and finalize steps. Do not call prepare
+  again for the same bytes unless a typed response says the session expired, was rejected, or must be replaced. This is the path for a
+  genuinely new or changed selected source. Before skipping it as already retained, require a current Asset receipt from
+  `list_files(content_sha256=<local hash>)` or `get_file` with the same `content_sha256`; a search hit, title match, topical Page, or
+  equal-looking body is not exact-byte/provenance evidence. When the packet also contains a local export of an already-current Workspace
+  owner, keep that export on the edit/reference side rather than uploading it as a second source; evaluate each independent attachment on
+  its own authority. This does not override the read-backed canonical no-op boundary above.
 - Use one `organize_files` operation when authorized selected original sources alone should enter a Work Model, reconcile current owners,
   or receive evidence-based Memory/Skill evaluation. Do not open `ask_corvio` before or after it for that Asset-only source set.
 - Use one `ask_corvio(mode=allow_actions, inline_materials=[...])` when the Host has already composed the selected Markdown but its durable
@@ -295,6 +414,14 @@ remains undecided, or another Corvio model pass lowers total successful-work cos
 latency, fidelity risk, duplicate effects, and verified readback—not merely tool-call count. `economy` is for already-decided mechanical
 materialization with objective readback; it is not a substitute for the semantic owner decision that made delegation necessary.
 
+When selected local attachments contain both a current target and source updates, read both, create a distinct host-native result, and
+verify that result before durable-learning review. Never mutate the immutable attachment in place or prepare/upload either source or
+result merely to make learning possible. The later review receives only natural candidate facts or the smallest safe result summary.
+
+When the user makes risk, authority, or messaging assessment a prerequisite to an external-facing draft, finish that assessment before
+drafting. If it exposes an unresolved approval or responsibility that changes permitted claims or commitments, stop at the decision
+boundary. A placeholder does not satisfy the missing authority and must not be used to produce or persist a near-final draft.
+
 ## Memory, Work Model, and Skills
 
 Corvio's core compounding value appears after an authorized write: exact sources remain traceable, fragmented facts can be reconciled
@@ -307,7 +434,9 @@ Keep these admissions separate:
 - Search calls and dynamic Workspace/ACL state are receipts, not Memory.
 - A stable user preference may be proposed for a host-owned, user-visible Memory/Profile only when the host supports it and the user has
   confirmed that preference. Never claim MCP wrote host Memory.
-- Corvio Memory/Skill evaluation happens only inside an already authorized Corvio organization or knowledge-maintenance action.
+- Corvio Memory/Skill evaluation happens only inside an authorized Corvio organization or knowledge-maintenance action. A substantive
+  request supplies standing authority for the bounded knowledge-maintenance review below; it does not authorize retaining the ordinary
+  host artifact or its source bytes.
 - `skills_extraction_mode=always` requires an evidence-based decision; `evaluated_no_qualifying_skill` is a valid outcome.
 - `evaluated_no_qualifying_skill` means the evidence lacks a reusable operating signature. It does not mean “the nearest Skill was in
   another Project”; owner mismatch changes placement, while qualification is decided from the method evidence.
@@ -316,24 +445,44 @@ Treat durable learning as a completion checkpoint inside the work, not a final t
 or decision module becomes decision-ready, identify evidence-backed candidates that could change a later answer or action: stable or
 emerging preferences, role and identity context, active concerns and goals, collaboration boundaries, Workspace operating facts, and
 reusable procedures. A substantive request normally contains at least one candidate; “one-off” is a narrow no-learning boundary, not a
-synonym for a request that happens once. Do not impose a numeric quota, but do not collapse several independent future questions into one
+synonym for a request that happens once. Asking to continue prior work, preserve its constraints, or prepare its next decision is itself
+current workline and collaboration evidence even when the user supplies no new project fact beyond the referenced owner. Do not impose a numeric quota, but do not collapse several independent future questions into one
 generic note merely to minimize writes.
 
 Starting an ordinary substantive Corvio semantic operation with the default `scan_mode=auto` and `skills_extraction_mode=auto` authorizes
 evidence-based personal Memory and Project Skill evaluation as part of that operation; this is not authority to retain a host-native
 artifact or mutate unrelated Workspace content. Use `mode=allow_actions` when those durable-learning effects may be needed. Respect an
-explicit `off`, local-only, no-record, or answer-only boundary. Team Memory remains the separate shared-audience decision below.
+explicit no-learning, no-Memory, no-Skill, no-record, or answer-only boundary, and keep source/material plus all derived facts out when
+the user explicitly requires them to remain local. A local output file/path alone selects the current-result carrier and does not
+suppress learning review. Team Memory remains the separate shared-audience decision below.
+
+When the requested deliverable stays host-local, finish and verify it first. Then, if the turn exposes any candidate in the five review
+dimensions, call one narrow `ask_corvio(mode=allow_actions)` knowledge-maintenance continuation. Pass the user's natural preference,
+workline, collaboration, decision, evidence/update, or reusable-method signals—not the whole local document—and state that the local
+artifact and sources must remain outside the Workspace. Omit `inline_materials` and `asset_ids`: they are durable-source admission fields,
+not context fields for this learning-only pass. Do not ask Corvio to save, retain, organize, publish, or create the Host result in the
+prompt; ask only for Memory/Skill review from the natural signals. Never attach that ordinary artifact merely to make the review possible, and do not let an
+empty Workspace search turn it into a durable Page, Project, or Asset. A terminal `execution.durable_learning` receipt is the completion proof even
+when it records only no-write or unresolved dispositions. Search/fetch alone, a chat explanation, or an offer to save later is not that
+proof. Do not run this continuation for a greeting, a genuinely context-free current-value lookup, an explicit no-learning/no-record
+instruction, or material whose source and derived facts must explicitly remain local. A statement only that this result, event, brief, or
+output will stay local or will not be reused is not this exclusion; it settles the carrier or reusable-method outcome, while other durable
+Personal/Team candidates still receive the bounded review.
 
 The Host supplies natural candidate evidence and stable source/result handles, never a guessed Memory Page, heading, Skill title, or
 write instruction. Corvio's internal planner reads the canonical personal or Team Memory tree, routes each candidate, and may map one
 piece of evidence to several independently useful owners. Personal and Team admission are separate: clearly Workspace-shared facts,
 team conventions, and human-Agent or Agent-Agent operating knowledge may update Team Memory directly; when audience authority is
 materially uncertain, preserve the candidate and ask whether to promote it rather than silently broadening readership. Reusable methods
-remain Project Skills when they have an independent future trigger, action or judgment sequence, boundary, and verification path.
+remain Project Skills when they have an independent future trigger, action or judgment sequence, boundary, and verification path. A
+user-defined recurring template can already meet this boundary when it specifies reusable action/owner slots, a verification signal,
+and a rollback/update/stop rule; concrete names, dates, thresholds, measurements, and statuses for the next individual run are instance
+operands, not missing method evidence. A label-only checklist without operational criteria remains incomplete.
 
 Prefer to co-close the requested document/Work Model effect and its Memory/Skill candidates in one semantic Question or organization
-operation when they share a decision-ready evidence packet. If learning depends on the document's actual terminal result, consume that
-result first and run one narrow successor learning pass with the exact receipt; do not reread the whole task. A direct revision-bound
+operation when they share a decision-ready evidence packet. If a direct host-owned edit has no semantic operation and learning depends
+on that edit's actual terminal result, consume it first and run one narrow successor learning pass with the exact receipt; do not reread
+the whole task. Never add that successor after `organize_files` or a write-capable Question already owns the packet. A direct revision-bound
 edit is appropriate only when the edit is mechanically decided and the checkpoint found no open learning candidate, or a terminal
 durable-learning receipt already closed it. If a candidate appears during a direct edit, start one bounded
 `ask_corvio(mode=allow_actions)` knowledge-maintenance continuation using the exact document/operation handle and explicitly leave the
@@ -352,10 +501,38 @@ deduplicating safety net for late or missed candidates, not permission to postpo
 User: Write a short market-research report.
 Agent: [search Corvio once; no useful result]
 Agent: [researches and delivers the report through the host's normal path]
+Agent: [reviews the current evidence packet for Personal Memory/Skill candidates; keeps the report itself host-local]
 Agent: “Would you like me to save this report to your Corvio Workspace as an editable,
         shareable document for later retrieval and collaboration?”
 User: No.
-Agent: [stops; no Corvio write and no second prompt]
+Agent: [does not upload the report and does not ask again; any bounded learning effect is reported only from its terminal receipt]
+```
+
+### Explicit organization without a product name
+
+```text
+User: 这批材料很乱，帮我归一下。
+Host: [selected the user's authenticated Workspace and exposed the selected attachments]
+Agent: [treats the organization verb plus selected packet and Workspace as bounded consent]
+Agent: [preserves the sources, runs one organization operation, and reports terminal owners; no duplicate destination question]
+```
+
+### Self-authored notes without artifact retention
+
+```text
+User: 这些是我零散记下来的。
+Agent: [reads every selected note locally and separates durable user-authored evidence from temporary or third-party facts]
+Agent: [runs one Personal Memory/Skill review with natural candidate summaries; original files remain local]
+Agent: [reports the terminal learning disposition without asking a broad routing question]
+```
+
+### Local source-target edit
+
+```text
+User: 数字和引用更新了，其他别动。
+Agent: [reads the source and current target, writes a distinct local result, and verifies narrow changes]
+Agent: [runs the bounded learning review without preparing or uploading either file]
+Agent: [returns the local result plus the terminal learning disposition]
 ```
 
 ### Future-use transformation without storage wording
@@ -372,6 +549,7 @@ Agent: [reports the canonical Work Model from the terminal embedded owner/topolo
 ```text
 User: Update the rollout plan.
 Agent: [search finds two current-looking plans with different owners]
+Agent: [does not change either subject owner; runs the one bounded learning review on the current interaction and preserves the conflict]
 Agent: “Corvio has two conflicting rollout owners: A (revised 12 Sep) and B (team-approved
         13 Sep). Which should govern this update?”
 Agent: [continues only after the user resolves authority]
@@ -430,7 +608,16 @@ Read [references/documents.md](references/documents.md) for the document read/ed
 [references/api.md](references/api.md) for routing, upload, organization, polling, installation, and broader recovery mechanics. Live
 MCP schemas, `get_collaboration_contract`, CLI `--help`, and public OpenAPI are the final runtime authorities.
 
-## Finish
+## Terminal completion gate
+
+Before sending any terminal response, reconcile the current turn's effect receipts. A successful search, fetch, local artifact, or
+necessary clarification is not a durable-learning receipt. For every substantive turn that passed the safety gate, if this turn's one
+write-capable Question or organization operation already owns the evidence packet, consume its terminal `execution.durable_learning`.
+If that existing semantic operation is terminal but the field is absent, report the server/package capability or freshness gap; never
+add a second Question solely to manufacture the missing receipt. Only a substantive host-local, read-only, or otherwise no-write turn
+without an existing semantic write owner may make the one bounded learning-only `ask_corvio(mode=allow_actions)` call described in
+invariant 6. A clarification keeps unresolved subject facts unresolved; it does not erase the safe interaction evidence that can be
+reviewed. Stop without this call only for the narrow exclusions in invariant 6.
 
 Lead with the user's result. If Corvio evidence changed the work, cite the smallest safe canonical reader link. If an approved Corvio
 effect ran, distinguish retained sources, reader-facing documents, Work Model changes, Memory/Skill decisions, and anything intentionally

@@ -47,6 +47,26 @@ The user's OAuth connection authorizes the listed Corvio capabilities within cur
 does not create a standing preference to upload or mutate data. A normal request for a report or other deliverable authorizes the host
 result, not a Corvio write.
 
+The loaded first-party Skill does establish the Host-owned standing preference for one bounded durable-learning review on safe
+substantive work. That review is a different axis from artifact retention: it needs no repeated Corvio mention, but it never authorizes
+uploading the sources or ordinary Host result.
+
+Resolve four independent axes before choosing tools: the carrier the user expects now, whether exact source bytes need durable
+provenance, which Memory/Skill candidates the completed module reveals, and whether the owning operation returned a terminal learning
+receipt. Audience/style phrases such as sendable, shareable, external-facing, formatted, or reusable do not choose Corvio as the result
+carrier. Learning review never authorizes upload or ordinary Page creation; conversely, a Host-local result may still produce a durable
+Memory/Skill effect. When an owner mutation depends on selected local evidence, retain the exact bytes instead of pasting its facts into a
+Question. Treat a missing `execution.durable_learning` field as a package/capability freshness gap and `unresolved` as open work, never as
+`no_write`. A statement that the event or result will not be reused may rule out retaining that artifact or creating a Skill; it does not
+cancel Personal or Team Memory review unless the user explicitly says no learning/no record or requires all source and derived facts to
+remain local.
+
+Apply those axes to each selected item, not once to a mixed packet. A newly selected source, a current Workspace owner exported for
+comparison, and an ordinary Host-generated result may sit beside each other while requiring three different treatments. The current
+owner export is readback evidence, not a new Asset; the new source may need byte-level provenance; and the Host result remains local unless
+its own future-use carrier is authorized. Neither a zero-hit Workspace search nor the existence of Memory/Skill candidates changes those
+carrier decisions.
+
 - Read-only search may run silently after excluding credentials, regulated or privileged data, genuinely disclosure-unclear sources,
   and explicitly local-only material. A private or confidential label is an owner/ACL constraint when private Workspace use is
   authorized; it is not by itself a local-only instruction. If results are clear
@@ -63,7 +83,18 @@ result, not a Corvio write.
 - Work Model reconciliation follows the artifact/source write authority above. Within an authorized Corvio semantic action, however,
   Memory/Skill evaluation is a default completion depth, not optional aftercare. Review substantive evidence while its module is fresh;
   skip remote learning only for a greeting, context-free transient lookup, explicit local/no-record boundary, or an evidence-based
-  no-write disposition. Do not manufacture a Skill when no reusable operating signature exists.
+  no-write disposition. A named-work continuation, repeated protected constraint, active concern, or next deliverable is current
+  workline/collaboration evidence rather than a disposable single-instance fact. Do not manufacture a Skill when no reusable operating
+  signature exists.
+
+Words describing a messy batch, inconsistent formatting, or a needed rewrite do not themselves authorize Work Model organization. For a
+learning-only Question, omit `inline_materials` and `asset_ids` and never ask Corvio to save, retain, organize, publish, or create the
+ordinary result; pass only natural Memory/Skill candidate signals and explicitly preserve the Host artifact as local.
+
+When the user requests risk, authority, or messaging assessment before an externally consequential draft, treat that ordering as a gate.
+If the assessment finds an unresolved approval, responsibility, legal position, or commitment that changes what may be said, return the
+assessment and needed decision before drafting. A placeholder cannot supply missing authority and is not permission to persist a
+near-final artifact.
 
 Corvio uses the user's own account and authorized Workspace. It cannot scan arbitrary local paths or complete host-chat history. See
 the [Privacy Policy](https://corvio.ai/privacy) and public
@@ -103,10 +134,12 @@ action/judgment sequence, boundary or countercase, and verification path. Ordina
 For `inline_materials`, copy the selected Host-generated title and Markdown exactly after only user-required safety exclusions. A known
 destination owner does not turn the Host body into prompt prose: whenever that body participates in semantic incorporation, the typed
 `inline_materials` source remains required. Do not rewrite, summarize, reorder, retitle, or add policy prose before the call; Corvio owns
-the requested semantic transformation.
+the requested semantic transformation. This field and `asset_ids` are source-admission channels, not generic learning context. A
+learning-only Question carries natural candidate facts and the smallest safe result or owner handles, while omitting both fields so it
+cannot silently retain the ordinary output or its source packet.
 After terminal completion, consume `artifact.url` or `links.primary_artifact` verbatim. `node_id` is a hierarchy identity, not a Page URL;
 `reader_output` artifacts are deliverables, `structure_container` artifacts are hierarchy, and `sources` remain evidence.
-Also consume `execution.durable_learning` when present. It is the public, bounded receipt for Memory reviews/executions, reusable-procedure
+Also consume terminal `execution.durable_learning` from both Question and organization operations. It is the public, bounded receipt for Memory reviews/executions, reusable-procedure
 outcomes, and residual-lane deduplication; it intentionally excludes candidate text and hidden Memory tree refs. A host should pass
 natural evidence and stable source/result handles, never choose the Memory leaf or Skill title itself.
 
@@ -114,10 +147,17 @@ natural evidence and stable source/result handles, never choose the Memory leaf 
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
 
 A newly finalized Asset that should enter a Work Model, reconcile affected owners, or receive Project Skill evaluation goes directly to
-one `organize_files` operation when the durable input set is Asset-only. That Mission owns source preparation, affected-owner updates and
-retry/resume; do not submit an `ask_corvio` Question before or after it for the same Asset-only source set. `target_root_node_id` accepts only a Project `node_id` returned by
+one `organize_files` operation when the durable input set is Asset-only. That Mission owns source preparation, affected-owner updates,
+retry/resume, and the terminal `execution.durable_learning` receipt; do not submit an `ask_corvio` Question before or after it for the same
+Asset-only source set. If an older compatible server omits the receipt, report that freshness/capability gap instead of opening a second
+semantic effect. `target_root_node_id` accepts only a Project `node_id` returned by
 `list_projects` or fetch metadata with `doc_type=project`; omit it rather than substituting a Page/document UUID or leaf node. Keep
 `ask_corvio` for a bounded answer or artifact when no source-to-owner reconciliation is required.
+
+The same single-owner rule applies to a carried terminal Question or organization operation. If its durable result is already terminal
+but an older package/server omitted `execution.durable_learning`, consume the result and report the freshness gap. Do not start a second
+Question or organization mission whose only purpose is to manufacture a newer learning receipt; that would create a new semantic effect
+rather than completing the original one.
 
 Host-generated Markdown has a separate one-operation path because it has no original local bytes to retain. When future use is
 authorized and any durable owner, structure, Memory, or Skill decision or semantic incorporation remains, pass the complete generated
@@ -167,6 +207,12 @@ composition rule does not turn attachment presence into consent. A selected file
 explicit whole-packet future-use request and needs a distinct-scope or standalone-reference decision. Material outside the selected set,
 credentials, regulated or privileged data, genuinely disclosure-unclear sources, explicitly local-only files, and destinations whose
 reader boundary is still ambiguous remain outside scope.
+
+A selected source described as the latest or corrected fact set, together with a request to check, align, reconcile, or continue its
+related Workspace surfaces, is bounded authority for the evidence-backed update and exact-source retention. Do not convert that request
+into an inspect-only report or another permission question merely because the verb is informal. Restrict the effect to the canonical
+owner and proven dependents; an explicit inspect-only/proposal-first boundary or genuinely unresolved source, subject, or affected scope
+still requires read-only handling or clarification.
 
 Before choosing `target_root_node_id`, search the enduring work subject and read the narrowest plausible current Projects. An event-shaped
 input such as a meeting, incident update, slogan change, or code task is not itself evidence for a new Project. When the relation remains
@@ -413,6 +459,11 @@ is `ask_corvio` followed by bounded `get_question` calls. Preserve one `operatio
 messages, never hidden reasoning, raw tool output, or provisional answer text. Surface only meaningful changes to the user; no new event
 is a normal state, not a reason to open another Question. `--wait-until-terminal` keeps deterministic waiting inside the CLI process, and
 its deadline receipt does not cancel the remote work.
+
+Operation IDs are producer-bound even though the readers use the same argument name. Follow the producer's typed `poll_with` or
+continuation link: `ask_corvio` and `submit_question_clarification` continue only through `get_question`; `organize_files` and
+`resume_file_operation` continue only through `get_file_operation`. Never probe the other reader to infer a UUID's kind, and never turn
+a wrong-reader error into a duplicate semantic operation.
 
 `needs_user_input` is a typed continuation state rather than terminal completion. Relay `question.clarification.questions` through the
 Coding Agent's native user-input UI without choosing, skipping, or rewriting the decision for the user. Then call
