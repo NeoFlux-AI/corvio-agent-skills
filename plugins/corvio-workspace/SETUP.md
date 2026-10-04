@@ -95,7 +95,9 @@ but cannot prove which copy an already-running conversation loaded.
 On the first Corvio use in a fresh session, call `get_collaboration_contract` with `response_mode=freshness_only`. The official Plugin's
 MCP declaration carries its public release, contract revision, and compatibility family outside model-authored arguments; pass only the
 Host-visible surface and installation channel. A standalone/manual copy without that transport metadata may pass its already-visible
-package facts. Show the compact
+package facts. If the first result is `not_reported` or `freshness_unverified` and the loaded Hook or Skill already shows exact release,
+revision, and family constants, retry exactly once with those visible facts. Transport metadata still wins; never guess values, ask the
+user to transcribe them, or repeat the fallback. Show the compact
 `client_freshness.agent_notice` once when present; say nothing about updating when the copy is current. Compatible legacy guidance may
 continue with Beta feedback labeled as legacy. A blocked copy must stop Corvio-dependent behavior. Do not ask the user to locate version
 facts the host does not expose, and do not turn this into a per-turn check.

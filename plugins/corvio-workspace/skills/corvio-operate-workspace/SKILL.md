@@ -62,8 +62,8 @@ or guessed lifecycle as though the user or source had established it. Then poll 
 `execution.durable_learning`. The Host cannot self-certify “no candidate” from a search result. Every later instruction to answer,
 clarify, stop, or return a result means “after closing this open checkpoint” unless the safety or narrow transient exclusions apply.
 
-This is Corvio Skill release `1.7.96`.
-It implements `coding_agent_collaboration` contract version `2026-10-01.2`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.97`.
+It implements `coding_agent_collaboration` contract version `2026-10-04.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI
@@ -76,7 +76,9 @@ model-authored call; pass only the visible `loaded_surface` and `installation_ch
 without that transport metadata may also pass the exact visible `loaded_release_version`, `loaded_contract_revision`, and
 `loaded_compatibility_family`. The loaded surface describes this guidance carrier, not the MCP action transport: a Codex marketplace
 Plugin reports `codex_plugin` plus `codex_marketplace`. Transport metadata is freshness evidence, not proof that this Skill body or a
-Hook was loaded in the current session. If its
+Hook was loaded in the current session. If the first result is `not_reported` or `freshness_unverified` and this loaded Skill already
+shows exact release, revision, and family constants above, retry exactly once with those visible facts; do not guess, ask the user to
+transcribe them, or retry again. Transport metadata still overrides conflicting call arguments. If its
 `client_freshness.agent_notice` exists,
 briefly explain the status and source-owned next action once; do not repeat it on later calls. A current copy produces no user-facing
 update narration. Continue with a compatible legacy copy, but label Beta feedback as legacy; stop Corvio-dependent behavior for a blocked

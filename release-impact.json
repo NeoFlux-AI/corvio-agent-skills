@@ -1,34 +1,28 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.96",
-  "contract_revision": "2026-10-01.2",
+  "release_version": "1.7.97",
+  "contract_revision": "2026-10-04.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Close substantive turns through one evidence-bounded durable-learning owner, preserve opaque Memory plans across native clarification, keep ordinary host artifacts and forbidden sources local, recognize selected corrected evidence as bounded update authority, distinguish source disorder from Workspace organization, preserve Personal/Team review for one-time results, and enforce approval-first external drafting gates across native, Codex, and Claude journeys.",
+  "change_summary": "Preserve transport-owned package freshness evidence, add one bounded visible-facts retry when a Host omits those headers, persist content-free freshness observations for real usage statistics, and keep package-manager, Marketplace, organization, and fresh-session update authorities separate.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md"
       ],
-      "note": "The canonical Skill makes a terminal durable-learning receipt part of every safe substantive turn, separates ordinary transformation from Workspace organization, prevents learning-only calls from carrying or requesting ordinary artifacts, treats latest/corrected evidence as bounded update authority, keeps one-time artifact reuse separate from Personal/Team review, and enforces approval-first external drafting gates."
+      "note": "The canonical Skill keeps transport metadata primary and retries freshness exactly once with already-visible package constants only after the server reports missing evidence."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
+        "backend/app/api/public_v1/admin_data_routes.py",
         "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/api/public_v1/schemas.py",
+        "backend/app/api/public_v1/routes.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/application/usecases/chat_streaming/function_tools.py",
-        "backend/app/application/usecases/chat_streaming_usecase.py",
-        "backend/app/application/chat/ops_ndjson.py",
-        "backend/app/application/chat/prompts/prompt_texts.py",
-        "backend/app/application/developer_platform/durable_learning.py",
-        "backend/app/application/developer_platform/files.py",
-        "backend/app/application/developer_platform/questions.py",
-        "backend/app/application/usecases/chat_streaming/run_ops_plan_correction.py"
+        "backend/app/core/config.py"
       ],
-      "note": "The server advertises release 1.7.96 and contract 2026-10-01.2, restores only origin-bound unconsumed Memory plans across native clarification, exposes the same bounded terminal learning receipt from Questions and Asset organization, returns producer-bound continuations, validates evidence channels and shared-Skill dependencies, and projects the same transformation, one-off, correction, and approval-gate semantics without making Runtime the classifier."
+      "note": "The server advertises release 1.7.97 and contract 2026-10-04.1, returns missing-evidence and one-retry fields, keeps transport headers authoritative, and persists bounded freshness observations without host content or paths."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -42,41 +36,58 @@
         "packaging/corvio-agent-skills/release-impact.json",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Skill and Plugin manifests advance together to release 1.7.96 and collaboration contract 2026-10-01.2."
+      "note": "Skill and Plugin manifests advance together to release 1.7.97 and collaboration contract 2026-10-04.1."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "The existing Workspace CLI already transports the same Question requests and terminal execution receipts; no command or wire shape changed."
+      "disposition": "changed",
+      "paths": [
+        ".github/workflows/developer-cli-release.yml",
+        "developer-cli/package-lock.json",
+        "developer-cli/package.json",
+        "developer-cli/packages/admin/package.json",
+        "developer-cli/release-policy.json",
+        "developer-cli/packages/core/src/index.js",
+        "developer-cli/packages/workspace/package.json",
+        "developer-cli/packages/workspace/src/cli.js",
+        "developer-cli/scripts/live-distribution-readback.mjs",
+        "developer-cli/scripts/registry-readback.mjs",
+        "developer-cli/scripts/release-policy-check.mjs",
+        "scripts/release-developer-cli.sh",
+        "scripts/release.sh"
+      ],
+      "note": "CLI beta.43 recommends only the API-reviewed exact version when npm proves it installable and reports channel/default-alias drift without selecting an unreviewed build."
     },
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Public Help already routes users through the official Skill and terminal Question readback; this release changes the internal learning completion contract rather than installation steps."
+      "note": "Existing Help remains source-aware and does not promise silent cross-host updates; detailed operator behavior is carried by the bundled setup and distribution runbook."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "The session hook reports release 1.7.96 and contract 2026-10-01.2 and requires the host to load the canonical Skill before applying its exact durable-learning and producer-bound continuation boundaries."
+      "note": "The session hook reports release 1.7.97 and contract 2026-10-04.1 and names the same bounded retry after an explicit missing-evidence result."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
-        "docs/adr/0081-continuous-durable-learning-closure.md",
-        "docs/reference/cursor-harness/TESTING_HARNESS.md",
-        "docs/rfc/agentic-function-call-runtime-loop-v1.md",
-        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/reports/continuous-durable-learning-historical-mainline-audit-2026-09-27.md",
-        "docs/test-reports/continuous-durable-learning-runtime-acceptance-2026-09-29.md"
+        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
+        "docs/reference/cursor-harness/LEARNING_LOOP.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/rfc/deploy-release-mainline-v1.md",
+        "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md",
+        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
+        "docs/logbook/entries/2026-10-04/193500-codex-cli-default-alias-and-agent-freshness-convergence.md",
+        "docs/logbook/weekly/2026-09-28_to_2026-10-04.md"
       ],
-      "note": "The ADR, Runtime and second-brain RFCs preserve the process-local checkpoint model, semantic-owner boundary, clarification behavior, and independent native plus external-host acceptance matrix."
+      "note": "Harness and release mainlines now treat package-manager defaults as public projections and define the reviewed-installable intersection plus bounded missing-transport fallback."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Publishing release 1.7.96 and deployed-package discovery remain separate release-owned gates; this task produces local fresh-host evidence only."
+      "note": "Publishing release 1.7.97 and deployed-package discovery remain separate release-owned gates; repository changes do not claim Marketplace availability."
     },
     "public_release_assets": {
       "disposition": "changed",
@@ -88,31 +99,21 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "The canonical exporter will regenerate both immutable archives from synchronized 1.7.96 Skill, manifests, references, and hook source."
+      "note": "The canonical exporter will regenerate both immutable archives from synchronized 1.7.97 Skill, manifests, references, and hook source."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/integration/test_developer_question_public_contract.py",
-        "backend/tests/integration/test_developer_files_and_sync_public_contract.py",
         "backend/tests/integration/test_developer_api_key_public_contract.py",
-        "backend/tests/unit/test_durable_learning_memory_planner.py",
-        "backend/tests/unit/test_function_tools.py",
-        "backend/tests/unit/test_ops_ndjson_tail_flush.py",
-        "backend/tests/unit/test_prompt_texts_memory_skills_principles.py",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "backend/tests/unit/test_run_ops_plan_correction.py",
-        "backend/scripts/agent_host_case_portfolio.py",
-        "backend/scripts/agent_host_mcp_policy.py",
-        "backend/scripts/collect_agent_host_matrix.py",
-        "backend/scripts/provision_agent_host_case_workspaces.py",
-        "backend/scripts/run_agent_host_case.py",
-        "backend/scripts/run_agent_host_suite.py",
-        "backend/scripts/scenario_suites/external_agent_work_model_host_v1.json",
+        "developer-cli/tests/commands.test.mjs",
+        "developer-cli/tests/core.test.mjs",
+        "developer-cli/tests/registry-readback.test.mjs",
+        "scripts/tests/test_release_developer_cli.sh",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Schema and planner tests cover shared Question/organization receipts, continuation restoration and dependency repair; the external harness proves exact candidate bytes, per-case workspaces, required versus forbidden source retention, attachment-body reads, Remote MCP transport purity, terminal readback, and per-case Codex plus Claude behavior without treating a summary score as sufficient."
+      "note": "Focused tests cover channel-ahead review, stale default alias, aligned admin transfer, missing transport evidence, transport priority, content-free telemetry, release projection repair, and synchronized package manifests."
     }
   }
 }
