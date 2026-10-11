@@ -62,7 +62,7 @@ or guessed lifecycle as though the user or source had established it. Then poll 
 `execution.durable_learning`. The Host cannot self-certify “no candidate” from a search result. Every later instruction to answer,
 clarify, stop, or return a result means “after closing this open checkpoint” unless the safety or narrow transient exclusions apply.
 
-This is Corvio Skill release `1.7.97`.
+This is Corvio Skill release `1.7.98`.
 It implements `coding_agent_collaboration` contract version `2026-10-04.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same

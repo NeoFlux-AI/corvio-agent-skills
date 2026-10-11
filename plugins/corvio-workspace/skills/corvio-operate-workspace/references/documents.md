@@ -3,6 +3,28 @@
 Use this reference when the task already targets a Corvio Page. It exposes a coding-Agent-shaped interface—overview first, then exact
 sections or lines—without requiring the host to learn Corvio's internal Writer schema, block model, or conversion contracts.
 
+## Images already retained as Assets
+
+For an authorized image insertion, copy `document_image.markdown` from `finalize_file_upload` or `get_file` onto its own line in the
+Page body. This references retained bytes; it is not another upload or organization operation. Use the shared
+`get_document_authoring_contract` for the optional structured `corvio` image carrier and supported fields.
+
+`links.content` is the API download endpoint, not a browser image URL: API OAuth authorization and the webpage reader's identity are
+different transports. The document image reference carries a durable Workspace content locator that the webpage reads through its
+authenticated media path. Each reader still needs current access to the Asset; inserting a cross-Workspace reference neither copies
+the bytes nor grants access. A successful Page write is not proof of pixel visibility; use the appropriate browser/read evidence when
+the requested outcome includes visual verification. Do not replace the stable reference with a signed or public blob URL.
+
+## Audio already retained as Assets
+
+For authorized audio insertion, copy `document_audio.markdown` from `finalize_file_upload` or `get_file`. The shared authoring contract
+describes its structured `corvio` carrier. Asset identity survives Page readback, editing and clipboard; the browser fetches retained bytes
+under the reader's current identity, not a public or expiring URL. Playback still depends on the browser supporting the uploaded codec.
+
+Playback does not imply transcription. Existing page-owned audio uses its authenticated Page source path; an MCP audio reference alone
+does not authorize or create a transcription job. Source access and AI-read policy are checked again when an authorized retained-audio
+transcription request executes. A Page write or `ready` receipt is not proof of decoded audio or a completed transcript.
+
 ## Choose the execution owner
 
 Optimize total successful-work cost, not just the number of tool calls:

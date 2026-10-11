@@ -1,28 +1,28 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.97",
+  "release_version": "1.7.98",
   "contract_revision": "2026-10-04.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Preserve transport-owned package freshness evidence, add one bounded visible-facts retry when a Host omits those headers, persist content-free freshness observations for real usage statistics, and keep package-manager, Marketplace, organization, and fresh-session update authorities separate.",
+  "change_summary": "Prepare immutable 1.7.98 distribution for retained-image/audio references and composed producer/consumer coverage. Preserve API download, ACL, transcription and the existing collaboration revision; publication and website/GitHub version/hash readback remain release-owned evidence.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md"
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
       ],
-      "note": "The canonical Skill keeps transport metadata primary and retries freshness exactly once with already-visible package constants only after the server reports missing evidence."
+      "note": "The retained-media reference module consumes copyable document_image/document_audio Markdown and explains independent reader-access, codec and transcription boundaries. Existing entry guidance/freshness authority remain unchanged; the shared review digest is refreshed before sealing."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
-        "backend/app/api/public_v1/admin_data_routes.py",
         "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/api/public_v1/routes.py",
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/core/config.py"
+        "backend/app/application/developer_platform/files.py",
+        "backend/app/api/public_v1/schemas.py"
       ],
-      "note": "The server advertises release 1.7.97 and contract 2026-10-04.1, returns missing-evidence and one-retry fields, keeps transport headers authoritative, and persists bounded freshness observations without host content or paths."
+      "note": "Add typed document_image/document_audio and shared authoring guidance. API download links retain their previous meaning; package version promotion and production publication are not claimed by this candidate. Align the current backend freshness version with the canonical 1.7.98 source manifest; current-version fixtures remain independently checked against source package bytes."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -30,90 +30,77 @@
         "packaging/corvio-agent-skills/.claude-plugin/marketplace.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/.mcp.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
-        "packaging/corvio-agent-skills/release-impact.json",
-        "frontend/src/lib/developerSkillPackage.ts"
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.mcp.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json"
       ],
-      "note": "Skill and Plugin manifests advance together to release 1.7.97 and collaboration contract 2026-10-04.1."
+      "note": "The release assembly advances every package envelope together to 1.7.98 because retained-media reference bytes changed. The collaboration revision and minimum compatibility remain unchanged; version preparation is not publication. Both static MCP release headers carry the same source version; transport-reported facts remain distinct from installed-byte proof."
     },
     "workspace_cli": {
-      "disposition": "changed",
-      "paths": [
-        ".github/workflows/developer-cli-release.yml",
-        "developer-cli/package-lock.json",
-        "developer-cli/package.json",
-        "developer-cli/packages/admin/package.json",
-        "developer-cli/release-policy.json",
-        "developer-cli/packages/core/src/index.js",
-        "developer-cli/packages/workspace/package.json",
-        "developer-cli/packages/workspace/src/cli.js",
-        "developer-cli/scripts/live-distribution-readback.mjs",
-        "developer-cli/scripts/registry-readback.mjs",
-        "developer-cli/scripts/release-policy-check.mjs",
-        "scripts/release-developer-cli.sh",
-        "scripts/release.sh"
-      ],
-      "note": "CLI beta.43 recommends only the API-reviewed exact version when npm proves it installable and reports channel/default-alias drift without selecting an unreviewed build."
-    },
-    "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Existing Help remains source-aware and does not promise silent cross-host updates; detailed operator behavior is carried by the bundled setup and distribution runbook."
+      "note": "No CLI code or version change in this candidate: files receipts and docs authoring-contract already consume the additive shared server response. Existing reviewed-version/default-alias authority stays unchanged."
+    },
+    "help_center": {
+      "disposition": "changed",
+      "paths": [
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
+      ],
+      "note": "The existing Help reference route reads canonical documents.md; the image-reference guidance therefore ships with application deployment, without a separate duplicated Help body."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "The session hook reports release 1.7.97 and contract 2026-10-04.1 and names the same bounded retry after an explicit missing-evidence result."
+      "note": "Only the SessionStart release projection advances to 1.7.98. Activation, consent, learning, source handling and continuation prose remain unchanged; source parity does not prove a Host loaded the Hook."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
-        "docs/reference/cursor-harness/AGENT_INTEGRATION.md",
-        "docs/reference/cursor-harness/LEARNING_LOOP.md",
-        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
-        "docs/rfc/deploy-release-mainline-v1.md",
-        "docs/runbooks/DEPLOYMENT_AND_RELEASE_WORKFLOW.md",
+        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
+        "docs/rfc/workspace-asset-organization-and-permission-mainline-v1.md",
+        "docs/rfc/doc-audio-block-mainline-v1.md",
+        "docs/reference/cursor-harness/TESTING_HARNESS.md",
+        "docs/logbook/entries/2026-10-08/130200-codex-retained-media-contract-review.md",
+        "docs/logbook/weekly/2026-10-05_to_2026-10-11.md",
+        "docs/logbook/entries/2026-10-08/182800-codex-mcp-uploaded-image-authoring-boundary.md",
         "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
-        "docs/logbook/entries/2026-10-04/193500-codex-cli-default-alias-and-agent-freshness-convergence.md",
-        "docs/logbook/weekly/2026-09-28_to_2026-10-04.md"
+        "docs/logbook/entries/2026-10-11/203800-codex-release-projection-parity.md"
       ],
-      "note": "Harness and release mainlines now treat package-manager defaults as public projections and define the reviewed-installable intersection plus bounded missing-transport fallback."
+      "note": "Image reference mainlines and the logbook preserve byte identity, current ACL and API/browser transport boundaries. Production Prompt and the existing package-freshness story stay unchanged."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Publishing release 1.7.97 and deployed-package discovery remain separate release-owned gates; repository changes do not claim Marketplace availability."
+      "note": "Future package publication and fresh-host Marketplace discovery remain release-owned gates; this candidate claims neither."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
-        "frontend/src/lib/developerSkillPackage.ts"
+        ".agents/skills/corvio-operate-workspace/references/documents.md",
+        ".agents/skills/corvio-operate-workspace/SKILL.md"
       ],
-      "note": "The canonical exporter will regenerate both immutable archives from synchronized 1.7.97 Skill, manifests, references, and hook source."
+      "note": "The unchanged canonical builder regenerates immutable archives from updated references and 1.7.98 release metadata. Protected publication must read back website/GitHub version and hashes; no artificial builder code change is required."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "backend/tests/unit/test_external_agent_work_model_portfolio.py",
-        "backend/tests/integration/test_developer_api_key_public_contract.py",
+        "backend/tests/unit/test_workspace_asset_content_locator.py",
+        "backend/tests/integration/test_developer_files_and_sync_public_contract.py",
+        "frontend/e2e/doc-image-block-smoke.spec.ts",
+        "frontend/src/lib/workspace/workspaceAssetContentLocator.test.ts",
+        "frontend/src/lib/docs/pmDocJson.test.ts",
+        "frontend/src/components/chat/AssistantMarkdown.test.tsx",
+        "scripts/run-retained-media-contract-tests.sh",
+        ".github/workflows/ci.yml",
+        "backend/tests/unit/test_workspace_asset_storage.py",
+        "backend/tests/unit/test_audio_asset_access.py",
+        "frontend/e2e/retained-media-contract.spec.ts",
         "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "developer-cli/tests/commands.test.mjs",
-        "developer-cli/tests/core.test.mjs",
-        "developer-cli/tests/registry-readback.test.mjs",
-        "scripts/tests/test_release_developer_cli.sh",
         "frontend/src/lib/developerSkillPackage.test.ts"
       ],
-      "note": "Focused tests cover channel-ahead review, stale default alias, aligned admin transfer, missing transport evidence, transport priority, content-free telemetry, release projection repair, and synchronized package manifests."
+      "note": "The same actual MCP PNG/WAV carrier and bytes enter Chromium decoding/retry/reload tests, plus storage, ACL and persistence countercases. Independent navigation baseline failures remain visible; live Azure PUT, Claude provider-live and deployment remain unverified. Actual generated package parity and backend freshness tests bind current source version rather than historical literals; prior failed preflights remain preserved."
     }
   }
 }

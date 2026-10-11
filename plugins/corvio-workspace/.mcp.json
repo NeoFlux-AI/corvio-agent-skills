@@ -5,7 +5,7 @@
       "url": "https://api.corvio.ai/mcp",
       "oauth_resource": "https://api.corvio.ai/mcp",
       "headers": {
-        "X-Corvio-Plugin-Release": "1.7.97",
+        "X-Corvio-Plugin-Release": "1.7.98",
         "X-Corvio-Collaboration-Revision": "2026-10-04.1",
         "X-Corvio-Compatibility-Family": "coding-agent-collaboration-v1"
       }
