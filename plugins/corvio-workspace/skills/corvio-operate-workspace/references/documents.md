@@ -201,3 +201,81 @@ sections should be reorganized, how formatting should be interpreted, or how mul
 
 The live MCP schemas, CLI `--help`, and public OpenAPI are field-level authority. Project roots remain structure containers: direct body
 updates and line patches target non-Project Pages. Typed Spreadsheet, Presentation, Code, and HTML carriers remain semantic Agent work.
+
+## Schema-checked document call examples
+
+The UUIDs, revisions and line anchors below are illustrative. Copy actual returned identities, anchors and revisions for the current operation. These examples calibrate legal shapes; they do not prescribe a fixed tool sequence. Existing source/learning/permission gates above still apply.
+
+Known section: read only the requested section; an unknown section can start with auto/overview.
+
+```json
+{"name":"read_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"section","heading":"Delivery","max_chars":3000}}
+```
+
+New decided Page: create directly; choose only the user-authorized location.
+
+```json
+{"name":"create_document","arguments":{"title":"Delivery note","markdown":"Ready for review.","idempotency_key":"delivery-create-1"}}
+```
+
+A supplied Project/Page node selects a creation destination through `parent_node_id`; it is not a readable Page ID. If the body and location are already decided, create there directly. Corvio validates the parent and permissions; reading the parent body cannot improve this fixed write.
+
+```json
+{"name":"create_document","arguments":{"workspace_id":"11111111-1111-4111-8111-111111111111","parent_node_id":"44444444-4444-4444-8444-444444444444","title":"Delivery child","markdown":"Ready for review.","idempotency_key":"delivery-child-1"}}
+```
+
+An exact typed Page handle goes into `handle`, with its complete workspace/page identity. Reads do not take `workspace_id`, `node_id`, `content_revision` or `snapshot_id`. If the user supplied a Page UUID and its Workspace separately, those known facts form the canonical `id`; a node UUID cannot be substituted for a Page UUID.
+
+```json
+{"name":"read_document","arguments":{"handle":"page:11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"auto"}}
+```
+
+Known read window: start_line/end_line belong to read_document(mode=line_range). Copy the returned revision and writable L# anchors.
+
+```json
+{"name":"read_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"line_range","start_line":40,"end_line":42}}
+```
+
+Exact edit: replacements uses line_ref, not start_line/end_line or an invented section argument.
+
+```json
+{"name":"patch_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","expected_content_revision":7,"operation_id":"delivery-edit-1","change_summary":"Update the agreed delivery date.","replacements":[{"line_ref":"L40-L42","replacement_markdown":"Delivery: 24 October."}]}}
+```
+
+Revision conflict: no body effect was applied. Reread the current affected location, retaining new concurrent facts.
+
+```json
+{"name":"read_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"search","query":"Delivery:","context_lines":2}}
+```
+
+Only if that fresh result now reports revision 8 and L41, generate a new guarded operation. Never reuse a stale revision or guess this example anchor.
+
+```json
+{"name":"patch_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","expected_content_revision":8,"operation_id":"delivery-edit-2","change_summary":"Reapply the date against the current owner revision.","replacements":[{"line_ref":"L41","replacement_markdown":"Delivery: 24 October."}]}}
+```
+
+document_updated_comment_failed: the document receipt proves the body changed. Repair only the missing comment; do not repeat update/append/patch.
+
+```json
+{"name":"comment_document","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","body":"Update the agreed delivery date."}}
+```
+
+Read the repaired comments to verify the missing collaboration effect.
+
+```json
+{"name":"list_document_comments","arguments":{"id":"11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222"}}
+```
+
+Delegate when cross-source/typed/structural judgment remains. ask_corvio may require Host Approval; a Host denial occurs before MCP execution and must not trigger duplicate writes.
+
+```json
+{"name":"ask_corvio","arguments":{"workspace_id":"11111111-1111-4111-8111-111111111111","prompt":"Reconcile the delivery plan, risks and responsibilities. Context: 11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"allow_actions"}}
+```
+
+Copy the actual ask operation_id; queued/running is progress. Poll the same producer to terminal, respect retry_after_seconds, consume real artifacts/readback, and use returned progress_cursor as after_cursor when available.
+
+```json
+{"name":"get_question","arguments":{"operation_id":"33333333-3333-4333-8333-333333333333","wait_seconds":30}}
+```
+
+For update_document/append_document, response_mode=compact preserves committed body identity, revision/hash and verified comment facts without echoing the full comment. The default remains full. Check only the content evidence required by the user; a missing/partial readback is never completion. A timeout or approval denial does not authorize another semantic job.

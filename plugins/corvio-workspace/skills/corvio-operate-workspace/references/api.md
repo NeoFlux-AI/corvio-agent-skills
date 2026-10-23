@@ -8,6 +8,7 @@
 - [Choose a surface](#choose-a-surface)
 - [Bootstrap and readiness](#bootstrap-and-readiness)
 - [Refresh and version boundaries](#refresh-and-version-boundaries)
+- [Optional document tool visibility](#optional-document-tool-visibility)
 - [Workspace and operation recipes](#workspace-and-operation-recipes)
 - [Delegated Agent availability](#delegated-agent-availability)
 - [Error decisions](#error-decisions)
@@ -428,6 +429,36 @@ require a CLI reinstall or OAuth reauthorization. A compatible
 server-only MCP fix does not require reinstalling the Skill or CLI. A CLI release does not refresh a local Skill copy. When a host plugin
 bundles Skill + MCP, use that host's plugin update flow and still start a fresh session; plugin-cache discovery proves only the version
 present in that cache.
+
+## Optional document tool visibility
+
+The full Remote MCP catalog remains the default. For a session dedicated to ordinary document work, Codex supports a native
+`enabled_tools` allowlist without changing the canonical OAuth resource URL. Apply it to the existing MCP server entry; keep its
+existing secret-store/OAuth configuration. This visibility choice grants no scope or document permission.
+
+```toml
+[mcp_servers.corvio]
+url = "https://api.corvio.ai/mcp"
+enabled_tools = [
+  "get_collaboration_contract", "get_document_authoring_contract",
+  "list_workspaces", "list_projects", "list_documents", "search", "fetch", "read_document",
+  "create_document", "update_document", "append_document", "patch_document", "create_project", "move_document",
+  "list_document_comments", "comment_document", "reply_document_comment", "update_document_comment_status", "complete_document_work",
+  "prepare_file_upload", "finalize_file_upload", "list_files", "get_file", "organize_files",
+  "get_file_operation", "resume_file_operation", "cancel_file_operation",
+  "ask_corvio", "get_question", "submit_question_clarification", "cancel_question"
+]
+```
+
+This 31-name profile retains location, source intake, comments and asynchronous recovery as well as prose reads/writes. Table,
+archive/history, publication and product-guidance workflows need the full catalog: remove `enabled_tools` and reconnect or start a
+fresh Host session. Loading a full contract cannot restore tools that the Host configuration hides.
+
+The compatible server-side equivalent is `/mcp?tool_profile=document_work`, intersected with the existing OAuth scopes. It changes
+only `tools/list`; all existing names remain callable under their normal authorization. Unknown profile names fail explicitly. The
+native benchmark validates a fixture-issued bearer connection with both this query and Codex's allowlist; interactive OAuth resource
+discovery with a query URL and real Claude profile loading remain unverified. Use the canonical URL with Host-native filtering when
+those setup facts are unknown. This is a candidate configuration until the corresponding application/package release is available.
 
 ## Workspace and operation recipes
 
