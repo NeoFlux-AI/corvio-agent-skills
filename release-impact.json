@@ -1,27 +1,33 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.99",
+  "release_version": "1.7.100",
   "contract_revision": "2026-10-23.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Caller-declared zero-model source publication, persistent region synchronization and truthful activation/operation receipts. Preserve substantive learning, source/ACL boundaries and typed continuation. Candidate is local; package publication and deployed readback remain release-owned.",
+  "change_summary": "Long-term source publication recovery and comment identity, shared DNS-pinned public acquisition, bounded CI images and truthful immutable CLI/Skill distribution. Retain prior real effects and failures; final delivery is release-owned.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
       ],
-      "note": "Closed publication/byte verification does not open interpretation. Newly observed substantive user-model or method evidence retains the ordinary bounded learning review."
+      "note": "Closed publication/byte verification does not open interpretation. Newly observed substantive user-model or method evidence retains the ordinary bounded learning review. Exact unchanged Block identity survives source insertion/reorder; ambiguity requires stable record regions rather than CAS inference."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/api/public_v1/publication_routes.py",
-        "backend/app/application/developer_platform/source_publication.py"
+        "backend/app/application/developer_platform/source_publication.py",
+        "backend/app/application/developer_platform/publication_regions.py",
+        "backend/app/application/public_http.py",
+        "backend/app/application/docs/remote_markdown_images.py",
+        "backend/app/application/chat/sandbox_runtime_staging.py",
+        "backend/app/application/usecases/chat_streaming/self_hosted_browser.py",
+        "backend/app/application/usecases/chat_streaming_usecase.py",
+        "backend/app/core/config.py",
+        "backend/app/application/chat/external_source_meta_enrichment.py",
+        "backend/app/application/usecases/chat_streaming/public_web_tools.py"
       ],
       "note": "Shared neutral execution and exact operation receipts; current ACL, typed resource identities and full-controller discovery remain protected."
     },
@@ -35,23 +41,22 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"
       ],
-      "note": "Advance immutable candidate metadata to 1.7.99; compatibility family/minimum remain unchanged. transport-constraints.json, workbuddy-mcp.json, hooks/hooks.json and the Codex marketplace carrier retain exact bytes from agent-skills-v1.7.98. This changed-path inventory lists actual deltas only; the official transport/package verifier still verifies unchanged included carriers."
+      "note": "New immutable 1.7.100 follow-up after the preceding 1.7.99 candidate; compatibility family/minimum and controller meaning are preserved. Changed-path declarations contain actual follow-up deltas; complete unchanged carriers remain verified."
     },
     "workspace_cli": {
       "disposition": "changed",
       "paths": [
         "developer-cli/packages/workspace/src/cli.js",
-        "developer-cli/packages/workspace/src/publication.js",
+        "developer-cli/packages/core/src/index.js",
         "developer-cli/packages/workspace/package.json",
         "developer-cli/packages/admin/package.json"
       ],
-      "note": "Workspace batch commands at beta.44; paired Admin package advances only the required shared release envelope, not Admin behavior."
+      "note": "CLI beta.44 is already published by the preceding mainline release; ship recovery fixes as paired beta.45 without overwriting immutable packages."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
       ],
       "note": "Existing Help routes project canonical references, avoiding a parallel manually copied guide."
     },
@@ -66,11 +71,9 @@
       "disposition": "changed",
       "paths": [
         "docs/rfc/developer-source-publication-mainline-v1.md",
-        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
-        "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
-        "docs/rfc/workspace-asset-organization-and-permission-mainline-v1.md",
-        "docs/logbook/entries/2026-10-23/065900-codex-source-publication-mainline.md",
-        "docs/logbook/weekly/2026-10-19_to_2026-10-25.md"
+        "docs/logbook/weekly/2026-10-19_to_2026-10-25.md",
+        "docs/logbook/entries/2026-10-23/083600-codex-source-publication-recovery-audit.md",
+        "docs/rfc/public-http-acquisition-mainline-v1.md"
       ],
       "note": "Pre-edit history/story ledger plus retained failures, real journey evidence and completion limits."
     },
@@ -83,9 +86,7 @@
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
-        "frontend/src/lib/developerSkillPackage.ts"
+        ".agents/skills/corvio-operate-workspace/references/documents.md"
       ],
       "note": "Same canonical builder produces website and GitHub packages; live version/hash readback belongs to release. Correct the website manifest current revision to the already-declared2026-10-23.1 Skill/MCP/server source. Same Skill/Plugin archive bytes and semantic guidance; no release SemVer overwrite or compatibility-minimum change."
     },
@@ -94,11 +95,10 @@
       "paths": [
         "backend/tests/integration/test_developer_source_publication.py",
         "backend/tests/integration/test_source_publication_fresh_hosts.py",
-        "backend/tests/unit/test_source_publication_bundle.py",
-        "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
         "developer-cli/tests/publication.test.mjs",
-        "frontend/e2e/source-publication-carriers.spec.ts",
-        "frontend/src/lib/developerSkillPackage.test.ts"
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "backend/tests/unit/test_public_http_transport.py",
+        "developer-cli/tests/commands.test.mjs"
       ],
       "note": "Actual API/PostgreSQL, real Azure hundred-page transport, fresh Codex trigger/transfer/countercase, CLI and browser carrier evidence. Claude provider auth expired; that live lane remains unverified."
     }

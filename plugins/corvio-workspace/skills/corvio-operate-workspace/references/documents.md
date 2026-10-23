@@ -31,7 +31,7 @@ publishes a script-free HTML Artifact through the existing immutable builder/san
 Scripts, event handlers, executable URLs and unsupported network dependencies are rejected. Presentation and executable HTML editing
 retain their own capabilities.
 
-Source bindings preserve stable Block IDs and canonical baselines. Unchanged source is no-op; omitted regions remain. Incoming changes
+Source bindings preserve stable Block IDs and canonical baselines. Exact unchanged content keeps its identity through insertion and unambiguous reorder. Mixed insertion/edit gaps or duplicate identities can conflict; separate stable source regions provide record identity, and a current-hash CAS alone cannot resolve ambiguous correspondence. Reordering around independent human blocks requires separate review. Unchanged source is no-op; omitted regions remain. Incoming changes
 to human-edited/deleted source blocks or a shrinking region conflict and preserve the current content/comments. Do not replace the
 whole Page to bypass such a conflict. Independent human blocks remain untouched. For an explicitly reconciled region, include the returned exact `expected_block_hashes` in a new bundle/operation; a stale or incomplete set conflicts again. Static HTML merging uses `expected_source_sha256` with the same current-source CAS boundary. Embedded uses remain attached to their Page history;
 archiving/deleting a Page does not authorize deleting an original or a shared Asset.
