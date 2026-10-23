@@ -1,5 +1,51 @@
 # Corvio document reads and edits
 
+## Publish decided source files and maintain keyed regions
+
+When source, carrier, page boundaries and target are already decided, use the shared source-publication contract rather than repeating
+per-page uploads or semantic Questions. Read `get_publication_contract` (CLI `files publication-contract`) for the exact manifest schema.
+Create a ZIP with `corvio-publication.json` and its relative files. The advertised transport capacities are bounded; larger corpora can
+use multiple caller-selected bundles sharing stable namespace/page/region keys. Cross-bundle links use already verified canonical URLs or
+explicit existing Page declarations; capacity is not permission to omit required records. Keep sources in the Host byte plane; MCP arguments contain the
+finalized Asset ID and operation key. Local CLI can package and transfer the actual files directly:
+
+```bash
+corvio files publish --manifest ./corvio-publication.json --operation-key sync-2026-10-23 --wait-until-terminal --timeout-seconds 600 --json --no-input
+corvio files publication <workspace_id/operation_id> --detail full --json --no-input
+corvio files bundle --manifest ./corvio-publication.json --output ./publication.zip --json --no-input
+```
+
+For MCP-only work, the Host packages files with its native filesystem tools, prepares that ZIP with `visibility=private`, PUTs its exact
+bytes using the returned short-lived headers, finalizes with the same private choice, then calls `publish_source_bundle`. Remote MCP
+does not open Host-local paths. The original is private. New Pages/images default to private; `new_resource_visibility=workspace` is an explicit caller choice and does not change existing ACLs. Embedded use never grants access to other Page readers; sharing is separate.
+
+The manifest uses stable `namespace`, Page `key` and per-Page region `key` identities. Each region names one UTF-8 Markdown `file`;
+an ordinary whole source body can be one region. For incremental notes/highlights, give each external record its own region key.
+Images name a local `file` or explicit public HTTPS `url`; URL adoption validates redirects/byte capacity and optional expected hash,
+then retains immutable bytes. No site-specific admission list. Reference other manifest entries with `corvio://page/<key>` and
+`corvio://image/<key>` in Markdown regions, including forward and reciprocal links. Static HTML uses relative bundle files or HTTPS links. Parents use `parent_key` or current `parent_node_id`.
+
+`include_child_index=true` requests the existing live directory block, which follows current tree order and reader ACL; it never
+duplicates a table of children or resurrects an index the user removed. `kind=static_html` plus `html_file` and optional `html_files`
+publishes a script-free HTML Artifact through the existing immutable builder/sandbox; it creates no Question or model-credit charge.
+Scripts, event handlers, executable URLs and unsupported network dependencies are rejected. Presentation and executable HTML editing
+retain their own capabilities.
+
+Source bindings preserve stable Block IDs and canonical baselines. Unchanged source is no-op; omitted regions remain. Incoming changes
+to human-edited/deleted source blocks or a shrinking region conflict and preserve the current content/comments. Do not replace the
+whole Page to bypass such a conflict. Independent human blocks remain untouched. For an explicitly reconciled region, include the returned exact `expected_block_hashes` in a new bundle/operation; a stale or incomplete set conflicts again. Static HTML merging uses `expected_source_sha256` with the same current-source CAS boundary. Embedded uses remain attached to their Page history;
+archiving/deleting a Page does not authorize deleting an original or a shared Asset.
+
+The operation is checkpointed across storage and Docs transactions. `in_progress`/`partial` and reserved Pages are intermediate facts.
+Resume using the returned source Asset and same operation key; reuse with different bytes conflicts. Compact results preserve confirmed aggregate counts, caller-declared entry Pages in source order,
+failures and canonical handles. A completed closed publication plus its source hash and entry address proves that decided batch at the
+recorded revisions; loading every identifier is only needed for inventory or a specific diagnosis. Select exact `page_keys`/`image_keys`
+(CLI `--page-keys`/`--image-keys`) for those evidence gaps; `get_publication_operation(detail=full)` retrieves the full ledger. Only completed item/readback facts
+prove delivery at the reported revision; a later human edit does not invalidate that historical receipt or get certified as its old body.
+The foreground CLI can wait/resume within its explicit deadline; timeout retains the operation rather than claiming completion. Capability/schema checks and closed-effect readback do not open a semantic-learning review; new interpretation or
+user-model/method evidence still follows the ordinary learning loop. Open owner, topology or synthesis decisions use one semantic
+operation and its existing terminal receipt.
+
 Use this reference when the task already targets a Corvio Page. It exposes a coding-Agent-shaped interface—overview first, then exact
 sections or lines—without requiring the host to learn Corvio's internal Writer schema, block model, or conversion contracts.
 

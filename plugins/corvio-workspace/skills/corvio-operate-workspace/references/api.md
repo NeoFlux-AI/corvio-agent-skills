@@ -24,7 +24,8 @@
 The CLI's `--help` and `capabilities --json` output are the command authority. The live OpenAPI is the HTTP method, path, field, scope, and error authority. Do not copy an endpoint catalog into `SKILL.md`.
 
 Remote MCP endpoint: `https://api.corvio.ai/mcp`. Its `initialize.instructions`, `get_collaboration_contract`, `tools/list`, and returned
-structured receipts are the MCP authority. A host plugin should bundle this Skill and MCP configuration when supported. If a host has
+structured receipts are the MCP authority. Initialization carries an activation projection and a full-controller read address;
+wire completeness does not prove the Host loaded the full behavior. Read the complete Skill or `get_collaboration_contract(response_mode=full)` before interpreting sources or acting. A host plugin should bundle this Skill and MCP configuration when supported. If a host has
 separate installers, install both: the Skill supplies discovery/decision policy and MCP supplies live OAuth-scoped actions. Add the CLI
 when the Agent needs direct local-path, sync, download, or project-Agent authority.
 
@@ -82,7 +83,8 @@ carrier decisions.
   concrete benefit, and ask once whether to save or organize it. A decline or no answer means no write.
 - Work Model reconciliation follows the artifact/source write authority above. Within an authorized Corvio semantic action, however,
   Memory/Skill evaluation is a default completion depth, not optional aftercare. Review substantive evidence while its module is fresh;
-  skip remote learning only for a greeting, context-free transient lookup, explicit local/no-record boundary, or an evidence-based
+  capability discovery, byte integrity and already-decided publication/readback alone do not open substantive interpretation.
+  Skip remote learning for that closed execution boundary, a greeting, context-free transient lookup, explicit local/no-record boundary, or an evidence-based
   no-write disposition. A named-work continuation, repeated protected constraint, active concern, or next deliverable is current
   workline/collaboration evidence rather than a disposable single-instance fact. Do not manufacture a Skill when no reusable operating
   signature exists.
@@ -680,3 +682,13 @@ principal authority.
 Preserve `X-Request-Id` and the CLI's normalized error code in the final result.
 
 `workspace_context` is aggregate routing provenance (titles/bounded outlines), while `workspace_doc` is a document-level source. Neither should be inferred when absent.
+
+## Already-decided source publication
+
+Use `get_publication_contract`, `publish_source_bundle`, and `get_publication_operation` for caller-declared source bundles. The HTTP
+projection is `GET /v1/publications/contract`, `POST /v1/publications`, and `GET /v1/publications/{operation_uuid}?detail=full`. Publication
+requires documents read/write plus Assets read/write and current edit authority. MCP binds the retained source's Workspace; CLI rejects a
+canonical source handle that conflicts with the selected Workspace. The compact reader projects declared entry Pages and aggregate publication evidence; exact `page_keys`/`image_keys` select an evidence
+gap, while full without selectors returns the whole ledger. The operation reader has its own typed continuation and is neither a
+Question nor an organization mission. Keep partial effects visible, resume the same operation, and verify current Page/Asset access.
+See `documents.md` for the manifest, source-region conflicts, private visibility, directory and static HTML boundaries.
