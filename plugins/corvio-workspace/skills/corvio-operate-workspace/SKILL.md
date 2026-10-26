@@ -19,8 +19,14 @@ repeat “Corvio” for that review to run, and a necessary clarification does n
 
 Once this Skill is loaded, ordinary search, read, create and exact edits already have their operating guidance. Use `get_collaboration_contract(response_mode=freshness_only)` to check the live connection/version; `full` is not another prerequisite. The unchanged API default is `full` for compatibility, so specify the mode. Retrieve the full Collaboration Contract when guidance is unavailable, setup or authorization is unresolved, an advanced capability needs inspection, or recovery lacks decision-grade facts. Read the Authoring Contract for unfamiliar rich/typed content, not as a prerequisite to ordinary Markdown.
 
-On the first Corvio use in a fresh host session, call `get_collaboration_contract` with `response_mode=freshness_only` when that MCP tool
-is available. An official Plugin connection transports its public release, contract revision, and compatibility family outside the
+Updates help users keep working with accurate capabilities. The server's live contract, installed package, and guidance already loaded
+in this session are separate facts: downloading an update does not replace the running session's instructions. Normal MCP results carry
+`corvio_integration` in text and structured content. Consume its server identity and `client_freshness` in the same work loop; it can
+provide the session's freshness check without fetching operating guidance again. If reported facts are absent or incomplete, use
+`get_collaboration_contract(response_mode=freshness_only)` once with the exact visible constants in this Skill and the known installation
+source. Do not derive local versions from serverInfo, Host client versions, account sync or a successful business call.
+
+An official Plugin connection transports its public release, contract revision, and compatibility family outside the
 model-authored call; pass only the visible `loaded_surface` and `installation_channel` there. A standalone/manual Skill or MCP setup
 without that transport metadata may also pass the exact visible `loaded_release_version`, `loaded_contract_revision`, and
 `loaded_compatibility_family`. The loaded surface describes this guidance carrier, not the MCP action transport: a Codex marketplace
@@ -29,10 +35,16 @@ Hook was loaded in the current session. If the first result is `not_reported` or
 shows exact release, revision, and family constants above, retry exactly once with those visible facts; do not guess, ask the user to
 transcribe them, or retry again. Transport metadata still overrides conflicting call arguments. If its
 `client_freshness.agent_notice` exists,
-briefly explain the status and source-owned next action once; do not repeat it on later calls. A current copy produces no user-facing
+briefly explain a known update and its source-owned next action once per `notice_id` in this session; repeated result facts do not need
+repeated narration. An unverified report needs user-facing explanation only when freshness affects the work. If another contract check
+is useful after explaining a notice, its `acknowledged_notice_id` may report that exact notice; this is not proof that a UI rendered it.
+A current copy produces no user-facing
 update narration. Continue with a compatible legacy copy, but label Beta feedback as legacy; stop Corvio-dependent behavior for a blocked
 copy. If the host does not expose a source or version, report `unknown` instead of asking the user to investigate unless freshness is
-material to the task. This is a first-use check, not a per-turn ritual. If the selected Remote MCP connection is present but concrete
+material to the task. After an authorized source update, reload through that Host or start a fresh session, read the new guidance and
+compare again. Claim an update loaded only from that new session's actual package/read evidence; a server comparison alone proves only
+what was reported. Marketplace, synced, direct ZIP and organization-managed copies retain their respective update owners. This is a
+first-use check, not a per-turn ritual. If the selected Remote MCP connection is present but concrete
 tools are deferred behind the Host's native discovery surface, such as `ToolSearch`, use that surface once to load only the Corvio
 capability needed for the current step. An empty initial concrete-tool list does not prove the Workspace is unavailable. This remains
 discovery inside the already selected transport; it never authorizes probing, installing, or switching transport.
@@ -94,8 +106,8 @@ Question merely for bookkeeping; this means no semantic review was opened, not t
 still interpret sources, decide owners, synthesize knowledge or adopt a new user preference/method, the ordinary semantic and learning
 loop remains in force. A batch size or file format alone never settles that choice.
 
-This is Corvio Skill release `1.7.101`.
-It implements `coding_agent_collaboration` contract version `2026-10-23.2`, compatibility family `coding-agent-collaboration-v1`, and
+This is Corvio Skill release `1.7.102`.
+It implements `coding_agent_collaboration` contract version `2026-10-25.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same
 product contract with different authority: MCP uses a user-approved, client-bound Agent identity and cannot read a local path; the CLI

@@ -1,30 +1,27 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.101",
-  "contract_revision": "2026-10-23.2",
+  "release_version": "1.7.102",
+  "contract_revision": "2026-10-25.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Native Coding Agent first-use freshness guidance, opt-in document tool visibility, schema-checked document examples and optional compact append/update receipts. Full 43-tool/OAuth compatibility, source/ACL/revision/learning/partial-effect boundaries and both result carriers remain. Local candidate; no production configuration, publication or deployed loading claim.",
+  "change_summary": "Normal MCP tool results carry live server identity and explicit client freshness in text and structured content. Stable notices distinguish unknown/current/compatible/unsupported, source-owned update and Host-reported acknowledgment. Content-free per-binding observations reuse identical states for 24 hours; new sessions verify loaded guidance. Candidate only; publication and customer UI acceptance remain separate.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md",
-        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
+        ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "First-use freshness choice precedes ordinary tasks. The complete stable operating spine remains; full contracts remain available. Few-shots use live read/patch schemas."
+      "note": "First-use consumes normal result facts or one exact-fact check. Current is quiet; unknown interrupts only material work; install and new-session loading remain distinct."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/api/public_v1/mcp_routes.py",
-        "backend/app/application/developer_platform/mcp_profiles.py",
-        "backend/app/application/developer_platform/mcp_examples.py"
+        "backend/app/api/public_v1/mcp_routes.py"
       ],
-      "note": "Named Claude initialization transport boundary; optional profile visibility intersects existing OAuth. Existing tool names, calls, default-full contract and mutation receipts stay compatible."
+      "note": "Normal text/structured facts, optional namespaced reports and notice acknowledgment; explicit unsupported facts fail closed before business execution. Current/compatible/unknown retain OAuth, scopes and business owners; default-full unchanged."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -36,7 +33,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"
       ],
-      "note": "Candidate version 1.7.101/contract 2026-10-23.2. Compatibility minimum/family unchanged; protected immutable release and remote version/hash readback remain pending."
+      "note": "Candidate version 1.7.102/contract 2026-10-25.1. Compatibility minimum/family unchanged; protected immutable release and remote version/hash readback remain pending."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -46,29 +43,29 @@
     "help_center": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md"
       ],
-      "note": "Existing Help and package builders consume the canonical document reference; no copied parallel guide."
+      "note": "Existing localized Help source actions remain compatible. Source-aware normal-use lifecycle is updated in the distribution runbook; no duplicate updater or claims of marketplace auto-update."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md"
       ],
-      "note": "Version metadata advances with canonical source. Existing first-use freshness hook and all safety/continuation guidance retain their semantics."
+      "note": "Static hook consumes stable notice identity and separates source update from session activation; no installer/network action."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
-        "docs/rfc/mcp-native-agent-efficiency-mainline-v1.md",
         "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
-        "docs/reports/mcp-native-efficiency-2026-10-23/read-receipt.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/reports/mcp-update-lifecycle-2026-10-25/read-receipt.md",
+        "docs/reports/mcp-update-lifecycle-2026-10-25/README.md",
         "docs/logbook/weekly/2026-10-19_to_2026-10-25.md",
-        "docs/reports/mcp-native-efficiency-2026-10-23/README.md",
-        "docs/logbook/entries/2026-10-23/1810-codex-mcp-native-agent-efficiency.md"
+        "docs/logbook/entries/2026-10-25/093000-mcp-update-lifecycle.md"
       ],
-      "note": "Historical experience preserved; source guards move semantic protection to the unchanged complete Skill while native traces grade behavior."
+      "note": "Historical source and first-use experience preserved, with native trace/result/installed-source boundaries and primary-source comparison."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
@@ -79,33 +76,16 @@
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/references/documents.md",
-        "frontend/src/lib/developerSkillPackage.ts",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Same canonical builder and candidate metadata for website/GitHub packages. Live publication and deployed acceptance are not part of this task."
+      "note": "Same builder, version and checksums for public Skill/Plugin mirrors. Candidate 1.7.102; actual protected publication/readback pending."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "backend/tests/integration/test_mcp_native_host_benchmark.py",
-        "backend/tests/integration/test_mcp_efficiency_receipts.py",
-        "backend/tests/integration/test_product_guidance_mcp_oauth_flow.py",
-        "backend/tests/unit/test_mcp_efficiency_contract.py",
-        "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
-        "scripts/mcp/native_host.py",
-        "scripts/mcp/native_variants.py",
-        "scripts/mcp/run-native-efficiency.py",
-        "scripts/mcp/validate-examples.mjs",
-        "scripts/mcp/audit-native-calls.mjs",
-        "scripts/mcp/compare_native_efficiency.py",
-        "scripts/mcp/finalize_native_evidence.py",
-        "scripts/mcp/audit_surface.py",
-        "scripts/mcp/run-native-probes.py",
-        "frontend/src/lib/developerSkillPackage.test.ts",
-        "backend/tests/fixtures/mcp-task-a-source-contract.json"
+        "docs/reports/mcp-update-lifecycle-2026-10-25/README.md"
       ],
-      "note": "Actual fixed-model/effort native Codex counters and isolated database effects; schema examples/OAuth/compact/default/partial-comment controls. Claude, real Blob and real internal Writer remain explicit coverage gaps."
+      "note": "Real SQL/native Host and cleanup evidence, separately scoped from production/UI/marketplace acceptance."
     }
   }
 }

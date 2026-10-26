@@ -386,13 +386,21 @@ corvio update check --json --no-input
 
 Skill, CLI, and MCP freshness are independent:
 
-On the first Corvio use in a fresh host session, call `get_collaboration_contract` once with `response_mode=freshness_only`. An official
+On first use, consume the normal result's `corvio_integration` facts, or call `get_collaboration_contract` once with
+`response_mode=freshness_only` and exact visible loaded facts. Dedicated checks retain top-level `client_freshness`; their
+`corvio_integration.client_freshness_path` references it without duplication. Server identity identifies live guidance, not the local
+package. An official
 Plugin MCP request already carries public release, contract-revision and compatibility-family metadata outside model-authored arguments,
 so pass only the visible `loaded_surface` and `installation_channel`. A standalone/manual Skill or MCP setup without that transport
 metadata may also pass already-visible `loaded_release_version`, `loaded_contract_revision`, and `loaded_compatibility_family`. Both
 transport- and host-reported facts are compatibility evidence, not proof that Remote MCP inspected local files, verified package bytes,
 trusted a Hook, or observed this Skill being read. Surface
-`client_freshness.agent_notice` once when present; a current copy stays quiet. Do not spend user turns discovering an unavailable version,
+`client_freshness.agent_notice` once per `notice_id` for a known update; a current copy stays quiet and unknown freshness needs explanation
+only when it affects the work. Optional `acknowledged_notice_id` on a later useful check reports a previous explanation; it does not
+certify UI display or installation. Hosts that can attach MCP metadata may report the same bounded version/source facts through
+`params._meta["corvio/client_freshness"]`. Public headers take precedence. Explicitly unsupported facts return
+`integration_update_required` before business execution; the contract checker remains available. Unknown facts do not block.
+Do not spend user turns discovering an unavailable version,
 and do not repeat the check or notice during the same session.
 
 | Surface / installed source | Version authority | User-side refresh |

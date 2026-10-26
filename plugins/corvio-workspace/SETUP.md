@@ -92,14 +92,19 @@ revision, and minimum supported revision separately. `corvio update check` prove
 update. `corvio collaboration status --provider workbuddy --json --no-input` can inspect WorkBuddy's discoverable local copy read-only,
 but cannot prove which copy an already-running conversation loaded.
 
-On the first Corvio use in a fresh session, call `get_collaboration_contract` with `response_mode=freshness_only`. The official Plugin's
+On first use, consume `corvio_integration` in ordinary MCP results or call `get_collaboration_contract` with
+`response_mode=freshness_only` and exact visible loaded facts. Its existing top-level `client_freshness` remains available. The official Plugin's
 MCP declaration carries its public release, contract revision, and compatibility family outside model-authored arguments; pass only the
 Host-visible surface and installation channel. A standalone/manual copy without that transport metadata may pass its already-visible
 package facts. If the first result is `not_reported` or `freshness_unverified` and the loaded Hook or Skill already shows exact release,
 revision, and family constants, retry exactly once with those visible facts. Transport metadata still wins; never guess values, ask the
 user to transcribe them, or repeat the fallback. Show the compact
-`client_freshness.agent_notice` once when present; say nothing about updating when the copy is current. Compatible legacy guidance may
-continue with Beta feedback labeled as legacy. A blocked copy must stop Corvio-dependent behavior. Do not ask the user to locate version
+`client_freshness.agent_notice` once per `notice_id` for a known update; say nothing about updating when the copy is current and explain
+unknown freshness only when it affects work. `acknowledged_notice_id` on a later useful check reports the prior explanation, not UI
+delivery. Compatible legacy guidance may
+continue with Beta feedback labeled as legacy. Explicitly unsupported metadata also fails compatibility admission before business
+execution; the neutral checker remains available. A blocked copy must stop Corvio-dependent behavior. After source update, reload or
+start a fresh session, read the new guidance and check again; downloaded bytes alone do not prove loaded instructions. Do not ask the user to locate version
 facts the host does not expose, and do not turn this into a per-turn check.
 
 Do not claim that all of Corvio is current from any one of those receipts.
