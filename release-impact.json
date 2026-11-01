@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.102",
+  "release_version": "1.7.103",
   "contract_revision": "2026-10-25.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Normal MCP tool results carry live server identity and explicit client freshness in text and structured content. Stable notices distinguish unknown/current/compatible/unsupported, source-owned update and Host-reported acknowledgment. Content-free per-binding observations reuse identical states for 24 hours; new sessions verify loaded guidance. Candidate only; publication and customer UI acceptance remain separate.",
+  "change_summary": "Normal MCP tool results carry live server identity and explicit client freshness in text and structured content. Stable notices distinguish unknown/current/compatible/unsupported, source-owned update and Host-reported acknowledgment. Content-free per-binding observations reuse identical states for 24 hours; new sessions verify loaded guidance. Candidate only; publication and customer UI acceptance remain separate. Living Memory is a disabled-server candidate: selected consented Work Deltas, task Context and operation receipts share one packet owner; no Plugin release is authorized.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
@@ -13,15 +13,17 @@
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
         ".agents/skills/corvio-operate-workspace/references/api.md"
       ],
-      "note": "First-use consumes normal result facts or one exact-fact check. Current is quiet; unknown interrupts only material work; install and new-session loading remain distinct."
+      "note": "First-use consumes normal result facts or one exact-fact check. Current is quiet; unknown interrupts only material work; install and new-session loading remain distinct. Enabled-catalog work context/capture with authority, temporal and source boundaries; native trigger is separately installed and consented."
     },
     "server_contract": {
       "disposition": "changed",
       "paths": [
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
-        "backend/app/api/public_v1/mcp_routes.py"
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/domains/living_memory/contracts.py",
+        "backend/app/application/living_memory/"
       ],
-      "note": "Normal text/structured facts, optional namespaced reports and notice acknowledgment; explicit unsupported facts fail closed before business execution. Current/compatible/unknown retain OAuth, scopes and business owners; default-full unchanged."
+      "note": "Normal text/structured facts, optional namespaced reports and notice acknowledgment; explicit unsupported facts fail closed before business execution. Current/compatible/unknown retain OAuth, scopes and business owners; default-full unchanged. Optional record_work/get_work_operation/get_context/expand_context preserve existing search/read; feature disabled by default."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -33,7 +35,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"
       ],
-      "note": "Candidate version 1.7.102/contract 2026-10-25.1. Compatibility minimum/family unchanged; protected immutable release and remote version/hash readback remain pending."
+      "note": "Candidate version 1.7.103/contract 2026-10-25.1. Compatibility minimum/family unchanged; protected immutable release and remote version/hash readback remain pending."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
@@ -41,51 +43,45 @@
       "note": "No CLI source/version change. Shared family and minimum revision remain; this candidate changes MCP/Skill instruction and response projections only."
     },
     "help_center": {
-      "disposition": "changed",
-      "paths": [
-        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md"
-      ],
-      "note": "Existing localized Help source actions remain compatible. Source-aware normal-use lifecycle is updated in the distribution runbook; no duplicate updater or claims of marketplace auto-update."
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Help and the distribution runbook are byte-identical to immutable agent-skills-v1.7.102. Existing source-owned update guidance stays compatible; this release does not claim a new Help change."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
-        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md"
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "Static hook consumes stable notice identity and separates source update from session activation; no installer/network action."
+      "note": "The static session-start hook changes. SETUP.md is byte-identical to agent-skills-v1.7.102 and retains its existing installed-source and fresh-session guidance."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
-        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
-        "docs/reports/mcp-update-lifecycle-2026-10-25/read-receipt.md",
-        "docs/reports/mcp-update-lifecycle-2026-10-25/README.md",
         "docs/logbook/weekly/2026-10-19_to_2026-10-25.md",
-        "docs/logbook/entries/2026-10-25/093000-mcp-update-lifecycle.md"
+        "docs/rfc/living-memory-layer-mainline-v1.md",
+        "docs/runbooks/LIVING_MEMORY_NATIVE_QUALIFICATION.md"
       ],
-      "note": "Historical source and first-use experience preserved, with native trace/result/installed-source boundaries and primary-source comparison."
+      "note": "Only the listed current mainline, weekly and Living Memory candidate paths differ from agent-skills-v1.7.102. Existing freshness read-receipt, README, logbook and dual-CLI mainline remain historical evidence; no new Host acceptance is inferred."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Protected release and fresh Marketplace discovery pending; no deployed or publicly installable claim."
+      "note": "Protected release and fresh Marketplace discovery pending; no deployed or publicly installable claim. N1-N4 explicitly forbids deployment and new Plugin publication."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md",
-        "frontend/src/lib/developerSkillPackage.ts"
+        ".agents/skills/corvio-operate-workspace/SKILL.md"
       ],
-      "note": "Same builder, version and checksums for public Skill/Plugin mirrors. Candidate 1.7.102; actual protected publication/readback pending."
+      "note": "The canonical Skill changes and remains owned by the common website/GitHub builder. frontend developerSkillPackage.ts is unchanged from agent-skills-v1.7.102; actual protected publication and version/hash readback remain pending."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "docs/reports/mcp-update-lifecycle-2026-10-25/README.md"
+        "docs/reports/apple-joint-release-projection-inventory-2026-10-27.json"
       ],
-      "note": "Real SQL/native Host and cleanup evidence, separately scoped from production/UI/marketplace acceptance."
+      "note": "Current complete original declaration/blob audit against immutable agent-skills-v1.7.102. The unchanged MCP update-lifecycle README retains its old source scope; signing, installed Host, protected publication and public parity remain separate."
     }
   }
 }

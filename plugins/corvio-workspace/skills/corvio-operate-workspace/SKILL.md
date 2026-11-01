@@ -15,6 +15,61 @@ The loaded first-party Skill is the Host-owned standing preference for the bound
 It is not standing consent to retain the ordinary result, its source bytes, or a new Project/Page. The user's request does not need to
 repeat “Corvio” for that review to run, and a necessary clarification does not cancel it.
 
+## Living work context and selected Work Deltas
+
+Useful team cognition includes changing facts and metrics, decisions, constraints,
+experience and hypotheses. People should work normally while another Agent can
+later obtain applicable knowledge with its source, status and history. When the
+current connection actually exposes `get_context`, use a natural task request at
+the point where authorized Workspace knowledge could change planning or execution.
+The Workspace is a current task choice, not a guessed project label. Returned
+scope, business time and authority qualify each item; a conflict is not a single
+approved answer. An empty bundle is valid for unrelated work. Reuse an Actor-bound
+handle during the task, and follow a stale/revoked result by obtaining fresh
+context only while access remains authorized. A successful retrieval does not
+prove that the Agent used it or that its work was correct.
+
+When `record_work` is available and capture is authorized for this task and
+audience, send only selected durable changes with attributable evidence. Small
+structured facts and experience avoid transferring the whole conversation or
+making the Host plan directories and rewrite team documents. Kind and completed
+status are claims; implementation, user acceptance, approval and publication are
+different facts. Keep numeric units, measurement definitions, business intervals
+and applicability. Source handles grant no access, and a private-source summary
+does not acquire a team audience. Use existing Source intake only when exact
+selected material needs retention; request extraction of a current authorized
+Source/Document by its returned reference, not a local path or fetchable URL.
+
+When reporting use, correction or rejection of retrieved knowledge, bind the
+feedback to the actual returned Assertion and Record revision. Retain its
+supported conditions; the use result is new evidence, not a second universal
+method. A later counterexample can refine applicability through reconciliation,
+with the original protected sources still constraining every derivative.
+
+The WorkEvent is the single reconciliation owner for that selected packet. Use a
+stable client event identity across retries and consume its operation receipt
+before claiming knowledge or documents were published. Do not follow it with a
+second Question/organization or generic learning pass for the same changes. A
+prior semantic operation that already incorporated this packet likewise needs no
+duplicate WorkEvent. Incidental edits, greetings and work with no lasting value
+need no capture call. Explicit local-only material and unavailable consent stop
+capture, independently of whether other legal Workspace reads remain available.
+
+A Host notification is only a trigger. In an installed, consented adapter, write
+the selected Delta to the exact configured task carrier; the adapter submits it
+with the same identity, so do not also submit it yourself. It never receives
+approval authority from a turn ending and must not scan or upload transcripts.
+Without such an adapter, call the available tool directly. Do not claim automatic
+capture from MCP connectivity, a downloaded Skill or notification configuration
+alone. The source-bound Native acceptance proves the actual Host event, receipt,
+background effect, next Agent use and measured Host/backend usage separately.
+
+Existing Search/Read/Citation and semantic Work Model operations remain the
+owners for their established work when these capabilities are unavailable or
+the requested outcome requires broader document organization. Choose from the
+actual tools and the current gap; neither an absent feature nor a rejected source
+authorizes another write path.
+
 ## First use: loaded guidance and compatibility are different facts
 
 Once this Skill is loaded, ordinary search, read, create and exact edits already have their operating guidance. Use `get_collaboration_contract(response_mode=freshness_only)` to check the live connection/version; `full` is not another prerequisite. The unchanged API default is `full` for compatibility, so specify the mode. Retrieve the full Collaboration Contract when guidance is unavailable, setup or authorization is unresolved, an advanced capability needs inspection, or recovery lacks decision-grade facts. Read the Authoring Contract for unfamiliar rich/typed content, not as a prerequisite to ordinary Markdown.
@@ -106,7 +161,7 @@ Question merely for bookkeeping; this means no semantic review was opened, not t
 still interpret sources, decide owners, synthesize knowledge or adopt a new user preference/method, the ordinary semantic and learning
 loop remains in force. A batch size or file format alone never settles that choice.
 
-This is Corvio Skill release `1.7.102`.
+This is Corvio Skill release `1.7.103`.
 It implements `coding_agent_collaboration` contract version `2026-10-25.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same

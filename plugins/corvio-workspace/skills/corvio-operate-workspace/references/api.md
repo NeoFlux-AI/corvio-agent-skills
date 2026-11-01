@@ -12,6 +12,29 @@
 - [Workspace and operation recipes](#workspace-and-operation-recipes)
 - [Delegated Agent availability](#delegated-agent-availability)
 - [Error decisions](#error-decisions)
+- [Living Memory capabilities](#living-memory-capabilities)
+
+## Living Memory capabilities
+
+These capabilities are visible only on an enabled server candidate. The live
+catalog is admission authority; installing this Skill does not enable them.
+
+- `record_work` accepts a `work_event_v1`: explicit Workspace/audience/task
+  identity, stable client event identity, selected changes and evidence. Optional
+  `extract_sources` names current authorized Document/Source evidence keys. Raw
+  files use existing restricted Asset intake. Acceptance means persisted and
+  queued; `get_work_operation` owns later effect/pending/error state.
+- `get_context` accepts the natural task, explicit Workspace, optional scope,
+  project/stage, kinds, business time and delivery budget. It returns current
+  authorized assertions, status, units, scope, versions, provenance and citations.
+- `expand_context` revalidates the returned handle and its current sources. A
+  handle is not a grant or frozen version; stale handles return the next read.
+
+The server contract definitions live in
+`backend/app/domains/living_memory/contracts.py`; integration design, synthetic
+scope and acceptance boundaries are recorded in
+`docs/rfc/living-memory-layer-mainline-v1.md`. No interface here authorizes an
+approval, permission grant, raw transcript capture or production deployment.
 
 ## Authority links
 
