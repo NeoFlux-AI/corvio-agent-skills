@@ -40,11 +40,22 @@ does not acquire a team audience. Use existing Source intake only when exact
 selected material needs retention; request extraction of a current authorized
 Source/Document by its returned reference, not a local path or fetchable URL.
 
-When reporting use, correction or rejection of retrieved knowledge, bind the
-feedback to the actual returned Assertion and Record revision. Retain its
-supported conditions; the use result is new evidence, not a second universal
-method. A later counterexample can refine applicability through reconciliation,
-with the original protected sources still constraining every derivative.
+Distinguish support for a retrieved claim from a later independently asserted
+result. For `used` feedback supporting the unchanged claim, bind its actual
+returned Assertion and current Record revision, retain the claim's kind, subject,
+property, value and applicability, and put the new execution observations in
+attributable evidence. Targeted support must explicitly use the claim's returned
+audience under the authorized WorkEvent consent ceiling. An omitted event
+audience defaults to private and cannot address a workspace claim. Reading the
+claim does not authorize sharing; support retained for different readers is a
+separate observation with source citations, without a shared update target.
+An independent result keeps its own property, value,
+measurement, business time and scope; cite the knowledge used as evidence without
+an update target merely because it was used. Correction, rejection or a supported
+conflict/refinement of the same current property may bind that exact Assertion
+and revision. Reconciliation preserves the original protected sources on every
+derivative. Reported use proves neither approval nor unobserved execution, and
+one observed result does not establish a universal method.
 
 The WorkEvent is the single reconciliation owner for that selected packet. Use a
 stable client event identity across retries and consume its operation receipt
@@ -161,7 +172,7 @@ Question merely for bookkeeping; this means no semantic review was opened, not t
 still interpret sources, decide owners, synthesize knowledge or adopt a new user preference/method, the ordinary semantic and learning
 loop remains in force. A batch size or file format alone never settles that choice.
 
-This is Corvio Skill release `1.7.103`.
+This is Corvio Skill release `1.7.104`.
 It implements `coding_agent_collaboration` contract version `2026-10-25.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same

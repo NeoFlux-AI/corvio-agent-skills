@@ -1,19 +1,18 @@
 {
   "schema_version": 2,
-  "release_version": "1.7.103",
+  "release_version": "1.7.104",
   "contract_revision": "2026-10-25.1",
   "compatibility_family": "coding-agent-collaboration-v1",
   "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Normal MCP tool results carry live server identity and explicit client freshness in text and structured content. Stable notices distinguish unknown/current/compatible/unsupported, source-owned update and Host-reported acknowledgment. Content-free per-binding observations reuse identical states for 24 hours; new sessions verify loaded guidance. Candidate only; publication and customer UI acceptance remain separate. Living Memory is a disabled-server candidate: selected consented Work Deltas, task Context and operation receipts share one packet owner; no Plugin release is authorized.",
+  "change_summary": "Normal MCP tool results carry live server identity and explicit client freshness in text and structured content. Stable notices distinguish unknown/current/compatible/unsupported, source-owned update and Host-reported acknowledgment. Content-free per-binding observations reuse identical states for 24 hours; new sessions verify loaded guidance. Candidate only; publication and customer UI acceptance remain separate. Living Memory is a disabled-server candidate: selected consented Work Deltas, task Context and operation receipts share one packet owner; no Plugin release is authorized. Terminal Memory operation publication now reflects validated completed effects; admission, review, approval and index readiness remain distinct. Current continuation explains existing measurement identity in the MCP parameter schema and exposes its existing Evidence reader in Native qualification profiles. Shared Worker control synchronizes same-invocation heartbeat/effect-lock acquisition with original NOWAIT and live lease authority; new overlap joins the full test catalog. No installed Skill/Plugin bytes or published versions change. NOOP rejection now records closed kind/semantic comparisons and returns them only after fresh durable-target or exact same-event candidate/source/audience proof; rolled-back plan-local targets grant no Assertion authority or extra retry. World Model V2 controlled candidate extends server MCP selected-work/context descriptions and existing Source/Doc/Tree semantics. Pure Remote MCP, optional Skill and explicit-consent isolated Hook are qualified separately. This task does not change installed Skill/Plugin bytes or versions, publish packages, install Hooks, expand permissions or activate production features; complete product and source qualification remain separately recorded. 2026-11-01 Host feedback follow-up supersedes the earlier no-Skill-source-change scope note: canonical candidate Skill and existing collaboration feedback guidance now distinguish unchanged-claim support from independently asserted later outcomes. Existing schema types/fields, package version, installed user copies, public publication and production feature activation remain unchanged. Final Nov1 guidance also binds targeted support to the returned audience under actual WorkEvent consent, preserving the private default and read-versus-share distinction; no schema/runtime/ACL changes. The Nov1 private placement follow-up exposes the already-authorized native Docs root creation operand as a current per-audience context fact. Dedicated and controlled DAG placements keep Agent selection; automatic policy, private visibility and existing live execution guards remain. No published version or installed Skill bytes change. The same-plan placement continuation forwards earlier validated NewDocument choices under the exact audience and explains their proposal-only status in the existing placement story. The Agent may reuse exact native creation operands for a shared maintenance purpose; Runtime performs no semantic title matching or automatic merge. No product catalog, schema or model/DAG default changes. 2026-11-02 unified release continuation supersedes the historical no-publication scope for this authorized delivery: immutable1.7.103 already points to a03ec648, while current Main contains the Nov1 canonical feedback update. Allocate1.7.104 and synchronize existing release/freshness metadata only. Preserve contract2026-10-25.1, family and minimum, all canonical behavioral text, Runtime/schema/permissions and feature authority. Actual installed Host loading and external directory review remain independently unverified. Additional Agent current-truth delivery qualification: Publish the current Agent/V2 collaboration guidance under a fresh immutable Skill/Plugin version. Guidance preserves independent observed outcomes versus support for an unchanged claim, exact target revision, audience/consent and source provenance. The native single Block current-truth correction shares existing atomic ledger/lifecycle and reference-move authority owners. Feature admission remains controlled by the existing disabled-by-default Living Memory flag; package publication does not activate production entry or establish Host/customer acceptance. The user authorized integration, deployment and distribution; protected publication and exact public version/hash readback remain required.",
   "projections": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
-        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json",
-        ".agents/skills/corvio-operate-workspace/references/api.md"
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "First-use consumes normal result facts or one exact-fact check. Current is quiet; unknown interrupts only material work; install and new-session loading remain distinct. Enabled-catalog work context/capture with authority, temporal and source boundaries; native trigger is separately installed and consented."
+      "note": "Compared with immutable1.7.103, preserve the already-landed Nov1 support-versus-independent-result/audience guidance. This successor changes only the exact release token and recomputes the first-party review digest; api.md and every other Skill body byte stay unchanged from da33. No installed user copy is overwritten. Agent closeout: Retain the current V2 feedback/support and target-audience guidance, update only its release identity here and refresh its internal review. Original evidence, independent outcomes, consent, ACL and explicit no-retention boundaries remain source-owned. Public release and running Host reload are separate facts."
     },
     "server_contract": {
       "disposition": "changed",
@@ -21,9 +20,11 @@
         "backend/app/application/developer_platform/coding_agent_collaboration.py",
         "backend/app/api/public_v1/mcp_routes.py",
         "backend/app/domains/living_memory/contracts.py",
-        "backend/app/application/living_memory/"
+        "backend/app/application/living_memory/",
+        "backend/app/application/usecases/docs_blocks_usecase.py",
+        "backend/app/api/v1/routes/blocks.py"
       ],
-      "note": "Normal text/structured facts, optional namespaced reports and notice acknowledgment; explicit unsupported facts fail closed before business execution. Current/compatible/unknown retain OAuth, scopes and business owners; default-full unchanged. Optional record_work/get_work_operation/get_context/expand_context preserve existing search/read; feature disabled by default."
+      "note": "Current candidate includes already-landed World/Living Memory server changes against immutable1.7.103. This successor only changes the existing CLAUDE_WORKSPACE_PLUGIN_VERSION freshness value to1.7.104; contract2026-10-25.1/family/minimum, conditional logic, schemas, ACL and feature authority are unchanged. Full candidate qualification remains normal all. Agent closeout: Current V2 MCP descriptions and native currentness facts are served under the same contract revision, family and minimum compatibility revision. Plugin release identity becomes 1.7.104. Source/destination authority and result readback stay independent; disabled-by-default feature configuration is not silently changed."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -35,53 +36,57 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json"
       ],
-      "note": "Candidate version 1.7.103/contract 2026-10-25.1. Compatibility minimum/family unchanged; protected immutable release and remote version/hash readback remain pending."
+      "note": "Four source envelope versions and two static MCP release headers advance together to1.7.104. Existing contract2026-10-25.1/family/minimum and all descriptive/activation text are preserved. Protected publication and public version/hash readback remain pending. Agent closeout: All four manifests and both MCP transport release headers use the same fresh immutable 1.7.104. Compatibility revision and family remain unchanged. Existing 1.7.103 is never rewritten."
     },
     "workspace_cli": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "No CLI source/version change. Shared family and minimum revision remain; this candidate changes MCP/Skill instruction and response projections only."
+      "note": "Normal da33 preflight observed unchanged CLI owner source and exact0.1.0-beta.45 beta/latest readback. This successor has no CLI source, reviewed channel or credential change. Agent closeout: This distribution packet does not change Developer CLI source or version. Existing CLI consumers use the same compatibility family/minimum revision and their independent npm publisher."
     },
     "help_center": {
       "disposition": "unchanged_compatible",
       "paths": [],
-      "note": "Help and the distribution runbook are byte-identical to immutable agent-skills-v1.7.102. Existing source-owned update guidance stays compatible; this release does not claim a new Help change."
+      "note": "Existing localized install/update-source guidance and public URL templates remain compatible with the new manifest-derived version. This identity successor does not change Help text, routes or host installation actions; current page/UI and release acceptance remain separate. Agent closeout: Existing install/update guidance remains compatible with unchanged package names, download URLs, contract family, minimum revision and source-owned Host reload. This packet adds no new setup or admission workflow requiring Help copy."
     },
     "package_setup": {
       "disposition": "changed",
       "paths": [
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh"
       ],
-      "note": "The static session-start hook changes. SETUP.md is byte-identical to agent-skills-v1.7.102 and retains its existing installed-source and fresh-session guidance."
+      "note": "SessionStart changes only the exact release token1.7.104. Normalized complete hook bytes equal da33; SETUP.md and all activation/action/consent/fresh-session behavior are unchanged. Agent closeout: The existing activation hook changes only its exact release identity to 1.7.104; full operating guidance remains in the Skill. Installation, session loading, OAuth scope and write authority remain distinct."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
-        "docs/logbook/weekly/2026-10-19_to_2026-10-25.md",
-        "docs/rfc/living-memory-layer-mainline-v1.md",
-        "docs/runbooks/LIVING_MEMORY_NATIVE_QUALIFICATION.md"
+        "docs/logbook/entries/2026-11-02/095300-codex-agent-skills-immutable-release-identity.md",
+        "docs/logbook/weekly/2026-11-02_to_2026-11-08.md",
+        "docs/rfc/agent-native-world-model-v2-mainline.md",
+        "docs/logbook/entries/2026-11-01/191000-codex-single-block-current-truth-delivery.md",
+        "docs/logbook/weekly/2026-10-26_to_2026-11-01.md"
       ],
-      "note": "Only the listed current mainline, weekly and Living Memory candidate paths differ from agent-skills-v1.7.102. Existing freshness read-receipt, README, logbook and dual-CLI mainline remain historical evidence; no new Host acceptance is inferred."
+      "note": "Append the actual immutable-version failure, synchronized identity successor and full-candidate validation boundary to the existing distribution RFC/logbook/weekly. Preserve all prior World/native/release facts; no new Harness behavior rule is introduced. Agent closeout: Existing V2 current-truth mainline gains all native single content entries and shared atomic owner evidence. Original failures and focused/runtime/full-source/deployed/Host/customer qualification states remain separate."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Protected release and fresh Marketplace discovery pending; no deployed or publicly installable claim. N1-N4 explicitly forbids deployment and new Plugin publication."
+      "note": "Normal protected publication is authorized for this coherent delivery, but public mirror/parity and marketplace review are pending actual receipts. Existing host account copies, directory acceptance and fresh-session loading are not updated or attested by source metadata. Agent closeout: The user authorized official protected Skill/Plugin publication and public mirror verification. Independent third-party directory review and actual installed/loaded Host acceptance require their own evidence and are not inferred from package publishing."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
-        ".agents/skills/corvio-operate-workspace/SKILL.md"
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json"
       ],
-      "note": "The canonical Skill changes and remains owned by the common website/GitHub builder. frontend developerSkillPackage.ts is unchanged from agent-skills-v1.7.102; actual protected publication and version/hash readback remain pending."
+      "note": "Common canonical website/GitHub builders consume the new Skill release token and synchronized envelope versions. Builder code is unchanged from da33; exact protected source tag and both archive/fullbody SHA readback remain required. Agent closeout: Existing deterministic website/GitHub builder emits both standalone Skill and portable Plugin from one source. Protected 1.7.104 publication must be followed by manifest/archive/version/SHA-256 and public source/tag/release readback."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
-        "docs/reports/apple-joint-release-projection-inventory-2026-10-27.json"
+        "docs/logbook/entries/2026-11-02/095300-codex-agent-skills-immutable-release-identity.md",
+        "docs/logbook/entries/2026-11-01/191000-codex-single-block-current-truth-delivery.md"
       ],
-      "note": "Current complete original declaration/blob audit against immutable agent-skills-v1.7.102. The unchanged MCP update-lifecycle README retains its old source scope; signing, installed Host, protected publication and public parity remain separate."
+      "note": "The detailed dated log preserves original da33 prevalidation failure and this metadata-only successor. Current fixedC source/env/closure proofs are separate from unrun all/frontend and unchanged publicec0; future success needs actual normal receipts. Agent closeout: Source-bound original failure, isolated correction, exact resource custody, coordination and pending final-source/deployment/distribution readbacks are retained. Subsequent results append actual receipts; publication is not independent product acceptance."
     }
   }
 }
