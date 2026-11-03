@@ -83,6 +83,7 @@ Optimize total successful-work cost, not just the number of tool calls:
 | One authorized outcome combines finalized original Assets with Host-generated Markdown and their joint durable effect remains semantic | `ask_corvio(mode=allow_actions, asset_ids=[...], inline_materials=[...])`, or CLI `ask --allow-actions --asset-ids ... --inline-material-file ...` | One Question preserves original provenance, carries the Host result as a different typed source, and owns the joint reconciliation without a second organization run |
 | Source material is Workspace-resident, cross-source or typed; the body is too large to carry safely; or Corvio must still decide the durable structure | `ask_corvio(mode=allow_actions)` | Corvio has the relevant source/carrier context and owns semantic writing plus durable readback |
 | Existing ordinary Page table needs exact cell edits or row appends | `read_document_table` then `mutate_document_table` | Stable row/column IDs avoid replaying the table through host context |
+| A read-only Spreadsheet question needs current bounded cells | `read_document` with `spreadsheet_overview` or `spreadsheet_range` | The Host can read exact typed values and formulas under Page view access without a Question or whole-grid export |
 
 Include host input/output tokens, Corvio model/runtime cost, request/result bytes, retry risk, latency, and canonical verification in the
 comparison. A smaller request that causes repeated discovery or a lossy rewrite is not cheaper. A complex Corvio write is worthwhile
@@ -122,10 +123,10 @@ effect handoff so the execution owner can verify both the positive and negative 
 ## Progressive read loop
 
 1. Resolve the canonical `workspace_uuid/page_uuid` handle from continuation context, `search`, or `list_documents`.
-2. First classify the read purpose. For one read-only current fact or no-op check, use `mode=auto` even when the prompt names an expected
+2. For narrative Pages, first classify the read purpose. For one read-only current fact or no-op check, use `mode=auto` even when the prompt names an expected
    value or uses a localized field label; do not open an `ask_corvio` Question or translate/synonymize the label into a guessed literal
    search. Small Pages return the complete body and large Pages return bounded navigation. Reserve explicit `overview` for outline discovery.
-3. For an active exact replacement that supplies the current literal, a request asking where a supplied phrase appears, or a request asking
+3. For a narrative Page, an active exact replacement that supplies the current literal, a request asking where a supplied phrase appears, or a request asking
    which sections discuss that exact term, start with `mode=search` and do not read `auto`/`overview` first. It returns writable `L#` anchors,
    while a complete `auto`/`full` body is content evidence but not a line locator for `patch_document`. `match_count` plus
    `matches_truncated=false` is exhaustive for that literal, so do not fan out into speculative synonym searches unless broader semantic
@@ -140,6 +141,15 @@ effect handoff so the execution owner can verify both the positive and negative 
 MCP `fetch` and CLI `docs get` remain compatibility full-body readers. `corvio docs get <id> --output <path>` writes the body to the
 selected local file and returns only metadata/hash on stdout, so the model does not receive a second copy. A successful full-body result is
 complete; never repeat an identical fetch.
+
+For a typed Spreadsheet, `read_document(mode=auto)` or `spreadsheet_overview` returns workbook metadata, stable sheet IDs, actual
+`used_range` and allocated `dimension_range`. Choose the required sheet and A1 rectangle with `mode=spreadsheet_range`, `sheet_ref`
+and `cell_range`; copy the returned `content_revision` into optional `expected_content_revision` when the next read must retain the
+same snapshot. Exact raw/value/formula/error and stable cell IDs are authoritative for that requested range. Metadata completeness,
+range completeness and whole-workbook coverage are separate; a blank allocated canvas is not data. Ranges support at most2000 cells;
+an oversized request returns exact partition candidates without silently truncating or automatically reading them. Current Page view
+access suffices for this read. Typed line patches remain rejected; unresolved semantic writing and cross-owner work retain their
+ordinary Corvio execution owner.
 
 ## Exact line patch
 
@@ -183,7 +193,8 @@ receipt says the Page changed but its collaboration comment was not verified, do
 the missing comment once if needed.
 
 For Page-table writes, copy `read_document_table.table_id` and `content_revision` to `table_id` and `expected_content_revision`, send a
-stable `operation_id` plus a concise required `change_summary`, and put cell changes under `cell_updates`, for example
+stable `operation_id`, and put cell changes under `cell_updates`. Version/actor history is automatic; include `change_summary`
+only when the user needs a collaborator discussion comment (requires `comments:write`), for example
 `[{"row_id":"row-id","column_id":"column-id","content_markdown":"new value"}]` (not `changes` or `value`). For appends, use
 `append_rows: [{"cells": {"column_id": "value"}}]`; the nested `cells` value is an object keyed by stable column ID, not the array shape
 returned by a table read. `readback_verified` is result evidence, not a request field. A successful `readback_verified=true` mutation receipt is
@@ -194,13 +205,14 @@ sections should be reorganized, how formatting should be interpreted, or how mul
 
 ## Public API equivalents
 
-- `GET /v1/documents/{id}/content?mode=auto|overview|line_range|section|search|full`
+- `GET /v1/documents/{id}/content?mode=auto|overview|line_range|section|search|full|spreadsheet_overview|spreadsheet_range`
 - `PATCH /v1/documents/{id}/content`
 - `POST /v1/documents?response_mode=compact`
 - `PUT /v1/documents/{id}?response_mode=compact`
 
 The live MCP schemas, CLI `--help`, and public OpenAPI are field-level authority. Project roots remain structure containers: direct body
-updates and line patches target non-Project Pages. Typed Spreadsheet, Presentation, Code, and HTML carriers remain semantic Agent work.
+updates and line patches target non-Project Pages. Exact read-only Spreadsheet ranges use the typed reader; unresolved typed writing,
+Presentation, Code, and HTML work retain their existing semantic Agent capabilities.
 
 ## Schema-checked document call examples
 
@@ -224,7 +236,7 @@ A supplied Project/Page node selects a creation destination through `parent_node
 {"name":"create_document","arguments":{"workspace_id":"11111111-1111-4111-8111-111111111111","parent_node_id":"44444444-4444-4444-8444-444444444444","title":"Delivery child","markdown":"Ready for review.","idempotency_key":"delivery-child-1"}}
 ```
 
-An exact typed Page handle goes into `handle`, with its complete workspace/page identity. Reads do not take `workspace_id`, `node_id`, `content_revision` or `snapshot_id`. If the user supplied a Page UUID and its Workspace separately, those known facts form the canonical `id`; a node UUID cannot be substituted for a Page UUID.
+An exact typed Page handle goes into `handle`, with its complete workspace/page identity. Reads do not take `workspace_id`, `node_id`, `content_revision` or `snapshot_id`; a Spreadsheet continuation can supply the distinct `expected_content_revision` guard. If the user supplied a Page UUID and its Workspace separately, those known facts form the canonical `id`; a node UUID cannot be substituted for a Page UUID.
 
 ```json
 {"name":"read_document","arguments":{"handle":"page:11111111-1111-4111-8111-111111111111/22222222-2222-4222-8222-222222222222","mode":"auto"}}

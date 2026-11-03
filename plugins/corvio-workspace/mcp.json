@@ -5,7 +5,7 @@
       "type": "streamable-http",
       "url": "https://api.corvio.ai/mcp",
       "headers": {
-        "X-Corvio-Plugin-Release": "1.7.104",
+        "X-Corvio-Plugin-Release": "1.7.105",
         "X-Corvio-Collaboration-Revision": "2026-10-25.1",
         "X-Corvio-Compatibility-Family": "coding-agent-collaboration-v1"
       }

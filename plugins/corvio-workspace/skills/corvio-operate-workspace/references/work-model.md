@@ -2,7 +2,9 @@
 
 Read this module before `organize_files` or any Corvio operation that may split, merge, move, reparent, or reconcile Workspace work. It
 contains the structural decision spine; it does not authorize a write. Return to `SKILL.md` for consent, safety, tool choice, polling, and
-final reporting.
+final reporting. Current selected cognition and its document projections use the
+available WorkEvent owner described there. This module governs broader structural
+and full-carrier reconciliation; original-file presence alone does not select it.
 
 ## Start from the enduring work, not the incoming event
 
@@ -15,15 +17,20 @@ ask Corvio to reconcile the relationship. Because Projects cannot nest, Corvio m
 non-Project branch, move descendants, and retire an empty duplicate shell. The Host should not simulate this by creating a fresh summary
 or by issuing a blind series of CLI moves.
 
-A current-turn report, plan, analysis, meeting note, or other Markdown body composed by the Host is likewise an input event, not proof of
-one new root Page. When the user authorized future use and any lasting owner, reader/update lifecycle, topology, Memory, or Skill decision
-or semantic incorporation remains, pass the complete body as typed `inline_materials` to one `ask_corvio(mode=allow_actions)` operation.
+A current-turn report, plan, analysis, meeting note, or other Markdown body
+composed by the Host is likewise an input event, not proof of one new root Page.
+When the user authorized future use of that full carrier and broader lasting
+owner, reader/update lifecycle, topology, Memory or Skill decisions remain, pass
+the complete body as typed `inline_materials` to one `ask_corvio(mode=allow_actions)`
+operation.
 A known destination owner does not turn the Host body into prompt prose: the handle is routing evidence and the typed body remains source
 evidence while Corvio reads the live Work Model and plans the durable effect. Do not first create the Page
 and ask another run to repair it. If the body is already one decision-ready standalone Page, use direct create and stop; a later cleanup
 run would add cost and race a settled effect. Original local files still require Asset retention because inline text does not preserve
-their exact bytes or provenance. For an Asset-only Work Model intake, use one `organize_files` mission. When one coherent authorized
-outcome combines finalized original Assets with Host-generated Markdown, pass both the exact `asset_ids` and typed `inline_materials` to
+their exact bytes or provenance. For current cognition, pass finalized Source
+references to available WorkEvent. For broader Asset-only owner/topology,
+full-carrier or Memory/Skill reconciliation, use one `organize_files` mission.
+When one coherent authorized broader/full-carrier outcome combines finalized original Assets with Host-generated Markdown, pass both the exact `asset_ids` and typed `inline_materials` to
 one `ask_corvio(mode=allow_actions)` operation so Corvio reads and reconciles both source kinds once. Do not precede or follow that mixed
 Question with `organize_files` for the same packet.
 
@@ -132,8 +139,12 @@ and return the owner decision needed next. Do not use placeholders to draft or p
 
 An unambiguous correction need not be restated in chat when the user selected a governing source and asked the Host to process it. If
 that source names the existing subject, approved authority, exact replacement, and facts that must remain unchanged, those source facts
-plus the user's current processing instruction authorize the bounded correction and provenance retention. Read the current owner and use
-one organization operation; do not ask whether to apply or save the same correction again. This boundary does not resolve an uncertain
+plus the user's current processing instruction authorize the bounded correction
+and provenance retention. Read the decision-relevant current owner; use available
+WorkEvent for current cognition and its document projections, or one established
+semantic operation for the broader reconciliation governed by this module. Do not
+ask whether to apply or save the same correction again. This boundary does not
+resolve an uncertain
 source authority, ambiguous subject, mutually exclusive current authorities, or an unstated propagation scope; ask only for that real
 choice. The Host's decision to be cautious is execution strategy, not user/source evidence and never a Team Memory candidate.
 
@@ -157,6 +168,9 @@ terminal Corvio result and current Tree prove the old Project retired, or direct
 
 ## Completion
 
+A current-cognition WorkEvent is complete only from its own `get_work_operation`
+terminal effects and current document readback. It does not imply full-source
+coverage, personal Memory review, a Project Skill or topology reconciliation.
 An organization operation is complete only after its terminal result and current readback identify the canonical Project, reader
 outputs, affected owners, and any topology change that actually occurred. The terminal operation's embedded owner/topology readback is
 that evidence when it returns those fields; do not fetch the resulting Page merely because the work has detailed facts or several owners.
@@ -167,19 +181,24 @@ the result reports unresolved overlap or missing authority, preserve that bounda
 receipt verifies owner and topology, do not reopen that decision or ask the user to recheck it merely because Corvio selected a title
 different from the user's descriptive phrase.
 
-The same completion check covers durable learning without turning the Host into the Memory/Skill router. For each coherent source,
+For broader Question/organization work, the same completion check covers durable
+learning without turning the Host into the Memory/Skill router. For each coherent source,
 document, or decision module, pass the natural preference, identity/context, active-goal, Workspace-operation, collaboration, or reusable-
 procedure evidence and its stable handles to Corvio while that evidence is fresh. Corvio decides canonical personal/Team Memory leaves
 and Project Skill ownership. Co-close independent effects in one operation when possible. Only a host-owned/direct edit with no existing
-semantic operation may use its terminal document receipt as bounded successor context; an `organize_files` mission or write-capable Question
-already owns its packet and exposes the learning receipt itself. Consume `execution.durable_learning`, and leave residual lanes only as the
-late/missed-candidate safety net.
+semantic operation may use its terminal document receipt as bounded successor
+context. A WorkEvent already owns its selected current cognition; consume its
+own effects and readback without a second Question/organization/learning pass.
+An `organize_files` mission or write-capable Question owns its broader packet and
+exposes `execution.durable_learning` itself. Consume that receipt and leave
+residual lanes only as the late/missed-candidate safety net.
 
-Closing the result or Skill lane does not automatically close the other learning lanes. “This output/event will not be reused” can make
+For those established learning owners, closing the result or Skill lane does not
+automatically close the other learning lanes. “This output/event will not be reused” can make
 the ordinary artifact transient and may show that no reusable procedure qualifies, but it is not a no-learning instruction: still review
 any substantive Personal Memory or Workspace-goal/Team Memory evidence. Conversely, an explicitly local/no-record boundary applies to
 the material and its derived facts and blocks that remote review. When the packet's sole semantic owner is already terminal, consume its
-learning receipt; if an older server omitted the field, report the freshness gap rather than opening a second semantic operation.
+owner-specific receipt; if an older server omitted its required terminal field, report the freshness gap rather than opening a second semantic operation.
 
 Do not collapse this checkpoint into the current-result or provenance decision. A local/chat deliverable can still yield Memory or Skill;
 a retained source can remain only provenance with no ordinary derivative Page; and a reusable method may require only its Skill plus the
