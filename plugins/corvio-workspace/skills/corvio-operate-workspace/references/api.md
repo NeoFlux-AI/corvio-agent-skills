@@ -525,7 +525,8 @@ those setup facts are unknown. This is a candidate configuration until the corre
 
 ## Workspace and operation recipes
 
-The recipes below execute decisions already justified by the Skill's causal loop. They do not choose a Workspace, infer disclosure
+The recipes below execute decisions already justified by the Skill's causal loop. Use exact live schemas for a decided action; read a
+recipe only while its mechanics remain unresolved. They do not choose a Workspace, infer disclosure
 authority, decide whether a new carrier is valuable, or prove completion on their own.
 
 ### Ground and continue
@@ -660,8 +661,14 @@ corvio files resume <operation_id> --yes --wait-until-terminal --timeout-seconds
 corvio files cancel <operation_id> --yes --json --no-input
 ```
 
-Upload and organization are separate effects even when one command composes them. Preserve the upload receipt, then wait on the operation
-by its exact ID until a terminal state or the current wait budget is exhausted. When the authenticated official CLI is already available,
+Upload and organization are separate effects even when one command composes them. Preserve the upload receipt and exact operation ID.
+When the user's current result depends on organization, wait until a terminal state or the current wait budget is exhausted. If the
+current result is verified and only independent later-use work remains, follow the Skill's current-result/server-owned-continuation
+boundary. `execution.continuation` reports the actual linked persisted jobs and AgentRun statuses: a persisted, uncancelled queued/running
+job owned by `corvio_server` with `host_connection_required=false` and `polling_drives_execution=false` is independent of the Host wait.
+This is pending handoff evidence, not organization, learning or document completion. Unknown custody, failed/cancelled jobs, blockers and
+missing user authority remain unresolved; never infer guaranteed future progress. Keep the same operation and read it when its outcome
+becomes necessary. When the authenticated official CLI is already available and terminal execution is needed,
 `--wait-until-terminal` keeps deterministic polling inside that one foreground process; it does not create, resume, or semantically alter
 the operation. `--timeout-seconds` is a bounded local deadline from 1 to 7200 seconds and defaults to 1200. On deadline the CLI returns the
 latest ordinary non-terminal operation plus `transport_wait.status=deadline_reached`; continue the same operation later and never call
