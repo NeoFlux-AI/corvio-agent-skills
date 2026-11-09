@@ -221,7 +221,7 @@ Question merely for bookkeeping; this means no semantic review was opened, not t
 still interpret sources, decide owners, synthesize knowledge or adopt a new user preference/method, the ordinary semantic and learning
 loop remains in force. A batch size or file format alone never settles that choice.
 
-This is Corvio Skill release `1.7.106`.
+This is Corvio Skill release `1.7.107`.
 It implements `coding_agent_collaboration` contract version `2026-10-25.1`, compatibility family `coding-agent-collaboration-v1`, and
 supports server revisions from `2026-09-09.4`. Exact revision equality means package freshness;
 compatibility is determined by the family and minimum supported revision. Remote MCP and the official `corvio` CLI expose the same

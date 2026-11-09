@@ -61,10 +61,43 @@ answer and poll its continuation operation, which resumes the original Corvio Qu
 Verify the package before installing. The canonical manifest is
 <https://corvio.ai/developers/skills/corvio-operate-workspace/manifest.json> and the public source is
 <https://github.com/NeoFlux-AI/corvio-agent-skills>. The Plugin contains two reviewed Skills, standard Agent Plugin `plugin.json` and
-`mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, this setup guide, and a
-`SessionStart` shell hook. It does not read files or make network requests. The hook only prints a compact static activation spine into
-Codex or Claude, and the canonical Skill remains the detailed semantic owner. Stop
+`mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, and this setup guide. The default `public` export has no Hook files or
+declarations. Check `BUILD_PROFILE.json` and the complete `MANIFEST.sha256`; a separately selected `enhanced` export retains the
+`SessionStart` activation Hook and needs explicit user authorization and host trust before installation. The Hook only prints static guidance and does not read files or make network requests; the canonical Skill remains the detailed semantic owner. Stop
 if the source or SHA-256 does not match.
+
+### Reviewed local Plugin installation in Codex or CodeBuddy
+
+Use the absolute root of a reviewed `public` export, containing `BUILD_PROFILE.json`, `MANIFEST.sha256`, the marketplaces and `plugins/`.
+The following native commands were verified with Codex CLI 0.160.1 and CodeBuddy CLI 2.179.2. The no-Hook profile was tested as a local
+candidate derived from the 1.7.106 template; this does not establish a newly published public release. Check the installed content hash
+and channel as well as the displayed version.
+
+For Codex:
+
+```sh
+codex plugin marketplace add /absolute/path/corvio-agent-skills --json
+codex plugin add corvio-workspace@corvio-agent-skills --json
+codex plugin list --json
+```
+
+For CodeBuddy, run from the project where the Plugin should be enabled:
+
+```sh
+codebuddy plugin validate /absolute/path/corvio-agent-skills/plugins/corvio-workspace
+codebuddy plugin marketplace add /absolute/path/corvio-agent-skills
+codebuddy plugin install corvio-workspace@corvio-agent-skills --scope project
+codebuddy plugin list
+```
+
+Start a fresh Host session after installation. An enabled Plugin entry proves installation; native Skill discovery, actual Skill use,
+OAuth and Workspace access need their own checks. Codex's first unauthenticated Plugin connection reports
+`The corvio MCP server is not logged in. Run codex mcp login corvio.` Follow that native login flow and review the Corvio consent page.
+CodeBuddy's `mcp list` only lists separately configured MCP servers and did not list this installed Plugin, so its output alone cannot
+establish Plugin connection or authentication. Inspect the Plugin's connection in a fresh CodeBuddy session.
+The tested clean CodeBuddy session discovered `corvio` as connecting, then returned
+`Authentication required. Please use /login command to sign in to your account` before a model turn. Complete the Host's own account
+login when that message appears; this is separate from the subsequent Corvio OAuth consent and Workspace Grant.
 
 ## 2. Identify the installed source before changing anything
 

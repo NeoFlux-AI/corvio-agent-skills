@@ -24,8 +24,10 @@ reviews, and follow-ups—not for tasks the user wants to keep local or temporar
   **Settings → API keys**.
 
 The standalone Skill archive contains reviewed text/configuration files and no credential. The portable Agent Plugin contains the two Corvio
-Skills, standard root `plugin.json` + `mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, this setup guide, and a `SessionStart` shell hook. The hook only prints static Corvio guidance into Claude; it does
-not read files or make network requests. Remote MCP network calls go to `https://api.corvio.ai/mcp` only after OAuth approval. Using
+Skills, standard root `plugin.json` + `mcp.json`, Claude/Codex compatibility manifests, `.mcp.json`, and this setup guide. The default
+`public` export contains no Hook declaration, Hook configuration, or Hook script. A separately selected `enhanced` export retains the
+reviewed `SessionStart` activation Hook and requires explicit host trust and user authorization before installation. It prints static
+guidance without reading files or making network requests. Authenticated Workspace operations use `https://api.corvio.ai/mcp` after OAuth approval. Using
 `npx skills add` also runs the separately distributed `skills` installer, so prefer your host's reviewed installation UI when available.
 
 ## Guidance for the Agent helping with installation
@@ -76,8 +78,9 @@ If the Cowork sandbox blocks `corvio.ai`, download the same canonical archive in
 
 <https://corvio.ai/developers/plugins/claude/corvio-workspace.zip>
 
-The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection. Its disclosed Claude `SessionStart`
-hook adds one static reminder after startup, resume, clear, and compaction. Corvio marks the two user-level semantic entries—read-only `search`
+The bundled Connector uses Corvio OAuth. An API key is not required for this interactive connection. In the separately authorized `enhanced`
+profile, the disclosed Claude `SessionStart` hook adds one static reminder after startup, resume, clear, and compaction; the default `public`
+profile contains no Hook. Corvio marks the two user-level semantic entries—read-only `search`
 and delegated-work `ask_corvio`—as tool-level eager in Claude. The bundled server deliberately does not set server-wide `alwaysLoad`,
 so deterministic continuation and specialized mutation/lifecycle schemas remain deferred instead of crowding the host's initial context.
 

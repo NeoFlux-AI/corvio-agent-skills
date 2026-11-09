@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "profile": "public",
+  "hooks_included": false,
+  "hook_authorization_required": false
+}
