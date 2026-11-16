@@ -126,10 +126,9 @@ update. `corvio collaboration status --provider workbuddy --json --no-input` can
 but cannot prove which copy an already-running conversation loaded.
 
 On first use, consume `corvio_integration` in ordinary MCP results or call `get_collaboration_contract` with
-`response_mode=freshness_only` and exact visible loaded facts. Its existing top-level `client_freshness` remains available. The official Plugin's
-MCP declaration carries its public release, contract revision, and compatibility family outside model-authored arguments; pass only the
-Host-visible surface and installation channel. A standalone/manual copy without that transport metadata may pass its already-visible
-package facts. If the first result is `not_reported` or `freshness_unverified` and the loaded Hook or Skill already shows exact release,
+`response_mode=freshness_only` and exact visible loaded facts. Its existing top-level `client_freshness` remains available. When a connection supplies its public release, contract revision, and compatibility family as transport metadata outside
+model-authored arguments, pass only the Host-visible surface and installation channel. A public headerless Plugin or standalone/manual
+copy without that transport metadata may also pass its exact already-visible package facts. If the first result is `not_reported` or `freshness_unverified` and the loaded Hook or Skill already shows exact release,
 revision, and family constants, retry exactly once with those visible facts. Transport metadata still wins; never guess values, ask the
 user to transcribe them, or repeat the fallback. Show the compact
 `client_freshness.agent_notice` once per `notice_id` for a known update; say nothing about updating when the copy is current and explain

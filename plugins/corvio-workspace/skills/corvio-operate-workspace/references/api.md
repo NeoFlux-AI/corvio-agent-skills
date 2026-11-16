@@ -23,19 +23,43 @@ catalog is admission authority; installing this Skill does not enable them.
   identity, stable client event identity, selected changes and evidence. Optional
   `extract_sources` names current authorized Document/Source evidence keys. Raw
   files use existing restricted Asset intake. Acceptance means persisted and
-  queued; `get_work_operation` owns later effect/pending/error state.
+  queued; `get_work_operation` owns later effect/pending/error state. Its
+  `execution.continuation` reports current exact Event-to-Job custody, not future
+  progress or completed knowledge. WorkEvent cancellation intent is unknown
+  (`cancel_requested=null`) and cancellation requests are `not_supported`.
+  Missing or retired Job custody is unconfirmed; failed/cancelled status is not
+  a promise of maintenance. Required current effects need terminal readback;
+  verified current work can return with independently owned maintenance pending.
 - `get_context` accepts the natural task, explicit Workspace, optional scope,
   project/stage, kinds, business time and delivery budget. It returns current
   authorized assertions, status, units, scope, versions, provenance and citations.
 - `expand_context` revalidates the returned handle and its current sources. A
   handle is not a grant or frozen version; stale handles return the next read.
+  Copy an optional `cursor` from `next_read` to read the remaining already-selected
+  whole item groups. The `memory_context_items_page_v1` result reports its requested
+  and delivered group range, `page_complete`, remaining/stale counts and next read.
+  Its completeness covers that requested page window, not earlier pages, all
+  Context or original Source coverage. Conflicts remain whole; an oversized group
+  returns typed no-progress rather than a partial claim. Every page rechecks current
+  authority and versions; only actually supplied items receive Evidence read addresses.
+  A changed selection requires fresh Context. Without a cursor, the existing Bundle
+  and `usage_diagnostics` contracts retain their original meaning. Item paging does
+  not request the separately qualified pending changes, handoffs or original bodies.
 
 Choose the semantic owner from the unfinished work described in the Skill's
 Living work spine. Available WorkEvent owns selected current facts, metrics,
-decisions, constraints, experience and hypotheses and their document projections;
-retain exact selected originals first, then pass their returned Source references
-for extraction. Broader Project topology, full document/artifact carriers and
-Memory/Skill ownership use the established organization/Question paths below.
+decisions, constraints, experience, hypotheses and supported completed-work results,
+with their document projections. A complete artifact can be their evidence, not a
+request to transform a whole carrier. Retain selected originals and authorized
+genuine Host-native work-result files through the same Source intake, then pass
+their returned references for extraction with their distinct attribution. Choosing
+a current Document/Heading is part of reconciliation even without a matching leaf.
+An explicit `target_document_id` is an existing ordinary Document body. Project
+identity supplies work scope; its backing Page is a container, so leave the body
+target unset while no ordinary Document has been selected. Supported task and
+applicability facts inform placement within the currently authorized options.
+Requested whole-carrier transformation, broader Project topology and Memory/Skill
+admission use the established organization/Question paths below.
 Asset-only versus mixed sources does not select that purpose. If WorkEvent is
 unavailable, use the established capabilities actually advertised. One chosen
 operation owns the packet: consume WorkEvent's own `get_work_operation` effects
@@ -90,11 +114,12 @@ substantive work. That review is a different axis from artifact retention: it ne
 uploading the sources or ordinary Host result.
 
 Resolve four independent axes before choosing tools: the carrier the user expects now, whether exact source bytes need durable
-provenance, which Memory/Skill candidates the completed module reveals, and whether the owning operation returned a terminal learning
-receipt. Audience/style phrases such as sendable, shareable, external-facing, formatted, or reusable do not choose Corvio as the result
+provenance, the authorized current-cognition or bounded Memory/Skill purpose, and the chosen owner's terminal receipt. Choose from the
+unfinished work and available authorized action, even before a packet receipt or matching leaf exists. Audience/style phrases such as sendable, shareable, external-facing, formatted, or reusable do not choose Corvio as the result
 carrier. Learning review never authorizes upload or ordinary Page creation; conversely, a Host-local result may still produce a durable
 Memory/Skill effect. When an owner mutation depends on selected local evidence, retain the exact bytes instead of pasting its facts into a
-Question. Treat a missing `execution.durable_learning` field as a package/capability freshness gap and `unresolved` as open work, never as
+Question. Current cognition consumes WorkEvent operation/document effects; an established Question/organization learning review consumes
+`execution.durable_learning`. Treat a missing required receipt as a package/capability freshness gap and `unresolved` as open work, never as
 `no_write`. A statement that the event or result will not be reused may rule out retaining that artifact or creating a Skill; it does not
 cancel Personal or Team Memory review unless the user explicitly says no learning/no record or requires all source and derived facts to
 remain local.
@@ -149,8 +174,9 @@ the [Privacy Policy](https://corvio.ai/privacy) and public
 | Read bounded facts from one retained Asset without creating a Question | MCP `get_file(read_mode=content)`, or CLI `files get <id> --content` | Returns a hash-bound AI-safe projection with explicit completeness/truncation |
 | Ask Corvio about an explicitly selected local file | MCP prepare → host PUT → finalize → `ask_corvio(asset_ids=[...])`, or CLI `ask --file` | The host reads bytes; Corvio binds the finalized Asset to that exact question |
 | Retain an explicitly selected local file without asking about it | MCP `prepare_file_upload` → host PUT → `finalize_file_upload`, or CLI `files upload` | Retention creates an Asset in intake; it does not silently create a root document or a question input |
-| Reconcile a full Markdown carrier the Host just composed when its durable owner or broader structure is not decided | MCP `ask_corvio(mode=allow_actions, inline_materials=[...])`, or CLI `ask --allow-actions --inline-material-file <path>` | The body stays typed source evidence while Corvio chooses the fitting Page/Project/Memory/Skill effect; no synthetic upload or root-Page prewrite |
-| Reconcile finalized original Assets and a full Host-generated Markdown carrier as one broader future-use outcome | MCP `ask_corvio(mode=allow_actions, asset_ids=[...], inline_materials=[...])`, or CLI `ask --allow-actions --asset-ids ... --inline-material-file <path>` | One Question keeps the original bytes and Host result as distinct typed sources while owning their joint semantic effect |
+| Preserve useful current work results with their evidence and maintainable document projections | Available MCP `record_work` with exact authorized Source/Document references when retention is needed | A complete native artifact can be current-work evidence; document placement does not require a broader organization operation |
+| A requested whole-carrier transformation, broader structural work or Memory/Skill admission uses Markdown the Host just composed | MCP `ask_corvio(mode=allow_actions, inline_materials=[...])`, or CLI `ask --allow-actions --inline-material-file <path>` | The body stays typed source evidence while Corvio decides that broader effect; no synthetic upload or root-Page prewrite |
+| That broader requested effect combines finalized original Assets and Host-generated Markdown | MCP `ask_corvio(mode=allow_actions, asset_ids=[...], inline_materials=[...])`, or CLI `ask --allow-actions --asset-ids ... --inline-material-file <path>` | One Question keeps the original bytes and Host result as distinct typed sources while owning their joint semantic effect |
 | Continue one bounded read-only synthesis after a trusted receipt already proves this Host used the authenticated CLI in the exact Workspace | One foreground CLI `ask`; answer-only is the default, so omit `--allow-actions` and do not pass `--mode` | Preserves transport and returns the terminal Question without model-visible polling; never install, probe, or switch solely for this optimization |
 
 For `ask_corvio` or foreground CLI `ask`, keep the user's question unchanged and append the smallest complete decision-relevant context
@@ -189,7 +215,7 @@ natural evidence and stable source/result handles, never choose the Memory leaf 
 | Upload/download by local path, sync Markdown, or run a project Agent | CLI | Foreground local/project authority |
 | Use a host without a bundled plugin | Install Skill + MCP separately; add CLI only when needed | Keeps discovery, remote actions, and local authority distinct |
 
-For broader source/owner/topology, full-carrier or Memory/Skill reconciliation,
+For broader source/owner/topology, requested whole-carrier transformation or Memory/Skill reconciliation,
 a newly finalized Asset-only set uses one `organize_files` operation. Current
 cognition uses available WorkEvent with the exact returned Source references;
 file presence or future retrieval alone does not change that owner. The broader
@@ -204,9 +230,11 @@ but an older package/server omitted `execution.durable_learning`, consume the re
 Question or organization mission whose only purpose is to manufacture a newer learning receipt; that would create a new semantic effect
 rather than completing the original one.
 
-A full Host-generated Markdown carrier has a separate one-operation path because
-it has no original local bytes to retain. When future use of that carrier is
-authorized and a broader durable owner, structure, Memory or Skill decision remains,
+For chat-native Markdown participating in a requested whole-carrier transformation,
+broader structural work or Memory/Skill admission, the existing inline path preserves
+the body without pretending it is an original local input. A genuine Host-native
+work-result file selected as current-work evidence keeps the Source/WorkEvent path
+above. When that broader effect is authorized and still requires semantic judgment,
 pass the complete generated body as `inline_materials` on one `allow_actions` Question. This remains true when owner discovery has already found the destination:
 the owner handle is routing evidence, while the typed body is source evidence.
 With CLI, write that already-generated body to the Host's task-local file and pass `--inline-material-file`; this reads the text into the
@@ -218,7 +246,7 @@ second cleanup Question afterward. Rejection, blocking, or pre-acceptance failur
 report that unresolved effect without a direct Page or synthetic Asset fallback. If one standalone Page is already the settled owner,
 direct `docs create` is the cheaper complete path.
 
-When a coherent broader/full-carrier outcome combines finalized original Assets
+When a coherent broader structural or whole-carrier transformation outcome combines finalized original Assets
 with Host-generated Markdown, keep both source kinds distinct but choose one
 semantic owner: send the exact `asset_ids` and complete `inline_materials` together
 on one `allow_actions` Question. The Assets preserve original bytes and provenance; the inline resources preserve the Host's current-turn result without pretending it is an
@@ -226,7 +254,7 @@ original file. Do not run `organize_files` before or after that Question for the
 Assets need broader reconciliation and the full Host body is not part of the
 outcome. For current cognition, original/inline representation does not override
 the available WorkEvent owner; preserve attributable selected evidence and the
-exact original receipts without turning it into a second full-carrier effect.
+exact original receipts without turning it into a second whole-carrier transformation effect.
 
 If the current turn already carries a complete current owner receipt plus the exact Memory/Skill correction or non-merge boundary, include those facts
 with the selected inline body in one `allow_actions` Question. “Complete” means both the stable binding and every current content, revision,
@@ -249,7 +277,7 @@ A request to transform selected related material so later action, follow-up, dec
 it authorizes exact retention plus one semantic reconciliation, rather than a
 chat-only rewrite. After finalizing the exact bytes, use available WorkEvent for
 current cognition, or the established organization/Question owner for broader
-structure, full-carrier or Memory/Skill work. Explicit archive/original-only
+structure, requested whole-carrier transformation or Memory/Skill work. Explicit archive/original-only
 storage or material without an evidence-backed semantic owner needs no semantic
 pass. Pass the natural continuity goal and proven handles; Corvio chooses the
 fitting cognition/documents or broader topology without a Host-invented plan.

@@ -1,6 +1,304 @@
 {
   "schema_version": 2,
   "current_candidate": {
+    "status": "phase1_final_source_pending_current_qualification_and_normal_release",
+    "prior_assembly_status": "current_complete_source_pending_fresh_qualification",
+    "release_version": "1.7.108",
+    "source_parents": [
+      "919b149de29e7588971c7dff30ba2c99f9b2e6ac"
+    ],
+    "prior_source_parents": [
+      "9da50cf45ffa9709d51e111b114afced01fffe22",
+      "525f66f343a1e8a54d9fe9d1745eeeaa6e2de0e7"
+    ],
+    "public_profile": "public",
+    "enhanced_hook_requires_separate_authorization": true,
+    "direct_ready_dependencies": [
+      "agent-current-work-source-time-result-closure-20261107",
+      "world-model-plugin-first-v1-fbc0-20261107"
+    ],
+    "production_acceptance": "NOT_RUN",
+    "independent_human_acceptance": false,
+    "selected_UI_increment": {
+      "source": "73e3c439c88d2059e7caef3ceaa3b89d0630ecb9",
+      "base": "846e30e8366b01f1e1e624f0d2c00efb2f2a436c",
+      "paths": [
+        "docs/logbook/entries/2026-11-14/130000-root-shared-search-input-method-ownership.md",
+        "docs/logbook/weekly/2026-11-09_to_2026-11-15.md",
+        "docs/rfc/corvio-brand-ui-system-v2.md",
+        "frontend/e2e/workspace-search-ime.spec.ts",
+        "frontend/src/components/ui/Dialog.tsx",
+        "frontend/src/components/workspace/WorkspaceSearchDialogSurface.ime.test.tsx",
+        "frontend/src/components/workspace/WorkspaceSearchDialogSurface.tsx"
+      ]
+    },
+    "recorded_lifecycle_increment": {
+      "source": "721f370fb7aec118cf177619cc3247ede3ef01e9",
+      "parent": "9da50cf45ffa9709d51e111b114afced01fffe22",
+      "paths": [
+        "backend/app/application/usecases/chat_streaming/recorded_response_attempt.py",
+        "backend/tests/unit/test_recorded_attempt_stream_closure_v1.py",
+        "backend/tests/unit/test_recorded_response_attempt.py",
+        "docs/logbook/entries/2026-11-14/132300-codex-recorded-attempt-exact-upstream-closure.md",
+        "docs/logbook/weekly/2026-11-09_to_2026-11-15.md",
+        "docs/rfc/recorded-model-attempt-lifecycle-mainline-v1.md"
+      ]
+    },
+    "public_publication": "NOT_RUN"
+  },
+  "release_version": "1.7.108",
+  "contract_revision": "2026-10-25.1",
+  "compatibility_family": "coding-agent-collaboration-v1",
+  "minimum_supported_revision": "2026-09-09.4",
+  "change_summary": "New immutable1.7.108 for the complete current official Skill/Plugin source relative to published107. Existing guidance is conserved except release identity; public Hooks remain excluded, enhanced trust stays separate. Original compatibility revision/family, current Source/ACL/result/reader boundaries and all failures remain. Exact source, fresh qualification, normal CI, target staging/build/served assets, protected distribution and installed acceptance stay distinct. Prior complete source narrative is retained under prior_change_summary_1_7_107. Phase1 adds exact hash-verified UTF8 original windows and corrects the old distribution runbook default to the official Plugin; canonical Skill, bundled SETUP, production Prompt/DAG and scope/consent remain unchanged by this correction. Current Main Help and all prior owner source are conserved. Original CEECC full validation, final source qualification/release and actual user original-file consumption retain separate identities.",
+  "projections": {
+    "canonical_skill": {
+      "disposition": "changed",
+      "paths": [
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
+      ],
+      "note": "Current 1.7.108 projection canonical_skill: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Existing canonical Skill guidance is fully conserved except release identity; refreshed first-party internal review binds the actual digest. Current input references retain their original source/authority/completion boundaries. Installed loading and OAuth remain independent."
+    },
+    "external_marketplaces": {
+      "disposition": "external_pending",
+      "paths": [],
+      "note": "Current 1.7.108 projection external_marketplaces: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Official protected source/assets follow the existing authorized publisher. External directory submissions, listing/review and physical Host/customer effects remain unproved; no active contact is manufactured."
+    },
+    "harness_and_mainline": {
+      "disposition": "changed",
+      "paths": [
+        "docs/rfc/deploy-release-mainline-v1.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/rfc/developer-source-publication-mainline-v1.md",
+        "docs/logbook/entries/2026-11-12/120000-codex-workspace-cli-explicit-device-scopes.md",
+        "docs/logbook/weekly/2026-11-09_to_2026-11-15.md",
+        "docs/rfc/mcp-usability-and-observability-mainline-v1.md",
+        "docs/logbook/entries/2026-11-12/235000-codex-work-operation-bounded-wait.md",
+        "backend/tests/unit/test_public_plugin_receiver_contract_v1.py",
+        "docs/logbook/entries/2026-11-14/143742-codex-local-device-recovery-critical-gate-and-skill-identity.md",
+        "docs/rfc/living-memory-declared-fixture-contract-v1.md",
+        "docs/rfc/prompt-regression-harness-evidence-lifecycle-v1.md",
+        "docs/rfc/normal-work-artifact-capture-owner-v1.md",
+        "frontend/src/lib/developerSkillPackage.test.ts",
+        "scripts/lib/validation_profile.py",
+        "scripts/tests/test_ci_harness_execution.py",
+        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md",
+        "docs/rfc/coding-agent-second-brain-loop-mainline-v1.md",
+        "docs/rfc/developer-platform-mcp-connectors-and-guidance-mainline-v1.md",
+        "docs/logbook/entries/2026-11-15/134000-codex-mcp-exact-original-text-continuation.md",
+        "docs/logbook/entries/2026-11-15/160000-codex-node-model-pool-generation-isolation.md",
+        "docs/logbook/entries/2026-11-15/190800-codex-phase1-plugin-first-final-source.md",
+        "backend/tests/living_memory/current_node_environment.py",
+        "backend/tests/living_memory/test_midpoint_natural_a2.py",
+        "backend/tests/unit/test_source126_node_model_pool.py",
+        "backend/tests/unit/test_mcp_native_host_isolation.py"
+      ],
+      "note": "Current 1.7.108 projection harness_and_mainline: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Only listed current differences are new against published107; full previous Main/RFC/logbook decisions remain in the historical projection record. Local recovery, critical import identity and version maintenance keep source qualification separate from wholeCI/Native/business. The approved headerless Plugin regression and exact per-invocation clock diagnostic are maintained; original preflight/CI failures remain preserved. No production guidance change."
+    },
+    "help_center": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Current 1.7.108 projection help_center: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Public Help source is compatible with the same canonical public no-Hook builder and installation boundaries. New version is supplied by the existing package projection; no unchanged historical Help text is claimed as a new source edit."
+    },
+    "package_manifests": {
+      "disposition": "changed",
+      "paths": [
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/plugin.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.claude-plugin/plugin.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.codex-plugin/plugin.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.mcp.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
+        "packaging/corvio-agent-skills/.claude-plugin/marketplace.json"
+      ],
+      "note": "Current 1.7.108 projection package_manifests: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Four Plugin manifests share the new immutable identity. Current MCP delivery declarations retain their inherited reviewed source and do not grant scope or prove loading. Public export excludes Hooks; enhanced-only source retains its separate trust boundary and scalar-equivalent activation."
+    },
+    "package_setup": {
+      "disposition": "changed",
+      "paths": [
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md"
+      ],
+      "note": "Current 1.7.108 projection package_setup: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Actual SETUP changes inherited in the current complete source remain listed, while README/history already published107 stay compatible. Prior release notes are preserved as history; build/publication/current loading are separate."
+    },
+    "public_release_assets": {
+      "disposition": "unchanged_compatible",
+      "paths": [],
+      "note": "Current 1.7.108 projection public_release_assets: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. The canonical website/archive builder source is unchanged and consumes the new reviewed inputs/version. Its future produced bytes and website/GitHub parity need actual release readback; source compatibility does not claim public availability."
+    },
+    "release_evidence": {
+      "disposition": "changed",
+      "paths": [
+        "scripts/validation/harness_suites.json",
+        "backend/tests/unit/test_mcp_work_operation_wait.py",
+        "backend/tests/integration/test_developer_files_and_sync_public_contract.py",
+        "backend/tests/unit/test_product_guidance_and_mcp_contract.py",
+        "backend/tests/unit/test_mcp_original_text_windows.py"
+      ],
+      "note": "Current 1.7.108 projection release_evidence: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Only actual source differences in recorded evidence owners are listed. All old Harness/native/control failures and executed-source boundaries remain. New package/source gates run only on the actual successor; no whole pass follows from source hashes or unchanged tests."
+    },
+    "server_contract": {
+      "disposition": "changed",
+      "paths": [
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/application/living_memory/document_reader.py",
+        "backend/app/application/developer_platform/files.py",
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/api/public_v1/schemas.py",
+        "backend/app/application/living_memory/mcp.py",
+        "backend/tests/unit/test_public_plugin_receiver_contract_v1.py"
+      ],
+      "note": "Current 1.7.108 projection server_contract: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. Advertised Plugin version advances with manifests; inherited current Source/ACL/completeness/selected-item and WorkEvent result contracts remain in the complete candidate. Exact original UTF8 windows preserve the preview, verify immutable original SHA and current policy/ACL before and after IO, and return bounded same-SHA continuation. Compatibility revision/family and scopes are unchanged. New host/provider/production acceptance is not inferred."
+    },
+    "workspace_cli": {
+      "disposition": "changed",
+      "paths": [
+        "developer-cli/packages/workspace/src/cli.js",
+        "developer-cli/packages/workspace/README.md",
+        "developer-cli/packages/workspace/package.json",
+        "developer-cli/packages/admin/package.json",
+        "developer-cli/package-lock.json",
+        "backend/app/core/config.py",
+        "developer-cli/tests/auth-scopes.test.mjs"
+      ],
+      "note": "Current 1.7.108 projection workspace_cli: exact differences against published107 are listed; previous complete decisions are retained under prior_projection_decisions_1_7_107. CLI48 optional device scopes and exact product942 authority remain independently bound. This Skill identity does not bump either npm package or move CLI48. Both npm packages/four aliases/production readback still await protected authenticated recovery; original404/401 remain."
+    }
+  },
+  "local_context_delivery_candidate": {
+    "status": "local_source_pending_fresh_host_qualification",
+    "source_main": "d2b3cd00392ae291f2562b0297d8047ae28b9a50",
+    "public_version_unchanged": "1.7.107",
+    "public_release": "NOT_RUN",
+    "public_profile": "public",
+    "hooks_included": false,
+    "story_owner": "docs/rfc/normal-work-artifact-capture-owner-v1.md",
+    "distribution_owners": {
+      "agent_skill_plugin": [
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/references/documents.md",
+        ".agents/skills/corvio-operate-workspace/agents/openai.yaml",
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
+      ],
+      "application_remote_mcp": [
+        "backend/app/application/developer_platform/coding_agent_collaboration.py",
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/application/living_memory/mcp.py"
+      ]
+    },
+    "change_summary": "Distinguish completed work artifacts as current-work evidence from requested whole-carrier transformation, structural reorganization or Memory/Skill admission. Preserve Source/WorkEvent schemas, TaskIdentity, scope/ACL, Host approval, one packet owner and terminal effect boundaries.",
+    "qualification": "Original P1 design trigger, coding/currency transfer and one ordinary NOOP remain required on a new common source freeze; historical FAILs and baseline package remain unchanged.",
+    "workspace_cli_source": "unchanged; CLI freshness is not Plugin publication"
+  },
+  "local_plugin_guidance_delivery_candidate": {
+    "status": "source_implemented_pending_root_source_controls_official_builder_and_fresh_host",
+    "source_main": "d2b3cd00392ae291f2562b0297d8047ae28b9a50",
+    "public_version_unchanged": "1.7.107",
+    "public_profile": "public",
+    "hooks_included": false,
+    "public_publication": "NOT_RUN",
+    "public_directory_acceptance": "UNKNOWN",
+    "story_owner": "docs/rfc/normal-work-artifact-capture-owner-v1.md",
+    "distribution_owners": {
+      "agent_skill_plugin": [
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/mcp.json",
+        "packaging/corvio-agent-skills/plugins/corvio-workspace/.mcp.json"
+      ],
+      "application_remote_mcp": [
+        "backend/app/api/public_v1/mcp_routes.py"
+      ],
+      "canonical_source_builder": [
+        "scripts/export-official-agent-skills.sh",
+        "frontend/src/lib/developerSkillPackage.ts"
+      ],
+      "distribution_policy": [
+        "docs/runbooks/OFFICIAL_AGENT_SKILL_DISTRIBUTION.md"
+      ]
+    },
+    "candidate_connection_url": "https://api.corvio.ai/mcp?guidance=plugin_skill",
+    "canonical_oauth_resource": "https://api.corvio.ai/mcp",
+    "removed_headers": [
+      "X-Corvio-Plugin-Release",
+      "X-Corvio-Collaboration-Revision",
+      "X-Corvio-Compatibility-Family"
+    ],
+    "version_query": false,
+    "freshness_migration": "Headerless ordinary requests without reported facts may remain not_reported; a dedicated check evaluates its supplied facts only. The complete Skill conditionally describes actual transport metadata and retains exact visible-facts fallback, transport precedence, unknown/materiality and unverified loading. No report is inherited from a prior dedicated check or inferred from the delivery declaration.",
+    "change_summary": "Keep all49 public function definitions and default PureMCP initialization. A single explicit Plugin URL delivery declaration omits optional repeated instructions without granting rights or proving loading. One existing metadata sentence requires complete guidance and continuation after partial/truncated native reads. One first-use body leaf conditions freshness transport on actual metadata rather than all official Plugins; all subsequent business guidance stays exact.",
+    "default_initialization_owner": "remote_mcp_server_instructions remains byte-identical",
+    "source_successor": "backend/tests/fixtures/mcp-plugin-guidance-delivery-story-review-2026-11-10.json",
+    "qualification": "Root source-controls and official finite public export precede common frozen original P1 five revisions+B, EUR transfer and ordinary NOOP. Actual provider complete guidance/function exposure and true Source/Event/Plan/current Document/receiver effects remain required. All earlier FAILs and partials remain.",
+    "workspace_cli_source": "unchanged; no CLI or public Plugin bump",
+    "unresolved": [
+      "Public directory migration to static query URL/support",
+      "Actual OAuth canonical-resource parity on new URL",
+      "Fresh public49 provider catalogue admission",
+      "Complete operating guidance before first dependent action",
+      "Natural capture/Document/result reuse and finite cleanup"
+    ],
+    "freshness_body_owner": "Existing full Skill first-use lifecycle and Distribution declared-envelope parity; no Runtime freshness evaluator changed",
+    "whole_skill_inverse": "Metadata and conditional first-use body both reverse to complete reviewed v4 SHA2ff1590e995e97ecbd2b8103797016e2bd62c6dc050146a2e91d162da0863036 before original core/history checks"
+  },
+  "local_work_target_custody_candidate": {
+    "status": "implemented_pending_root_owner_review_source_controls_and_fresh_product_qualification",
+    "source_main": "d2b3cd00392ae291f2562b0297d8047ae28b9a50",
+    "public_version_unchanged": "1.7.107",
+    "public_publication": "NOT_RUN",
+    "public_profile": "public",
+    "hooks_included": false,
+    "story_owner": "docs/rfc/normal-work-artifact-capture-owner-v1.md",
+    "distribution_owners": {
+      "agent_skill_plugin": [
+        ".agents/skills/corvio-operate-workspace/SKILL.md",
+        ".agents/skills/corvio-operate-workspace/references/api.md"
+      ],
+      "application_remote_mcp": [
+        "backend/app/domains/living_memory/contracts.py",
+        "backend/app/application/living_memory/mcp.py",
+        "backend/app/application/living_memory/ingestion.py",
+        "backend/app/application/developer_platform/coding_agent_collaboration.py"
+      ]
+    },
+    "change_summary": "Explain ordinary body target versus Project scope/container/evidence while preserving exact target enforcement. Read current exact Event-to-Job custody with unknown cancellation intent and unsupported cancellation requests. Required current effects still need terminal readback; independent future maintenance can remain explicitly pending after persisted handoff. No future-effect or strict Project-containment guarantee.",
+    "whole_skill_inverse": "Four exact replacements restore source59 SHA76df2c2577ca87561067746a0301428848d72859fb2a789d35d592996ad8291a before all unchanged historical inverses.",
+    "qualification": "Focused PG/source controls and original natural P1 five revisions+B, EUR transfer and ordinary NOOP await Root common freeze/official builder; old FAILs, deadlines, tasks and oracles preserved.",
+    "workspace_cli_source": "unchanged; no CLI or public Plugin bump",
+    "runtime_boundary": "No cancellation API/migration, semantic classifier, DAG/model/profile/approval/ACL change"
+  },
+  "local_context_item_continuation_candidate": {
+    "status": "scoped_declared_PG_and_static_expand_delivery_qualified_pending_combined_freeze_real_C_Host",
+    "source_base": "d2b3cd00392ae291f2562b0297d8047ae28b9a50",
+    "public_version_unchanged": "1.7.107",
+    "public_profile": "public",
+    "hooks_included": false,
+    "public_publication": "NOT_RUN",
+    "production": "NOT_RUN",
+    "story_owner": "docs/rfc/context-selected-item-continuation-mainline-v1.md",
+    "distribution_owners": {
+      "canonical_agent_skill_plugin": [
+        ".agents/skills/corvio-operate-workspace/references/api.md",
+        ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
+      ],
+      "application_remote_mcp": [
+        "backend/app/application/living_memory/context.py",
+        "backend/app/application/living_memory/context_item_continuation.py",
+        "backend/app/application/living_memory/mcp.py"
+      ]
+    },
+    "change_summary": "Actor-bound selected-item cursor makes actual omitted whole groups reachable without semantic reordering, conflict splitting or global completeness claims. Current Source/ACL/revision/expiry/withdrawal revalidation and packed-only Evidence proof remain. Single expand reader story preserves all existing qualification/completion/usage meanings through fixed Codex transport; other tools/parameters and Skill spine remain unchanged.",
+    "qualification": {
+      "new_declared_PG_instances": "8 original PASS + single repaired capacity fixture PASS; original fixture FAIL preserved",
+      "existing_Evidence_address_guard": "PASS unchanged",
+      "fixed_host_static": "49 tools admitted, only expand description changed; full canonical description equals pinned actual conversion, independent nineteen-leaf review",
+      "native_C_consumer": "NOT_RUN; opt-in same actual EUR scope, current C read-only authorization, natural question only, actual Function/provider-to-answer and eleven knowledge-table readback",
+      "combined_source_gate": "await Root common freeze; prior source-drift FAIL retained"
+    },
+    "dependencies": "Application reader and same-source canonical API/local official package must be qualified together before any public distribution; local builder is not deployment or directory acceptance.",
+    "workspace_cli_source": "unchanged; no CLI bump or public Plugin release",
+    "runtime_boundary": "No new tool/schema model/DAG/default route/ACL/approval/file system or semantic planner; cursor is a neutral selected-window address."
+  },
+  "prior_current_candidate_1_7_107": {
     "status": "combined_source_pending_fresh_qualification",
     "release_version": "1.7.107",
     "source_parents": [
@@ -16,40 +314,42 @@
     "production_acceptance": "NOT_RUN",
     "independent_human_acceptance": false
   },
-  "release_version": "1.7.107",
-  "contract_revision": "2026-10-25.1",
-  "compatibility_family": "coding-agent-collaboration-v1",
-  "minimum_supported_revision": "2026-09-09.4",
-  "change_summary": "Publish the complete ready-source union for current-principal retrieval, Function-result/context and Memory projection. Public1.7.107 physically excludes Hooks, preserves reviewed enhanced source under separate authorization, and uses the canonical website archive builder for immutable website/GitHub distribution. Fresh complete87-suite/source-bound Native and private production acceptance remain distinct gates; old source passes and Native/ABC/Host failures retain their original attribution.",
-  "projections": {
+  "prior_projection_decisions_1_7_107": {
     "canonical_skill": {
       "disposition": "changed",
       "paths": [
         ".agents/skills/corvio-operate-workspace/SKILL.md",
         ".agents/skills/corvio-operate-workspace/CORVIO_SKILL_REVIEW.json"
       ],
-      "note": "Only release token107 and matching internal review change; all current canonical Skill semantic guidance stays byte-equivalent to captured Main. Installed Host loading and OAuth are separate acceptance."
+      "note": "Only release token107 and matching internal review change; all current canonical Skill semantic guidance stays byte-equivalent to captured Main. Installed Host loading and OAuth are separate acceptance. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     },
     "external_marketplaces": {
       "disposition": "external_pending",
       "paths": [],
-      "note": "Protected official source and binary release is authorized. Anthropic/WorkBuddy/Cursor reviewed directory submission, approval, listing, physical Host and customer account mutation remain separate acceptance; no listing is fabricated."
+      "note": "Protected official source and binary release is authorized. Anthropic/WorkBuddy/Cursor reviewed directory submission, approval, listing, physical Host and customer account mutation remain separate acceptance; no listing is fabricated. A-work-operation-wait-v1 authorizes no public Plugin or cross-organization publication."
     },
     "harness_and_mainline": {
       "disposition": "changed",
       "paths": [
         "docs/rfc/deploy-release-mainline-v1.md",
         "docs/rfc/retrieval-citation-current-reference-v1.md",
-        "docs/logbook/entries/2026-11-07/231800-codex-ready-union-retrieval-memory-public-plugin.md"
+        "docs/logbook/entries/2026-11-07/231800-codex-ready-union-retrieval-memory-public-plugin.md",
+        "docs/rfc/developer-platform-dual-cli-and-agent-skill-mainline-v1.md",
+        "docs/rfc/developer-source-publication-mainline-v1.md",
+        "docs/logbook/entries/2026-11-12/120000-codex-workspace-cli-explicit-device-scopes.md",
+        "docs/logbook/weekly/2026-11-09_to_2026-11-15.md",
+        "docs/rfc/mcp-usability-and-observability-mainline-v1.md",
+        "docs/logbook/entries/2026-11-12/235000-codex-work-operation-bounded-wait.md",
+        "backend/tests/unit/test_public_plugin_receiver_contract_v1.py"
       ],
-      "note": "Pre-edit full why/current-composition receipts and owner/experience conservation precede edits. Real merge parents/direct ready dependencies preserve both histories; fresh full87 Harness/ALL/CI/native and target effect proof qualify current union only."
+      "note": "Pre-edit full why/current-composition receipts and owner/experience conservation precede edits. Real merge parents/direct ready dependencies preserve both histories; fresh full87 Harness/ALL/CI/native and target effect proof qualify current union only. Preserve the original Mac material loop and its independent source/native/account witnesses; neutral CLI capability has focused HTTP and current-grant continuation evidence. A owner/read receipt and minimal D verification backlink accompany this scoped transport delta. A full-Plugin/receiver continuation qualifies frozen package bytes and canonical catalog/current-grant/result transport with explicit offline doubles. Production schemas and grant requests are unchanged; actual Fresh Host adoption and the C Download/DocBinding successor remain separate."
     },
     "help_center": {
       "disposition": "changed",
       "paths": [
         "frontend/src/lib/help/publicMcpHelpContent.ts"
       ],
-      "note": "All English/Simplified/Traditional Chinese public installation disclosures now match the default no-Hook archive. Enhanced Hook behavior and separate authorization remain explicit; fresh-session/OAuth/reload/effect boundaries remain."
+      "note": "All English/Simplified/Traditional Chinese public installation disclosures now match the default no-Hook archive. Enhanced Hook behavior and separate authorization remain explicit; fresh-session/OAuth/reload/effect boundaries remain. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     },
     "package_manifests": {
       "disposition": "changed",
@@ -62,7 +362,7 @@
         "packaging/corvio-agent-skills/plugins/corvio-workspace/hooks/session-start.sh",
         "scripts/export-official-agent-skills.sh"
       ],
-      "note": "Distinct immutable1.7.107 identity; default public source removes discoverable Hook files and declarations. Enhanced source retains original reviewed Hook semantics and needs explicit trust/authorization. Existing published106 bytes are never overwritten."
+      "note": "Distinct immutable1.7.107 identity; default public source removes discoverable Hook files and declarations. Enhanced source retains original reviewed Hook semantics and needs explicit trust/authorization. Existing published106 bytes are never overwritten. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     },
     "package_setup": {
       "disposition": "changed",
@@ -70,23 +370,24 @@
         "packaging/corvio-agent-skills/README.md",
         "packaging/corvio-agent-skills/plugins/corvio-workspace/SETUP.md"
       ],
-      "note": "Explain actual public/enhanced source and immutable release history. Restore exact reviewed no-file/no-network enhanced disclosure required by the original oracle; existing original Hook assertions stay in the explicitly selected enhanced test."
+      "note": "Explain actual public/enhanced source and immutable release history. Restore exact reviewed no-file/no-network enhanced disclosure required by the original oracle; existing original Hook assertions stay in the explicitly selected enhanced test. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     },
     "public_release_assets": {
       "disposition": "changed",
       "paths": [
         "frontend/src/lib/developerSkillPackage.ts"
       ],
-      "note": "Canonical website binary builder produces default public no-Hook Plugin and profile receipt. Protected public Release downloads these exact website bytes; version+SHA256 and exported-source byte parity remain required. No external directory listing is claimed."
+      "note": "Canonical website binary builder produces default public no-Hook Plugin and profile receipt. Protected public Release downloads these exact website bytes; version+SHA256 and exported-source byte parity remain required. No external directory listing is claimed. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     },
     "release_evidence": {
       "disposition": "changed",
       "paths": [
         "frontend/src/lib/developerSkillPackage.test.ts",
         "scripts/tests/test_export_official_agent_skills.sh",
-        "scripts/validation/harness_suites.json"
+        "scripts/validation/harness_suites.json",
+        "backend/tests/unit/test_mcp_work_operation_wait.py"
       ],
-      "note": "Retain all original86 suite objects and full enhanced Hook assertions. Append recorded peer82 as87 with identical arguments/origin/isolation; compare every real public/enhanced archive byte and complete path set against the official source exporter. Whole-source gates/Native/production effects are independent."
+      "note": "Retain all original86 suite objects and full enhanced Hook assertions. Append recorded peer82 as87 with identical arguments/origin/isolation; compare every real public/enhanced archive byte and complete path set against the official source exporter. Whole-source gates/Native/production effects are independent. A Level1 dispatch/typed-result/cancellation checks are independent of D natural stage and full P1."
     },
     "server_contract": {
       "disposition": "changed",
@@ -97,14 +398,38 @@
         "backend/app/domains/ai_processing/egress.py",
         "backend/app/domains/ai_processing/page_source_access.py",
         "backend/app/domains/tree/llm_access_guard.py",
-        "backend/app/domains/workspace_assets/registered_source_policy.py"
+        "backend/app/domains/workspace_assets/registered_source_policy.py",
+        "backend/app/api/public_v1/mcp_routes.py",
+        "backend/app/application/living_memory/mcp.py",
+        "backend/tests/unit/test_public_plugin_receiver_contract_v1.py"
       ],
-      "note": "Advertised release107 matches manifests; projection-first canonical assertions retain independent fact-citation-ready/current-source/ACL/completeness facts. Compound Page-source execution shares fresh facts only within each bounded read/send and retains every selected descendant, original policy/epoch/revision, consent and lease fence. a591 scenario passes with aggregate transaction-health FAIL remain historical; this executor requires fresh qualification. No model-visible schema, new grant, semantic Runtime classifier or default C_batch activation."
+      "note": "Advertised release107 matches manifests; projection-first canonical assertions retain independent fact-citation-ready/current-source/ACL/completeness facts. Compound Page-source execution shares fresh facts only within each bounded read/send and retains every selected descendant, original policy/epoch/revision, consent and lease fence. a591 scenario passes with aggregate transaction-health FAIL remain historical; this executor requires fresh qualification. No model-visible schema, new grant, semantic Runtime classifier or default C_batch activation. A-work-operation-wait-v1 adds wait_seconds to the same catalog entry and reuses canonical transport waiting with fresh authentication/Source checks; required scopes and all identity/effect/publication types stay compatible. A full-Plugin/receiver continuation qualifies frozen package bytes and canonical catalog/current-grant/result transport with explicit offline doubles. Production schemas and grant requests are unchanged; actual Fresh Host adoption and the C Download/DocBinding successor remain separate. Current A offline composition explicitly includes C Download/D receiver discovery and independent operation rights; this adds no A scope or policy and does not qualify B working-copy creation or native execution. A-work-operation-result-contract-v1: current attempt/retry and separately attributed last_failure; only typed admission timeout yields caller-locator read-unavailability, no stale effects or terminal promotion. No new tool or execution policy. A-MCP-document-snapshot-binding-v1 adds the existing B read snapshot operand to the MCP catalog, forwards it to the same service and binds nonnull snapshots into operation hashes; legacy absent/null hashes remain. No new tool/scope/Prompt or package-version change; real Host/SQL qualification remains D-owned."
     },
     "workspace_cli": {
-      "disposition": "unchanged_compatible",
-      "paths": [],
-      "note": "No new Workspace/Admin CLI source relative to its delivered version; unified release retains auto detection and exact registry readback, without manufacturing a CLI bump."
+      "disposition": "changed",
+      "paths": [
+        "developer-cli/packages/workspace/src/cli.js",
+        "developer-cli/packages/workspace/README.md",
+        "developer-cli/packages/workspace/package.json",
+        "developer-cli/packages/admin/package.json",
+        "developer-cli/package-lock.json",
+        "backend/app/core/config.py",
+        "developer-cli/tests/auth-scopes.test.mjs"
+      ],
+      "note": "No new Workspace/Admin CLI source relative to its delivered version; unified release retains auto detection and exact registry readback, without manufacturing a CLI bump. The new immutable beta.48 candidate adds optional --scopes; both beta/latest tags and production reviewed-version readback remain required. Node22 focused14/14 and package boundaries pass; full local release check preserves three macOS fixture failures. Unchanged compatible for A-work-operation-wait-v1: optional server catalog field, no installation/device-scope/package/version change."
     }
-  }
+  },
+  "prior_change_summary_1_7_107": "Publish the complete ready-source union for current-principal retrieval, Function-result/context and Memory projection. Public1.7.107 physically excludes Hooks, preserves reviewed enhanced source under separate authorization, and uses the canonical website archive builder for immutable website/GitHub distribution. Fresh complete87-suite/source-bound Native and private production acceptance remain distinct gates; old source passes and Native/ABC/Host failures retain their original attribution. Workspace CLI beta.48 adds optional explicit device scopes while preserving the eleven defaults, server/user authority, actual-grant readback and original material identity. Public release and original native acceptance remain independent. A-work-operation-wait-v1 adds optional bounded waiting to the existing WorkEvent reader; no public release or natural Host acceptance is claimed. A-work-operation-result-contract-v1 adds persisted attempt/last-failure facts and input-only typed DB admission read-unavailability to the existing Operation tool; compatibility/scopes/Skill package remain unchanged. Natural A2 FAIL and actual native qualification stay separate. A-MCP-document-snapshot-binding-v1 adds the existing B read snapshot operand to the MCP catalog, forwards it to the same service and binds nonnull snapshots into operation hashes; legacy absent/null hashes remain. No new tool/scope/Prompt or package-version change; real Host/SQL qualification remains D-owned.",
+  "source_contract_recovery_history": [
+    {
+      "source_before": "d98880032d97686a3a60e742bedce7f157655524",
+      "original_preflight": "FAILED three package contracts; original Linux guard refusal retained",
+      "approved_owner": "Root/A955 guidance carrier and shared exact invocation diagnostic",
+      "source_proof": {
+        "path": "/home/corvio/.codex/visualizations/2026/11/01/01a19865-f900-76f2-b96b-8ff1dbcc8e1b/Source893-e3cf-current-candidate-20261114/CURRENT910_CONTRACT_RECOVERY_PRE_EDIT_OWNER_STORY.actual.private.json",
+        "bytes": 8520,
+        "sha256": "171ccbedbd7494c323c898fe115199046b2e1244a8c28c9c043dacb342f595cd"
+      }
+    }
+  ]
 }
